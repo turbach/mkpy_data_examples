@@ -1,5 +1,7 @@
 [![CC-BY-NC-SA-4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+[![DOI](https://zenodo.org/badge/255196854.svg)](https://zenodo.org/badge/latestdoi/255196854)
+
 These EEG data were recorded for instructional purposes and are not
 human subjects research data.
 
