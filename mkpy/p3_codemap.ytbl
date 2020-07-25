@@ -1,0 +1,100 @@
+# mkpy YAML codemap
+# rows and columns must align, regexp is a mandatory column, all else is whatever.
+#
+# Note the regular expression negation *NON CAPTURNG* group (?!1040)
+# to pattern-match "anything except 1040", i.e., an omitted response,
+# as in (#10) (?!1040). Depending on the stimulus type, an ommited
+# response is "correct" or "incorrect"
+
+---
+name: p3  
+
+columns:
+  [regexp,          ccode,  instrument,   bin,    tone,  stim,       accuracy,    acc_type ]
+                                  
+rows:                             
+  - ['(#\d+)',          0,         cal,     0,    cal,    cal,        cal,         cal      ]
+  - ['(#11) 1040',      1,         eeg,     3,     hi,    target,     correct,     hit      ]
+  - ['(#10) (?!1040)',  1,         eeg,     4,     lo,    standard,   correct,     cr       ]
+  - ['(#11) (?!1040)',  1,         eeg,     5,     hi,    target,     incorrect,   miss     ]
+  - ['(#10) 1040',      1,         eeg,     6,     lo,    standard,   incorrect,   fa       ]
+                                  
+  - ['(#21) 1040',      1,         eeg,     9,     lo,    target,     correct,      hit     ]
+  - ['(#20) (?!1040)',  1,         eeg,    10,     hi,    standard,   correct,      cr      ]
+  - ['(#21) (?!1040)',  1,         eeg,    11,     lo,    target,     incorrect,    miss    ]
+  - ['(#20) 1040',      1,         eeg,    12,     hi,    standard,   incorrect,    fa      ]
+
+# ------------------------------------------------------------
+# analgous .bdf version
+# ------------------------------------------------------------
+# cd 0
+# Calibration
+# 	sd 0
+# 		cal pulses  10 uV
+# 		.{*}
+# cd 1
+# Simple Oddball Task 
+# 	sd 1
+# 		Low Tone Standard 
+# 		.{10}
+# 	sd 2
+# 		High Tone Target
+# 		.{11}
+# 	sd 3
+# 		High Tone Correct Target(Hit)
+# 		.{11}{1024:rt}
+# 	sd 4
+# 		Low Tone Correct Standard(CR)
+# 		.{10}{~1024}
+# 	sd 5
+# 		High Tone Incorrect Target(Miss)
+# 		.{11}{~1024}
+# 	sd 6
+# 		Low Tone Incorrect Standard(FA)
+# 		.{10}{1024:rt}
+# 	sd 7
+# 		High Tone Standard
+# 		.{20}
+# 	sd 8
+# 		Low Tone Target
+# 		.{21}
+# 	sd 9
+# 		Low Tone Correct Target(Hit)
+# 		.{21}{1024:rt}
+# 	sd 10
+# 		High Tone Correct Standard(CR)
+# 		.{20}{~1024}
+# 	sd 11
+# 		Low Tone Incorrect Target(Miss)
+# 		.{21}{~1024}
+# 	sd 12
+# 		High Tone Incorrect Standard(FA)
+# 		.{20}{1024:rt}
+#
+# 	sd 13
+# 		Tone Standard
+# 		.{10;20}
+# 	sd 14
+# 		Tone Target
+# 		.{11;21}
+# 	sd 15
+# 		Correct Target(Hit)
+# 		.{11;21}{1024:rt}
+# 	sd 16
+# 		Correct Standard(CR)
+# 		.{10;20}{~1024}	
+# 	sd 17   
+# 		Incorrect Target(Miss)
+# 		.{11;21}{~1024}
+# 	sd 18
+# 		Incorrect Standard(FA)
+# 		.{10;20}{1024:rt}
+
+# 	sd 19
+# 		High Tone(S+T)
+# 		.{11;20}
+# 	sd 20
+# 		Low Tone(S+T)
+# 		.{10;21}
+
+
