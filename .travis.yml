@@ -4,5 +4,6 @@ deploy:
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_TOKEN  # from github, set in TravisCI settings
+    local_dir: docs/build/html
     on:
       branch: main
