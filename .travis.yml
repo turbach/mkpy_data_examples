@@ -1,3 +1,5 @@
+language: minimal
+
 deploy:
 
   # allow any commit to master to refresh the docs on gh-pages
