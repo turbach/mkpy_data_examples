@@ -1,0 +1,31 @@
+# mkpy YAML codemap
+#
+# columns and rows must align, regexp is a mandatory column, all else is whatever
+
+---
+name: p5
+
+columns:
+    [ regexp,  ccode,  instrument,   bin,      click,    type          ]
+rows:
+  - ['(#\d+)',     0,         cal,     0,        cal,    cal           ]
+  - ['(#1)',       1,         eeg,     1,    click_1,    conditioning  ]
+  - ['(#2)',       1,         eeg,     2,    click_2,    test          ]
+
+# ------------------------------------------------------------
+# for comparison, an analogous .bdf
+# ------------------------------------------------------------
+# cd 0
+# Calibration
+# 	sd 0
+# 		cal pulses  10 uV
+# 		.{*}
+# cd 1
+# P50 Sensory Gating
+# 	sd 1
+# 		1st Click (Conditioning)
+# 		.{1}
+# 	sd 2
+# 		2nd Click (Test)
+# 		.{2}
+
