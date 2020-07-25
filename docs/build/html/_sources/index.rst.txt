@@ -28,12 +28,18 @@ mkpy data examples
    * :ref:`search`
 
 
+.. image:: https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png
+   :height: 25
+   :alt: CC-BY-NC-SA-4.0
+   :target: http://creativecommons.org/licenses/by-nc-sa/4.0/
+
+.. image:: https://zenodo.org/badge/255196854.svg
+   :height: 25
+   :alt: DOI
+   :target: https://zenodo.org/badge/latestdoi/255196854
+
 This work is licensed under a `CreativeCommons
 Attribution-NonCommercial-ShareAlike 4.0 International License
 <http://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
-
-.. image:: https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png
-   :alt: CC-BY-NC-SA-4.0
-   :target: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
 We gratefully acknowledge the support of grant NICHD 5R01HD022614 for the development of these routines.
