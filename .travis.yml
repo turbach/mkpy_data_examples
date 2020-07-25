@@ -1,0 +1,8 @@
+deploy:
+
+  # allow any commit to master to refresh the docs on gh-pages
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN  # from github, set in TravisCI settings
+    on:
+      branch: main

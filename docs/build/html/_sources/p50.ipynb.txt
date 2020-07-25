@@ -1,0 +1,1072 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# P50 Paired-click\n",
+    "\n",
+    "Design:\n",
+    "\n",
+    "* trial: two auditory clicks, 500 ms SOA \n",
+    "* several seconds between trials, random ITI "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "from pathlib import Path\n",
+    "import re\n",
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "\n",
+    "from matplotlib import pyplot as plt\n",
+    "from mkpy import mkh5\n",
+    "from spudtr import epf\n",
+    "\n",
+    "# path wrangling for nbsphinx\n",
+    "if \"MDE_HOME\" in os.environ.keys():\n",
+    "    MDE_HOME = Path(os.environ[\"MDE_HOME\"])\n",
+    "else:\n",
+    "    from conf import MDE_HOME"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "mkpy                      0.2.3                0_gc7b31fa    kutaslab\n",
+      "spudtr                    0.0.8                r657d922_0    kutaslab\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%bash\n",
+    "conda list | egrep \"(mkpy|spudtr)\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# set recorded ERPSS data filenames\n",
+    "crw = MDE_HOME / \"mkdig/sub000p5.crw\"    # EEG recording\n",
+    "log = MDE_HOME / \"mkdig/sub000p5.x.log\"  # events \n",
+    "yhdr = MDE_HOME / \"mkpy/sub000p5.yhdr\"   # extra header info\n",
+    "\n",
+    "# set calibration data filenames\n",
+    "cals_crw = MDE_HOME / \"mkdig/sub000c5.crw\"\n",
+    "cals_log = MDE_HOME / \"mkdig/sub000c5.x.log\"\n",
+    "cals_yhdr = MDE_HOME / \"mkpy/sub000c5.yhdr\"\n",
+    "\n",
+    "# HDF5 file with EEG recording, events, and header\n",
+    "p50_h5_f = MDE_HOME / \"data/sub000p50.h5\"  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**mkh5**  EEG data, event code log, header information"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:3706: UserWarning: negative event code(s) found for cal condition code 0 -16384\n",
+      "  warnings.warn(msg)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Found cals in /sub000/dblock_2\n",
+      "Calibrating block /sub000/dblock_0 of 3: (219904,)  \n",
+      "Calibrating block /sub000/dblock_1 of 3: (225280,)  \n",
+      "Calibrating block /sub000/dblock_2 of 3: (56064,)  \n"
+     ]
+    }
+   ],
+   "source": [
+    "p50_h5 = mkh5.mkh5(p50_h5_f)  # make ready\n",
+    "p50_h5.reset_all()  # wipe previous\n",
+    "p50_h5.create_mkdata(\"sub000\", crw, log, yhdr) # convert the data to HDF5\n",
+    "\n",
+    "# add calibration data to this subject\n",
+    "p50_h5.append_mkdata(\"sub000\", cals_crw, cals_log, cals_yhdr)\n",
+    "\n",
+    "# set calibration parameters and calibrate\n",
+    "pts, pulse, lo, hi, ccode = 5, 10, -40, 40, 0\n",
+    "p50_h5.calibrate_mkdata(\n",
+    "    \"sub000\",  # data group to calibrate with these cal pulses\n",
+    "    n_points=pts,  # pts to average\n",
+    "    cal_size=pulse,  # uV\n",
+    "    lo_cursor=lo,  # lo_cursor ms\n",
+    "    hi_cursor=hi,  # hi_cursor ms\n",
+    "    cal_ccode=ccode,  # condition code\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**codemap**\n",
+    "\n",
+    "For this simple design the codemap a few lines of hand-typed YAML.\n",
+    "\n",
+    "The tag column labels are for illustration, `bin` is used because it can be, not because it must.\n",
+    "\n",
+    "The calibration events are included for comparison"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "# mkpy YAML codemap\n",
+      "#\n",
+      "# columns and rows must align, regexp is a mandatory column, all else is whatever\n",
+      "\n",
+      "---\n",
+      "name: p5\n",
+      "\n",
+      "columns:\n",
+      "    [ regexp,  ccode,  instrument,   bin,      click,    type          ]\n",
+      "rows:\n",
+      "  - ['(#\\d+)',     0,         cal,     0,        cal,    cal           ]\n",
+      "  - ['(#1)',       1,         eeg,     1,    click_1,    conditioning  ]\n",
+      "  - ['(#2)',       1,         eeg,     2,    click_2,    test          ]\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%bash\n",
+    "head -14 $MDE_HOME/mkpy/p50_codemap.ytbl"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**1. get_event_table(*codemap*)** \n",
+    "\n",
+    "Scan the event codes for pattern matches and collect the HDF5 index, matching code, and tags\n",
+    "\n",
+    "Event table modifications are not needed for this simple design."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "searching codes in: sub000/dblock_0\n",
+      "searching codes in: sub000/dblock_1\n",
+      "searching codes in: sub000/dblock_2\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:1060: UserWarning: \n",
+      "As of mkpy 0.2.0 to match events with a codemap regexp pattern, the\n",
+      "ccode column in p50_codemap.ytbl must also match the log_ccode\n",
+      "in the datablock. If this behavior is not desired, delete or rename\n",
+      "the ccode column in the codemap.\n",
+      "  warnings.warn(msg)\n"
+     ]
+    }
+   ],
+   "source": [
+    "p50_event_table = p50_h5.get_event_table(MDE_HOME / \"mkpy/p50_codemap.ytbl\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**inspect the event table**\n",
+    "\n",
+    "Check that the codemap scan returned all and only the correct events and tags."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "event table shape: (448, 29)\n",
+      "event table columns: ['data_group', 'dblock_path', 'dblock_tick_idx', 'dblock_ticks', 'crw_ticks', 'raw_evcodes', 'log_evcodes', 'log_ccodes', 'log_flags', 'epoch_match_tick_delta', 'epoch_ticks', 'dblock_srate', 'match_group', 'idx', 'dlim', 'anchor_str', 'match_str', 'anchor_code', 'match_code', 'anchor_tick', 'match_tick', 'anchor_tick_delta', 'is_anchor', 'regexp', 'ccode', 'instrument', 'bin', 'click', 'type']\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>dblock_path</th>\n",
+       "      <th>dblock_ticks</th>\n",
+       "      <th>log_evcodes</th>\n",
+       "      <th>log_ccodes</th>\n",
+       "      <th>log_flags</th>\n",
+       "      <th>regexp</th>\n",
+       "      <th>match_code</th>\n",
+       "      <th>instrument</th>\n",
+       "      <th>bin</th>\n",
+       "      <th>click</th>\n",
+       "      <th>type</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>120</th>\n",
+       "      <td>sub000/dblock_0</td>\n",
+       "      <td>606</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>64</td>\n",
+       "      <td>(#1)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>eeg</td>\n",
+       "      <td>1</td>\n",
+       "      <td>click_1</td>\n",
+       "      <td>conditioning</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>121</th>\n",
+       "      <td>sub000/dblock_0</td>\n",
+       "      <td>3792</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#1)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>eeg</td>\n",
+       "      <td>1</td>\n",
+       "      <td>click_1</td>\n",
+       "      <td>conditioning</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>122</th>\n",
+       "      <td>sub000/dblock_0</td>\n",
+       "      <td>7714</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#1)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>eeg</td>\n",
+       "      <td>1</td>\n",
+       "      <td>click_1</td>\n",
+       "      <td>conditioning</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>123</th>\n",
+       "      <td>sub000/dblock_0</td>\n",
+       "      <td>10771</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#1)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>eeg</td>\n",
+       "      <td>1</td>\n",
+       "      <td>click_1</td>\n",
+       "      <td>conditioning</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>124</th>\n",
+       "      <td>sub000/dblock_0</td>\n",
+       "      <td>13980</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#1)</td>\n",
+       "      <td>1</td>\n",
+       "      <td>eeg</td>\n",
+       "      <td>1</td>\n",
+       "      <td>click_1</td>\n",
+       "      <td>conditioning</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "         dblock_path  dblock_ticks  log_evcodes  log_ccodes  log_flags regexp  \\\n",
+       "120  sub000/dblock_0           606            1           1         64   (#1)   \n",
+       "121  sub000/dblock_0          3792            1           1          0   (#1)   \n",
+       "122  sub000/dblock_0          7714            1           1          0   (#1)   \n",
+       "123  sub000/dblock_0         10771            1           1          0   (#1)   \n",
+       "124  sub000/dblock_0         13980            1           1          0   (#1)   \n",
+       "\n",
+       "     match_code instrument  bin    click          type  \n",
+       "120           1        eeg    1  click_1  conditioning  \n",
+       "121           1        eeg    1  click_1  conditioning  \n",
+       "122           1        eeg    1  click_1  conditioning  \n",
+       "123           1        eeg    1  click_1  conditioning  \n",
+       "124           1        eeg    1  click_1  conditioning  "
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>dblock_path</th>\n",
+       "      <th>dblock_ticks</th>\n",
+       "      <th>log_evcodes</th>\n",
+       "      <th>log_ccodes</th>\n",
+       "      <th>log_flags</th>\n",
+       "      <th>regexp</th>\n",
+       "      <th>match_code</th>\n",
+       "      <th>instrument</th>\n",
+       "      <th>bin</th>\n",
+       "      <th>click</th>\n",
+       "      <th>type</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>683</th>\n",
+       "      <td>sub000/dblock_2</td>\n",
+       "      <td>54179</td>\n",
+       "      <td>4</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#\\d+)</td>\n",
+       "      <td>4</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>0</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>cal</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>684</th>\n",
+       "      <td>sub000/dblock_2</td>\n",
+       "      <td>54437</td>\n",
+       "      <td>2</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#\\d+)</td>\n",
+       "      <td>2</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>0</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>cal</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>685</th>\n",
+       "      <td>sub000/dblock_2</td>\n",
+       "      <td>54695</td>\n",
+       "      <td>3</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#\\d+)</td>\n",
+       "      <td>3</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>0</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>cal</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>686</th>\n",
+       "      <td>sub000/dblock_2</td>\n",
+       "      <td>54954</td>\n",
+       "      <td>4</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#\\d+)</td>\n",
+       "      <td>4</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>0</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>cal</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>687</th>\n",
+       "      <td>sub000/dblock_2</td>\n",
+       "      <td>55212</td>\n",
+       "      <td>2</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>(#\\d+)</td>\n",
+       "      <td>2</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>0</td>\n",
+       "      <td>cal</td>\n",
+       "      <td>cal</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "         dblock_path  dblock_ticks  log_evcodes  log_ccodes  log_flags  \\\n",
+       "683  sub000/dblock_2         54179            4           0          0   \n",
+       "684  sub000/dblock_2         54437            2           0          0   \n",
+       "685  sub000/dblock_2         54695            3           0          0   \n",
+       "686  sub000/dblock_2         54954            4           0          0   \n",
+       "687  sub000/dblock_2         55212            2           0          0   \n",
+       "\n",
+       "     regexp  match_code instrument  bin click type  \n",
+       "683  (#\\d+)           4        cal    0   cal  cal  \n",
+       "684  (#\\d+)           2        cal    0   cal  cal  \n",
+       "685  (#\\d+)           3        cal    0   cal  cal  \n",
+       "686  (#\\d+)           4        cal    0   cal  cal  \n",
+       "687  (#\\d+)           2        cal    0   cal  cal  "
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th>log_flags</th>\n",
+       "      <th>0</th>\n",
+       "      <th>32</th>\n",
+       "      <th>48</th>\n",
+       "      <th>64</th>\n",
+       "      <th>All</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>ccode</th>\n",
+       "      <th>instrument</th>\n",
+       "      <th>bin</th>\n",
+       "      <th>click</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <th>cal</th>\n",
+       "      <th>0</th>\n",
+       "      <th>cal</th>\n",
+       "      <td>207</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>1</td>\n",
+       "      <td>208</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th rowspan=\"2\" valign=\"top\">1</th>\n",
+       "      <th rowspan=\"2\" valign=\"top\">eeg</th>\n",
+       "      <th>1</th>\n",
+       "      <th>click_1</th>\n",
+       "      <td>96</td>\n",
+       "      <td>19</td>\n",
+       "      <td>4</td>\n",
+       "      <td>1</td>\n",
+       "      <td>120</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <th>click_2</th>\n",
+       "      <td>95</td>\n",
+       "      <td>21</td>\n",
+       "      <td>4</td>\n",
+       "      <td>0</td>\n",
+       "      <td>120</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>All</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <td>398</td>\n",
+       "      <td>40</td>\n",
+       "      <td>8</td>\n",
+       "      <td>2</td>\n",
+       "      <td>448</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "log_flags                       0  32  48  64  All\n",
+       "ccode instrument bin click                        \n",
+       "0     cal        0   cal      207   0   0   1  208\n",
+       "1     eeg        1   click_1   96  19   4   1  120\n",
+       "                 2   click_2   95  21   4   0  120\n",
+       "All                           398  40   8   2  448"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"event table shape:\", p50_event_table.shape)\n",
+    "print(\"event table columns:\", p50_event_table.columns.to_list())\n",
+    "\n",
+    "# select some columns to show\n",
+    "example_columns = [\n",
+    "    \"dblock_path\", \"dblock_ticks\", \"log_evcodes\", \"log_ccodes\", \"log_flags\", \n",
+    "    \"regexp\", \"match_code\", \"instrument\", \"bin\", \"click\", \"type\"\n",
+    "]\n",
+    "\n",
+    "# first few stimulus events\n",
+    "display(p50_event_table[example_columns].head())\n",
+    "\n",
+    "# last few calibration pulse events\n",
+    "display(p50_event_table[example_columns].tail())\n",
+    "\n",
+    "# tally and check event counts \n",
+    "pd.crosstab(\n",
+    "    index=[\n",
+    "        p50_event_table.ccode, \n",
+    "        p50_event_table.instrument, \n",
+    "        p50_event_table.bin,\n",
+    "        p50_event_table.click,\n",
+    "    ],\n",
+    "    columns=[\n",
+    "        p50_event_table.log_flags,\n",
+    "    ],\n",
+    "    margins=True\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**2. set_epochs(*name*, *pre*, *post*)**\n",
+    "\n",
+    "Stash the the event table events and tags with a name and epoch interval boundaries."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sanitizing event table data types for mkh5 epochs table ...\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:1514: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b'sub000', b'sub000/dblock_2', 0, 360, 360, 1, 1, 0, 64, 0, 1, 500., 1, 0, 1, b'1', b'1', 1, 1, 360, 360, 0, True, b'(#\\\\d+)', 0, b'cal', 0, b'cal', b'cal')\n",
+      "  + \"skipping epoch {0}\".format(e)\n"
+     ]
+    }
+   ],
+   "source": [
+    "p50_h5.set_epochs(\"ms1500\", p50_event_table, -750, 750)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**3. export_epochs(*name*, *file_format=...*)** \n",
+    "\n",
+    "Export the time-stamped, tagged, fixed-length segments of EEG data for analysis as HDF5, pandas HDF5 or feather"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# this exports the epochs DATA ... indexed, timstamped, EEG, events, and tags.\n",
+    "p50_h5.export_epochs(\"ms1500\", MDE_HOME / \"data/sub000p50.ms1500.epochs.pdh5\", file_format=\"pdh5\")        "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**analyze epochs**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "channels: 32\n",
+      "chdesc: 0:lle   1:lhz   2:MiPf  3:LLPf  4:RLPf  5:LMPf  6:RMPf  7:LDFr\n",
+      " 8:RDFr  9:LLFr 10:RLFr 11:LMFr 12:RMFr 13:LMCe 14:RMCe 15:MiCe\n",
+      "16:MiPa 17:LDCe 18:RDCe 19:LDPa 20:RDPa 21:LMOc 22:RMOc 23:LLTe\n",
+      "24:RLTe 25:LLOc 26:RLOc 27:MiOc 28:A2   29:HEOG 30:rle  31:rhz \n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th>log_flags</th>\n",
+       "      <th>0</th>\n",
+       "      <th>32</th>\n",
+       "      <th>48</th>\n",
+       "      <th>64</th>\n",
+       "      <th>All</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>instrument</th>\n",
+       "      <th>ccode</th>\n",
+       "      <th>bin</th>\n",
+       "      <th>click</th>\n",
+       "      <th>type</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>cal</th>\n",
+       "      <th>0</th>\n",
+       "      <th>0</th>\n",
+       "      <th>cal</th>\n",
+       "      <th>cal</th>\n",
+       "      <td>207</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>0</td>\n",
+       "      <td>207</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th rowspan=\"2\" valign=\"top\">eeg</th>\n",
+       "      <th rowspan=\"2\" valign=\"top\">1</th>\n",
+       "      <th>1</th>\n",
+       "      <th>click_1</th>\n",
+       "      <th>conditioning</th>\n",
+       "      <td>96</td>\n",
+       "      <td>19</td>\n",
+       "      <td>4</td>\n",
+       "      <td>1</td>\n",
+       "      <td>120</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <th>click_2</th>\n",
+       "      <th>test</th>\n",
+       "      <td>95</td>\n",
+       "      <td>21</td>\n",
+       "      <td>4</td>\n",
+       "      <td>0</td>\n",
+       "      <td>120</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>All</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <td>398</td>\n",
+       "      <td>40</td>\n",
+       "      <td>8</td>\n",
+       "      <td>1</td>\n",
+       "      <td>447</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "log_flags                                    0  32  48  64  All\n",
+       "instrument ccode bin click   type                              \n",
+       "cal        0     0   cal     cal           207   0   0   0  207\n",
+       "eeg        1     1   click_1 conditioning   96  19   4   1  120\n",
+       "                 2   click_2 test           95  21   4   0  120\n",
+       "All                                        398  40   8   1  447"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "p50_epochs = pd.read_hdf(MDE_HOME / \"data/sub000p50.ms1500.epochs.pdh5\", key=\"ms1500\")\n",
+    "\n",
+    "# sanitize epoch_id for pandas index\n",
+    "p50_epochs['epoch_id'] = p50_epochs['epoch_id'].astype('int')\n",
+    "\n",
+    "# look up pattern-matched events with timestamp 0\n",
+    "p50_events = p50_epochs.query(\"match_time==0\")\n",
+    "p50_counts = pd.crosstab(\n",
+    "    [p50_events.instrument, p50_events.ccode, p50_events.bin, p50_events.click, p50_events.type],\n",
+    "    [p50_events.log_flags],\n",
+    "    margins=True\n",
+    ")\n",
+    "\n",
+    "# lookup scalp potential channels ... EEG, EOG, A2 \n",
+    "p50_chans = [col for col in p50_epochs.columns if re.match(r\"^[MLRAHlr]\\w{1,3}$\", col)]\n",
+    "p50_chandesc = \"\"\n",
+    "for i, c in enumerate(p50_chans):\n",
+    "    sep = \" \" if i % 8 < 7 else \"\\n\"\n",
+    "    p50_chandesc += f\"{i:2d}:{c:4s}{sep}\"\n",
+    "\n",
+    "print(f\"channels: {len(p50_chans)}\\nchdesc:{p50_chandesc}\")\n",
+    "display(p50_counts)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# for illustration ... cal pulses and first click\n",
+    "midline = [\"MiPf\", \"MiCe\", \"MiPa\", \"MiOc\"]\n",
+    "bins = p50_epochs.bin.unique()\n",
+    "\n",
+    "midline_epochs = p50_epochs[\n",
+    "    [\"epoch_id\", \"click\", \"match_time\"] + midline\n",
+    "].query(\"click in ['cal', 'click_1']\")\n",
+    "\n",
+    "# center each channel \n",
+    "midline_epochs = epf.center_eeg(\n",
+    "    midline_epochs, \n",
+    "    midline, \n",
+    "    -100, 0, \n",
+    "    epoch_id=\"epoch_id\", \n",
+    "    time=\"match_time\"\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "502    101\n",
+       "506      7\n",
+       "504      7\n",
+       "500      5\n",
+       "Name: match_time, dtype: int64"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/plain": [
+       "count    120.000000\n",
+       "mean     502.266667\n",
+       "std        1.128197\n",
+       "min      500.000000\n",
+       "25%      502.000000\n",
+       "50%      502.000000\n",
+       "75%      502.000000\n",
+       "max      506.000000\n",
+       "Name: match_time, dtype: float64"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/plain": [
+       "502"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# look up single trial click_2 event timestamp relative to click_1 onset (match_time)\n",
+    "click2_onsets = p50_epochs.query(\n",
+    "    \"ccode > 0 and match_code == 1 and log_evcodes == 2\"\n",
+    ").match_time\n",
+    "\n",
+    "click2_onset = int(np.round(click2_onsets.mean(), 0))\n",
+    "\n",
+    "display(click2_onsets.value_counts())\n",
+    "display(click2_onsets.describe())\n",
+    "display(click2_onset)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**time-domain average paired-click ERPs**\n",
+    "\n",
+    "The 10 microvolt calibration square is for illustration."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'NoneType' object has no attribute 'groupby'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-12-ac8efd219dcc>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mmidline_erps\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mmidline_epochs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgroupby\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m\"click\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m\"match_time\"\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmean\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreset_index\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0mmidline_erps\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mAttributeError\u001b[0m: 'NoneType' object has no attribute 'groupby'"
+     ]
+    }
+   ],
+   "source": [
+    "midline_erps = midline_epochs.groupby([\"click\", \"match_time\"]).mean().reset_index()\n",
+    "midline_erps"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "f, axs = plt.subplots(4, 1, figsize=(8,12), sharey=True)\n",
+    "colors = {\"cal\": \"lightgray\", \"click_1\": \"red\", \"click_2\": \"green\"}\n",
+    "for tag, erp in midline_erps.groupby('click'):\n",
+    "    for axi, chan in enumerate(midline):\n",
+    "        \n",
+    "        # mark onsets\n",
+    "        axs[axi].axvline(0, color='gray')\n",
+    "        axs[axi].axvline(click2_onset, color='gray')\n",
+    "        \n",
+    "        axs[axi].plot(\n",
+    "            erp[\"match_time\"],\n",
+    "            erp[chan],\n",
+    "            color=colors[tag],\n",
+    "            label=tag,\n",
+    "        )\n",
+    "        \n",
+    "        # channel\n",
+    "        axs[axi].set_title(chan, loc='left')\n",
+    "\n",
+    "\n",
+    "axs[0].legend()\n",
+    "axs[0].set_title(\"Paired-click P50 all trials\")\n",
+    "f.tight_layout()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Single subject pipeline with epoch export in different formats**\n",
+    "\n",
+    "build and calibrate the mkpy HDF5 format data file\n",
+    "\n",
+    "1. get_event_table(*codemap*)\n",
+    "2. set_epoch_table(*name*, *event_table*, *pre*, *post*)\n",
+    "3. export_epochs(*name*, *file_format=...*)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import warnings\n",
+    "warnings.filterwarnings(\"always\", category=UserWarning)\n",
+    "\n",
+    "# build mkpy.mkh5 format data file and calibrate\n",
+    "p50_h5 = mkh5.mkh5(p50_h5_f)\n",
+    "p50_h5.reset_all() \n",
+    "p50_h5.create_mkdata(\"sub000\", crw, log, yhdr)\n",
+    "\n",
+    "p50_h5.append_mkdata(\"sub000\", cals_crw, cals_log, cals_yhdr)\n",
+    "\n",
+    "pts, pulse, lo, hi, ccode = 5, 10, -40, 40, 0\n",
+    "p50_h5.calibrate_mkdata(\n",
+    "    \"sub000\",  \n",
+    "    n_points=pts,  \n",
+    "    cal_size=pulse, \n",
+    "    lo_cursor=lo,  \n",
+    "    hi_cursor=hi,  \n",
+    "    cal_ccode=ccode, \n",
+    ")\n",
+    "\n",
+    "# 1. scan event code pattern tags into the event table \n",
+    "p50_event_table = p50_h5.get_event_table(MDE_HOME / \"mkpy/p50_codemap.ytbl\")\n",
+    "\n",
+    "\n",
+    "# use these to set the epoch table name, and pre, post stimulus boundaries\n",
+    "epoch_specs  = {\n",
+    "    \"ms100\": (-50, 50),\n",
+    "    \"ms1500\": (-750, 750),\n",
+    "    \"ms3000\": (-1500, 1500),\n",
+    "    \"ms10000\": (-5000, 5000),\n",
+    "}\n",
+    "\n",
+    "for epoch_name, (pre, post) in epoch_specs.items():\n",
+    "    print(epoch_name, pre, post)\n",
+    "    \n",
+    "    # 2. set the epoch_table names and interval boundaries\n",
+    "    p50_h5.set_epochs(epoch_name, p50_event_table, pre, post)\n",
+    "    \n",
+    "    # multiple export formats for demonstration, in practice pick one format\n",
+    "    fformats = [\"h5\", \"pdh5\", \"feather\"]\n",
+    "    for ffmt in fformats:\n",
+    "        _fname = f\"{MDE_HOME}/data/sub000p50.{epoch_name}.epochs.{ffmt}\"\n",
+    "        print(f\"exporting p50 {epoch_name} as {ffmt}: {_fname}\")\n",
+    "        \n",
+    "        # 3.  export the epochs DATA ... EEG and events.\n",
+    "        p50_h5.export_epochs(epoch_name, _fname, file_format=ffmt)\n",
+    "        "
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
