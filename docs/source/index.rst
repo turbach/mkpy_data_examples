@@ -29,10 +29,12 @@ mkpy data examples
 
 
 .. image:: https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png
+   :height: 25
    :alt: CC-BY-NC-SA-4.0
    :target: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
 .. image:: https://zenodo.org/badge/255196854.svg
+   :height: 25
    :alt: DOI
    :target: https://zenodo.org/badge/latestdoi/255196854
 
