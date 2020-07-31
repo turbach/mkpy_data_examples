@@ -277,7 +277,7 @@ div.rendered_html tbody tr:hover {
 <p>Automated code tagging * tag individual stimulus items are * stimulus categories * response categories * <strong>local</strong> (within-trial) stimulus-response contigent tags: “old”, “new”, “hit”, “miss”, “correct rejection”, “false alarm”</p>
 <p>Event table modification for custom code tagging * <strong>non-local</strong> (across-phase) response-contingent tags * separate codemaps and event tables are constructed for the study and test phases * DM analysis: align the study phase items with subsequent test phase “hit”, “miss” responses * Memory x preference: align the test phase items with previous study phase “like”, “dislike” responses</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -299,8 +299,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -309,8 +309,17 @@ conda list <span class="p">|</span> egrep <span class="s2">&quot;(mkpy|spudtr)&q
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+mkpy                      0.2.3                0_gc7b31fa    kutaslab
+spudtr                    0.0.9                g0e166be_0    kutaslab/label/pre-release
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -331,7 +340,7 @@ conda list <span class="p">|</span> egrep <span class="s2">&quot;(mkpy|spudtr)&q
 </div>
 <p><strong>mkh5</strong> EEG data, event code log, header information</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -384,7 +393,7 @@ Calibrating block /sub000/dblock_3 of 4: (28416,)
 <p><em>condition_id</em> tracks animacy and <em>item_id</em> tracks the item.</p>
 <p><em>jpg</em> is the image file prefix for human readability and <em>scn</em> file tracks the version of the stimulus presentation file which counterbalance the 50 study items so of the 100 test items, across subjects, each individual picture appears equally often as previously presented or not.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -432,7 +441,7 @@ test phase tail
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -615,7 +624,7 @@ test phase tail
 </ul>
 <p>Note that many-to-many mapping. Many codes (1, 2) are mapped to many tags, e.g., “like”, “dislike”</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -901,7 +910,7 @@ test phase tail
 </div>
 <p><strong>1. study phase get_event_table(codemap)</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -942,7 +951,7 @@ searching codes in: sub000/dblock_3
 </div>
 <p><strong>inspect the study phase event table</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1096,110 +1105,6 @@ study phase columns: [&#39;data_group&#39;, &#39;dblock_path&#39;, &#39;dblock_t
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>dblock_path</th>
-      <th>dblock_ticks</th>
-      <th>log_evcodes</th>
-      <th>log_ccodes</th>
-      <th>log_flags</th>
-      <th>regexp</th>
-      <th>match_code</th>
-      <th>phase</th>
-      <th>study_bin_id</th>
-      <th>study_response</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>554</th>
-      <td>sub000/dblock_3</td>
-      <td>27315</td>
-      <td>4</td>
-      <td>0</td>
-      <td>0</td>
-      <td>(#[1234])</td>
-      <td>4</td>
-      <td>study</td>
-      <td>0</td>
-      <td>cal</td>
-    </tr>
-    <tr>
-      <th>555</th>
-      <td>sub000/dblock_3</td>
-      <td>27444</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>(#[1234])</td>
-      <td>2</td>
-      <td>study</td>
-      <td>0</td>
-      <td>cal</td>
-    </tr>
-    <tr>
-      <th>556</th>
-      <td>sub000/dblock_3</td>
-      <td>27573</td>
-      <td>3</td>
-      <td>0</td>
-      <td>0</td>
-      <td>(#[1234])</td>
-      <td>3</td>
-      <td>study</td>
-      <td>0</td>
-      <td>cal</td>
-    </tr>
-    <tr>
-      <th>557</th>
-      <td>sub000/dblock_3</td>
-      <td>27703</td>
-      <td>4</td>
-      <td>0</td>
-      <td>0</td>
-      <td>(#[1234])</td>
-      <td>4</td>
-      <td>study</td>
-      <td>0</td>
-      <td>cal</td>
-    </tr>
-    <tr>
-      <th>558</th>
-      <td>sub000/dblock_3</td>
-      <td>27832</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>(#[1234])</td>
-      <td>2</td>
-      <td>study</td>
-      <td>0</td>
-      <td>cal</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 is_anchor:  True
@@ -1270,8 +1175,8 @@ is_anchor:  True
     <tr>
       <th>2100</th>
       <th>like</th>
-      <td>8</td>
-      <td>1</td>
+      <td>9</td>
+      <td>0</td>
       <td>0</td>
       <td>9</td>
     </tr>
@@ -1310,8 +1215,8 @@ is_anchor:  True
     <tr>
       <th>2200</th>
       <th>like</th>
-      <td>23</td>
-      <td>1</td>
+      <td>22</td>
+      <td>2</td>
       <td>0</td>
       <td>24</td>
     </tr>
@@ -1447,7 +1352,7 @@ is_anchor:  False
 <li><p>save the result</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1761,7 +1666,7 @@ is_anchor:  False
 </div>
 <p><strong>test phase get_event_table(codemap)</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1795,7 +1700,7 @@ searching codes in: sub000/dblock_3
 </div>
 <p><strong>inspect test phase event table</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1925,7 +1830,7 @@ test phase columns: Index([&#39;data_group&#39;, &#39;dblock_path&#39;, &#39;dbl
       <td>2062</td>
       <td>4</td>
       <td>1</td>
-      <td>32</td>
+      <td>0</td>
       <td>(#4) 8 (129) 1040</td>
       <td>4</td>
       <td>test</td>
@@ -2469,7 +2374,7 @@ is_anchor:  False
 <p>The study events were double counted as stim only and again as stim + response in order to verify code mapping</p>
 <p>Now drop redundant stim-only events</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2490,7 +2395,7 @@ is_anchor:  False
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2735,7 +2640,7 @@ Study phase items after joining test phase responses ...
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3049,7 +2954,7 @@ Test phase items after (100, 35)
 </div>
 <p><strong>study phase set_epochs(name, pre, post)</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3067,7 +2972,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <p><strong>study phase export_epochs(name)</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3077,7 +2982,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <p><strong>test phase set_epochs(name, pre, post)</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3095,7 +3000,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <p><strong>test phase export_epochs(name)</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3110,7 +3015,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <li><p>If so is it the same for liked and disliked?</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3121,7 +3026,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <p><strong>Study phase time-domain average ERPs</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3229,8 +3134,8 @@ After excluding EEG artifacts
     </tr>
     <tr>
       <th>like</th>
-      <td>10</td>
-      <td>10</td>
+      <td>11</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>no_response</th>
@@ -3245,8 +3150,8 @@ After excluding EEG artifacts
     </tr>
     <tr>
       <th>like</th>
-      <td>23</td>
-      <td>23</td>
+      <td>22</td>
+      <td>22</td>
     </tr>
     <tr>
       <th>All</th>
@@ -3260,7 +3165,7 @@ After excluding EEG artifacts
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3297,26 +3202,30 @@ After excluding EEG artifacts
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/pm_38_0.png" src="_images/pm_38_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/pm_38_1.png" src="_images/pm_38_1.png" />
+</div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-21-69ce2820f20e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span>     <span class="ansi-red-fg"># compute domain average by stim type</span>
-<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg">     midline_erps = midline_epochs.groupby(
-</span><span class="ansi-green-intense-fg ansi-bold">      5</span>         grp <span class="ansi-blue-fg">+</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;match_time&#34;</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span>     ).mean().reset_index()
-
-<span class="ansi-red-fg">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;groupby&#39;
-</pre></div></div>
+<img alt="_images/pm_38_2.png" src="_images/pm_38_2.png" />
+</div>
 </div>
 <p><strong>test phase time-domain average ERPs</strong></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3353,8 +3262,99 @@ After excluding EEG artifacts
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;epoch_id&#39;, &#39;data_group&#39;, &#39;dblock_path&#39;, &#39;dblock_tick_idx&#39;,
+       &#39;dblock_ticks&#39;, &#39;crw_ticks&#39;, &#39;raw_evcodes&#39;, &#39;log_evcodes&#39;, &#39;log_ccodes&#39;,
+       &#39;log_flags&#39;, &#39;epoch_match_tick_delta&#39;, &#39;epoch_ticks&#39;, &#39;dblock_srate&#39;,
+       &#39;match_group&#39;, &#39;idx&#39;, &#39;dlim&#39;, &#39;anchor_str&#39;, &#39;match_str&#39;, &#39;anchor_code&#39;,
+       &#39;match_code&#39;, &#39;anchor_tick&#39;, &#39;match_tick&#39;, &#39;anchor_tick_delta&#39;,
+       &#39;is_anchor&#39;, &#39;regexp&#39;, &#39;test_bin_id&#39;, &#39;animacy&#39;, &#39;stimulus&#39;,
+       &#39;test_response&#39;, &#39;accuracy&#39;, &#39;ccode&#39;, &#39;phase&#39;, &#39;condition_id&#39;, &#39;jpg&#39;,
+       &#39;scn&#39;, &#39;study_response&#39;, &#39;match_time&#39;, &#39;anchor_time&#39;,
+       &#39;anchor_time_delta&#39;, &#39;pygarv&#39;, &#39;lle&#39;, &#39;lhz&#39;, &#39;MiPf&#39;, &#39;LLPf&#39;, &#39;RLPf&#39;,
+       &#39;LMPf&#39;, &#39;RMPf&#39;, &#39;LDFr&#39;, &#39;RDFr&#39;, &#39;LLFr&#39;, &#39;RLFr&#39;, &#39;LMFr&#39;, &#39;RMFr&#39;, &#39;LMCe&#39;,
+       &#39;RMCe&#39;, &#39;MiCe&#39;, &#39;MiPa&#39;, &#39;LDCe&#39;, &#39;RDCe&#39;, &#39;LDPa&#39;, &#39;RDPa&#39;, &#39;LMOc&#39;, &#39;RMOc&#39;,
+       &#39;LLTe&#39;, &#39;RLTe&#39;, &#39;LLOc&#39;, &#39;RLOc&#39;, &#39;MiOc&#39;, &#39;A2&#39;, &#39;HEOG&#39;, &#39;rle&#39;, &#39;rhz&#39;],
+      dtype=&#39;object&#39;)
+After excluding EEG artifacts
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>log_flags</th>
+      <th>0</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>ccode</th>
+      <th>animacy</th>
+      <th>test_response</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">1</th>
+      <th rowspan="2" valign="top">animate</th>
+      <th>new</th>
+      <td>14</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>old</th>
+      <td>13</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">inanimate</th>
+      <th>new</th>
+      <td>31</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>old</th>
+      <td>35</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <th></th>
+      <td>93</td>
+      <td>93</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3378,8 +3378,8 @@ After excluding EEG artifacts
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3418,6 +3418,27 @@ After excluding EEG artifacts
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/pm_42_0.png" src="_images/pm_42_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/pm_42_1.png" src="_images/pm_42_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/pm_42_2.png" src="_images/pm_42_2.png" />
+</div>
+</div>
 <p><strong>Single subject pipeline with epoch export in different formats</strong></p>
 <p>build and calibrate the mkpy HDF5 format data file</p>
 <ol class="arabic">
@@ -3430,8 +3451,8 @@ After excluding EEG artifacts
 </li>
 <li><p>export_epochs(<em>name</em>, <em>file_format=…</em>)</p></li>
 </ol>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3530,6 +3551,163 @@ After excluding EEG artifacts
 
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:3706: UserWarning: negative event code(s) found for cal condition code 0 -16384
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Found cals in /sub000/dblock_3
+Calibrating block /sub000/dblock_0 of 4: (95232,)
+Calibrating block /sub000/dblock_1 of 4: (34048,)
+Calibrating block /sub000/dblock_2 of 4: (139008,)
+Calibrating block /sub000/dblock_3 of 4: (28416,)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:1060: UserWarning:
+As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
+ccode column in pm_study_codemap.tsv must also match the log_ccode
+in the datablock. If this behavior is not desired, delete or rename
+the ccode column in the codemap.
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+searching codes in: sub000/dblock_0
+searching codes in: sub000/dblock_1
+searching codes in: sub000/dblock_2
+searching codes in: sub000/dblock_3
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:1060: UserWarning:
+As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
+ccode column in pm_codemap.tsv must also match the log_ccode
+in the datablock. If this behavior is not desired, delete or rename
+the ccode column in the codemap.
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+searching codes in: sub000/dblock_0
+searching codes in: sub000/dblock_1
+searching codes in: sub000/dblock_2
+searching codes in: sub000/dblock_3
+study_ms100 -50 50
+Sanitizing event table data types for mkh5 epochs table ...
+exporting pm study_ms100 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms100.epochs.h5
+exporting pm study_ms100 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms100.epochs.pdh5
+exporting pm study_ms100 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms100.epochs.feather
+study_ms1500 -750 750
+Sanitizing event table data types for mkh5 epochs table ...
+exporting pm study_ms1500 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms1500.epochs.h5
+exporting pm study_ms1500 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms1500.epochs.pdh5
+exporting pm study_ms1500 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms1500.epochs.feather
+study_ms3000 -1500 1500
+Sanitizing event table data types for mkh5 epochs table ...
+exporting pm study_ms3000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms3000.epochs.h5
+exporting pm study_ms3000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms3000.epochs.pdh5
+exporting pm study_ms3000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms3000.epochs.feather
+study_ms10000 -5000 5000
+Sanitizing event table data types for mkh5 epochs table ...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:1514: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (27, b&#39;sub000&#39;, b&#39;sub000/dblock_0&#39;, 1, 834, 834, 2, 2, 2, 32, 0, 1, 250., 1, 1, 3, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 834, 834, 0, True, b&#39;(#[2]) 8 (154) 1040&#39;, 2200, b&#39;inanimate&#39;, b&#39;like&#39;, 2, b&#39;study&#39;, 2, b&#39;necklace&#39;, b&#39;studyp1&#39;, b&#39;old&#39;, b&#39;hit&#39;)
+  + &#34;skipping epoch {0}&#34;.format(e)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+exporting pm study_ms10000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms10000.epochs.h5
+exporting pm study_ms10000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms10000.epochs.pdh5
+exporting pm study_ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms10000.epochs.feather
+test_ms100 -50 50
+Sanitizing event table data types for mkh5 epochs table ...
+exporting pm test_ms100 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms100.epochs.h5
+exporting pm test_ms100 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms100.epochs.pdh5
+exporting pm test_ms100 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms100.epochs.feather
+test_ms1500 -750 750
+Sanitizing event table data types for mkh5 epochs table ...
+exporting pm test_ms1500 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms1500.epochs.h5
+exporting pm test_ms1500 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms1500.epochs.pdh5
+exporting pm test_ms1500 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms1500.epochs.feather
+test_ms3000 -1500 1500
+Sanitizing event table data types for mkh5 epochs table ...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:1514: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (81, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 1, 280, 129560, 2, 2, 1, 0, 0, 1, 250., 1, 1, 3, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 280, 280, 0, True, b&#39;(#2) 8 (182) 2064&#39;, 1200, b&#39;inanimate&#39;, b&#39;distractor&#39;, b&#39;new&#39;, b&#39;cr&#39;, 1, b&#39;test&#39;, b&#39;2&#39;, b&#39;stapler&#39;, b&#39;testp1&#39;, b&#39;.NAN&#39;)
+  + &#34;skipping epoch {0}&#34;.format(e)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+exporting pm test_ms3000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms3000.epochs.h5
+exporting pm test_ms3000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms3000.epochs.pdh5
+exporting pm test_ms3000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms3000.epochs.feather
+test_ms10000 -5000 5000
+Sanitizing event table data types for mkh5 epochs table ...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/mkconda_for_sphinxdocs/lib/python3.6/site-packages/mkpy/mkh5.py:1514: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (26, b&#39;sub000&#39;, b&#39;sub000/dblock_1&#39;, 1, 611, 95843, 1, 1, 1, 0, 0, 1, 250., 1, 1, 3, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 611, 611, 0, True, b&#39;(#1) 2064 8 (127)&#39;, 1102, b&#39;animate&#39;, b&#39;distractor&#39;, b&#39;new&#39;, b&#39;cr&#39;, 1, b&#39;test&#39;, b&#39;1&#39;, b&#39;dragon&#39;, b&#39;testp1&#39;, b&#39;.NAN&#39;)
+  + &#34;skipping epoch {0}&#34;.format(e)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+exporting pm test_ms10000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms10000.epochs.h5
+exporting pm test_ms10000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms10000.epochs.pdh5
+exporting pm test_ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms10000.epochs.feather
+</pre></div></div>
 </div>
 </div>
 
