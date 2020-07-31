@@ -1,0 +1,25 @@
+# TODOs files
+*.todo
+
+# emacs temp files
+*~
+\#*\#
+.\#*
+
+# jupyter
+.ipynb_checkpoints
+
+# pytest cache
+.pytest_cache
+.cache
+
+data
+mkdig
+scripts
+mkstim
+
+# add files here by name
+mkpy
+
+
+
