@@ -19,6 +19,8 @@ mkpy data examples
 
    pm
 
+   resting_eeg
+
 
 .. Indices and tables
    ==================
