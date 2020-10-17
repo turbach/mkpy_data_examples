@@ -17,8 +17,6 @@ data
 mkdig
 scripts
 mkstim
-
-# add files here by name
 mkpy
 
 
