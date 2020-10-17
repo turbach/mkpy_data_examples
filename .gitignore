@@ -7,7 +7,7 @@
 .\#*
 
 # jupyter
-.ipynb_checkpoints
+**.ipynb_checkpoints
 
 # pytest cache
 .pytest_cache
@@ -17,8 +17,6 @@ data
 mkdig
 scripts
 mkstim
-
-# add files here by name
 mkpy
 
 

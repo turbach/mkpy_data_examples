@@ -4,8 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background: EEG, events, and epochs &#8212; mkpy_data_examples 0.0.3 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background: EEG, events, and epochs &#8212; mkpy_data_examples 0.0.4 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -14,6 +14,8 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="P50 Paired-click" href="p50.html" />
@@ -31,7 +33,7 @@
         <li class="right" >
           <a href="index.html" title="mkpy data examples"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.4 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Background: EEG, events, and epochs</a></li> 
       </ul>
     </div>  
@@ -251,39 +253,56 @@ many-many as needed.</p>
 code pattern may match the event data any number of times. A
 cooperative and attentive participant may not make any anticipation
 errors, others may.</p>
-<p>It is possible and sometimes useful to have different codemaps for
-the same data.</p>
+<p>Critically, the codemap is also an event <strong>filter</strong>. In the real
+experimental world, the event log is typicaly a record of many kinds
+of events. Some subsets of events are relevant for some analyses of
+the brain activity, other subsets for other analyses, and some are
+critically important for the experiment, but not directly relevant
+to the time course of brain activity, e.g., logging information
+about the sequence of trials and states of the stimulus delivery and
+data recording apparatus. A codemap dives into the overpopulated
+event stream and returns with a whitelist of all and only those
+events relevant for a particular analysis. Since analyses answer
+questions and, in general, there is more than one question that
+might be usefully asked of a given dataset, in general, there will
+be more than one codemap.</p>
 </dd>
-<dt><strong>event table</strong></dt><dd><p>The <em>event table</em> is the <strong>result</strong> of sweeping the code patterns
-across the recorded event data and collecting all the matches in
-rows x columns. Each row gives</p>
+</dl>
+<p><strong>event table</strong></p>
+<blockquote>
+<div><p>Whereas the codemap is the recipe for linking events with
+experimental variables, the <em>event table</em> is the <strong>result</strong> of
+sweeping the code patterns across the recorded event data and
+collecting the matches in rows x columns. This creates a tidy,
+lightweight lookup table, where each row</p>
 <ul class="simple">
-<li><p>the HDF5 index of the event where the code pattern matched</p></li>
-<li><p>the matched numeric event code</p></li>
-<li><p>the additional tags from the codemap for that pattern</p></li>
+<li><p>shows exactly where to find the event in the digital data stream,
+<em>i</em>-th digital sample index.</p></li>
+<li><p>the immutable event code as digitally recorded in the original
+data stream (plus other information relevant to for checking data
+integrity.)</p></li>
+<li><p><strong>and</strong> the highly and necessarily mutable categorical and
+continuous variables the analyst deem relevant for modeling brain
+activity in relation to the event which may be in many-many
+relations to the immutable event codes.</p></li>
 </ul>
-<p>The event table is a lightweight look-up table (index) back into the
-HDF5 file that says where to find each pattern-matched integer event
-in the EEG recording and what its new categorical and/or continous
-variable tags are (plus other information for checking data
-integrity). By design, the tabular rows = observations x columns = variables
-format of the event table is the same as the familiar observations x
+<p>By design, the tabular rows=observations x columns=variables format
+of the event table is the same as the familiar observations x
 variables data format assumed by statistical modeling software like
-statsmodels and patsy in Python and lm and lme4 in R.</p>
-<p>Since the codemap tags all and only the relevant events accordingly
-which makes it easy to to tally the events according to stimulus,
-response, and accuracy.</p>
+statsmodels and patsy in Python and lm and lme4 in R and can be
+broadcast from the event sample to other data samples, e.g., in a
+fixed length epoch. In the event table the digital event code is
+simply another tag for the event, one among many.</p>
 <p>The rows and columns of the event table can and should be inspected
 to verify that codes were correctly matched and tagged.</p>
 <p>Event tables may be further modified, e.g., by</p>
 <ul class="simple">
 <li><p>pruning unnecessary rows (matched events) or columns (tags)</p></li>
-<li><p>adding more  tags (columns) from other data sources</p></li>
+<li><p>adding more tags (columns) from other data sources</p></li>
 <li><p>adding more matched events (rows) by stacking or slicing the rows
 of other same-shape event tables from the same HDF5 file.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p><strong>epochs</strong></p>
 <blockquote>
 <div><p>Epochs are fixed-length segments of the EEG and event recordings,
@@ -333,6 +352,7 @@ EEG and response measures and anlaysis.</p>
 <li class="toctree-l1"><a class="reference internal" href="p3.html">P3 Auditory oddball</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wr.html">Word repetition memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pm.html">Picture memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resting_eeg.html">Resting EEG</a></li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -357,13 +377,13 @@ EEG and response measures and anlaysis.</p>
         <li class="right" >
           <a href="index.html" title="mkpy data examples"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.4 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Background: EEG, events, and epochs</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Thomas P. Urbach.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>

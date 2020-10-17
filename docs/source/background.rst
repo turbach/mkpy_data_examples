@@ -193,32 +193,48 @@ not handled by the automation.
   cooperative and attentive participant may not make any anticipation
   errors, others may. 
 
-  It is possible and sometimes useful to have different codemaps for
-  the same data.
-
+  Critically, the codemap is also an event **filter**. In the real
+  experimental world, the event log is typicaly a record of many kinds
+  of events. Some subsets of events are relevant for some analyses of
+  the brain activity, other subsets for other analyses, and some are
+  critically important for the experiment, but not directly relevant
+  to the time course of brain activity, e.g., logging information
+  about the sequence of trials and states of the stimulus delivery and
+  data recording apparatus. A codemap dives into the overpopulated
+  event stream and returns with a whitelist of all and only those
+  events relevant for a particular analysis. Since analyses answer
+  questions and, in general, there is more than one question that
+  might be usefully asked of a given dataset, in general, there will
+  be more than one codemap.
 
 
 **event table**
-  The *event table* is the **result** of sweeping the code patterns
-  across the recorded event data and collecting all the matches in
-  rows x columns. Each row gives
 
-  * the HDF5 index of the event where the code pattern matched
-  * the matched numeric event code
-  * the additional tags from the codemap for that pattern
+  Whereas the codemap is the recipe for linking events with
+  experimental variables, the *event table* is the **result** of
+  sweeping the code patterns across the recorded event data and
+  collecting the matches in rows x columns. This creates a tidy,
+  lightweight lookup table, where each row 
 
-  The event table is a lightweight look-up table (index) back into the
-  HDF5 file that says where to find each pattern-matched integer event
-  in the EEG recording and what its new categorical and/or continous
-  variable tags are (plus other information for checking data
-  integrity). By design, the tabular rows = observations x columns = variables
-  format of the event table is the same as the familiar observations x
+  * shows exactly where to find the event in the digital data stream,
+    *i*-th digital sample index.
+
+  * the immutable event code as digitally recorded in the original
+    data stream (plus other information relevant to for checking data
+    integrity.)
+
+  * **and** the highly and necessarily mutable categorical and
+    continuous variables the analyst deem relevant for modeling brain
+    activity in relation to the event which may be in many-many
+    relations to the immutable event codes.
+
+  By design, the tabular rows=observations x columns=variables format
+  of the event table is the same as the familiar observations x
   variables data format assumed by statistical modeling software like
-  statsmodels and patsy in Python and lm and lme4 in R.
-
-  Since the codemap tags all and only the relevant events accordingly
-  which makes it easy to to tally the events according to stimulus,
-  response, and accuracy.
+  statsmodels and patsy in Python and lm and lme4 in R and can be
+  broadcast from the event sample to other data samples, e.g., in a
+  fixed length epoch. In the event table the digital event code is
+  simply another tag for the event, one among many.  
 
   The rows and columns of the event table can and should be inspected
   to verify that codes were correctly matched and tagged. 
@@ -226,7 +242,7 @@ not handled by the automation.
   Event tables may be further modified, e.g., by
 
   * pruning unnecessary rows (matched events) or columns (tags)
-  * adding more  tags (columns) from other data sources
+  * adding more tags (columns) from other data sources
   * adding more matched events (rows) by stacking or slicing the rows
     of other same-shape event tables from the same HDF5 file.
 
