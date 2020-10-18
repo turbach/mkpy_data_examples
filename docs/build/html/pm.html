@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Picture memory &#8212; mkpy_data_examples 0.0.4 documentation</title>
+    <title>Picture memory &#8212; mkpy_data_examples 0.0.5 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -33,7 +33,7 @@
         <li class="right" >
           <a href="wr.html" title="Word repetition memory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Picture memory</a></li> 
       </ul>
     </div>  
@@ -282,6 +282,7 @@ div.rendered_html tbody tr:hover {
 <p>Design * study-test recognition memory * Study phase: 50 pictures were presented for 2s and judged “like” or “dislike”, indicated by a button press * Test phase: The same 50 studied items were presented with 50 distractor items in pseudo-random order and judged “old” or “new”. * The 50 studied and 50 distractor items are counterbalanced across subjects so the individual pictures are studied for half the participants and distractors for the other half.</p>
 <p>Automated code tagging * tag individual stimulus items are * stimulus categories * response categories * <strong>local</strong> (within-trial) stimulus-response contigent tags: “old”, “new”, “hit”, “miss”, “correct rejection”, “false alarm”</p>
 <p>Event table modification for custom code tagging * <strong>non-local</strong> (across-phase) response-contingent tags * separate codemaps and event tables are constructed for the study and test phases * DM analysis: align the study phase items with subsequent test phase “hit”, “miss” responses * Memory x preference: align the test phase items with previous study phase “like”, “dislike” responses</p>
+<p>See Appendex at the end of the end of the notebook for source code to generate the code maps.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -306,6 +307,8 @@ div.rendered_html tbody tr:hover {
 <span class="k">else</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">conf</span> <span class="kn">import</span> <span class="n">MDE_HOME</span>
 
+<span class="n">DOCS_DATA</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;docs/_data&quot;</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CONDA_DEFAULT_ENV&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="p">,</span> <span class="n">pd</span><span class="p">,</span> <span class="n">mkpy</span><span class="p">,</span> <span class="n">spudtr</span><span class="p">]:</span>
@@ -318,13 +321,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-spudtrE
-3.8.2 (default, Mar 26 2020, 15:53:00)
+spudtrF_test
+3.7.7 (default, Mar 26 2020, 15:48:22)
 [GCC 7.3.0]
-numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/numpy/__init__.py
-pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/pandas/__init__.py
-mkpy 0.2.4 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/__init__.py
-spudtr 0.0.11.dev0 /mnt/cube/home/turbach/TPU_Projects/spudtr/spudtr/__init__.py
+numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/numpy/__init__.py
+pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/pandas/__init__.py
+mkpy 0.2.4.dev4 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/__init__.py
+spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/spudtr/__init__.py
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -343,7 +346,7 @@ spudtr 0.0.11.dev0 /mnt/cube/home/turbach/TPU_Projects/spudtr/spudtr/__init__.py
 <span class="n">cals_yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/sub000c.yhdr&quot;</span>
 
 <span class="c1"># HDF5 file with EEG recording, events, and header</span>
-<span class="n">pm_h5_f</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000pm.h5&quot;</span>
+<span class="n">pm_h5_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000pm.h5&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -379,7 +382,7 @@ spudtr 0.0.11.dev0 /mnt/cube/home/turbach/TPU_Projects/spudtr/spudtr/__init__.py
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
+/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
   warnings.warn(msg)
 </pre></div></div>
 </div>
@@ -408,14 +411,13 @@ Calibrating block /sub000/dblock_3 of 4: (28416,)
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 
-awk -f <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/get_pictmem_items.awk <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkstim/pictmem/*.scn &gt; <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/pm_item_id_by_scn.tsv
-
 <span class="nb">echo</span> <span class="s2">&quot;study phase head&quot;</span>
-column -t <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/pm_item_id_by_scn.tsv <span class="p">|</span> head
-<span class="nb">echo</span>
+head <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/pm_item_id_by_scn.tsv
 
 <span class="nb">echo</span> <span class="s2">&quot;test phase tail&quot;</span>
-column -t <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/pm_item_id_by_scn.tsv <span class="p">|</span> tail
+tail <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/pm_item_id_by_scn.tsv
+
+
 </pre></div>
 </div>
 </div>
@@ -425,28 +427,27 @@ column -t <span class="si">${</span><span class="nv">MDE_HOME</span><span class=
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 study phase head
-ccode  phase  condition_id  item_id  jpg       scn
-2      study  2             154      necklace  studyp1
-2      study  2             107      bell      studyp1
-2      study  1             146      leopard   studyp1
-2      study  1             157      peas      studyp1
-2      study  2             151      moon      studyp1
-2      study  2             143      jacket    studyp1
-2      study  2             147      lighter   studyp1
-2      study  2             141      htarblon  studyp1
-2      study  2             149      lock      studyp1
-
+           ccode           phase    condition_id         item_id             jpg             scn
+               2           study               2             154        necklace         studyp1
+               2           study               2             107            bell         studyp1
+               2           study               1             146         leopard         studyp1
+               2           study               1             157            peas         studyp1
+               2           study               2             151            moon         studyp1
+               2           study               2             143          jacket         studyp1
+               2           study               2             147         lighter         studyp1
+               2           study               2             141        htarblon         studyp1
+               2           study               2             149            lock         studyp1
 test phase tail
-1      test   1             144      kilerwal  testp4
-1      test   2             187      table     testp4
-1      test   4             111      briefcas  testp4
-1      test   4             197      whistle   testp4
-1      test   4             200      wrench    testp4
-1      test   4             152      motrcyle  testp4
-1      test   2             120      chair     testp4
-1      test   3             186      swan      testp4
-1      test   4             167      refridge  testp4
-1      test   2             194      vacuum    testp4
+               1            test               1             144        kilerwal          testp4
+               1            test               2             187           table          testp4
+               1            test               4             111        briefcas          testp4
+               1            test               4             197         whistle          testp4
+               1            test               4             200          wrench          testp4
+               1            test               4             152        motrcyle          testp4
+               1            test               2             120           chair          testp4
+               1            test               3             186            swan          testp4
+               1            test               4             167        refridge          testp4
+               1            test               2             194          vacuum          testp4
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -642,85 +643,7 @@ test phase tail
 
 <span class="n">pm_study_codemap_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;regexp&quot;</span><span class="p">,</span> <span class="s2">&quot;study_bin_id&quot;</span><span class="p">,</span> <span class="s2">&quot;animacy&quot;</span><span class="p">,</span> <span class="s2">&quot;study_response&quot;</span><span class="p">,</span> <span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">pm_items</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
-<span class="c1"># stimulus-response tag template as a Python dictionary</span>
-<span class="c1"># The key:val pair says &quot;this code sequence gets these tags&quot;</span>
-<span class="c1"># The ITEM_ID string will be replaced by the actual 3-digit item number</span>
-
-<span class="n">study_code_tags</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;(#[12]) 8 (ITEM_ID) 1040&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[12]) 8 1040 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[12]) 1040 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2002</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#[12]) 8 (ITEM_ID) 2064&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2100</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[12]) 8 2064 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2101</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[12]) 2064 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2102</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#[12]) 8 (ITEM_ID) (?!(1040|2064))&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="s2">&quot;no_response&quot;</span><span class="p">),</span>
-<span class="p">}</span>
-
-<span class="c1"># the new 4-digit &quot;study_bin_id&quot; tag re-codes the match event 1 or 2 with more information</span>
-<span class="c1">#</span>
-<span class="c1">#  phase animacy response response_timing</span>
-<span class="c1">#    phase: study=2</span>
-<span class="c1">#    animacy: 1=animate, 2=inanimate</span>
-<span class="c1">#    response(0=like, 1=dislike)</span>
-<span class="c1">#    response timing: 0=prompted,1,2 anticipation, 3=no response)</span>
-<span class="c1">#</span>
-<span class="n">study_code_tags</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># animate</span>
-    <span class="s2">&quot;(#[1]) 8 (ITEM_ID) 1040&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2100</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[1]) 8 1040 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2101</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[1]) 1040 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2102</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#[1]) 8 (ITEM_ID) 2064&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2110</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[1]) 8 2064 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2111</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[1]) 2064 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2112</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#[1]) 8 (ITEM_ID) (?!(1040|2064))&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2103</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;no_response&quot;</span><span class="p">),</span>
-
-    <span class="c1"># inanimate</span>
-    <span class="s2">&quot;(#[2]) 8 (ITEM_ID) 1040&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2200</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[2]) 8 1040 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2201</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[2]) 1040 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2202</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;like&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#[2]) 8 (ITEM_ID) 2064&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2210</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[2]) 8 2064 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2211</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#[2]) 2064 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2212</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;dislike&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#[2]) 8 (ITEM_ID) (?!(1040|2064))&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2203</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;no_response&quot;</span><span class="p">),</span>
-
-<span class="p">}</span>
-
-<span class="c1">#</span>
-<span class="c1"># Build a list of codemap lines.</span>
-
-<span class="c1"># The first line says *any* code matching 1 or 2 gets the tags 200, &quot;_any&quot;, 2, ... etc.</span>
-<span class="c1"># This tags all matching stimulus events, it is not contingent the response.</span>
-<span class="c1"># It is not necessary but it is useful here, we will see why shortly.</span>
-<span class="n">study_code_map</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;(#[1234])&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;cal&quot;</span><span class="p">,</span>  <span class="s2">&quot;cal&quot;</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;study&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;cal&quot;</span><span class="p">,</span> <span class="s2">&quot;cal&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;(#[12])&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;study&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">)</span>
-<span class="p">]</span>
-
-<span class="c1"># plug each row of the pictmem item info into the template and append the</span>
-<span class="c1"># result to the list of codemap lines</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pm_items</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;phase == &#39;study&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">tags</span> <span class="ow">in</span> <span class="n">study_code_tags</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">code_tags</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">pattern</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;ITEM_ID&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">item_id</span><span class="p">)),</span>  <span class="c1"># current item number goes in the template</span>
-            <span class="o">*</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">),</span>
-            <span class="o">*</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">row</span><span class="p">)</span>   <span class="c1"># this adds the rest of the item to the tags</span>
-        <span class="p">)</span>
-        <span class="n">study_code_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code_tags</span><span class="p">)</span>
-
-
-<span class="c1"># convert the list of lines to a pandas.DataFrame and save as a tab separated text file</span>
-<span class="n">pm_study_codemap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">study_code_map</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="n">pm_study_codemap_cols</span>
-<span class="p">)</span>
-<span class="n">pm_study_codemap</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">pm_study_codemap_f</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
+<span class="n">pm_study_codemap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pm_study_codemap_f</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pm_study_codemap</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pm_study_codemap</span><span class="p">)</span>
 </pre></div>
@@ -930,9 +853,17 @@ test phase tail
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+searching codes in: sub000/dblock_0
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1046: UserWarning:
+/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1046: UserWarning:
 As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
 ccode column in pm_study_codemap.tsv must also match the log_ccode
 in the datablock. If this behavior is not desired, delete or rename
@@ -945,7 +876,6 @@ the ccode column in the codemap.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-searching codes in: sub000/dblock_0
 searching codes in: sub000/dblock_1
 searching codes in: sub000/dblock_2
 searching codes in: sub000/dblock_3
@@ -1359,93 +1289,14 @@ is_anchor:  False
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># test phase codemap name</span>
-<span class="n">pm_test_codemap_f</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/pm_codemap.tsv&quot;</span>
+<span class="n">pm_test_codemap_f</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/pm_test_codemap.tsv&quot;</span>
 
 <span class="c1"># test phase codemap column names</span>
 <span class="n">pm_test_codemap_cols</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;regexp&quot;</span><span class="p">,</span> <span class="s2">&quot;test_bin_id&quot;</span><span class="p">,</span> <span class="s2">&quot;animacy&quot;</span><span class="p">,</span> <span class="s2">&quot;stimulus&quot;</span><span class="p">,</span> <span class="s2">&quot;test_response&quot;</span><span class="p">,</span> <span class="s2">&quot;accuracy&quot;</span>
 <span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">pm_items</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
-
-<span class="c1"># test phase template: stimulus, old/new response (include pre-prompt anticipations)</span>
-<span class="n">test_code_tags</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># new stim animate</span>
-    <span class="s2">&quot;(#1) 8 (ITEM_ID) 2064&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1100</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;cr&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#1) 8 2064 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1101</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;cr&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#1) 2064 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1102</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;cr&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#1) 8 (ITEM_ID) 1040&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1110</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;fa&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#1) 8 1040 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1111</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;fa&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#1) 1040 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1112</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;fa&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#1) 8 (ITEM_ID) (?!(2064|1040))&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1103</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;nr&quot;</span><span class="p">),</span>
-
-    <span class="c1"># new stim inanimate</span>
-    <span class="s2">&quot;(#2) 8 (ITEM_ID) 2064&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;cr&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#2) 8 2064 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1201</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;cr&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#2) 2064 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1202</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;cr&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#2) 8 (ITEM_ID) 1040&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1210</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;fa&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#2) 8 1040 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1211</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;fa&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#2) 1040 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1212</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;fa&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#2) 8 (ITEM_ID) (?!(2064|1040))&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1203</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;nr&quot;</span><span class="p">),</span>
-
-    <span class="c1"># old stim animate</span>
-    <span class="s2">&quot;(#3) 8 (ITEM_ID) 1040&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1300</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;hit&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#3) 8 1040 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1301</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;hit&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#3) 1040 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1302</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;hit&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#3) 8 (ITEM_ID) 2064&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1310</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;miss&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#3) 8 2064 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1311</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;miss&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#3) 2064 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1312</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;miss&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#3) 8 (ITEM_ID) (?!(2064|1040))&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1303</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;nr&quot;</span><span class="p">),</span>
-
-    <span class="c1"># old stim inanimate</span>
-    <span class="s2">&quot;(#4) 8 (ITEM_ID) 1040&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1400</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;hit&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#4) 8 1040 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1401</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;hit&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#4) 1040 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1402</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;hit&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#4) 8 (ITEM_ID) 2064&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1410</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;miss&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#4) 8 2064 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1411</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;miss&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;(#4) 2064 8 (ITEM_ID)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1412</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;miss&quot;</span><span class="p">),</span>
-
-    <span class="s2">&quot;(#4) 8 (ITEM_ID) (?!(2064|1040))&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1403</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;nr&quot;</span><span class="p">),</span>
-
-<span class="p">}</span>
-
-<span class="c1"># initialize the code map to tag stimulus codes, not response contingent</span>
-<span class="n">test_code_map</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;(#[1234])&quot;</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;cal&quot;</span><span class="p">,</span>   <span class="s2">&quot;cal&quot;</span><span class="p">,</span>  <span class="s2">&quot;cal&quot;</span><span class="p">,</span>  <span class="s2">&quot;cal&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;cal&quot;</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;cal&quot;</span><span class="p">,</span> <span class="s2">&quot;cal&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;(#[1234])&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;(#[1])&quot;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;(#[2])&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;distractor&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;(#[3])&quot;</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;animate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;(#[4])&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;inanimate&quot;</span><span class="p">,</span> <span class="s2">&quot;studied&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">,</span> <span class="s2">&quot;_any&quot;</span><span class="p">)</span>
-<span class="p">]</span>
-
-<span class="c1"># iterate through the item info and plug the item number into the template lines</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pm_items</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;phase == &#39;test&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">tags</span> <span class="ow">in</span> <span class="n">test_code_tags</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="c1"># condition_id is 1, 2, 3, or 4 only plug into the relevant template lines.</span>
-        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\(#&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">condition_id</span><span class="p">),</span> <span class="n">pattern</span><span class="p">):</span>
-            <span class="n">code_tags</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">pattern</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;ITEM_ID&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">item_id</span><span class="p">)),</span>
-                <span class="n">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="o">*</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>
-                <span class="o">*</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">row</span><span class="p">)</span>
-            <span class="p">)</span>
-            <span class="n">test_code_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code_tags</span><span class="p">)</span>
-
-<span class="n">pm_test_codemap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">test_code_map</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="n">pm_test_codemap_cols</span>
-<span class="p">)</span>
-
-<span class="c1"># write test demo phase codemap</span>
-<span class="n">pm_test_codemap</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">pm_test_codemap_f</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
+<span class="n">pm_test_codemap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pm_test_codemap_f</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pm_test_codemap</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pm_test_codemap</span><span class="p">)</span>
 </pre></div>
@@ -1679,11 +1530,19 @@ is_anchor:  False
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+searching codes in: sub000/dblock_0
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1046: UserWarning:
+/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1046: UserWarning:
 As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
-ccode column in pm_codemap.tsv must also match the log_ccode
+ccode column in pm_test_codemap.tsv must also match the log_ccode
 in the datablock. If this behavior is not desired, delete or rename
 the ccode column in the codemap.
   warnings.warn(msg)
@@ -1694,7 +1553,6 @@ the ccode column in the codemap.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-searching codes in: sub000/dblock_0
 searching codes in: sub000/dblock_1
 searching codes in: sub000/dblock_2
 searching codes in: sub000/dblock_3
@@ -2978,7 +2836,8 @@ Sanitizing event table data types for mkh5 epochs table ...
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;study_ms1500&quot;</span><span class="p">,</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000pm.study_ms1500.epochs.feather&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
+<span></span><span class="n">pm_study_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000pm.study_ms1500.epochs.feather&quot;</span>
+<span class="n">pm_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;study_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_study_epochs_f</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3006,7 +2865,8 @@ Sanitizing event table data types for mkh5 epochs table ...
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;test_ms1500&quot;</span><span class="p">,</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000pm.test_ms1500.epochs.feather&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
+<span></span><span class="n">pm_test_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000pm.test_ms1500.epochs.feather&quot;</span>
+<span class="n">pm_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;test_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_test_epochs_f</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3033,7 +2893,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># load and sanitize epoch_id for pandas index</span>
-<span class="n">pm_study_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000pm.study_ms1500.epochs.feather&quot;</span><span class="p">)</span>
+<span class="n">pm_study_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">pm_study_epochs_f</span><span class="p">)</span>
 <span class="n">pm_study_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pm_study_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 
 <span class="c1"># exclude epochs flagged for artifacts</span>
@@ -3232,7 +3092,7 @@ After excluding EEG artifacts
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># load and sanitize epoch_id for pandas index</span>
-<span class="n">pm_test_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000pm.test_ms1500.epochs.feather&quot;</span><span class="p">)</span>
+<span class="n">pm_test_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">pm_test_epochs_f</span><span class="p">)</span>
 <span class="n">pm_test_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pm_test_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pm_test_epochs</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
@@ -3442,276 +3302,369 @@ After excluding EEG artifacts
 <img alt="_images/pm_41_2.png" src="_images/pm_41_2.png" />
 </div>
 </div>
-<p><strong>Single subject pipeline with epoch export in different formats</strong></p>
-<p>build and calibrate the mkpy HDF5 format data file</p>
-<ol class="arabic">
-<li><p>get_event_table(<em>codemap</em>) and</p>
-<p><strong>modify the event tables</strong></p>
-</li>
-<li><div class="line-block">
-<div class="line">set_epoch_table(<em>name</em>, <em>event_table</em>, <em>pre</em>, <em>post</em>)</div>
 </div>
-</li>
-<li><p>export_epochs(<em>name</em>, <em>file_format=…</em>)</p></li>
-</ol>
+<div class="section" id="Appendix">
+<h1>Appendix<a class="headerlink" href="#Appendix" title="Permalink to this headline">¶</a></h1>
+<p>Python code to generate the study and test code maps from the stimulus files</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># convert to HDF5 and calibrate</span>
-<span class="n">pm_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">pm_h5_f</span><span class="p">)</span>
-<span class="n">pm_h5</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>
-<span class="n">pm_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">crw</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">yhdr</span><span class="p">)</span>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
 
-<span class="n">pm_h5</span><span class="o">.</span><span class="n">append_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">cals_crw</span><span class="p">,</span> <span class="n">cals_log</span><span class="p">,</span> <span class="n">cals_yhdr</span><span class="p">)</span>
-
-<span class="n">pts</span><span class="p">,</span> <span class="n">pulse</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">ccode</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span>
-<span class="n">pm_h5</span><span class="o">.</span><span class="n">calibrate_mkdata</span><span class="p">(</span>
-    <span class="s2">&quot;sub000&quot;</span><span class="p">,</span>
-    <span class="n">n_points</span><span class="o">=</span><span class="n">pts</span><span class="p">,</span>
-    <span class="n">cal_size</span><span class="o">=</span><span class="n">pulse</span><span class="p">,</span>
-    <span class="n">lo_cursor</span><span class="o">=</span><span class="n">lo</span><span class="p">,</span>
-    <span class="n">hi_cursor</span><span class="o">=</span><span class="n">hi</span><span class="p">,</span>
-    <span class="n">cal_ccode</span><span class="o">=</span><span class="n">ccode</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c1"># 1. scan study and test phase events into the event tables</span>
-<span class="n">pm_test_study_table</span> <span class="o">=</span> <span class="n">pm_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">pm_study_codemap_f</span><span class="p">)</span>
-<span class="n">pm_test_event_table</span> <span class="o">=</span> <span class="n">pm_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">pm_test_codemap_f</span><span class="p">)</span>
-
-<span class="c1"># --------------------------------------------</span>
-<span class="c1"># MODIFY THE STUDY AND TEST PHASE EVENT TABLES</span>
-<span class="c1"># ---------------------------------------------</span>
-
-<span class="c1"># 1.1 prune both event tables to unique single trials</span>
-
-<span class="c1"># study phase response tagged single trials are coded</span>
-<span class="c1"># with study table bin id &gt; 2000</span>
-<span class="n">pm_study_events_for_epochs</span> <span class="o">=</span> <span class="n">pm_study_event_table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
-    <span class="s2">&quot;is_anchor==True and study_bin_id &gt;= 2000&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;item_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-
-<span class="c1"># test phase response-tagged single trials are coded</span>
-<span class="c1"># with test table bin id &gt; 1000</span>
-<span class="n">pm_test_events_for_epochs</span> <span class="o">=</span> <span class="n">pm_test_event_table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
-    <span class="s2">&quot;is_anchor==True and test_bin_id &gt;= 1000&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;item_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-
-<span class="c1"># 1.2 align the study phase items with subsequent test phase subsequent responses</span>
-<span class="n">pm_study_events_for_epochs</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">pm_study_events_for_epochs</span>
-    <span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">pm_test_events_for_epochs</span><span class="p">[</span><span class="n">test_s_r_cols</span><span class="p">],</span>
-        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
-        <span class="n">on</span><span class="o">=</span><span class="s2">&quot;item_id&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1"># 1.3 align test phase items with the previous study phase like/dislike responses</span>
-<span class="n">pm_test_events_for_epochs</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">pm_test_events_for_epochs</span>
-    <span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">pm_study_events_for_epochs</span><span class="p">[</span><span class="s2">&quot;study_response&quot;</span><span class="p">],</span>
-        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
-        <span class="n">on</span><span class="o">=</span><span class="s2">&quot;item_id&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-
-<span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Set and export epochs</span>
-<span class="c1"># ---------------------------------------------</span>
-<span class="n">epoch_specs</span>  <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># epoch_name: (pre, post)</span>
-    <span class="s2">&quot;ms100&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-    <span class="s2">&quot;ms1500&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span>
-    <span class="s2">&quot;ms3000&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">1500</span><span class="p">),</span>
-    <span class="s2">&quot;ms10000&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">),</span>
-<span class="p">}</span>
-
-<span class="c1"># loop on the phases</span>
-<span class="n">phases</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;study&quot;</span><span class="p">:</span> <span class="n">pm_study_events_for_epochs</span><span class="p">,</span>
-    <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">pm_test_events_for_epochs</span>
-<span class="p">}</span>
-<span class="k">for</span> <span class="n">phase</span><span class="p">,</span> <span class="n">events</span> <span class="ow">in</span> <span class="n">phases</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">epoch_name</span><span class="p">,</span> <span class="p">(</span><span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">)</span> <span class="ow">in</span> <span class="n">epoch_specs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-
-        <span class="n">key</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">epoch_name</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">)</span>
-
-        <span class="n">pm_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">)</span>
-
-        <span class="c1"># multiple export formats for demonstration, in practice pick one</span>
-        <span class="n">fformats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pdh5&quot;</span><span class="p">,</span> <span class="s2">&quot;feather&quot;</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">ffmt</span> <span class="ow">in</span> <span class="n">fformats</span><span class="p">:</span>
-            <span class="n">_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">MDE_HOME</span><span class="si">}</span><span class="s2">/data/sub000pm.</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">.epochs.</span><span class="si">{</span><span class="n">ffmt</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;exporting pm </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> as </span><span class="si">{</span><span class="n">ffmt</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">_fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-            <span class="c1"># this exports the epochs DATA ... EEG and events.</span>
-            <span class="n">pm_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">_fname</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="n">ffmt</span><span class="p">)</span>
-
+cat <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/scripts/make_pm_codemaps.py
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
-  warnings.warn(msg)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Found cals in /sub000/dblock_3
-Calibrating block /sub000/dblock_0 of 4: (95232,)
-Calibrating block /sub000/dblock_1 of 4: (34048,)
-Calibrating block /sub000/dblock_2 of 4: (139008,)
-Calibrating block /sub000/dblock_3 of 4: (28416,)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1046: UserWarning:
-As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
-ccode column in pm_study_codemap.tsv must also match the log_ccode
-in the datablock. If this behavior is not desired, delete or rename
-the ccode column in the codemap.
-  warnings.warn(msg)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-searching codes in: sub000/dblock_0
-searching codes in: sub000/dblock_1
-searching codes in: sub000/dblock_2
-searching codes in: sub000/dblock_3
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1046: UserWarning:
-As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
-ccode column in pm_codemap.tsv must also match the log_ccode
-in the datablock. If this behavior is not desired, delete or rename
-the ccode column in the codemap.
-  warnings.warn(msg)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-searching codes in: sub000/dblock_0
-searching codes in: sub000/dblock_1
-searching codes in: sub000/dblock_2
-searching codes in: sub000/dblock_3
-study_ms100 -50 50
-Sanitizing event table data types for mkh5 epochs table ...
-exporting pm study_ms100 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms100.epochs.h5
-exporting pm study_ms100 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms100.epochs.pdh5
-exporting pm study_ms100 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms100.epochs.feather
-study_ms1500 -750 750
-Sanitizing event table data types for mkh5 epochs table ...
-exporting pm study_ms1500 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms1500.epochs.h5
-exporting pm study_ms1500 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms1500.epochs.pdh5
-exporting pm study_ms1500 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms1500.epochs.feather
-study_ms3000 -1500 1500
-Sanitizing event table data types for mkh5 epochs table ...
-exporting pm study_ms3000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms3000.epochs.h5
-exporting pm study_ms3000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms3000.epochs.pdh5
-exporting pm study_ms3000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms3000.epochs.feather
-study_ms10000 -5000 5000
-Sanitizing event table data types for mkh5 epochs table ...
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (27, b&#39;sub000&#39;, b&#39;sub000/dblock_0&#39;, 1, 834, 834, 2, 2, 2, 32, -1250, 2500, 250., 1, 1, 3, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 834, 834, 0, True, b&#39;(#[2]) 8 (154) 1040&#39;, 2200, b&#39;inanimate&#39;, b&#39;like&#39;, 2, b&#39;study&#39;, 2, b&#39;necklace&#39;, b&#39;studyp1&#39;, b&#39;old&#39;, b&#39;hit&#39;, 0, 0, 0, 834, -1250, 2500)
-  warnings.warn(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-exporting pm study_ms10000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms10000.epochs.h5
-exporting pm study_ms10000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms10000.epochs.pdh5
-exporting pm study_ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.study_ms10000.epochs.feather
-test_ms100 -50 50
-Sanitizing event table data types for mkh5 epochs table ...
-exporting pm test_ms100 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms100.epochs.h5
-exporting pm test_ms100 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms100.epochs.pdh5
-exporting pm test_ms100 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms100.epochs.feather
-test_ms1500 -750 750
-Sanitizing event table data types for mkh5 epochs table ...
-exporting pm test_ms1500 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms1500.epochs.h5
-exporting pm test_ms1500 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms1500.epochs.pdh5
-exporting pm test_ms1500 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms1500.epochs.feather
-test_ms3000 -1500 1500
-Sanitizing event table data types for mkh5 epochs table ...
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (81, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 1, 280, 129560, 2, 2, 1, 0, -375, 750, 250., 1, 1, 3, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 280, 280, 0, True, b&#39;(#2) 8 (182) 2064&#39;, 1200, b&#39;inanimate&#39;, b&#39;distractor&#39;, b&#39;new&#39;, b&#39;cr&#39;, 1, b&#39;test&#39;, b&#39;2&#39;, b&#39;stapler&#39;, b&#39;testp1&#39;, b&#39;.NAN&#39;, 0, 0, 0, 280, -375, 750)
-  warnings.warn(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-exporting pm test_ms3000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms3000.epochs.h5
-exporting pm test_ms3000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms3000.epochs.pdh5
-exporting pm test_ms3000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms3000.epochs.feather
-test_ms10000 -5000 5000
-Sanitizing event table data types for mkh5 epochs table ...
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (26, b&#39;sub000&#39;, b&#39;sub000/dblock_1&#39;, 1, 611, 95843, 1, 1, 1, 0, -1250, 2500, 250., 1, 1, 3, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 611, 611, 0, True, b&#39;(#1) 2064 8 (127)&#39;, 1102, b&#39;animate&#39;, b&#39;distractor&#39;, b&#39;new&#39;, b&#39;cr&#39;, 1, b&#39;test&#39;, b&#39;1&#39;, b&#39;dragon&#39;, b&#39;testp1&#39;, b&#39;.NAN&#39;, 0, 0, 0, 611, -1250, 2500)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (81, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 1, 280, 129560, 2, 2, 1, 0, -1250, 2500, 250., 1, 1, 3, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 280, 280, 0, True, b&#39;(#2) 8 (182) 2064&#39;, 1200, b&#39;inanimate&#39;, b&#39;distractor&#39;, b&#39;new&#39;, b&#39;cr&#39;, 1, b&#39;test&#39;, b&#39;2&#39;, b&#39;stapler&#39;, b&#39;testp1&#39;, b&#39;.NAN&#39;, 0, 0, 0, 280, -1250, 2500)
-  warnings.warn(
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-exporting pm test_ms10000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms10000.epochs.h5
-exporting pm test_ms10000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms10000.epochs.pdh5
-exporting pm test_ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000pm.test_ms10000.epochs.feather
+&#34;&#34;&#34;demonstrate programmatic codemap generation&#34;&#34;&#34;
+
+import re
+import pandas as pd
+from make_zenodo_files import MDE_HOME
+
+# stim info scraped from .scn scenario files
+PM_ITEM_ID_BY_SCN_F = MDE_HOME / &#34;mkpy/pm_item_id_by_scn.tsv&#34;
+
+# study phase codemap
+PM_STUDY_CODEMAP_F = MDE_HOME / &#34;mkpy/pm_study_codemap.tsv&#34;
+
+# test phase codemap
+PM_TEST_CODEMAP_F = MDE_HOME / &#34;mkpy/pm_test_codemap.tsv&#34;
+
+
+def make_pm_item_id_by_scn():
+    &#34;&#34;&#34;scrape stimuli out of the presentation files and extract code information&#34;&#34;&#34;
+
+    stim_split_re = re.compile(
+        r&#34;(?P&lt;soa&gt;\d+)\s+(?P&lt;dur&gt;\d+)\s+(?P&lt;evcode&gt;\d+)\s+&#34;
+        r&#34;(?P&lt;type&gt;....)=(?P&lt;stim&gt;.+)[\.]&#34;
+    )
+    scn_paths = sorted(MDE_HOME.glob(&#34;mkstim/pictmem/*.scn&#34;))
+
+    header_str = &#34;&#34;.join(
+        [
+            f&#34;{col:&gt;16}&#34;
+            for col in [&#34;ccode&#34;, &#34;phase&#34;, &#34;condition_id&#34;, &#34;item_id&#34;, &#34;jpg&#34;, &#34;scn&#34;]
+        ]
+    )
+    items = [header_str]
+    for scn_path in scn_paths:
+        with open(scn_path, &#34;r&#34;) as _fh:
+            scn = scn_path.stem
+            phase = None
+            ccode = None
+            for phase, ccode in [(&#34;study&#34;, 2), (&#34;test&#34;, 1)]:
+                if phase in str(scn_path):
+                    break
+            assert phase is not None and ccode is not None
+            for line in _fh.readlines():
+                fields = stim_split_re.match(line)
+                if fields is None:
+                    continue
+                evcode = int(fields[&#34;evcode&#34;])
+
+                if evcode &gt; 0 and evcode &lt;= 4:
+                    assert fields[&#34;type&#34;] == &#34;jpeg&#34;
+                    stim = fields[&#34;stim&#34;]
+                    cond = evcode
+
+                if evcode &gt; 100:
+                    item = evcode
+                    items.append(
+                        &#34;&#34;.join(
+                            [
+                                f&#34;{val:&gt;16}&#34;
+                                for val in [ccode, phase, cond, item, stim, scn]
+                            ]
+                        )
+                    )
+
+    with open(PM_ITEM_ID_BY_SCN_F, &#34;w&#34;) as _fh:
+        _fh.write(&#34;\n&#34;.join(items))
+        _fh.write(&#34;\n&#34;)
+
+
+def make_pm_study_phase_codemap():
+    &#34;&#34;&#34; Study phase &#34;&#34;&#34;
+
+    # read the item information table
+    pm_items = pd.read_csv(PM_ITEM_ID_BY_SCN_F, delim_whitespace=True).query(
+        &#34;scn in [&#39;studyp1&#39;, &#39;testp1&#39;]&#34;
+    )
+
+    # code map
+    pm_study_codemap_cols = [
+        &#34;regexp&#34;,
+        &#34;study_bin_id&#34;,
+        &#34;animacy&#34;,
+        &#34;study_response&#34;,
+    ] + list(pm_items.columns)
+
+    # stimulus-response tag template as a Python dictionary
+    # The key:val pair says &#34;this code sequence gets these tags&#34;
+    # The ITEM_ID string will be replaced by the actual 3-digit item number
+
+    study_code_tags = {
+        &#34;(#[12]) 8 (ITEM_ID) 1040&#34;: (2000, &#34;like&#34;),
+        &#34;(#[12]) 8 1040 (ITEM_ID)&#34;: (2001, &#34;like&#34;),
+        &#34;(#[12]) 1040 8 (ITEM_ID)&#34;: (2002, &#34;like&#34;),
+        &#34;(#[12]) 8 (ITEM_ID) 2064&#34;: (2100, &#34;dislike&#34;),
+        &#34;(#[12]) 8 2064 (ITEM_ID)&#34;: (2101, &#34;dislike&#34;),
+        &#34;(#[12]) 2064 8 (ITEM_ID)&#34;: (2102, &#34;dislike&#34;),
+        &#34;(#[12]) 8 (ITEM_ID) (?!(1040|2064))&#34;: (2003, &#34;no_response&#34;),
+    }
+
+    # the new 4-digit &#34;study_bin_id&#34; tag re-codes the match event 1 or
+    # 2 with more information
+    #
+    #  phase animacy response response_timing
+    #    phase: study=2
+    #    animacy: 1=animate, 2=inanimate
+    #    response(0=like, 1=dislike)
+    #    response timing: 0=prompted,1,2 anticipation, 3=no response)
+    #
+    study_code_tags = {
+        # animate
+        &#34;(#[1]) 8 (ITEM_ID) 1040&#34;: (2100, &#34;animate&#34;, &#34;like&#34;),
+        &#34;(#[1]) 8 1040 (ITEM_ID)&#34;: (2101, &#34;animate&#34;, &#34;like&#34;),
+        &#34;(#[1]) 1040 8 (ITEM_ID)&#34;: (2102, &#34;animate&#34;, &#34;like&#34;),
+        &#34;(#[1]) 8 (ITEM_ID) 2064&#34;: (2110, &#34;animate&#34;, &#34;dislike&#34;),
+        &#34;(#[1]) 8 2064 (ITEM_ID)&#34;: (2111, &#34;animate&#34;, &#34;dislike&#34;),
+        &#34;(#[1]) 2064 8 (ITEM_ID)&#34;: (2112, &#34;animate&#34;, &#34;dislike&#34;),
+        &#34;(#[1]) 8 (ITEM_ID) (?!(1040|2064))&#34;: (2103, &#34;animate&#34;, &#34;no_response&#34;),
+        # inanimate
+        &#34;(#[2]) 8 (ITEM_ID) 1040&#34;: (2200, &#34;inanimate&#34;, &#34;like&#34;),
+        &#34;(#[2]) 8 1040 (ITEM_ID)&#34;: (2201, &#34;inanimate&#34;, &#34;like&#34;),
+        &#34;(#[2]) 1040 8 (ITEM_ID)&#34;: (2202, &#34;inanimate&#34;, &#34;like&#34;),
+        &#34;(#[2]) 8 (ITEM_ID) 2064&#34;: (2210, &#34;inanimate&#34;, &#34;dislike&#34;),
+        &#34;(#[2]) 8 2064 (ITEM_ID)&#34;: (2211, &#34;inanimate&#34;, &#34;dislike&#34;),
+        &#34;(#[2]) 2064 8 (ITEM_ID)&#34;: (2212, &#34;inanimate&#34;, &#34;dislike&#34;),
+        &#34;(#[2]) 8 (ITEM_ID) (?!(1040|2064))&#34;: (2203, &#34;inanimate&#34;, &#34;no_response&#34;),
+    }
+
+    #
+    # Build a list of codemap lines.
+
+    # The first line says *any* code matching 1 or 2 gets the tags 200, &#34;_any&#34;, 2, ... etc.
+    # This tags all matching stimulus events, it is not contingent the response.
+    # It is not necessary but it is useful here, we will see why shortly.
+    study_code_map = [
+        (&#34;(#[1234])&#34;, 0, &#34;cal&#34;, &#34;cal&#34;, 0, &#34;study&#34;, 0, -1, &#34;cal&#34;, &#34;cal&#34;),
+        (&#34;(#[12])&#34;, 200, &#34;_any&#34;, &#34;_any&#34;, 2, &#34;study&#34;, 2, -1, &#34;_any&#34;, &#34;_any&#34;),
+    ]
+
+    # plug each row of the pictmem item info into the template and append the
+    # result to the list of codemap lines
+    for idx, row in pm_items.query(&#34;phase == &#39;study&#39;&#34;).iterrows():
+        for pattern, tags in study_code_tags.items():
+            code_tags = (
+                pattern.replace(
+                    &#34;ITEM_ID&#34;, str(row.item_id)
+                ),  # current item number goes in the template
+                *(str(t) for t in tags),
+                *(str(c) for c in row),  # this adds the rest of the item to the tags
+            )
+            study_code_map.append(code_tags)
+
+    # convert the list of lines to a pandas.DataFrame and save as a tab separated text file
+    pm_study_codemap = pd.DataFrame(study_code_map, columns=pm_study_codemap_cols)
+    pm_study_codemap.to_csv(PM_STUDY_CODEMAP_F, sep=&#34;\t&#34;, index=False)
+
+    print(pm_study_codemap.shape)
+    print(pm_study_codemap)
+
+
+def make_pm_test_phase_codemap():
+
+    # read the item information table
+    pm_items = pd.read_csv(PM_ITEM_ID_BY_SCN_F, delim_whitespace=True).query(
+        &#34;scn in [&#39;studyp1&#39;, &#39;testp1&#39;]&#34;
+    )
+
+    # test phase codemap column names
+    pm_test_codemap_cols = [
+        &#34;regexp&#34;,
+        &#34;test_bin_id&#34;,
+        &#34;animacy&#34;,
+        &#34;stimulus&#34;,
+        &#34;test_response&#34;,
+        &#34;accuracy&#34;,
+    ] + list(pm_items.columns)
+
+    # test phase template: stimulus, old/new response (include pre-prompt anticipations)
+    test_code_tags = {
+        # new stim animate
+        &#34;(#1) 8 (ITEM_ID) 2064&#34;: (1100, &#34;animate&#34;, &#34;distractor&#34;, &#34;new&#34;, &#34;cr&#34;),
+        &#34;(#1) 8 2064 (ITEM_ID)&#34;: (1101, &#34;animate&#34;, &#34;distractor&#34;, &#34;new&#34;, &#34;cr&#34;),
+        &#34;(#1) 2064 8 (ITEM_ID)&#34;: (1102, &#34;animate&#34;, &#34;distractor&#34;, &#34;new&#34;, &#34;cr&#34;),
+        &#34;(#1) 8 (ITEM_ID) 1040&#34;: (1110, &#34;animate&#34;, &#34;distractor&#34;, &#34;old&#34;, &#34;fa&#34;),
+        &#34;(#1) 8 1040 (ITEM_ID)&#34;: (1111, &#34;animate&#34;, &#34;distractor&#34;, &#34;old&#34;, &#34;fa&#34;),
+        &#34;(#1) 1040 8 (ITEM_ID)&#34;: (1112, &#34;animate&#34;, &#34;distractor&#34;, &#34;old&#34;, &#34;fa&#34;),
+        &#34;(#1) 8 (ITEM_ID) (?!(2064|1040))&#34;: (
+            1103,
+            &#34;animate&#34;,
+            &#34;distractor&#34;,
+            &#34;none&#34;,
+            &#34;nr&#34;,
+        ),
+        # new stim inanimate
+        &#34;(#2) 8 (ITEM_ID) 2064&#34;: (1200, &#34;inanimate&#34;, &#34;distractor&#34;, &#34;new&#34;, &#34;cr&#34;),
+        &#34;(#2) 8 2064 (ITEM_ID)&#34;: (1201, &#34;inanimate&#34;, &#34;distractor&#34;, &#34;new&#34;, &#34;cr&#34;),
+        &#34;(#2) 2064 8 (ITEM_ID)&#34;: (1202, &#34;inanimate&#34;, &#34;distractor&#34;, &#34;new&#34;, &#34;cr&#34;),
+        &#34;(#2) 8 (ITEM_ID) 1040&#34;: (1210, &#34;inanimate&#34;, &#34;distractor&#34;, &#34;old&#34;, &#34;fa&#34;),
+        &#34;(#2) 8 1040 (ITEM_ID)&#34;: (1211, &#34;inanimate&#34;, &#34;distractor&#34;, &#34;old&#34;, &#34;fa&#34;),
+        &#34;(#2) 1040 8 (ITEM_ID)&#34;: (1212, &#34;inanimate&#34;, &#34;distractor&#34;, &#34;old&#34;, &#34;fa&#34;),
+        &#34;(#2) 8 (ITEM_ID) (?!(2064|1040))&#34;: (
+            1203,
+            &#34;inanimate&#34;,
+            &#34;distractor&#34;,
+            &#34;none&#34;,
+            &#34;nr&#34;,
+        ),
+        # old stim animate
+        &#34;(#3) 8 (ITEM_ID) 1040&#34;: (1300, &#34;animate&#34;, &#34;studied&#34;, &#34;old&#34;, &#34;hit&#34;),
+        &#34;(#3) 8 1040 (ITEM_ID)&#34;: (1301, &#34;animate&#34;, &#34;studied&#34;, &#34;old&#34;, &#34;hit&#34;),
+        &#34;(#3) 1040 8 (ITEM_ID)&#34;: (1302, &#34;animate&#34;, &#34;studied&#34;, &#34;old&#34;, &#34;hit&#34;),
+        &#34;(#3) 8 (ITEM_ID) 2064&#34;: (1310, &#34;animate&#34;, &#34;studied&#34;, &#34;new&#34;, &#34;miss&#34;),
+        &#34;(#3) 8 2064 (ITEM_ID)&#34;: (1311, &#34;animate&#34;, &#34;studied&#34;, &#34;new&#34;, &#34;miss&#34;),
+        &#34;(#3) 2064 8 (ITEM_ID)&#34;: (1312, &#34;animate&#34;, &#34;studied&#34;, &#34;new&#34;, &#34;miss&#34;),
+        &#34;(#3) 8 (ITEM_ID) (?!(2064|1040))&#34;: (1303, &#34;animate&#34;, &#34;studied&#34;, &#34;none&#34;, &#34;nr&#34;),
+        # old stim inanimate
+        &#34;(#4) 8 (ITEM_ID) 1040&#34;: (1400, &#34;inanimate&#34;, &#34;studied&#34;, &#34;old&#34;, &#34;hit&#34;),
+        &#34;(#4) 8 1040 (ITEM_ID)&#34;: (1401, &#34;inanimate&#34;, &#34;studied&#34;, &#34;old&#34;, &#34;hit&#34;),
+        &#34;(#4) 1040 8 (ITEM_ID)&#34;: (1402, &#34;inanimate&#34;, &#34;studied&#34;, &#34;old&#34;, &#34;hit&#34;),
+        &#34;(#4) 8 (ITEM_ID) 2064&#34;: (1410, &#34;inanimate&#34;, &#34;studied&#34;, &#34;new&#34;, &#34;miss&#34;),
+        &#34;(#4) 8 2064 (ITEM_ID)&#34;: (1411, &#34;inanimate&#34;, &#34;studied&#34;, &#34;new&#34;, &#34;miss&#34;),
+        &#34;(#4) 2064 8 (ITEM_ID)&#34;: (1412, &#34;inanimate&#34;, &#34;studied&#34;, &#34;new&#34;, &#34;miss&#34;),
+        &#34;(#4) 8 (ITEM_ID) (?!(2064|1040))&#34;: (
+            1403,
+            &#34;inanimate&#34;,
+            &#34;studied&#34;,
+            &#34;none&#34;,
+            &#34;nr&#34;,
+        ),
+    }
+
+    # initialize the code map to tag stimulus codes, not response contingent
+    test_code_map = [
+        (
+            &#34;(#[1234])&#34;,
+            0,
+            &#34;cal&#34;,
+            &#34;cal&#34;,
+            &#34;cal&#34;,
+            &#34;cal&#34;,
+            0,
+            &#34;test&#34;,
+            &#34;cal&#34;,
+            &#34;-1&#34;,
+            &#34;cal&#34;,
+            &#34;cal&#34;,
+        ),
+        (
+            &#34;(#[1234])&#34;,
+            10,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+            1,
+            &#34;test&#34;,
+            &#34;_any&#34;,
+            &#34;-1&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+        ),
+        (
+            &#34;(#[1])&#34;,
+            11,
+            &#34;animate&#34;,
+            &#34;distractor&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+            1,
+            &#34;test&#34;,
+            1,
+            &#34;-1&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+        ),
+        (
+            &#34;(#[2])&#34;,
+            12,
+            &#34;inanimate&#34;,
+            &#34;distractor&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+            1,
+            &#34;test&#34;,
+            2,
+            &#34;-1&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+        ),
+        (
+            &#34;(#[3])&#34;,
+            13,
+            &#34;animate&#34;,
+            &#34;studied&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+            1,
+            &#34;test&#34;,
+            3,
+            &#34;-1&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+        ),
+        (
+            &#34;(#[4])&#34;,
+            14,
+            &#34;inanimate&#34;,
+            &#34;studied&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+            1,
+            &#34;test&#34;,
+            4,
+            &#34;-1&#34;,
+            &#34;_any&#34;,
+            &#34;_any&#34;,
+        ),
+    ]
+
+    # iterate through the item info and plug the item number into the template lines
+    for idx, row in pm_items.query(&#34;phase == &#39;test&#39;&#34;).iterrows():
+        for pattern, tags in test_code_tags.items():
+            # condition_id is 1, 2, 3, or 4 only plug into the relevant template lines.
+            if re.match(r&#34;^\(#&#34; + str(row.condition_id), pattern):
+                code_tags = (
+                    pattern.replace(&#34;ITEM_ID&#34;, str(row.item_id)),
+                    tags[0],
+                    *(str(t) for t in tags[1:]),
+                    *(str(c) for c in row),
+                )
+                test_code_map.append(code_tags)
+
+    pm_test_codemap = pd.DataFrame(test_code_map, columns=pm_test_codemap_cols)
+
+    # write test demo phase codemap
+    pm_test_codemap.to_csv(PM_TEST_CODEMAP_F, sep=&#34;\t&#34;, index=False)
+
+    print(pm_test_codemap.shape)
+    print(pm_test_codemap)
+
+
+if __name__ == &#34;__main__&#34;:
+    make_pm_item_id_by_scn()
+    make_pm_study_phase_codemap()
+    make_pm_test_phase_codemap()
 </pre></div></div>
 </div>
 </div>
@@ -3730,6 +3683,7 @@ exporting pm test_ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_d
 <li class="toctree-l1"><a class="reference internal" href="p3.html">P3 Auditory oddball</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wr.html">Word repetition memory</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Picture memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Appendix">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resting_eeg.html">Resting EEG</a></li>
 </ul>
 
@@ -3755,7 +3709,7 @@ exporting pm test_ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_d
         <li class="right" >
           <a href="wr.html" title="Word repetition memory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Picture memory</a></li> 
       </ul>
     </div>

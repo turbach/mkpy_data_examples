@@ -32,13 +32,13 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "spudtrE\n",
-      "3.8.2 (default, Mar 26 2020, 15:53:00) \n",
+      "spudtrF_test\n",
+      "3.7.7 (default, Mar 26 2020, 15:48:22) \n",
       "[GCC 7.3.0]\n",
-      "numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/numpy/__init__.py\n",
-      "pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/pandas/__init__.py\n",
-      "mkpy 0.2.4.dev3 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/__init__.py\n",
-      "spudtr 0.0.11.dev0 /mnt/cube/home/turbach/TPU_Projects/spudtr/spudtr/__init__.py\n"
+      "numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/numpy/__init__.py\n",
+      "pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/pandas/__init__.py\n",
+      "mkpy 0.2.4.dev4 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/__init__.py\n",
+      "spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/spudtr/__init__.py\n"
      ]
     }
    ],
@@ -62,6 +62,8 @@
     "else:\n",
     "    from conf import MDE_HOME\n",
     "\n",
+    "DOCS_DATA = MDE_HOME / \"docs/_data\"\n",
+    "\n",
     "print(os.environ[\"CONDA_DEFAULT_ENV\"])\n",
     "print(sys.version)\n",
     "for pkg in [np, pd, mkpy, spudtr]:\n",
@@ -77,21 +79,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p3.h5\n"
+      "/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000p3.h5\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:3630: UserWarning: negative event code(s) found for cal condition code 0 -16384\n",
+      "/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384\n",
       "  warnings.warn(msg)\n"
      ]
     },
@@ -120,7 +122,7 @@
     "cals_yhdr = MDE_HOME / \"mkpy/sub000c.yhdr\"\n",
     "\n",
     "# HDF5 file with EEG recording, events, and header\n",
-    "p3_h5_f = MDE_HOME / \"data/sub000p3.h5\"  \n",
+    "p3_h5_f = DOCS_DATA / \"sub000p3.h5\"  \n",
     "print(p3_h5_f)\n",
     "\n",
     "# convert to HDF5\n",
@@ -153,7 +155,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -203,7 +205,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -221,7 +223,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1046: UserWarning: \n",
+      "/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1046: UserWarning: \n",
       "As of mkpy 0.2.0 to match events with a codemap regexp pattern, the\n",
       "ccode column in p3_codemap.ytbl must also match the log_ccode\n",
       "in the datablock. If this behavior is not desired, delete or rename\n",
@@ -243,7 +245,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -664,7 +666,7 @@
        "All                                                   542  33  25   1  601"
       ]
      },
-     "execution_count": 5,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -713,7 +715,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
@@ -727,8 +729,8 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (392, b'sub000', b'sub000/dblock_4', 0, 26, 26, 2, 2, 0, 64, -187, 375, 250., 1, 0, 1, b'2', b'2', 2, 2, 26, 26, 0, True, b'(#\\\\d+)', 0, b'cal', 0, b'cal', b'cal', b'cal', b'cal', 0, 0, 0, 26, -187, 375)\n",
-      "  warnings.warn(\n"
+      "/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1503: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (392, b'sub000', b'sub000/dblock_4', 0, 26, 26, 2, 2, 0, 64, -187, 375, 250., 1, 0, 1, b'2', b'2', 2, 2, 26, 26, 0, True, b'(#\\\\d+)', 0, b'cal', 0, b'cal', b'cal', b'cal', b'cal', 0, 0, 0, 26, -187, 375)\n",
+      "  + \"skipping epoch {0}\".format(e)\n"
      ]
     }
    ],
@@ -747,11 +749,12 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [],
    "source": [
-    "p3_h5.export_epochs(\"ms1500\", MDE_HOME / \"data/sub000p3.ms1500.epochs.feather\", file_format=\"feather\")        "
+    "p3_epochs_f = DOCS_DATA / \"sub000p3.ms1500.epochs.feather\"\n",
+    "p3_h5.export_epochs(\"ms1500\", p3_epochs_f, file_format=\"feather\")        "
    ]
   },
   {
@@ -767,7 +770,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [
     {
@@ -917,13 +920,13 @@
        "All                                                               542  542"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 9,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "p3_epochs = pd.read_feather(MDE_HOME / \"data/sub000p3.ms1500.epochs.feather\")\n",
+    "p3_epochs = pd.read_feather(p3_epochs_f)\n",
     "# sanitize Epoch_idx for pandas index\n",
     "p3_epochs['epoch_id'] = p3_epochs['epoch_id'].astype('int')\n",
     "\n",
@@ -963,7 +966,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -995,7 +998,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [
     {
@@ -1043,7 +1046,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [
     {
@@ -1087,26 +1090,6 @@
     "f.tight_layout()\n",
     "    "
    ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "**Single subject pipeline with epoch export in different formats**\n",
-    "\n",
-    "build and calibrate the mkpy HDF5 format data file\n",
-    "\n",
-    "1. get_event_table(*codemap*)\n",
-    "2. set_epoch_table(*name*, *pre*, \"post*)\n",
-    "3. export_epochs(*name*, *file_format=...*)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
