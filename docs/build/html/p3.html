@@ -1,0 +1,1290 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P3 Auditory oddball &#8212; mkpy_data_examples 0.0.5 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Word repetition memory" href="wr.html" />
+    <link rel="prev" title="P50 Paired-click" href="p50.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="wr.html" title="Word repetition memory"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="p50.html" title="P50 Paired-click"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">P3 Auditory oddball</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="P3-Auditory-oddball">
+<h1>P3 Auditory oddball<a class="headerlink" href="#P3-Auditory-oddball" title="Permalink to this headline">¶</a></h1>
+<p>This builds on the P50 example.</p>
+<p>Experimental design</p>
+<ul class="simple">
+<li><p>Stimuli are 2 different auditory tones presented in random order, with higher probability (“standard, .66) and lower probability (”target”, .33).</p></li>
+<li><p>One tone is higher frequency, the other is lower frequency. There are two blocks of trials, each tone serves as the standard one block, the target in the other.</p></li>
+<li><p>The task is to respond to the target tones by pressing a button.</p></li>
+</ul>
+<p>Event code tagging</p>
+<ul class="simple">
+<li><p>The codemap patterns tag the stimulus and response event <strong>sequences</strong> for stimulus type, tone type, and response accuracy.</p></li>
+<li><p>EEG quality control flags (log_evcodes &gt; 0) are used to exclude EEG trials prior to analysis</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">mkpy</span>
+<span class="kn">import</span> <span class="nn">spudtr</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">mkpy</span> <span class="kn">import</span> <span class="n">mkh5</span>
+<span class="kn">from</span> <span class="nn">spudtr</span> <span class="kn">import</span> <span class="n">epf</span>
+
+<span class="c1"># path wrangling for nbsphinx</span>
+<span class="k">if</span> <span class="s2">&quot;MDE_HOME&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">MDE_HOME</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MDE_HOME&quot;</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">conf</span> <span class="kn">import</span> <span class="n">MDE_HOME</span>
+
+<span class="n">DOCS_DATA</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;docs/_data&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CONDA_DEFAULT_ENV&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="p">,</span> <span class="n">pd</span><span class="p">,</span> <span class="n">mkpy</span><span class="p">,</span> <span class="n">spudtr</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pkg</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">pkg</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="n">pkg</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+spudtrF_test
+3.7.7 (default, Mar 26 2020, 15:48:22)
+[GCC 7.3.0]
+numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/numpy/__init__.py
+pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/pandas/__init__.py
+mkpy 0.2.4.dev4 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/__init__.py
+spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/spudtr/__init__.py
+</pre></div></div>
+</div>
+<p><strong>mkh5</strong> EEG data, event code log, header information</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># set filenames</span>
+<span class="n">crw</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000p3.crw&quot;</span>    <span class="c1"># EEG recording</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000p3.x.log&quot;</span>  <span class="c1"># events</span>
+<span class="n">yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/sub000p3.yhdr&quot;</span>   <span class="c1"># extra header info</span>
+
+<span class="c1"># set calibration data filenames</span>
+<span class="n">cals_crw</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000c.crw&quot;</span>
+<span class="n">cals_log</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000c.x.log&quot;</span>
+<span class="n">cals_yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/sub000c.yhdr&quot;</span>
+
+<span class="c1"># HDF5 file with EEG recording, events, and header</span>
+<span class="n">p3_h5_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000p3.h5&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p3_h5_f</span><span class="p">)</span>
+
+<span class="c1"># convert to HDF5</span>
+<span class="n">p3_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">p3_h5_f</span><span class="p">)</span>
+
+<span class="n">p3_h5</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>
+<span class="n">p3_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">crw</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">yhdr</span><span class="p">)</span>
+
+<span class="c1"># add calibration data</span>
+<span class="n">p3_h5</span><span class="o">.</span><span class="n">append_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">cals_crw</span><span class="p">,</span> <span class="n">cals_log</span><span class="p">,</span> <span class="n">cals_yhdr</span><span class="p">)</span>
+
+<span class="c1"># calibrate</span>
+<span class="n">pts</span><span class="p">,</span> <span class="n">pulse</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">ccode</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">p3_h5</span><span class="o">.</span><span class="n">calibrate_mkdata</span><span class="p">(</span>
+    <span class="s2">&quot;sub000&quot;</span><span class="p">,</span>  <span class="c1"># data group to calibrate with these cal pulses</span>
+    <span class="n">n_points</span><span class="o">=</span><span class="n">pts</span><span class="p">,</span>  <span class="c1"># pts to average</span>
+    <span class="n">cal_size</span><span class="o">=</span><span class="n">pulse</span><span class="p">,</span>  <span class="c1"># uV</span>
+    <span class="n">lo_cursor</span><span class="o">=</span><span class="n">lo</span><span class="p">,</span>  <span class="c1"># lo_cursor ms</span>
+    <span class="n">hi_cursor</span><span class="o">=</span><span class="n">hi</span><span class="p">,</span>  <span class="c1"># hi_cursor ms</span>
+    <span class="n">cal_ccode</span><span class="o">=</span><span class="n">ccode</span><span class="p">,</span>  <span class="c1"># condition code</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000p3.h5
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Found cals in /sub000/dblock_4
+Calibrating block /sub000/dblock_0 of 5: (31232,)
+Calibrating block /sub000/dblock_1 of 5: (32768,)
+Calibrating block /sub000/dblock_2 of 5: (31744,)
+Calibrating block /sub000/dblock_3 of 5: (32512,)
+Calibrating block /sub000/dblock_4 of 5: (28416,)
+</pre></div></div>
+</div>
+<p><strong>codemap</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+head -26 <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/p3_codemap.ytbl
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+# mkpy YAML codemap
+# rows and columns must align, regexp is a mandatory column, all else is whatever.
+#
+# Note the regular expression negation *NON CAPTURNG* group (?!1040)
+# to pattern-match &#34;anything except 1040&#34;, i.e., an omitted response,
+# as in (#10) (?!1040). Depending on the stimulus type, an ommited
+# response is &#34;correct&#34; or &#34;incorrect&#34;
+
+---
+name: p3
+
+columns:
+  [regexp,          ccode,  instrument,   bin,    tone,  stim,       accuracy,    acc_type ]
+
+rows:
+  - [&#39;(#\d+)&#39;,          0,         cal,     0,    cal,    cal,        cal,         cal      ]
+  - [&#39;(#11) 1040&#39;,      1,         eeg,     3,     hi,    target,     correct,     hit      ]
+  - [&#39;(#10) (?!1040)&#39;,  1,         eeg,     4,     lo,    standard,   correct,     cr       ]
+  - [&#39;(#11) (?!1040)&#39;,  1,         eeg,     5,     hi,    target,     incorrect,   miss     ]
+  - [&#39;(#10) 1040&#39;,      1,         eeg,     6,     lo,    standard,   incorrect,   fa       ]
+
+  - [&#39;(#21) 1040&#39;,      1,         eeg,     9,     lo,    target,     correct,      hit     ]
+  - [&#39;(#20) (?!1040)&#39;,  1,         eeg,    10,     hi,    standard,   correct,      cr      ]
+  - [&#39;(#21) (?!1040)&#39;,  1,         eeg,    11,     lo,    target,     incorrect,    miss    ]
+  - [&#39;(#20) 1040&#39;,      1,         eeg,    12,     hi,    standard,   incorrect,    fa      ]
+
+</pre></div></div>
+</div>
+<p><strong>1. get_event_table(codemap)</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p3_event_table</span> <span class="o">=</span> <span class="n">p3_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/p3_codemap.ytbl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1046: UserWarning:
+As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
+ccode column in p3_codemap.ytbl must also match the log_ccode
+in the datablock. If this behavior is not desired, delete or rename
+the ccode column in the codemap.
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+searching codes in: sub000/dblock_0
+searching codes in: sub000/dblock_1
+searching codes in: sub000/dblock_2
+searching codes in: sub000/dblock_3
+searching codes in: sub000/dblock_4
+</pre></div></div>
+</div>
+<p><strong>inspect the event table</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">p3_event_table</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p3_event_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># select some columns to show</span>
+<span class="n">example_columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;dblock_path&quot;</span><span class="p">,</span> <span class="s2">&quot;dblock_ticks&quot;</span><span class="p">,</span> <span class="s2">&quot;log_evcodes&quot;</span><span class="p">,</span> <span class="s2">&quot;log_ccodes&quot;</span><span class="p">,</span> <span class="s2">&quot;log_flags&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;regexp&quot;</span><span class="p">,</span> <span class="s2">&quot;match_code&quot;</span><span class="p">,</span> <span class="s2">&quot;instrument&quot;</span><span class="p">,</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="s2">&quot;tone&quot;</span><span class="p">,</span> <span class="s2">&quot;stim&quot;</span><span class="p">,</span> <span class="s2">&quot;acc_type&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># first few stimulus events</span>
+<span class="n">display</span><span class="p">(</span><span class="n">p3_event_table</span><span class="p">[</span><span class="n">example_columns</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># last few calibration pulse events</span>
+<span class="n">display</span><span class="p">(</span><span class="n">p3_event_table</span><span class="p">[</span><span class="n">example_columns</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">ccode</span><span class="p">,</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">stim</span><span class="p">,</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">accuracy</span><span class="p">,</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">acc_type</span><span class="p">,</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">tone</span><span class="p">,</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">bin</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="n">p3_event_table</span><span class="o">.</span><span class="n">log_flags</span>
+    <span class="p">],</span>
+    <span class="n">margins</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(601, 31)
+Index([&#39;data_group&#39;, &#39;dblock_path&#39;, &#39;dblock_tick_idx&#39;, &#39;dblock_ticks&#39;,
+       &#39;crw_ticks&#39;, &#39;raw_evcodes&#39;, &#39;log_evcodes&#39;, &#39;log_ccodes&#39;, &#39;log_flags&#39;,
+       &#39;epoch_match_tick_delta&#39;, &#39;epoch_ticks&#39;, &#39;dblock_srate&#39;, &#39;match_group&#39;,
+       &#39;idx&#39;, &#39;dlim&#39;, &#39;anchor_str&#39;, &#39;match_str&#39;, &#39;anchor_code&#39;, &#39;match_code&#39;,
+       &#39;anchor_tick&#39;, &#39;match_tick&#39;, &#39;anchor_tick_delta&#39;, &#39;is_anchor&#39;, &#39;regexp&#39;,
+       &#39;ccode&#39;, &#39;instrument&#39;, &#39;bin&#39;, &#39;tone&#39;, &#39;stim&#39;, &#39;accuracy&#39;, &#39;acc_type&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dblock_path</th>
+      <th>dblock_ticks</th>
+      <th>log_evcodes</th>
+      <th>log_ccodes</th>
+      <th>log_flags</th>
+      <th>regexp</th>
+      <th>match_code</th>
+      <th>instrument</th>
+      <th>bin</th>
+      <th>tone</th>
+      <th>stim</th>
+      <th>acc_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>125</th>
+      <td>sub000/dblock_0</td>
+      <td>1468</td>
+      <td>11</td>
+      <td>1</td>
+      <td>0</td>
+      <td>(#11) 1040</td>
+      <td>11</td>
+      <td>eeg</td>
+      <td>3</td>
+      <td>hi</td>
+      <td>target</td>
+      <td>hit</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>sub000/dblock_0</td>
+      <td>2396</td>
+      <td>11</td>
+      <td>1</td>
+      <td>0</td>
+      <td>(#11) 1040</td>
+      <td>11</td>
+      <td>eeg</td>
+      <td>3</td>
+      <td>hi</td>
+      <td>target</td>
+      <td>hit</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>sub000/dblock_0</td>
+      <td>2943</td>
+      <td>11</td>
+      <td>1</td>
+      <td>0</td>
+      <td>(#11) 1040</td>
+      <td>11</td>
+      <td>eeg</td>
+      <td>3</td>
+      <td>hi</td>
+      <td>target</td>
+      <td>hit</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>sub000/dblock_0</td>
+      <td>3308</td>
+      <td>11</td>
+      <td>1</td>
+      <td>0</td>
+      <td>(#11) 1040</td>
+      <td>11</td>
+      <td>eeg</td>
+      <td>3</td>
+      <td>hi</td>
+      <td>target</td>
+      <td>hit</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>sub000/dblock_0</td>
+      <td>4574</td>
+      <td>11</td>
+      <td>1</td>
+      <td>0</td>
+      <td>(#11) 1040</td>
+      <td>11</td>
+      <td>eeg</td>
+      <td>3</td>
+      <td>hi</td>
+      <td>target</td>
+      <td>hit</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dblock_path</th>
+      <th>dblock_ticks</th>
+      <th>log_evcodes</th>
+      <th>log_ccodes</th>
+      <th>log_flags</th>
+      <th>regexp</th>
+      <th>match_code</th>
+      <th>instrument</th>
+      <th>bin</th>
+      <th>tone</th>
+      <th>stim</th>
+      <th>acc_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1088</th>
+      <td>sub000/dblock_4</td>
+      <td>27315</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>(#\d+)</td>
+      <td>4</td>
+      <td>cal</td>
+      <td>0</td>
+      <td>cal</td>
+      <td>cal</td>
+      <td>cal</td>
+    </tr>
+    <tr>
+      <th>1089</th>
+      <td>sub000/dblock_4</td>
+      <td>27444</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>(#\d+)</td>
+      <td>2</td>
+      <td>cal</td>
+      <td>0</td>
+      <td>cal</td>
+      <td>cal</td>
+      <td>cal</td>
+    </tr>
+    <tr>
+      <th>1090</th>
+      <td>sub000/dblock_4</td>
+      <td>27573</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>(#\d+)</td>
+      <td>3</td>
+      <td>cal</td>
+      <td>0</td>
+      <td>cal</td>
+      <td>cal</td>
+      <td>cal</td>
+    </tr>
+    <tr>
+      <th>1091</th>
+      <td>sub000/dblock_4</td>
+      <td>27703</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>(#\d+)</td>
+      <td>4</td>
+      <td>cal</td>
+      <td>0</td>
+      <td>cal</td>
+      <td>cal</td>
+      <td>cal</td>
+    </tr>
+    <tr>
+      <th>1092</th>
+      <td>sub000/dblock_4</td>
+      <td>27832</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>(#\d+)</td>
+      <td>2</td>
+      <td>cal</td>
+      <td>0</td>
+      <td>cal</td>
+      <td>cal</td>
+      <td>cal</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>log_flags</th>
+      <th>0</th>
+      <th>32</th>
+      <th>48</th>
+      <th>64</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>instrument</th>
+      <th>ccode</th>
+      <th>stim</th>
+      <th>accuracy</th>
+      <th>acc_type</th>
+      <th>tone</th>
+      <th>bin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>cal</th>
+      <th>0</th>
+      <th>cal</th>
+      <th>cal</th>
+      <th>cal</th>
+      <th>cal</th>
+      <th>0</th>
+      <td>208</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>209</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">eeg</th>
+      <th rowspan="4" valign="top">1</th>
+      <th rowspan="2" valign="top">standard</th>
+      <th rowspan="2" valign="top">correct</th>
+      <th rowspan="2" valign="top">cr</th>
+      <th>hi</th>
+      <th>10</th>
+      <td>142</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>146</td>
+    </tr>
+    <tr>
+      <th>lo</th>
+      <th>4</th>
+      <td>138</td>
+      <td>7</td>
+      <td>1</td>
+      <td>0</td>
+      <td>146</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">target</th>
+      <th rowspan="2" valign="top">correct</th>
+      <th rowspan="2" valign="top">hit</th>
+      <th>hi</th>
+      <th>3</th>
+      <td>23</td>
+      <td>12</td>
+      <td>15</td>
+      <td>0</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>lo</th>
+      <th>9</th>
+      <td>31</td>
+      <td>11</td>
+      <td>8</td>
+      <td>0</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <td>542</td>
+      <td>33</td>
+      <td>25</td>
+      <td>1</td>
+      <td>601</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p><strong>2. set_epochs(name, pre, post)</strong></p>
+<p>Stash the the event table events and tags with a name and epoch interval boundaries.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p3_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="s2">&quot;ms1500&quot;</span><span class="p">,</span> <span class="n">p3_event_table</span><span class="p">,</span> <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Sanitizing event table data types for mkh5 epochs table ...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1503: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (392, b&#39;sub000&#39;, b&#39;sub000/dblock_4&#39;, 0, 26, 26, 2, 2, 0, 64, -187, 375, 250., 1, 0, 1, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 26, 26, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 26, -187, 375)
+  + &#34;skipping epoch {0}&#34;.format(e)
+</pre></div></div>
+</div>
+<p><strong>3. export_epochs(name, file_format=…)</strong></p>
+<p>Export the time-stamped, tagged, fixed-length segments of EEG data for analysis as HDF5, pandas HDF5 or feather</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p3_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000p3.ms1500.epochs.feather&quot;</span>
+<span class="n">p3_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;ms1500&quot;</span><span class="p">,</span> <span class="n">p3_epochs_f</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>analyze the epochs</strong></p>
+<ul class="simple">
+<li><p>Is there a difference between standard and targets?</p></li>
+<li><p>If so, is the effect the same for high and low tone standards and targers?</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p3_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">p3_epochs_f</span><span class="p">)</span>
+<span class="c1"># sanitize Epoch_idx for pandas index</span>
+<span class="n">p3_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p3_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+<span class="c1"># 26 cap + EOG and A2 channel labels</span>
+<span class="n">p3_chans</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">p3_epochs</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[MLRAHlr]\w{1,3}$&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n channels: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">p3_chans</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">channels:</span><span class="si">{</span><span class="n">p3_chans</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># lookup the epochs with stim events at time == 0) and clean artifact flags (= 0)</span>
+<span class="n">good_epoch_ids</span> <span class="o">=</span> <span class="n">p3_epochs</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;match_time == 0 and log_flags == 0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">epoch_id</span>
+
+<span class="c1"># select just the good epochs</span>
+<span class="n">p3_epochs</span> <span class="o">=</span> <span class="n">p3_epochs</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;epoch_id in @good_epoch_ids&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># check the good event counts after dropping artifacts</span>
+<span class="n">p3_good_events</span> <span class="o">=</span> <span class="n">p3_epochs</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;match_time == 0&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After excluding EEG artifacts&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">ccode</span><span class="p">,</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">stim</span><span class="p">,</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">accuracy</span><span class="p">,</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">acc_type</span><span class="p">,</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">tone</span><span class="p">,</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">bin</span><span class="p">,</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">log_evcodes</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="n">p3_good_events</span><span class="o">.</span><span class="n">log_flags</span>
+    <span class="p">],</span>
+    <span class="n">margins</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+n channels: 32
+channels:[&#39;lle&#39;, &#39;lhz&#39;, &#39;MiPf&#39;, &#39;LLPf&#39;, &#39;RLPf&#39;, &#39;LMPf&#39;, &#39;RMPf&#39;, &#39;LDFr&#39;, &#39;RDFr&#39;, &#39;LLFr&#39;, &#39;RLFr&#39;, &#39;LMFr&#39;, &#39;RMFr&#39;, &#39;LMCe&#39;, &#39;RMCe&#39;, &#39;MiCe&#39;, &#39;MiPa&#39;, &#39;LDCe&#39;, &#39;RDCe&#39;, &#39;LDPa&#39;, &#39;RDPa&#39;, &#39;LMOc&#39;, &#39;RMOc&#39;, &#39;LLTe&#39;, &#39;RLTe&#39;, &#39;LLOc&#39;, &#39;RLOc&#39;, &#39;MiOc&#39;, &#39;A2&#39;, &#39;HEOG&#39;, &#39;rle&#39;, &#39;rhz&#39;]
+After excluding EEG artifacts
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>log_flags</th>
+      <th>0</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>instrument</th>
+      <th>ccode</th>
+      <th>stim</th>
+      <th>accuracy</th>
+      <th>acc_type</th>
+      <th>tone</th>
+      <th>bin</th>
+      <th>log_evcodes</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">cal</th>
+      <th rowspan="4" valign="top">0</th>
+      <th rowspan="4" valign="top">cal</th>
+      <th rowspan="4" valign="top">cal</th>
+      <th rowspan="4" valign="top">cal</th>
+      <th rowspan="4" valign="top">cal</th>
+      <th rowspan="4" valign="top">0</th>
+      <th>1</th>
+      <td>49</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>56</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">eeg</th>
+      <th rowspan="4" valign="top">1</th>
+      <th rowspan="2" valign="top">standard</th>
+      <th rowspan="2" valign="top">correct</th>
+      <th rowspan="2" valign="top">cr</th>
+      <th>hi</th>
+      <th>10</th>
+      <th>20</th>
+      <td>142</td>
+      <td>142</td>
+    </tr>
+    <tr>
+      <th>lo</th>
+      <th>4</th>
+      <th>10</th>
+      <td>138</td>
+      <td>138</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">target</th>
+      <th rowspan="2" valign="top">correct</th>
+      <th rowspan="2" valign="top">hit</th>
+      <th>hi</th>
+      <th>3</th>
+      <th>11</th>
+      <td>23</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>lo</th>
+      <th>9</th>
+      <th>21</th>
+      <td>31</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <td>542</td>
+      <td>542</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># for illustration ...</span>
+<span class="n">midline</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MiPf&quot;</span><span class="p">,</span> <span class="s2">&quot;MiCe&quot;</span><span class="p">,</span> <span class="s2">&quot;MiPa&quot;</span><span class="p">,</span> <span class="s2">&quot;MiOc&quot;</span><span class="p">]</span>
+
+<span class="c1"># select COLUMNS: epoch index, timestamps, event tags, and midline EEG columns</span>
+<span class="n">midline_epochs</span> <span class="o">=</span> <span class="n">p3_epochs</span><span class="p">[[</span><span class="s2">&quot;epoch_id&quot;</span><span class="p">,</span> <span class="s2">&quot;match_time&quot;</span><span class="p">,</span> <span class="s2">&quot;stim&quot;</span><span class="p">,</span> <span class="s2">&quot;tone&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">midline</span><span class="p">]</span>
+
+<span class="c1"># select ROWS: use tag values to pick and choose</span>
+<span class="n">midline_epochs</span> <span class="o">=</span> <span class="n">midline_epochs</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;stim in [&#39;standard&#39;, &#39;target&#39;]&quot;</span><span class="p">)</span>
+
+<span class="c1"># center each channel</span>
+<span class="n">midline_epochs</span> <span class="o">=</span> <span class="n">epf</span><span class="o">.</span><span class="n">center_eeg</span><span class="p">(</span>
+    <span class="n">midline_epochs</span><span class="p">,</span>
+    <span class="n">midline</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">epoch_id</span><span class="o">=</span><span class="s2">&quot;epoch_id&quot;</span><span class="p">,</span>
+    <span class="n">time</span><span class="o">=</span><span class="s2">&quot;match_time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>time-domain average midline ERPs</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># compute domain average by stim type</span>
+<span class="n">midline_erps</span> <span class="o">=</span> <span class="n">midline_epochs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;stim&quot;</span><span class="p">,</span> <span class="s2">&quot;match_time&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># plot</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">stim</span><span class="p">),</span> <span class="n">erp</span> <span class="ow">in</span> <span class="n">midline_erps</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;stim&#39;</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">axi</span><span class="p">,</span> <span class="n">chan</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">midline</span><span class="p">):</span>
+
+        <span class="c1"># mark onset</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">axi</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="n">axi</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">erp</span><span class="p">[</span><span class="s2">&quot;match_time&quot;</span><span class="p">],</span>
+            <span class="n">erp</span><span class="p">[</span><span class="n">chan</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># channel</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">axi</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">chan</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Auditory oddball P300&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/p3_18_0.png" src="_images/p3_18_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># average by stim type</span>
+<span class="n">midline_erps</span> <span class="o">=</span> <span class="n">midline_epochs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;stim&quot;</span><span class="p">,</span> <span class="s2">&quot;tone&quot;</span><span class="p">,</span> <span class="s2">&quot;match_time&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># plot</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">stim</span><span class="p">,</span> <span class="n">tone</span><span class="p">),</span> <span class="n">erp</span> <span class="ow">in</span> <span class="n">midline_erps</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;stim&#39;</span><span class="p">,</span> <span class="s2">&quot;tone&quot;</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">axi</span><span class="p">,</span> <span class="n">chan</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">midline</span><span class="p">):</span>
+
+        <span class="c1"># mark onset</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">axi</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="n">axi</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">erp</span><span class="p">[</span><span class="s2">&quot;match_time&quot;</span><span class="p">],</span>
+            <span class="n">erp</span><span class="p">[</span><span class="n">chan</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stim</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">tone</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># channel</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">axi</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">chan</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Auditory oddball P300&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/p3_19_0.png" src="_images/p3_19_0.png" />
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background: EEG, events, and epochs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p50.html">P50 Paired-click</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">P3 Auditory oddball</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wr.html">Word repetition memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pm.html">Picture memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pm.html#Appendix">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resting_eeg.html">Resting EEG</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="p50.html"
+                        title="previous chapter">P50 Paired-click</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wr.html"
+                        title="next chapter">Word repetition memory</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="wr.html" title="Word repetition memory"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="p50.html" title="P50 Paired-click"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">P3 Auditory oddball</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Thomas P. Urbach.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

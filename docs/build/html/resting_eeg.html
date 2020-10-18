@@ -1,0 +1,1864 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resting EEG &#8212; mkpy_data_examples 0.0.5 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Picture memory" href="pm.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="pm.html" title="Picture memory"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Resting EEG</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Resting-EEG">
+<h1>Resting EEG<a class="headerlink" href="#Resting-EEG" title="Permalink to this headline">¶</a></h1>
+<p>Design:</p>
+<ul class="simple">
+<li><p>3 minute recording</p></li>
+<li><p>eyes open vs. eyes closed</p></li>
+</ul>
+<p>Data format: <code class="docutils literal notranslate"><span class="pre">mkpy.mkh5</span></code> HDF5</p>
+<p>The mkpy.mkh5 data file <code class="docutils literal notranslate"><span class="pre">s000eeg.h5</span></code> is a single HDF5 file with four HDF5 groups, each group has one HDF5 dataset, <em>dblock_0</em>, the uninterrupted EEG recording.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="nb">open</span>
+<span class="o">/</span><span class="n">closed</span>
+<span class="o">/</span><span class="n">cals_AD_before</span>
+<span class="o">/</span><span class="n">cals_10uV_after</span>
+</pre></div>
+</div>
+<p>In longer experimental sessions where the recording is paused from time to time, the data group spans multiple, sequentially labeled data blocks, _dblock_0, dblock_1, … <span class="math">\dblock</span><em>n</em>, each an uninterrupted recording.</p>
+<p>The A/D EEG recordings are converted to a <span class="math notranslate nohighlight">\(\mu\mathrm{V}\)</span> scale via the (mean) <span class="math notranslate nohighlight">\(10\mu\mathrm{V}\)</span> square wave. The calibration pulses are recorded in <code class="docutils literal notranslate"><span class="pre">.crw</span></code>, and <code class="docutils literal notranslate"><span class="pre">.log</span></code> files are read and converted to HDF5 the same way as EEG data files. Calibration data are typically recorded for each experimental session, so by default each data group is scanned for a dblock with calibration pulses. However since these EEG recordings are from the same session, a single calibration data can be
+re-used for the different data groups as shown below.</p>
+<p><strong>Example 1</strong> shows how to read the read the HDF5 header and EEG recordings into a pandas.DataFrame with mkpy.</p>
+<p><strong>Example 2</strong> shows the contents of the data block headers including sensor location coordinates.</p>
+<p><strong>Example 3</strong> shows how to read the HDF5 dblock header and numpy structured array EEG data directly with h5py.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">mkpy</span>
+<span class="kn">import</span> <span class="nn">spudtr</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">mkpy</span> <span class="kn">import</span> <span class="n">mkh5</span>
+<span class="kn">from</span> <span class="nn">spudtr</span> <span class="kn">import</span> <span class="n">epf</span>
+
+<span class="c1"># path wrangling for nbsphinx</span>
+<span class="k">if</span> <span class="s2">&quot;MDE_HOME&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">MDE_HOME</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MDE_HOME&quot;</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">conf</span> <span class="kn">import</span> <span class="n">MDE_HOME</span>
+<span class="n">DOCS_DATA</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;docs/_data&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CONDA_DEFAULT_ENV&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="p">,</span> <span class="n">pd</span><span class="p">,</span> <span class="n">mkpy</span><span class="p">,</span> <span class="n">spudtr</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pkg</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">pkg</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="n">pkg</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+spudtrF_test
+3.7.7 (default, Mar 26 2020, 15:48:22)
+[GCC 7.3.0]
+numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/numpy/__init__.py
+pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/pandas/__init__.py
+mkpy 0.2.4.dev4 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/__init__.py
+spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/spudtr/__init__.py
+</pre></div></div>
+</div>
+<p><strong>Convert and calibrate the ``.crw``, ``.log`` to mkpy.mkh5 format HDF5</strong></p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>only A/D cals are needed for calibration, the 10 uV copy is just for illustration.</p></li>
+<li><p>the negative event code warning is expected and signals the the pause mark at the end of the recording</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1. set the fileHDF5 file and load the EEG data</span>
+<span class="n">eeg_h5_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000eeg.h5&quot;</span>
+<span class="n">eeg_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">eeg_h5_f</span><span class="p">)</span>  <span class="c1"># wipe previous</span>
+<span class="n">eeg_h5</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>  <span class="c1"># wipe previous</span>
+
+<span class="k">for</span> <span class="n">h5_group</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;closed&quot;</span><span class="p">]:</span>
+    <span class="n">crw</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;mkdig/sub000r</span><span class="si">{</span><span class="n">h5_group</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.crw&quot;</span>    <span class="c1"># resting EEG eyes open</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;mkdig/sub000r</span><span class="si">{</span><span class="n">h5_group</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.x.log&quot;</span>  <span class="c1"># events</span>
+    <span class="n">yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;mkpy/sub000r</span><span class="si">{</span><span class="n">h5_group</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.yhdr&quot;</span>   <span class="c1"># extra header info</span>
+
+    <span class="c1"># eyes open, closed EEG data sets</span>
+    <span class="n">eeg_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="n">h5_group</span><span class="p">,</span> <span class="n">crw</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">yhdr</span><span class="p">)</span>
+
+<span class="c1"># 2. set calibration pulse parameters and files</span>
+<span class="n">pts</span><span class="p">,</span> <span class="n">pulse</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">ccode</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="n">cals_crw</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000c.crw&quot;</span>
+<span class="n">cals_log</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000c.x.log&quot;</span>
+<span class="n">cals_yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/sub000c.yhdr&quot;</span>
+
+<span class="c1">#  A/D square wave cal data are needed for calibration</span>
+<span class="n">eeg_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="s2">&quot;cals_AD_before&quot;</span><span class="p">,</span> <span class="n">cals_crw</span><span class="p">,</span> <span class="n">cals_log</span><span class="p">,</span> <span class="n">cals_yhdr</span><span class="p">)</span>
+
+<span class="c1"># this copy is scaled as if EEG data for illustration only</span>
+<span class="n">eeg_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="s2">&quot;cals_10uV_after&quot;</span><span class="p">,</span> <span class="n">cals_crw</span><span class="p">,</span> <span class="n">cals_log</span><span class="p">,</span> <span class="n">cals_yhdr</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">h5_group</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="s2">&quot;cals_10uV_after&quot;</span><span class="p">]:</span>
+
+    <span class="n">eeg_h5</span><span class="o">.</span><span class="n">calibrate_mkdata</span><span class="p">(</span>
+        <span class="n">h5_group</span><span class="p">,</span>  <span class="c1"># data group to calibrate with these cal pulses</span>
+        <span class="n">n_points</span><span class="o">=</span><span class="n">pts</span><span class="p">,</span>  <span class="c1"># pts to average</span>
+        <span class="n">cal_size</span><span class="o">=</span><span class="n">pulse</span><span class="p">,</span>  <span class="c1"># uV</span>
+        <span class="n">lo_cursor</span><span class="o">=</span><span class="n">lo</span><span class="p">,</span>  <span class="c1"># lo_cursor ms</span>
+        <span class="n">hi_cursor</span><span class="o">=</span><span class="n">hi</span><span class="p">,</span>  <span class="c1"># hi_cursor ms</span>
+        <span class="n">cal_ccode</span><span class="o">=</span><span class="n">ccode</span><span class="p">,</span>  <span class="c1"># condition code</span>
+        <span class="n">use_cals</span><span class="o">=</span><span class="s2">&quot;cals_AD_before&quot;</span>  <span class="c1"># alternate data group to find calibration pulses</span>
+    <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;These are the HDF5 datasets in the HDF5 file&quot;</span><span class="p">)</span>
+<span class="n">dblock_paths</span> <span class="o">=</span> <span class="n">eeg_h5</span><span class="o">.</span><span class="n">dblock_paths</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">dblock_paths</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Found cals in /cals_AD_before/dblock_0
+Calibrating block /open/dblock_0 of 1: (45568,)
+Found cals in /cals_AD_before/dblock_0
+Calibrating block /closed/dblock_0 of 1: (45568,)
+Found cals in /cals_AD_before/dblock_0
+Calibrating block /cals_10uV_after/dblock_0 of 1: (28416,)
+
+
+
+These are the HDF5 datasets in the HDF5 file
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;cals_10uV_after/dblock_0&#39;,
+ &#39;cals_AD_before/dblock_0&#39;,
+ &#39;closed/dblock_0&#39;,
+ &#39;open/dblock_0&#39;]
+</pre></div></div>
+</div>
+<p><strong>Example 1. importing mkh5 EEG recordings into a pandas.DataFrame with mkpy</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dblocks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">hdrs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">dbp</span> <span class="ow">in</span> <span class="n">dblock_paths</span><span class="p">:</span>
+
+    <span class="c1"># hdr is a large dict() that includes sample rate and sensor locations among other things</span>
+    <span class="c1"># dblock is a 1-D numpy structured array (named numeric dtypes): samples (rows) x data streams (columns)</span>
+    <span class="n">hdr</span><span class="p">,</span> <span class="n">dblock</span> <span class="o">=</span> <span class="n">eeg_h5</span><span class="o">.</span><span class="n">get_dblock</span><span class="p">(</span><span class="n">dbp</span><span class="p">)</span>
+
+    <span class="c1"># sanity check the fully qualified HDF5 root path /group/dblock_0</span>
+    <span class="c1"># as logged in the header when the data were converted</span>
+    <span class="k">assert</span> <span class="n">dbp</span> <span class="o">==</span> <span class="n">hdr</span><span class="p">[</span><span class="s2">&quot;h5_dataset&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="c1"># convert to dataframe and track the dblock sequence</span>
+    <span class="n">dblock</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dblock</span><span class="p">)</span>
+    <span class="n">dblock</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;dblock_path&quot;</span><span class="p">,</span> <span class="n">dbp</span><span class="p">)</span>
+
+    <span class="c1">#(optional) grab useful info from the header</span>
+    <span class="n">dblock</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;sub_id&quot;</span><span class="p">,</span> <span class="n">hdr</span><span class="p">[</span><span class="s2">&quot;runsheet&quot;</span><span class="p">][</span><span class="s2">&quot;subid&quot;</span><span class="p">])</span>
+
+    <span class="c1"># capture</span>
+    <span class="n">dblocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dblock</span><span class="p">)</span>
+    <span class="n">hdrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hdr</span><span class="p">)</span>
+
+<span class="n">eeg_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dblocks</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">eeg_pd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sub_id</th>
+      <th>dblock_path</th>
+      <th>dblock_ticks</th>
+      <th>crw_ticks</th>
+      <th>raw_evcodes</th>
+      <th>log_evcodes</th>
+      <th>log_ccodes</th>
+      <th>log_flags</th>
+      <th>pygarv</th>
+      <th>lle</th>
+      <th>...</th>
+      <th>RMOc</th>
+      <th>LLTe</th>
+      <th>RLTe</th>
+      <th>LLOc</th>
+      <th>RLOc</th>
+      <th>MiOc</th>
+      <th>A2</th>
+      <th>HEOG</th>
+      <th>rle</th>
+      <th>rhz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>demonstration</td>
+      <td>cals_10uV_after/dblock_0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>-0.737793</td>
+      <td>0.251221</td>
+      <td>0.493408</td>
+      <td>-0.248413</td>
+      <td>-0.245972</td>
+      <td>-0.242920</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>demonstration</td>
+      <td>cals_10uV_after/dblock_0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>-1.229492</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-0.248413</td>
+      <td>-0.245972</td>
+      <td>-0.242920</td>
+      <td>-0.492188</td>
+      <td>0.000000</td>
+      <td>-0.487549</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>demonstration</td>
+      <td>cals_10uV_after/dblock_0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>-0.245972</td>
+      <td>0.502441</td>
+      <td>0.246704</td>
+      <td>0.000000</td>
+      <td>-0.245972</td>
+      <td>-0.242920</td>
+      <td>0.000000</td>
+      <td>0.489502</td>
+      <td>0.000000</td>
+      <td>0.485840</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>demonstration</td>
+      <td>cals_10uV_after/dblock_0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.246704</td>
+      <td>0.248413</td>
+      <td>-0.245972</td>
+      <td>-0.242920</td>
+      <td>-0.246094</td>
+      <td>0.244751</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>demonstration</td>
+      <td>cals_10uV_after/dblock_0</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>-0.245972</td>
+      <td>0.251221</td>
+      <td>0.493408</td>
+      <td>0.000000</td>
+      <td>-0.245972</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.489502</td>
+      <td>0.000000</td>
+      <td>0.485840</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>45563</th>
+      <td>demonstration</td>
+      <td>open/dblock_0</td>
+      <td>45563</td>
+      <td>45563</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-5.105469</td>
+      <td>...</td>
+      <td>7.132812</td>
+      <td>0.753906</td>
+      <td>-2.712891</td>
+      <td>7.949219</td>
+      <td>-1.475586</td>
+      <td>7.289062</td>
+      <td>-2.214844</td>
+      <td>-15.906250</td>
+      <td>10.242188</td>
+      <td>-0.485840</td>
+    </tr>
+    <tr>
+      <th>45564</th>
+      <td>demonstration</td>
+      <td>open/dblock_0</td>
+      <td>45564</td>
+      <td>45564</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6.808594</td>
+      <td>...</td>
+      <td>3.197266</td>
+      <td>-4.523438</td>
+      <td>-8.390625</td>
+      <td>6.210938</td>
+      <td>-5.656250</td>
+      <td>5.101562</td>
+      <td>-9.593750</td>
+      <td>-23.000000</td>
+      <td>1.950195</td>
+      <td>-5.343750</td>
+    </tr>
+    <tr>
+      <th>45565</th>
+      <td>demonstration</td>
+      <td>open/dblock_0</td>
+      <td>45565</td>
+      <td>45565</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11.914062</td>
+      <td>...</td>
+      <td>5.902344</td>
+      <td>0.251221</td>
+      <td>-4.687500</td>
+      <td>10.187500</td>
+      <td>-3.197266</td>
+      <td>8.015625</td>
+      <td>-4.183594</td>
+      <td>-31.328125</td>
+      <td>6.339844</td>
+      <td>-6.316406</td>
+    </tr>
+    <tr>
+      <th>45566</th>
+      <td>demonstration</td>
+      <td>open/dblock_0</td>
+      <td>45566</td>
+      <td>45566</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4.539062</td>
+      <td>...</td>
+      <td>4.671875</td>
+      <td>8.039062</td>
+      <td>-6.414062</td>
+      <td>7.949219</td>
+      <td>-2.705078</td>
+      <td>8.742188</td>
+      <td>-1.722656</td>
+      <td>-22.265625</td>
+      <td>17.062500</td>
+      <td>-0.971680</td>
+    </tr>
+    <tr>
+      <th>45567</th>
+      <td>demonstration</td>
+      <td>open/dblock_0</td>
+      <td>45567</td>
+      <td>45567</td>
+      <td>-16384</td>
+      <td>-16384</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.945312</td>
+      <td>...</td>
+      <td>4.425781</td>
+      <td>7.285156</td>
+      <td>-7.894531</td>
+      <td>6.210938</td>
+      <td>0.491943</td>
+      <td>10.687500</td>
+      <td>-5.906250</td>
+      <td>-26.187500</td>
+      <td>17.546875</td>
+      <td>-1.457031</td>
+    </tr>
+  </tbody>
+</table>
+<p>147968 rows × 41 columns</p>
+</div></div>
+</div>
+<p>Note the applying the calibration routine to the A/D calibration pulses scales the to <span class="math notranslate nohighlight">\(10 \mu\mathrm{V}\)</span>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#import matplotlib as mpl</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}):</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">dblock_path</span><span class="p">,</span> <span class="n">dblock_data</span> <span class="ow">in</span> <span class="n">eeg_pd</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;dblock_path&quot;</span><span class="p">):</span>
+        <span class="n">dblock_data</span><span class="p">[</span><span class="s2">&quot;MiPa&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">dblock_path</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span> <span class="s2">&quot;Samples&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;$\mu\mathrm</span><span class="si">{V}</span><span class="s2">$&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;EEG recording 500 samples&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/resting_eeg_7_0.png" src="_images/resting_eeg_7_0.png" />
+</div>
+</div>
+<p><strong>Example 2: dblock headers</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">eeg_hdrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">hdr</span><span class="p">[</span><span class="s2">&quot;h5_dataset&quot;</span><span class="p">],</span> <span class="n">hdr</span><span class="p">)</span> <span class="k">for</span> <span class="n">hdr</span> <span class="ow">in</span> <span class="n">hdrs</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">eeg_hdrs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">eeg_hdrs</span><span class="p">[</span><span class="s2">&quot;/closed/dblock_0&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#39;, &#39;/closed/dblock_0&#39;, &#39;/open/dblock_0&#39;])
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;runsheet&#39;: {&#39;name&#39;: &#39;runsheet&#39;,
+  &#39;experiment&#39;: &#39;resting EEG eyes closed&#39;,
+  &#39;subid&#39;: &#39;demonstration&#39;,
+  &#39;date&#39;: &#39;08-22-2018&#39;,
+  &#39;hand&#39;: &#39;LRRL&#39;,
+  &#39;license&#39;: &#39;Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) 4.0&#39;,
+  &#39;notes&#39;: &#39;These EEG recordings were made for instructional purposes and are not human subjects research data. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode&#39;},
+ &#39;apparatus&#39;: {&#39;name&#39;: &#39;apparatus&#39;,
+  &#39;mne_montage_name&#39;: &#39;26chan&#39;,
+  &#39;common_ref&#39;: &#39;A1&#39;,
+  &#39;gain20K&#39;: 20000,
+  &#39;gain10K&#39;: 10000,
+  &#39;lp&#39;: 100.0,
+  &#39;hp&#39;: 0.01,
+  &#39;streams&#39;: {&#39;lle&#39;: {&#39;pos&#39;: &#39;lle&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 10000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eog&#39;},
+   &#39;lhz&#39;: {&#39;pos&#39;: &#39;lhz&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 10000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eog&#39;},
+   &#39;MiPf&#39;: {&#39;pos&#39;: &#39;MiPf&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 10000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LLPf&#39;: {&#39;pos&#39;: &#39;LLPf&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 10000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LLFr&#39;: {&#39;pos&#39;: &#39;LLFr&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LLTe&#39;: {&#39;pos&#39;: &#39;LLTe&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LLOc&#39;: {&#39;pos&#39;: &#39;LLOc&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;MiOc&#39;: {&#39;pos&#39;: &#39;MiOc&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LDFr&#39;: {&#39;pos&#39;: &#39;LDFr&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LDCe&#39;: {&#39;pos&#39;: &#39;LDCe&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LDPa&#39;: {&#39;pos&#39;: &#39;LDPa&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LMPf&#39;: {&#39;pos&#39;: &#39;LMPf&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LMFr&#39;: {&#39;pos&#39;: &#39;LMFr&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LMCe&#39;: {&#39;pos&#39;: &#39;LMCe&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;LMOc&#39;: {&#39;pos&#39;: &#39;LMOc&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;MiCe&#39;: {&#39;pos&#39;: &#39;MiCe&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;MiPa&#39;: {&#39;pos&#39;: &#39;MiPa&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;rle&#39;: {&#39;pos&#39;: &#39;rle&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eog&#39;},
+   &#39;rhz&#39;: {&#39;pos&#39;: &#39;rhz&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eog&#39;},
+   &#39;A2&#39;: {&#39;pos&#39;: &#39;A2&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RLPf&#39;: {&#39;pos&#39;: &#39;RLPf&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RLFr&#39;: {&#39;pos&#39;: &#39;RLFr&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RLTe&#39;: {&#39;pos&#39;: &#39;RLTe&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RLOc&#39;: {&#39;pos&#39;: &#39;RLOc&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RDFr&#39;: {&#39;pos&#39;: &#39;RDFr&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RDCe&#39;: {&#39;pos&#39;: &#39;RDCe&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RDPa&#39;: {&#39;pos&#39;: &#39;RDPa&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RMPf&#39;: {&#39;pos&#39;: &#39;RMPf&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RMFr&#39;: {&#39;pos&#39;: &#39;RMFr&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RMCe&#39;: {&#39;pos&#39;: &#39;RMCe&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;RMOc&#39;: {&#39;pos&#39;: &#39;RMOc&#39;,
+    &#39;neg&#39;: &#39;A1&#39;,
+    &#39;gain&#39;: 20000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eeg&#39;},
+   &#39;HEOG&#39;: {&#39;pos&#39;: &#39;lhz&#39;,
+    &#39;neg&#39;: &#39;rhz&#39;,
+    &#39;gain&#39;: 10000,
+    &#39;hphz&#39;: 0.01,
+    &#39;lphz&#39;: 100.0,
+    &#39;mne_type&#39;: &#39;eog&#39;}},
+  &#39;space&#39;: {&#39;coordinates&#39;: &#39;cartesian&#39;,
+   &#39;distance_unit&#39;: &#39;cm&#39;,
+   &#39;orientation&#39;: &#39;ras&#39;},
+  &#39;fiducials&#39;: {&#39;lpa&#39;: {&#39;x&#39;: -6.9, &#39;y&#39;: 0.0, &#39;z&#39;: 0.0},
+   &#39;nasion&#39;: {&#39;x&#39;: 0.0, &#39;y&#39;: 8.5, &#39;z&#39;: 0.0},
+   &#39;rpa&#39;: {&#39;x&#39;: 6.9, &#39;y&#39;: 0.0, &#39;z&#39;: 0.0}},
+  &#39;sensors&#39;: {&#39;A1&#39;: {&#39;x&#39;: -6.2, &#39;y&#39;: -3.4, &#39;z&#39;: -0.1},
+   &#39;A2&#39;: {&#39;x&#39;: 6.2, &#39;y&#39;: -3.4, &#39;z&#39;: -0.1},
+   &#39;GND&#39;: {&#39;x&#39;: 0.0, &#39;y&#39;: 9.6, &#39;z&#39;: 8.5},
+   &#39;LDCe&#39;: {&#39;x&#39;: -7.0, &#39;y&#39;: 0.6, &#39;z&#39;: 10.2},
+   &#39;LDFr&#39;: {&#39;x&#39;: -5.7, &#39;y&#39;: 4.8, &#39;z&#39;: 10.0},
+   &#39;LDPa&#39;: {&#39;x&#39;: -5.8, &#39;y&#39;: -3.3, &#39;z&#39;: 10.1},
+   &#39;LLFr&#39;: {&#39;x&#39;: -7.7, &#39;y&#39;: 2.5, &#39;z&#39;: 5.1},
+   &#39;LLOc&#39;: {&#39;x&#39;: -5.0, &#39;y&#39;: -6.6, &#39;z&#39;: 6.1},
+   &#39;LLPf&#39;: {&#39;x&#39;: -5.7, &#39;y&#39;: 7.2, &#39;z&#39;: 5.0},
+   &#39;LLTe&#39;: {&#39;x&#39;: -7.8, &#39;y&#39;: -2.2, &#39;z&#39;: 5.5},
+   &#39;LMCe&#39;: {&#39;x&#39;: -3.9, &#39;y&#39;: -0.3, &#39;z&#39;: 13.3},
+   &#39;LMFr&#39;: {&#39;x&#39;: -2.7, &#39;y&#39;: 4.3, &#39;z&#39;: 13.2},
+   &#39;LMOc&#39;: {&#39;x&#39;: -2.3, &#39;y&#39;: -5.8, &#39;z&#39;: 10.2},
+   &#39;LMPf&#39;: {&#39;x&#39;: -2.3, &#39;y&#39;: 8.2, &#39;z&#39;: 9.9},
+   &#39;MiCe&#39;: {&#39;x&#39;: 0.0, &#39;y&#39;: 1.7, &#39;z&#39;: 14.7},
+   &#39;MiOc&#39;: {&#39;x&#39;: 0.0, &#39;y&#39;: -8.3, &#39;z&#39;: 6.0},
+   &#39;MiPa&#39;: {&#39;x&#39;: 0.0, &#39;y&#39;: -2.7, &#39;z&#39;: 13.2},
+   &#39;MiPf&#39;: {&#39;x&#39;: 0.0, &#39;y&#39;: 9.8, &#39;z&#39;: 5.6},
+   &#39;RDCe&#39;: {&#39;x&#39;: 7.0, &#39;y&#39;: 0.6, &#39;z&#39;: 10.2},
+   &#39;RDFr&#39;: {&#39;x&#39;: 5.7, &#39;y&#39;: 4.8, &#39;z&#39;: 10.0},
+   &#39;RDPa&#39;: {&#39;x&#39;: 5.8, &#39;y&#39;: -3.3, &#39;z&#39;: 10.1},
+   &#39;RLFr&#39;: {&#39;x&#39;: 7.7, &#39;y&#39;: 2.5, &#39;z&#39;: 5.1},
+   &#39;RLOc&#39;: {&#39;x&#39;: 5.0, &#39;y&#39;: -6.6, &#39;z&#39;: 6.1},
+   &#39;RLPf&#39;: {&#39;x&#39;: 5.7, &#39;y&#39;: 7.2, &#39;z&#39;: 5.0},
+   &#39;RLTe&#39;: {&#39;x&#39;: 7.8, &#39;y&#39;: -2.2, &#39;z&#39;: 5.5},
+   &#39;RMCe&#39;: {&#39;x&#39;: 3.9, &#39;y&#39;: -0.3, &#39;z&#39;: 13.3},
+   &#39;RMFr&#39;: {&#39;x&#39;: 2.7, &#39;y&#39;: 4.3, &#39;z&#39;: 13.2},
+   &#39;RMOc&#39;: {&#39;x&#39;: 2.3, &#39;y&#39;: -5.8, &#39;z&#39;: 10.2},
+   &#39;RMPf&#39;: {&#39;x&#39;: 2.3, &#39;y&#39;: 8.2, &#39;z&#39;: 9.9},
+   &#39;lhz&#39;: {&#39;x&#39;: -6.7, &#39;y&#39;: 5.5, &#39;z&#39;: 1.1},
+   &#39;lle&#39;: {&#39;x&#39;: -4.5, &#39;y&#39;: 7.7, &#39;z&#39;: -1.7},
+   &#39;rhz&#39;: {&#39;x&#39;: 6.7, &#39;y&#39;: 5.5, &#39;z&#39;: 1.1},
+   &#39;rle&#39;: {&#39;x&#39;: 4.5, &#39;y&#39;: 7.7, &#39;z&#39;: -1.7}}},
+ &#39;yhdr_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkpy/sub000rc.yhdr&#39;,
+ &#39;yhdr_file_md5&#39;: &#39;ca100c4a6e66072cc75f84c1f6373ebb&#39;,
+ &#39;streams&#39;: {&#39;dblock_ticks&#39;: {&#39;jdx&#39;: 0,
+   &#39;source&#39;: &#39;t_dblock_ticks&#39;,
+   &#39;name&#39;: &#39;dblock_ticks&#39;,
+   &#39;dt&#39;: &#39;&lt;u4&#39;},
+  &#39;crw_ticks&#39;: {&#39;jdx&#39;: 1,
+   &#39;source&#39;: &#39;t_crw_ticks&#39;,
+   &#39;name&#39;: &#39;crw_ticks&#39;,
+   &#39;dt&#39;: &#39;&lt;u4&#39;},
+  &#39;raw_evcodes&#39;: {&#39;jdx&#39;: 2,
+   &#39;source&#39;: &#39;t_raw_evcodes&#39;,
+   &#39;name&#39;: &#39;raw_evcodes&#39;,
+   &#39;dt&#39;: &#39;&lt;i2&#39;},
+  &#39;log_evcodes&#39;: {&#39;jdx&#39;: 3,
+   &#39;source&#39;: &#39;t_log_evcodes&#39;,
+   &#39;name&#39;: &#39;log_evcodes&#39;,
+   &#39;dt&#39;: &#39;&lt;i2&#39;},
+  &#39;log_ccodes&#39;: {&#39;jdx&#39;: 4,
+   &#39;source&#39;: &#39;t_log_ccodes&#39;,
+   &#39;name&#39;: &#39;log_ccodes&#39;,
+   &#39;dt&#39;: &#39;&lt;u2&#39;},
+  &#39;log_flags&#39;: {&#39;jdx&#39;: 5,
+   &#39;source&#39;: &#39;t_log_flags&#39;,
+   &#39;name&#39;: &#39;log_flags&#39;,
+   &#39;dt&#39;: &#39;&lt;u2&#39;},
+  &#39;pygarv&#39;: {&#39;jdx&#39;: 6, &#39;source&#39;: &#39;t_pygarv&#39;, &#39;name&#39;: &#39;pygarv&#39;, &#39;dt&#39;: &#39;&lt;u8&#39;},
+  &#39;lle&#39;: {&#39;jdx&#39;: 7,
+   &#39;source&#39;: &#39;dig_chan_0000&#39;,
+   &#39;name&#39;: &#39;lle&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 17.631677600749764,
+    &#39;var&#39;: 0.03942594087426394,
+    &#39;median&#39;: 17.636363636363637,
+    &#39;iqr&#39;: 0.2727272727272734,
+    &#39;n_cals&#39;: 194,
+    &#39;n_trimmed&#39;: 15}},
+  &#39;lhz&#39;: {&#39;jdx&#39;: 8,
+   &#39;source&#39;: &#39;dig_chan_0001&#39;,
+   &#39;name&#39;: &#39;lhz&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 20.27537511032657,
+    &#39;var&#39;: 0.08416212961239057,
+    &#39;median&#39;: 20.272727272727273,
+    &#39;iqr&#39;: 0.4545454545454568,
+    &#39;n_cals&#39;: 206,
+    &#39;n_trimmed&#39;: 3}},
+  &#39;MiPf&#39;: {&#39;jdx&#39;: 9,
+   &#39;source&#39;: &#39;dig_chan_0002&#39;,
+   &#39;name&#39;: &#39;MiPf&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 20.001350135013503,
+    &#39;var&#39;: 0.05846311453827659,
+    &#39;median&#39;: 20.0,
+    &#39;iqr&#39;: 0.3636363636363633,
+    &#39;n_cals&#39;: 202,
+    &#39;n_trimmed&#39;: 7}},
+  &#39;LLPf&#39;: {&#39;jdx&#39;: 10,
+   &#39;source&#39;: &#39;dig_chan_0003&#39;,
+   &#39;name&#39;: &#39;LLPf&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 20.743924392439247,
+    &#39;var&#39;: 0.08715419246695155,
+    &#39;median&#39;: 20.72727272727273,
+    &#39;iqr&#39;: 0.45454545454545325,
+    &#39;n_cals&#39;: 202,
+    &#39;n_trimmed&#39;: 7}},
+  &#39;RLPf&#39;: {&#39;jdx&#39;: 11,
+   &#39;source&#39;: &#39;dig_chan_0004&#39;,
+   &#39;name&#39;: &#39;RLPf&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 20.549586776859506,
+    &#39;var&#39;: 0.065138613786247,
+    &#39;median&#39;: 20.545454545454547,
+    &#39;iqr&#39;: 0.3636363636363633,
+    &#39;n_cals&#39;: 198,
+    &#39;n_trimmed&#39;: 11}},
+  &#39;LMPf&#39;: {&#39;jdx&#39;: 12,
+   &#39;source&#39;: &#39;dig_chan_0005&#39;,
+   &#39;name&#39;: &#39;LMPf&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.02673796791444,
+    &#39;var&#39;: 0.26642168778060565,
+    &#39;median&#39;: 40.0,
+    &#39;iqr&#39;: 0.8181818181818201,
+    &#39;n_cals&#39;: 204,
+    &#39;n_trimmed&#39;: 5}},
+  &#39;RMPf&#39;: {&#39;jdx&#39;: 13,
+   &#39;source&#39;: &#39;dig_chan_0006&#39;,
+   &#39;name&#39;: &#39;RMPf&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 39.533976124885214,
+    &#39;var&#39;: 0.228059246779507,
+    &#39;median&#39;: 39.54545454545455,
+    &#39;iqr&#39;: 0.7272727272727266,
+    &#39;n_cals&#39;: 198,
+    &#39;n_trimmed&#39;: 11}},
+  &#39;LDFr&#39;: {&#39;jdx&#39;: 14,
+   &#39;source&#39;: &#39;dig_chan_0007&#39;,
+   &#39;name&#39;: &#39;LDFr&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.71219735038831,
+    &#39;var&#39;: 0.13046752930731983,
+    &#39;median&#39;: 40.727272727272734,
+    &#39;iqr&#39;: 0.5454545454545396,
+    &#39;n_cals&#39;: 199,
+    &#39;n_trimmed&#39;: 10}},
+  &#39;RDFr&#39;: {&#39;jdx&#39;: 15,
+   &#39;source&#39;: &#39;dig_chan_0008&#39;,
+   &#39;name&#39;: &#39;RDFr&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.36138613861387,
+    &#39;var&#39;: 0.19020032066212905,
+    &#39;median&#39;: 40.36363636363637,
+    &#39;iqr&#39;: 0.6363636363636402,
+    &#39;n_cals&#39;: 202,
+    &#39;n_trimmed&#39;: 7}},
+  &#39;LLFr&#39;: {&#39;jdx&#39;: 16,
+   &#39;source&#39;: &#39;dig_chan_0009&#39;,
+   &#39;name&#39;: &#39;LLFr&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 39.88578088578089,
+    &#39;var&#39;: 0.12872131753250624,
+    &#39;median&#39;: 39.909090909090914,
+    &#39;iqr&#39;: 0.5454545454545467,
+    &#39;n_cals&#39;: 195,
+    &#39;n_trimmed&#39;: 14}},
+  &#39;RLFr&#39;: {&#39;jdx&#39;: 17,
+   &#39;source&#39;: &#39;dig_chan_0010&#39;,
+   &#39;name&#39;: &#39;RLFr&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 38.734301780693535,
+    &#39;var&#39;: 0.1205521089795334,
+    &#39;median&#39;: 38.727272727272734,
+    &#39;iqr&#39;: 0.5454545454545396,
+    &#39;n_cals&#39;: 194,
+    &#39;n_trimmed&#39;: 15}},
+  &#39;LMFr&#39;: {&#39;jdx&#39;: 18,
+   &#39;source&#39;: &#39;dig_chan_0011&#39;,
+   &#39;name&#39;: &#39;LMFr&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 35.47301895964998,
+    &#39;var&#39;: 0.09927423321104503,
+    &#39;median&#39;: 35.45454545454546,
+    &#39;iqr&#39;: 0.45454545454546036,
+    &#39;n_cals&#39;: 187,
+    &#39;n_trimmed&#39;: 22}},
+  &#39;RMFr&#39;: {&#39;jdx&#39;: 19,
+   &#39;source&#39;: &#39;dig_chan_0012&#39;,
+   &#39;name&#39;: &#39;RMFr&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 36.40999099909991,
+    &#39;var&#39;: 0.1509074624834221,
+    &#39;median&#39;: 36.45454545454546,
+    &#39;iqr&#39;: 0.6363636363636402,
+    &#39;n_cals&#39;: 202,
+    &#39;n_trimmed&#39;: 7}},
+  &#39;LMCe&#39;: {&#39;jdx&#39;: 20,
+   &#39;source&#39;: &#39;dig_chan_0013&#39;,
+   &#39;name&#39;: &#39;LMCe&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.47291092745638,
+    &#39;var&#39;: 0.21729356339924824,
+    &#39;median&#39;: 40.45454545454546,
+    &#39;iqr&#39;: 0.7272727272727266,
+    &#39;n_cals&#39;: 198,
+    &#39;n_trimmed&#39;: 11}},
+  &#39;RMCe&#39;: {&#39;jdx&#39;: 21,
+   &#39;source&#39;: &#39;dig_chan_0014&#39;,
+   &#39;name&#39;: &#39;RMCe&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 37.76762275157997,
+    &#39;var&#39;: 0.21833033224941378,
+    &#39;median&#39;: 37.727272727272734,
+    &#39;iqr&#39;: 0.7272727272727266,
+    &#39;n_cals&#39;: 187,
+    &#39;n_trimmed&#39;: 22}},
+  &#39;MiCe&#39;: {&#39;jdx&#39;: 22,
+   &#39;source&#39;: &#39;dig_chan_0015&#39;,
+   &#39;name&#39;: &#39;MiCe&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 39.55363636363637,
+    &#39;var&#39;: 0.15786694214876026,
+    &#39;median&#39;: 39.54545454545455,
+    &#39;iqr&#39;: 0.6363636363636402,
+    &#39;n_cals&#39;: 200,
+    &#39;n_trimmed&#39;: 9}},
+  &#39;MiPa&#39;: {&#39;jdx&#39;: 23,
+   &#39;source&#39;: &#39;dig_chan_0016&#39;,
+   &#39;name&#39;: &#39;MiPa&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 41.91883116883118,
+    &#39;var&#39;: 0.16177896778546166,
+    &#39;median&#39;: 41.909090909090914,
+    &#39;iqr&#39;: 0.6363636363636402,
+    &#39;n_cals&#39;: 196,
+    &#39;n_trimmed&#39;: 13}},
+  &#39;LDCe&#39;: {&#39;jdx&#39;: 24,
+   &#39;source&#39;: &#39;dig_chan_0017&#39;,
+   &#39;name&#39;: &#39;LDCe&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 39.53590909090909,
+    &#39;var&#39;: 0.24581797520661122,
+    &#39;median&#39;: 39.54545454545455,
+    &#39;iqr&#39;: 0.7272727272727266,
+    &#39;n_cals&#39;: 200,
+    &#39;n_trimmed&#39;: 9}},
+  &#39;RDCe&#39;: {&#39;jdx&#39;: 25,
+   &#39;source&#39;: &#39;dig_chan_0018&#39;,
+   &#39;name&#39;: &#39;RDCe&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 41.309938765897314,
+    &#39;var&#39;: 0.3626370578698772,
+    &#39;median&#39;: 41.27272727272727,
+    &#39;iqr&#39;: 0.9090909090909065,
+    &#39;n_cals&#39;: 193,
+    &#39;n_trimmed&#39;: 16}},
+  &#39;LDPa&#39;: {&#39;jdx&#39;: 26,
+   &#39;source&#39;: &#39;dig_chan_0019&#39;,
+   &#39;name&#39;: &#39;LDPa&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.41233766233766,
+    &#39;var&#39;: 0.3245382863889356,
+    &#39;median&#39;: 40.45454545454546,
+    &#39;iqr&#39;: 0.9090909090909065,
+    &#39;n_cals&#39;: 196,
+    &#39;n_trimmed&#39;: 13}},
+  &#39;RDPa&#39;: {&#39;jdx&#39;: 27,
+   &#39;source&#39;: &#39;dig_chan_0020&#39;,
+   &#39;name&#39;: &#39;RDPa&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 39.995240361732506,
+    &#39;var&#39;: 0.12043946344989712,
+    &#39;median&#39;: 40.0,
+    &#39;iqr&#39;: 0.5454545454545396,
+    &#39;n_cals&#39;: 191,
+    &#39;n_trimmed&#39;: 18}},
+  &#39;LMOc&#39;: {&#39;jdx&#39;: 28,
+   &#39;source&#39;: &#39;dig_chan_0021&#39;,
+   &#39;name&#39;: &#39;LMOc&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.739936680235196,
+    &#39;var&#39;: 0.2602729946337554,
+    &#39;median&#39;: 40.727272727272734,
+    &#39;iqr&#39;: 0.8181818181818201,
+    &#39;n_cals&#39;: 201,
+    &#39;n_trimmed&#39;: 8}},
+  &#39;RMOc&#39;: {&#39;jdx&#39;: 29,
+   &#39;source&#39;: &#39;dig_chan_0022&#39;,
+   &#39;name&#39;: &#39;RMOc&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.65248544558891,
+    &#39;var&#39;: 0.6456709589035058,
+    &#39;median&#39;: 40.63636363636364,
+    &#39;iqr&#39;: 1.2727272727272734,
+    &#39;n_cals&#39;: 203,
+    &#39;n_trimmed&#39;: 6}},
+  &#39;LLTe&#39;: {&#39;jdx&#39;: 30,
+   &#39;source&#39;: &#39;dig_chan_0023&#39;,
+   &#39;name&#39;: &#39;LLTe&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 39.82286785379569,
+    &#39;var&#39;: 0.30985279611836386,
+    &#39;median&#39;: 39.81818181818182,
+    &#39;iqr&#39;: 0.9090909090909065,
+    &#39;n_cals&#39;: 194,
+    &#39;n_trimmed&#39;: 15}},
+  &#39;RLTe&#39;: {&#39;jdx&#39;: 31,
+   &#39;source&#39;: &#39;dig_chan_0024&#39;,
+   &#39;name&#39;: &#39;RLTe&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.53821800090458,
+    &#39;var&#39;: 0.2306124899535051,
+    &#39;median&#39;: 40.54545454545455,
+    &#39;iqr&#39;: 0.7272727272727266,
+    &#39;n_cals&#39;: 201,
+    &#39;n_trimmed&#39;: 8}},
+  &#39;LLOc&#39;: {&#39;jdx&#39;: 32,
+   &#39;source&#39;: &#39;dig_chan_0025&#39;,
+   &#39;name&#39;: &#39;LLOc&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.24941724941725,
+    &#39;var&#39;: 0.3958965665259373,
+    &#39;median&#39;: 40.18181818181819,
+    &#39;iqr&#39;: 1.0,
+    &#39;n_cals&#39;: 195,
+    &#39;n_trimmed&#39;: 14}},
+  &#39;RLOc&#39;: {&#39;jdx&#39;: 33,
+   &#39;source&#39;: &#39;dig_chan_0026&#39;,
+   &#39;name&#39;: &#39;RLOc&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.660666066606666,
+    &#39;var&#39;: 0.17304493725700187,
+    &#39;median&#39;: 40.63636363636364,
+    &#39;iqr&#39;: 0.6363636363636331,
+    &#39;n_cals&#39;: 202,
+    &#39;n_trimmed&#39;: 7}},
+  &#39;MiOc&#39;: {&#39;jdx&#39;: 34,
+   &#39;source&#39;: &#39;dig_chan_0027&#39;,
+   &#39;name&#39;: &#39;MiOc&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 41.16883116883117,
+    &#39;var&#39;: 0.1889020070838252,
+    &#39;median&#39;: 41.18181818181819,
+    &#39;iqr&#39;: 0.6363636363636331,
+    &#39;n_cals&#39;: 196,
+    &#39;n_trimmed&#39;: 13}},
+  &#39;A2&#39;: {&#39;jdx&#39;: 35,
+   &#39;source&#39;: &#39;dig_chan_0028&#39;,
+   &#39;name&#39;: &#39;A2&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.63586956521739,
+    &#39;var&#39;: 0.24914636027746093,
+    &#39;median&#39;: 40.63636363636364,
+    &#39;iqr&#39;: 0.7272727272727266,
+    &#39;n_cals&#39;: 184,
+    &#39;n_trimmed&#39;: 25}},
+  &#39;HEOG&#39;: {&#39;jdx&#39;: 36,
+   &#39;source&#39;: &#39;dig_chan_0029&#39;,
+   &#39;name&#39;: &#39;HEOG&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 40.85445588893865,
+    &#39;var&#39;: 0.46275616996929014,
+    &#39;median&#39;: 40.909090909090914,
+    &#39;iqr&#39;: 1.0909090909090935,
+    &#39;n_cals&#39;: 203,
+    &#39;n_trimmed&#39;: 6}},
+  &#39;rle&#39;: {&#39;jdx&#39;: 37,
+   &#39;source&#39;: &#39;dig_chan_0030&#39;,
+   &#39;name&#39;: &#39;rle&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 20.507060900264786,
+    &#39;var&#39;: 0.08080948734467619,
+    &#39;median&#39;: 20.545454545454547,
+    &#39;iqr&#39;: 0.4545454545454568,
+    &#39;n_cals&#39;: 206,
+    &#39;n_trimmed&#39;: 3}},
+  &#39;rhz&#39;: {&#39;jdx&#39;: 38,
+   &#39;source&#39;: &#39;dig_chan_0031&#39;,
+   &#39;name&#39;: &#39;rhz&#39;,
+   &#39;dt&#39;: &#39;&lt;f2&#39;,
+   &#39;calibrated&#39;: True,
+   &#39;cals&#39;: {&#39;cal_srate&#39;: 250.0,
+    &#39;cal_dblock&#39;: [&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/docs/_data/sub000eeg.h5/cals_AD_before/dblock_0&#39;],
+    &#39;cal_args&#39;: {&#39;n_points&#39;: 5,
+     &#39;cal_size&#39;: 10.0,
+     &#39;lo_cursor&#39;: -40.0,
+     &#39;hi_cursor&#39;: 40.0,
+     &#39;cal_ccode&#39;: 0},
+    &#39;scale_by&#39;: 20.578125000000004,
+    &#39;var&#39;: 0.0840307818956612,
+    &#39;median&#39;: 20.545454545454547,
+    &#39;iqr&#39;: 0.45454545454545325,
+    &#39;n_cals&#39;: 192,
+    &#39;n_trimmed&#39;: 17}}},
+ &#39;name&#39;: &#39;dig&#39;,
+ &#39;magic&#39;: 38821,
+ &#39;subdesc&#39;: &#39;sub000 08/22/18 &#39;,
+ &#39;expdesc&#39;: &#39;rsc &#39;,
+ &#39;odelay&#39;: 8,
+ &#39;samplerate&#39;: 250.0,
+ &#39;recordduration&#39;: 1.024,
+ &#39;recordsize&#39;: 256,
+ &#39;nrawrecs&#39;: 0,
+ &#39;nchans&#39;: 32,
+ &#39;mkh5_version&#39;: &#39;0.2.4.dev4&#39;,
+ &#39;raw_dig_header&#39;: {&#39;magic&#39;: 38821,
+  &#39;epoch_len&#39;: 0,
+  &#39;nchans&#39;: 32,
+  &#39;sums&#39;: 0,
+  &#39;tpfuncs&#39;: 0,
+  &#39;pp10uv&#39;: 0,
+  &#39;verpos&#39;: 0,
+  &#39;odelay&#39;: 8,
+  &#39;totevnt&#39;: 0,
+  &#39;10usec_per_tick&#39;: 400,
+  &#39;time&#39;: 0,
+  &#39;cond_code&#39;: 0,
+  &#39;presam&#39;: 0,
+  &#39;trfuncs&#39;: 0,
+  &#39;totrr&#39;: 0,
+  &#39;totrej&#39;: 0,
+  &#39;sbcode&#39;: 0,
+  &#39;cprecis&#39;: 1,
+  &#39;dummy1&#39;: 0,
+  &#39;decfact&#39;: 0,
+  &#39;dh_flag&#39;: 0,
+  &#39;dh_item&#39;: 0,
+  &#39;rfcnts&#39;: [0, 0, 0, 0, 0, 0, 0, 0],
+  &#39;rftypes&#39;: &#39;&#39;,
+  &#39;chndes&#39;: &#39;lle\x00lhz\x00MiPfLLPfRLPfLMPfRMPfLDFrRDFrLLFrRLFrLMFrRMFrLMCeRMCeMiCeMiPaLDCeRDCeLDPaRDPaLMOcRMOcLLTeRLTeLLOcRLOcMiOcA2\x00\x00HEOGrle\x00rhz&#39;,
+  &#39;subdes&#39;: &#39;sub000 08/22/18 &#39;,
+  &#39;sbcdes&#39;: &#39;&#39;,
+  &#39;condes&#39;: &#39;&#39;,
+  &#39;expdes&#39;: &#39;rsc &#39;,
+  &#39;pftypes&#39;: &#39;&#39;,
+  &#39;chndes2&#39;: &#39;&#39;,
+  &#39;flags&#39;: 0,
+  &#39;nrawrecs&#39;: 0,
+  &#39;idxofflow&#39;: 0,
+  &#39;idxoffhi&#39;: 0,
+  &#39;chndes3&#39;: &#39;&#39;},
+ &#39;eeg_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkdig/sub000rc.crw&#39;,
+ &#39;eeg_file_stat&#39;: {&#39;st_atime&#39;: 1600792774.6049676,
+  &#39;st_atime_ns&#39;: 1600792774604967563,
+  &#39;st_blksize&#39;: 1048576,
+  &#39;st_blocks&#39;: 2634,
+  &#39;st_ctime&#39;: 1595687024.3686264,
+  &#39;st_ctime_ns&#39;: 1595687024368626446,
+  &#39;st_dev&#39;: 42,
+  &#39;st_gid&#39;: 705412,
+  &#39;st_ino&#39;: 32575851,
+  &#39;st_mode&#39;: 33056,
+  &#39;st_mtime&#39;: 1595687024.3686264,
+  &#39;st_mtime_ns&#39;: 1595687024368626446,
+  &#39;st_nlink&#39;: 1,
+  &#39;st_rdev&#39;: 0,
+  &#39;st_size&#39;: 1326550,
+  &#39;st_uid&#39;: 1004346},
+ &#39;log_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkdig/sub000rc.x.log&#39;,
+ &#39;uuid&#39;: &#39;de76da07-2576-420e-a758-aa99ae069fb1&#39;,
+ &#39;eeg_file_md5&#39;: &#39;610919a37fc74e522f7e803e09f3b2f7&#39;,
+ &#39;log_file_md5&#39;: &#39;72c5f0df67bd0f319601e11d35c20dfe&#39;,
+ &#39;h5_dataset&#39;: &#39;/closed/dblock_0&#39;}
+</pre></div></div>
+</div>
+<p><strong>Example 3: reading EEG and headers without mkpy</strong></p>
+<p>WARNING: using a context manager with h5py is strongly advised.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pprint</span> <span class="k">as</span> <span class="nn">pp</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+
+<span class="n">eeg_h5_f</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;data/sub000eeg.h5&quot;</span>
+
+<span class="n">json_hdrs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">np_dblocks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">eeg_h5_f</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">h5</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">group_path</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">h5</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">dblock_path</span><span class="p">,</span> <span class="n">dblock</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">json_hdrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">dblock</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;json_header&quot;</span><span class="p">]))</span>
+            <span class="n">np_dblocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dblock</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1-D numpy structured array, samples (rows) x data streams (columns), compound dtype&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">np_dblocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np_dblocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;header dicts from HDF5 dataset attribute json stringj&quot;</span><span class="p">)</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">json_hdrs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1-D numpy structured array, samples (rows) x data streams (columns), compound dtype
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(28416,)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dtype([(&#39;dblock_ticks&#39;, &#39;&lt;u4&#39;), (&#39;crw_ticks&#39;, &#39;&lt;u4&#39;), (&#39;raw_evcodes&#39;, &#39;&lt;i2&#39;), (&#39;log_evcodes&#39;, &#39;&lt;i2&#39;), (&#39;log_ccodes&#39;, &#39;&lt;u2&#39;), (&#39;log_flags&#39;, &#39;&lt;u2&#39;), (&#39;pygarv&#39;, &#39;&lt;u8&#39;), (&#39;lle&#39;, &#39;&lt;f2&#39;), (&#39;lhz&#39;, &#39;&lt;f2&#39;), (&#39;MiPf&#39;, &#39;&lt;f2&#39;), (&#39;LLPf&#39;, &#39;&lt;f2&#39;), (&#39;RLPf&#39;, &#39;&lt;f2&#39;), (&#39;LMPf&#39;, &#39;&lt;f2&#39;), (&#39;RMPf&#39;, &#39;&lt;f2&#39;), (&#39;LDFr&#39;, &#39;&lt;f2&#39;), (&#39;RDFr&#39;, &#39;&lt;f2&#39;), (&#39;LLFr&#39;, &#39;&lt;f2&#39;), (&#39;RLFr&#39;, &#39;&lt;f2&#39;), (&#39;LMFr&#39;, &#39;&lt;f2&#39;), (&#39;RMFr&#39;, &#39;&lt;f2&#39;), (&#39;LMCe&#39;, &#39;&lt;f2&#39;), (&#39;RMCe&#39;, &#39;&lt;f2&#39;), (&#39;MiCe&#39;, &#39;&lt;f2&#39;), (&#39;MiPa&#39;, &#39;&lt;f2&#39;), (&#39;LDCe&#39;, &#39;&lt;f2&#39;), (&#39;RDCe&#39;, &#39;&lt;f2&#39;), (&#39;LDPa&#39;, &#39;&lt;f2&#39;), (&#39;RDPa&#39;, &#39;&lt;f2&#39;), (&#39;LMOc&#39;, &#39;&lt;f2&#39;), (&#39;RMOc&#39;, &#39;&lt;f2&#39;), (&#39;LLTe&#39;, &#39;&lt;f2&#39;), (&#39;RLTe&#39;, &#39;&lt;f2&#39;), (&#39;LLOc&#39;, &#39;&lt;f2&#39;), (&#39;RLOc&#39;, &#39;&lt;f2&#39;), (&#39;MiOc&#39;, &#39;&lt;f2&#39;), (&#39;A2&#39;, &#39;&lt;f2&#39;), (&#39;HEOG&#39;, &#39;&lt;f2&#39;), (&#39;rle&#39;, &#39;&lt;f2&#39;), (&#39;rhz&#39;, &#39;&lt;f2&#39;)])
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+ header dicts from HDF5 dataset attribute json stringj
+dict_keys([&#39;runsheet&#39;, &#39;apparatus&#39;, &#39;yhdr_file&#39;, &#39;yhdr_file_md5&#39;, &#39;streams&#39;, &#39;name&#39;, &#39;magic&#39;, &#39;subdesc&#39;, &#39;expdesc&#39;, &#39;odelay&#39;, &#39;samplerate&#39;, &#39;recordduration&#39;, &#39;recordsize&#39;, &#39;nrawrecs&#39;, &#39;nchans&#39;, &#39;mkh5_version&#39;, &#39;raw_dig_header&#39;, &#39;eeg_file&#39;, &#39;eeg_file_stat&#39;, &#39;log_file&#39;, &#39;uuid&#39;, &#39;eeg_file_md5&#39;, &#39;log_file_md5&#39;, &#39;h5_dataset&#39;])
+</pre></div></div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background: EEG, events, and epochs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p50.html">P50 Paired-click</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p3.html">P3 Auditory oddball</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wr.html">Word repetition memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pm.html">Picture memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pm.html#Appendix">Appendix</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Resting EEG</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pm.html"
+                        title="previous chapter">Picture memory</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="pm.html" title="Picture memory"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Resting EEG</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Thomas P. Urbach.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>
