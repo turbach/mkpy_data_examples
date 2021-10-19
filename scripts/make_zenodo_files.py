@@ -1,5 +1,6 @@
 import os
 import sys
+import shutil
 import mkpy
 import spudtr
 import mkpy.mkh5 as mkh5
@@ -59,6 +60,10 @@ def make_p50():
     p50_h5.append_mkdata("sub000", cals_crw, cals_log, cals_yhdr)
     p50_h5.calibrate_mkdata("sub000", **CAL_KWARGS)
 
+    # snapshot calibrated h5 file before tagging events
+    no_epochs_h5_f = Path(str(p50_h5_f).replace('.h5', '_no_epoch_tables.h5'))
+    shutil.copyfile(p50_h5_f, no_epochs_h5_f)
+
     # 1. scan event code pattern tags into the event table
     p50_event_table = p50_h5.get_event_table(MDE_HOME / "mkpy/p50_codemap.ytbl")
 
@@ -101,6 +106,11 @@ def make_p3():
     p3_h5.append_mkdata("sub000", cals_crw, cals_log, cals_yhdr)
     p3_h5.calibrate_mkdata("sub000", **CAL_KWARGS)
 
+    # snapshot calibrated h5 file before tagging events
+    no_epochs_h5_f = Path(str(p3_h5_f).replace('.h5', '_no_epoch_tables.h5'))
+    shutil.copyfile(p3_h5_f, no_epochs_h5_f)
+
+    
     # 1. scan events into the event table
     p3_event_table = p3_h5.get_event_table(MDE_HOME / "mkpy/p3_codemap.ytbl")
 
@@ -142,6 +152,11 @@ def make_wr():
     wr_h5.append_mkdata("sub000", cals_crw, cals_log, cals_yhdr)
     wr_h5.calibrate_mkdata("sub000", **CAL_KWARGS)
 
+    # snapshot calibrated h5 file before tagging events
+    no_epochs_h5_f = Path(str(wr_h5_f).replace('.h5', '_no_epoch_tables.h5'))
+    shutil.copyfile(wr_h5_f, no_epochs_h5_f)
+
+    
     # 1. scan the event codes into the event table
     wr_event_table = wr_h5.get_event_table(MDE_HOME / "mkpy/wr_codemap.xlsx")
 
@@ -186,6 +201,10 @@ def make_pm():
 
     pm_h5.append_mkdata("sub000", cals_crw, cals_log, cals_yhdr)
     pm_h5.calibrate_mkdata("sub000", **CAL_KWARGS)
+
+    # snapshot calibrated h5 file before tagging events
+    no_epochs_h5_f = Path(str(pm_h5_f).replace('.h5', '_no_epoch_tables.h5'))
+    shutil.copyfile(pm_h5_f, no_epochs_h5_f)
 
     # 1. scan study and test phase events into the event tables
     pm_study_event_table = pm_h5.get_event_table(PM_STUDY_CODEMAP_F)
@@ -301,8 +320,8 @@ def make_eeg():
 
 if __name__ == "__main__":
 
+    make_eeg()
     make_p50()
     make_p3()
     make_wr()
     make_pm()
-    make_eeg()

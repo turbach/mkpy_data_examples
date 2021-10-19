@@ -4,18 +4,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>P50 Paired-click &#8212; mkpy_data_examples 0.0.5 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="P3 Auditory oddball" href="p3.html" />
@@ -48,21 +48,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -163,7 +177,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -229,6 +243,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -276,7 +291,7 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="P50-Paired-click">
+<section id="P50-Paired-click">
 <h1>P50 Paired-click<a class="headerlink" href="#P50-Paired-click" title="Permalink to this headline">¶</a></h1>
 <p>Design:</p>
 <ul class="simple">
@@ -320,13 +335,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-spudtrF_test
-3.7.7 (default, Mar 26 2020, 15:48:22)
-[GCC 7.3.0]
-numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/numpy/__init__.py
-pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/pandas/__init__.py
-mkpy 0.2.4.dev4 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/__init__.py
-spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/spudtr/__init__.py
+mkpy_data_examples_101821
+3.8.12 | packaged by conda-forge | (default, Oct 12 2021, 21:59:51)
+[GCC 9.4.0]
+numpy 1.21.2 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/numpy/__init__.py
+pandas 1.3.4 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/pandas/__init__.py
+mkpy 0.2.6 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/__init__.py
+spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/spudtr/__init__.py
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -381,7 +396,7 @@ spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
+/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:3669: UserWarning: negative event code(s) found for cal condition code 0 -16384
   warnings.warn(msg)
 </pre></div></div>
 </div>
@@ -450,27 +465,20 @@ rows:
 <div class="highlight"><pre>
 searching codes in: sub000/dblock_0
 searching codes in: sub000/dblock_1
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1046: UserWarning:
-As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
-ccode column in p50_codemap.ytbl must also match the log_ccode
-in the datablock. If this behavior is not desired, delete or rename
-the ccode column in the codemap.
-  warnings.warn(msg)
+searching codes in: sub000/dblock_2
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
+<div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-searching codes in: sub000/dblock_2
+/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1060: UserWarning:
+As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
+ccode column in p50_codemap.ytbl must also match the log_ccode
+in the datablock. If this behavior is not desired, delete or rename
+the ccode column in the codemap.
+  warnings.warn(msg)
 </pre></div></div>
 </div>
 <p><strong>inspect the event table</strong></p>
@@ -855,8 +863,8 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:1503: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -375, 750, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -375, 750)
-  + &#34;skipping epoch {0}&#34;.format(e)
+/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1516: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -375, 750, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -375, 750)
+  warnings.warn(
 </pre></div></div>
 </div>
 <p><strong>3. export_epochs(name, file_format=…)</strong></p>
@@ -1283,7 +1291,7 @@ Name: match_time, dtype: float64
 <img alt="_images/p50_21_0.png" src="_images/p50_21_0.png" />
 </div>
 </div>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -1299,7 +1307,6 @@ Name: match_time, dtype: float64
 <li class="toctree-l1"><a class="reference internal" href="p3.html">P3 Auditory oddball</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wr.html">Word repetition memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pm.html">Picture memory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pm.html#Appendix">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resting_eeg.html">Resting EEG</a></li>
 </ul>
 
@@ -1331,7 +1338,7 @@ Name: match_time, dtype: float64
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Thomas P. Urbach.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>
