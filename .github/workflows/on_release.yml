@@ -1,0 +1,57 @@
+# Minimal action on manual stable release.
+# deploy contents of mkpy_data_examples/docs/build/html to gh-pages
+
+# This is a basic workflow to help you get started with Actions
+
+name: on_release
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  release:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: deploy sphinx docs to gh-pages
+        env:
+          # machine user account PAT
+          GH_USER_NAME: robo-kutaslab
+          GH_USER_EMAIL: robo.kutaslab@gmail.com
+          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+
+          # docs are pushed here
+          GH_PAGES_BRANCH: gh-pages
+
+        run: |
+          # set docs version repo/branch
+          DOCS_REPO=$GITHUB_REPOSITORY
+          DOCS_BRANCH=$GH_PAGES_BRANCH
+
+          echo "sphinx docs on $DOCS_REPO/$DOCS_BRANCH"
+          git config --global user.name $GH_USER_NAME
+          git config --global user.email $GH_USER_EMAIL
+          git config --global init.defaultBranch main
+
+          # wherever sphinx wrote the html, repo specific
+          cd $GITHUB_WORKSPACE/docs/build/html
+          git init
+          git remote add origin "https://$GH_PAGES_TOKEN@github.com/${DOCS_REPO}"
+          git checkout --orphan $DOCS_BRANCH
+          git add -A
+          git commit -a -m "deploy type $DEPLOY_TYPE python $DEPLOY_PY_VER"
+          git push -u origin $DOCS_BRANCH --force
+
