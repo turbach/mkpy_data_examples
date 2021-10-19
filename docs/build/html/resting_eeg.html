@@ -4,18 +4,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Resting EEG &#8212; mkpy_data_examples 0.0.5 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Picture memory" href="pm.html" /> 
@@ -44,21 +44,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -159,7 +173,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -225,6 +239,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -272,7 +287,7 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="Resting-EEG">
+<section id="Resting-EEG">
 <h1>Resting EEG<a class="headerlink" href="#Resting-EEG" title="Permalink to this headline">¶</a></h1>
 <p>Design:</p>
 <ul class="simple">
@@ -281,10 +296,10 @@ div.rendered_html tbody tr:hover {
 </ul>
 <p>Data format: <code class="docutils literal notranslate"><span class="pre">mkpy.mkh5</span></code> HDF5</p>
 <p>The mkpy.mkh5 data file <code class="docutils literal notranslate"><span class="pre">s000eeg.h5</span></code> is a single HDF5 file with four HDF5 groups, each group has one HDF5 dataset, <em>dblock_0</em>, the uninterrupted EEG recording.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="nb">open</span>
-<span class="o">/</span><span class="n">closed</span>
-<span class="o">/</span><span class="n">cals_AD_before</span>
-<span class="o">/</span><span class="n">cals_10uV_after</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/open
+/closed
+/cals_AD_before
+/cals_10uV_after
 </pre></div>
 </div>
 <p>In longer experimental sessions where the recording is paused from time to time, the data group spans multiple, sequentially labeled data blocks, _dblock_0, dblock_1, … <span class="math">\dblock</span><em>n</em>, each an uninterrupted recording.</p>
@@ -329,13 +344,13 @@ re-used for the different data groups as shown below.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-spudtrF_test
-3.7.7 (default, Mar 26 2020, 15:48:22)
-[GCC 7.3.0]
-numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/numpy/__init__.py
-pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/pandas/__init__.py
-mkpy 0.2.4.dev4 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/__init__.py
-spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/spudtr/__init__.py
+mkpy_data_examples_101821
+3.8.12 | packaged by conda-forge | (default, Oct 12 2021, 21:59:51)
+[GCC 9.4.0]
+numpy 1.21.2 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/numpy/__init__.py
+pandas 1.3.4 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/pandas/__init__.py
+mkpy 0.2.6 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/__init__.py
+spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/spudtr/__init__.py
 </pre></div></div>
 </div>
 <p><strong>Convert and calibrate the ``.crw``, ``.log`` to mkpy.mkh5 format HDF5</strong></p>
@@ -400,7 +415,7 @@ spudtr 0.0.11.dev0 /home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrF_test/lib/python3.7/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
+/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:3669: UserWarning: negative event code(s) found for cal condition code 0 -16384
   warnings.warn(msg)
 </pre></div></div>
 </div>
@@ -792,7 +807,7 @@ These are the HDF5 datasets in the HDF5 file
     <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">dblock_path</span><span class="p">,</span> <span class="n">dblock_data</span> <span class="ow">in</span> <span class="n">eeg_pd</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;dblock_path&quot;</span><span class="p">):</span>
         <span class="n">dblock_data</span><span class="p">[</span><span class="s2">&quot;MiPa&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">dblock_path</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.6</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span> <span class="s2">&quot;Samples&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;$\mu\mathrm</span><span class="si">{V}</span><span class="s2">$&quot;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;EEG recording 500 samples&quot;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
@@ -1120,7 +1135,22 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 17.636363636363637,
     &#39;iqr&#39;: 0.2727272727272734,
     &#39;n_cals&#39;: 194,
-    &#39;n_trimmed&#39;: 15}},
+    &#39;n_trimmed&#39;: 15,
+    &#39;trimmed_idxs&#39;: [5,
+     24,
+     30,
+     43,
+     51,
+     53,
+     70,
+     79,
+     105,
+     142,
+     144,
+     155,
+     156,
+     160,
+     201]}},
   &#39;lhz&#39;: {&#39;jdx&#39;: 8,
    &#39;source&#39;: &#39;dig_chan_0001&#39;,
    &#39;name&#39;: &#39;lhz&#39;,
@@ -1138,7 +1168,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 20.272727272727273,
     &#39;iqr&#39;: 0.4545454545454568,
     &#39;n_cals&#39;: 206,
-    &#39;n_trimmed&#39;: 3}},
+    &#39;n_trimmed&#39;: 3,
+    &#39;trimmed_idxs&#39;: [119, 154, 202]}},
   &#39;MiPf&#39;: {&#39;jdx&#39;: 9,
    &#39;source&#39;: &#39;dig_chan_0002&#39;,
    &#39;name&#39;: &#39;MiPf&#39;,
@@ -1156,7 +1187,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 20.0,
     &#39;iqr&#39;: 0.3636363636363633,
     &#39;n_cals&#39;: 202,
-    &#39;n_trimmed&#39;: 7}},
+    &#39;n_trimmed&#39;: 7,
+    &#39;trimmed_idxs&#39;: [79, 98, 139, 143, 176, 181, 183]}},
   &#39;LLPf&#39;: {&#39;jdx&#39;: 10,
    &#39;source&#39;: &#39;dig_chan_0003&#39;,
    &#39;name&#39;: &#39;LLPf&#39;,
@@ -1174,7 +1206,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 20.72727272727273,
     &#39;iqr&#39;: 0.45454545454545325,
     &#39;n_cals&#39;: 202,
-    &#39;n_trimmed&#39;: 7}},
+    &#39;n_trimmed&#39;: 7,
+    &#39;trimmed_idxs&#39;: [8, 12, 14, 91, 164, 185, 200]}},
   &#39;RLPf&#39;: {&#39;jdx&#39;: 11,
    &#39;source&#39;: &#39;dig_chan_0004&#39;,
    &#39;name&#39;: &#39;RLPf&#39;,
@@ -1192,7 +1225,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 20.545454545454547,
     &#39;iqr&#39;: 0.3636363636363633,
     &#39;n_cals&#39;: 198,
-    &#39;n_trimmed&#39;: 11}},
+    &#39;n_trimmed&#39;: 11,
+    &#39;trimmed_idxs&#39;: [8, 17, 31, 39, 50, 71, 88, 130, 134, 166, 183]}},
   &#39;LMPf&#39;: {&#39;jdx&#39;: 12,
    &#39;source&#39;: &#39;dig_chan_0005&#39;,
    &#39;name&#39;: &#39;LMPf&#39;,
@@ -1210,7 +1244,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.0,
     &#39;iqr&#39;: 0.8181818181818201,
     &#39;n_cals&#39;: 204,
-    &#39;n_trimmed&#39;: 5}},
+    &#39;n_trimmed&#39;: 5,
+    &#39;trimmed_idxs&#39;: [16, 65, 67, 101, 166]}},
   &#39;RMPf&#39;: {&#39;jdx&#39;: 13,
    &#39;source&#39;: &#39;dig_chan_0006&#39;,
    &#39;name&#39;: &#39;RMPf&#39;,
@@ -1228,7 +1263,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 39.54545454545455,
     &#39;iqr&#39;: 0.7272727272727266,
     &#39;n_cals&#39;: 198,
-    &#39;n_trimmed&#39;: 11}},
+    &#39;n_trimmed&#39;: 11,
+    &#39;trimmed_idxs&#39;: [0, 7, 31, 83, 106, 107, 144, 162, 166, 197, 198]}},
   &#39;LDFr&#39;: {&#39;jdx&#39;: 14,
    &#39;source&#39;: &#39;dig_chan_0007&#39;,
    &#39;name&#39;: &#39;LDFr&#39;,
@@ -1246,7 +1282,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.727272727272734,
     &#39;iqr&#39;: 0.5454545454545396,
     &#39;n_cals&#39;: 199,
-    &#39;n_trimmed&#39;: 10}},
+    &#39;n_trimmed&#39;: 10,
+    &#39;trimmed_idxs&#39;: [6, 23, 26, 50, 52, 103, 107, 109, 173, 206]}},
   &#39;RDFr&#39;: {&#39;jdx&#39;: 15,
    &#39;source&#39;: &#39;dig_chan_0008&#39;,
    &#39;name&#39;: &#39;RDFr&#39;,
@@ -1264,7 +1301,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.36363636363637,
     &#39;iqr&#39;: 0.6363636363636402,
     &#39;n_cals&#39;: 202,
-    &#39;n_trimmed&#39;: 7}},
+    &#39;n_trimmed&#39;: 7,
+    &#39;trimmed_idxs&#39;: [9, 30, 43, 63, 69, 71, 197]}},
   &#39;LLFr&#39;: {&#39;jdx&#39;: 16,
    &#39;source&#39;: &#39;dig_chan_0009&#39;,
    &#39;name&#39;: &#39;LLFr&#39;,
@@ -1282,7 +1320,21 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 39.909090909090914,
     &#39;iqr&#39;: 0.5454545454545467,
     &#39;n_cals&#39;: 195,
-    &#39;n_trimmed&#39;: 14}},
+    &#39;n_trimmed&#39;: 14,
+    &#39;trimmed_idxs&#39;: [16,
+     34,
+     40,
+     46,
+     56,
+     59,
+     67,
+     82,
+     91,
+     112,
+     120,
+     145,
+     158,
+     192]}},
   &#39;RLFr&#39;: {&#39;jdx&#39;: 17,
    &#39;source&#39;: &#39;dig_chan_0010&#39;,
    &#39;name&#39;: &#39;RLFr&#39;,
@@ -1300,7 +1352,22 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 38.727272727272734,
     &#39;iqr&#39;: 0.5454545454545396,
     &#39;n_cals&#39;: 194,
-    &#39;n_trimmed&#39;: 15}},
+    &#39;n_trimmed&#39;: 15,
+    &#39;trimmed_idxs&#39;: [6,
+     10,
+     21,
+     34,
+     46,
+     76,
+     114,
+     123,
+     130,
+     136,
+     154,
+     181,
+     190,
+     200,
+     201]}},
   &#39;LMFr&#39;: {&#39;jdx&#39;: 18,
    &#39;source&#39;: &#39;dig_chan_0011&#39;,
    &#39;name&#39;: &#39;LMFr&#39;,
@@ -1318,7 +1385,29 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 35.45454545454546,
     &#39;iqr&#39;: 0.45454545454546036,
     &#39;n_cals&#39;: 187,
-    &#39;n_trimmed&#39;: 22}},
+    &#39;n_trimmed&#39;: 22,
+    &#39;trimmed_idxs&#39;: [17,
+     24,
+     35,
+     57,
+     58,
+     62,
+     63,
+     79,
+     107,
+     114,
+     116,
+     119,
+     141,
+     155,
+     157,
+     162,
+     168,
+     170,
+     173,
+     177,
+     195,
+     202]}},
   &#39;RMFr&#39;: {&#39;jdx&#39;: 19,
    &#39;source&#39;: &#39;dig_chan_0012&#39;,
    &#39;name&#39;: &#39;RMFr&#39;,
@@ -1336,7 +1425,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 36.45454545454546,
     &#39;iqr&#39;: 0.6363636363636402,
     &#39;n_cals&#39;: 202,
-    &#39;n_trimmed&#39;: 7}},
+    &#39;n_trimmed&#39;: 7,
+    &#39;trimmed_idxs&#39;: [42, 49, 87, 95, 108, 134, 136]}},
   &#39;LMCe&#39;: {&#39;jdx&#39;: 20,
    &#39;source&#39;: &#39;dig_chan_0013&#39;,
    &#39;name&#39;: &#39;LMCe&#39;,
@@ -1354,7 +1444,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.45454545454546,
     &#39;iqr&#39;: 0.7272727272727266,
     &#39;n_cals&#39;: 198,
-    &#39;n_trimmed&#39;: 11}},
+    &#39;n_trimmed&#39;: 11,
+    &#39;trimmed_idxs&#39;: [11, 33, 65, 77, 113, 120, 151, 173, 188, 192, 193]}},
   &#39;RMCe&#39;: {&#39;jdx&#39;: 21,
    &#39;source&#39;: &#39;dig_chan_0014&#39;,
    &#39;name&#39;: &#39;RMCe&#39;,
@@ -1372,7 +1463,29 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 37.727272727272734,
     &#39;iqr&#39;: 0.7272727272727266,
     &#39;n_cals&#39;: 187,
-    &#39;n_trimmed&#39;: 22}},
+    &#39;n_trimmed&#39;: 22,
+    &#39;trimmed_idxs&#39;: [5,
+     8,
+     36,
+     46,
+     47,
+     49,
+     64,
+     95,
+     99,
+     107,
+     114,
+     131,
+     141,
+     144,
+     147,
+     155,
+     158,
+     161,
+     168,
+     179,
+     184,
+     198]}},
   &#39;MiCe&#39;: {&#39;jdx&#39;: 22,
    &#39;source&#39;: &#39;dig_chan_0015&#39;,
    &#39;name&#39;: &#39;MiCe&#39;,
@@ -1390,7 +1503,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 39.54545454545455,
     &#39;iqr&#39;: 0.6363636363636402,
     &#39;n_cals&#39;: 200,
-    &#39;n_trimmed&#39;: 9}},
+    &#39;n_trimmed&#39;: 9,
+    &#39;trimmed_idxs&#39;: [22, 58, 68, 111, 112, 163, 170, 183, 186]}},
   &#39;MiPa&#39;: {&#39;jdx&#39;: 23,
    &#39;source&#39;: &#39;dig_chan_0016&#39;,
    &#39;name&#39;: &#39;MiPa&#39;,
@@ -1408,7 +1522,20 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 41.909090909090914,
     &#39;iqr&#39;: 0.6363636363636402,
     &#39;n_cals&#39;: 196,
-    &#39;n_trimmed&#39;: 13}},
+    &#39;n_trimmed&#39;: 13,
+    &#39;trimmed_idxs&#39;: [30,
+     58,
+     94,
+     95,
+     121,
+     123,
+     124,
+     127,
+     130,
+     136,
+     153,
+     159,
+     181]}},
   &#39;LDCe&#39;: {&#39;jdx&#39;: 24,
    &#39;source&#39;: &#39;dig_chan_0017&#39;,
    &#39;name&#39;: &#39;LDCe&#39;,
@@ -1426,7 +1553,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 39.54545454545455,
     &#39;iqr&#39;: 0.7272727272727266,
     &#39;n_cals&#39;: 200,
-    &#39;n_trimmed&#39;: 9}},
+    &#39;n_trimmed&#39;: 9,
+    &#39;trimmed_idxs&#39;: [21, 37, 84, 124, 154, 162, 179, 193, 197]}},
   &#39;RDCe&#39;: {&#39;jdx&#39;: 25,
    &#39;source&#39;: &#39;dig_chan_0018&#39;,
    &#39;name&#39;: &#39;RDCe&#39;,
@@ -1444,7 +1572,23 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 41.27272727272727,
     &#39;iqr&#39;: 0.9090909090909065,
     &#39;n_cals&#39;: 193,
-    &#39;n_trimmed&#39;: 16}},
+    &#39;n_trimmed&#39;: 16,
+    &#39;trimmed_idxs&#39;: [1,
+     6,
+     7,
+     32,
+     41,
+     60,
+     76,
+     87,
+     89,
+     107,
+     117,
+     136,
+     180,
+     184,
+     198,
+     199]}},
   &#39;LDPa&#39;: {&#39;jdx&#39;: 26,
    &#39;source&#39;: &#39;dig_chan_0019&#39;,
    &#39;name&#39;: &#39;LDPa&#39;,
@@ -1462,7 +1606,20 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.45454545454546,
     &#39;iqr&#39;: 0.9090909090909065,
     &#39;n_cals&#39;: 196,
-    &#39;n_trimmed&#39;: 13}},
+    &#39;n_trimmed&#39;: 13,
+    &#39;trimmed_idxs&#39;: [22,
+     23,
+     39,
+     85,
+     95,
+     117,
+     130,
+     150,
+     152,
+     173,
+     175,
+     188,
+     208]}},
   &#39;RDPa&#39;: {&#39;jdx&#39;: 27,
    &#39;source&#39;: &#39;dig_chan_0020&#39;,
    &#39;name&#39;: &#39;RDPa&#39;,
@@ -1480,7 +1637,25 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.0,
     &#39;iqr&#39;: 0.5454545454545396,
     &#39;n_cals&#39;: 191,
-    &#39;n_trimmed&#39;: 18}},
+    &#39;n_trimmed&#39;: 18,
+    &#39;trimmed_idxs&#39;: [12,
+     19,
+     22,
+     25,
+     32,
+     42,
+     57,
+     59,
+     81,
+     89,
+     92,
+     103,
+     124,
+     147,
+     166,
+     186,
+     192,
+     195]}},
   &#39;LMOc&#39;: {&#39;jdx&#39;: 28,
    &#39;source&#39;: &#39;dig_chan_0021&#39;,
    &#39;name&#39;: &#39;LMOc&#39;,
@@ -1498,7 +1673,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.727272727272734,
     &#39;iqr&#39;: 0.8181818181818201,
     &#39;n_cals&#39;: 201,
-    &#39;n_trimmed&#39;: 8}},
+    &#39;n_trimmed&#39;: 8,
+    &#39;trimmed_idxs&#39;: [14, 16, 67, 82, 109, 143, 173, 182]}},
   &#39;RMOc&#39;: {&#39;jdx&#39;: 29,
    &#39;source&#39;: &#39;dig_chan_0022&#39;,
    &#39;name&#39;: &#39;RMOc&#39;,
@@ -1516,7 +1692,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.63636363636364,
     &#39;iqr&#39;: 1.2727272727272734,
     &#39;n_cals&#39;: 203,
-    &#39;n_trimmed&#39;: 6}},
+    &#39;n_trimmed&#39;: 6,
+    &#39;trimmed_idxs&#39;: [10, 20, 58, 103, 135, 141]}},
   &#39;LLTe&#39;: {&#39;jdx&#39;: 30,
    &#39;source&#39;: &#39;dig_chan_0023&#39;,
    &#39;name&#39;: &#39;LLTe&#39;,
@@ -1534,7 +1711,22 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 39.81818181818182,
     &#39;iqr&#39;: 0.9090909090909065,
     &#39;n_cals&#39;: 194,
-    &#39;n_trimmed&#39;: 15}},
+    &#39;n_trimmed&#39;: 15,
+    &#39;trimmed_idxs&#39;: [19,
+     33,
+     42,
+     53,
+     98,
+     101,
+     117,
+     122,
+     126,
+     127,
+     153,
+     169,
+     174,
+     184,
+     207]}},
   &#39;RLTe&#39;: {&#39;jdx&#39;: 31,
    &#39;source&#39;: &#39;dig_chan_0024&#39;,
    &#39;name&#39;: &#39;RLTe&#39;,
@@ -1552,7 +1744,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.54545454545455,
     &#39;iqr&#39;: 0.7272727272727266,
     &#39;n_cals&#39;: 201,
-    &#39;n_trimmed&#39;: 8}},
+    &#39;n_trimmed&#39;: 8,
+    &#39;trimmed_idxs&#39;: [7, 14, 34, 38, 133, 159, 195, 203]}},
   &#39;LLOc&#39;: {&#39;jdx&#39;: 32,
    &#39;source&#39;: &#39;dig_chan_0025&#39;,
    &#39;name&#39;: &#39;LLOc&#39;,
@@ -1570,7 +1763,21 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.18181818181819,
     &#39;iqr&#39;: 1.0,
     &#39;n_cals&#39;: 195,
-    &#39;n_trimmed&#39;: 14}},
+    &#39;n_trimmed&#39;: 14,
+    &#39;trimmed_idxs&#39;: [32,
+     57,
+     61,
+     76,
+     101,
+     105,
+     110,
+     111,
+     117,
+     125,
+     143,
+     183,
+     197,
+     202]}},
   &#39;RLOc&#39;: {&#39;jdx&#39;: 33,
    &#39;source&#39;: &#39;dig_chan_0026&#39;,
    &#39;name&#39;: &#39;RLOc&#39;,
@@ -1588,7 +1795,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.63636363636364,
     &#39;iqr&#39;: 0.6363636363636331,
     &#39;n_cals&#39;: 202,
-    &#39;n_trimmed&#39;: 7}},
+    &#39;n_trimmed&#39;: 7,
+    &#39;trimmed_idxs&#39;: [32, 64, 87, 92, 100, 113, 150]}},
   &#39;MiOc&#39;: {&#39;jdx&#39;: 34,
    &#39;source&#39;: &#39;dig_chan_0027&#39;,
    &#39;name&#39;: &#39;MiOc&#39;,
@@ -1606,7 +1814,20 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 41.18181818181819,
     &#39;iqr&#39;: 0.6363636363636331,
     &#39;n_cals&#39;: 196,
-    &#39;n_trimmed&#39;: 13}},
+    &#39;n_trimmed&#39;: 13,
+    &#39;trimmed_idxs&#39;: [35,
+     45,
+     104,
+     109,
+     113,
+     122,
+     124,
+     147,
+     183,
+     184,
+     196,
+     199,
+     200]}},
   &#39;A2&#39;: {&#39;jdx&#39;: 35,
    &#39;source&#39;: &#39;dig_chan_0028&#39;,
    &#39;name&#39;: &#39;A2&#39;,
@@ -1624,7 +1845,32 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.63636363636364,
     &#39;iqr&#39;: 0.7272727272727266,
     &#39;n_cals&#39;: 184,
-    &#39;n_trimmed&#39;: 25}},
+    &#39;n_trimmed&#39;: 25,
+    &#39;trimmed_idxs&#39;: [1,
+     6,
+     17,
+     24,
+     32,
+     38,
+     39,
+     58,
+     61,
+     74,
+     94,
+     99,
+     104,
+     112,
+     119,
+     121,
+     135,
+     137,
+     150,
+     163,
+     165,
+     166,
+     172,
+     178,
+     198]}},
   &#39;HEOG&#39;: {&#39;jdx&#39;: 36,
    &#39;source&#39;: &#39;dig_chan_0029&#39;,
    &#39;name&#39;: &#39;HEOG&#39;,
@@ -1642,7 +1888,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 40.909090909090914,
     &#39;iqr&#39;: 1.0909090909090935,
     &#39;n_cals&#39;: 203,
-    &#39;n_trimmed&#39;: 6}},
+    &#39;n_trimmed&#39;: 6,
+    &#39;trimmed_idxs&#39;: [26, 31, 73, 190, 205, 207]}},
   &#39;rle&#39;: {&#39;jdx&#39;: 37,
    &#39;source&#39;: &#39;dig_chan_0030&#39;,
    &#39;name&#39;: &#39;rle&#39;,
@@ -1660,7 +1907,8 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 20.545454545454547,
     &#39;iqr&#39;: 0.4545454545454568,
     &#39;n_cals&#39;: 206,
-    &#39;n_trimmed&#39;: 3}},
+    &#39;n_trimmed&#39;: 3,
+    &#39;trimmed_idxs&#39;: [20, 70, 97]}},
   &#39;rhz&#39;: {&#39;jdx&#39;: 38,
    &#39;source&#39;: &#39;dig_chan_0031&#39;,
    &#39;name&#39;: &#39;rhz&#39;,
@@ -1678,7 +1926,24 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;median&#39;: 20.545454545454547,
     &#39;iqr&#39;: 0.45454545454545325,
     &#39;n_cals&#39;: 192,
-    &#39;n_trimmed&#39;: 17}}},
+    &#39;n_trimmed&#39;: 17,
+    &#39;trimmed_idxs&#39;: [26,
+     31,
+     49,
+     86,
+     92,
+     104,
+     121,
+     122,
+     130,
+     133,
+     142,
+     168,
+     173,
+     178,
+     204,
+     207,
+     208]}}},
  &#39;name&#39;: &#39;dig&#39;,
  &#39;magic&#39;: 38821,
  &#39;subdesc&#39;: &#39;sub000 08/22/18 &#39;,
@@ -1689,7 +1954,7 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
  &#39;recordsize&#39;: 256,
  &#39;nrawrecs&#39;: 0,
  &#39;nchans&#39;: 32,
- &#39;mkh5_version&#39;: &#39;0.2.4.dev4&#39;,
+ &#39;mkh5_version&#39;: &#39;0.2.6&#39;,
  &#39;raw_dig_header&#39;: {&#39;magic&#39;: 38821,
   &#39;epoch_len&#39;: 0,
   &#39;nchans&#39;: 32,
@@ -1727,13 +1992,13 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
   &#39;idxoffhi&#39;: 0,
   &#39;chndes3&#39;: &#39;&#39;},
  &#39;eeg_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkdig/sub000rc.crw&#39;,
- &#39;eeg_file_stat&#39;: {&#39;st_atime&#39;: 1600792774.6049676,
-  &#39;st_atime_ns&#39;: 1600792774604967563,
+ &#39;eeg_file_stat&#39;: {&#39;st_atime&#39;: 1634598479.673205,
+  &#39;st_atime_ns&#39;: 1634598479673204987,
   &#39;st_blksize&#39;: 1048576,
   &#39;st_blocks&#39;: 2634,
   &#39;st_ctime&#39;: 1595687024.3686264,
   &#39;st_ctime_ns&#39;: 1595687024368626446,
-  &#39;st_dev&#39;: 42,
+  &#39;st_dev&#39;: 50,
   &#39;st_gid&#39;: 705412,
   &#39;st_ino&#39;: 32575851,
   &#39;st_mode&#39;: 33056,
@@ -1744,7 +2009,7 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
   &#39;st_size&#39;: 1326550,
   &#39;st_uid&#39;: 1004346},
  &#39;log_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkdig/sub000rc.x.log&#39;,
- &#39;uuid&#39;: &#39;de76da07-2576-420e-a758-aa99ae069fb1&#39;,
+ &#39;uuid&#39;: &#39;58690678-9e04-4a8c-987c-fc562a9fbeae&#39;,
  &#39;eeg_file_md5&#39;: &#39;610919a37fc74e522f7e803e09f3b2f7&#39;,
  &#39;log_file_md5&#39;: &#39;72c5f0df67bd0f319601e11d35c20dfe&#39;,
  &#39;h5_dataset&#39;: &#39;/closed/dblock_0&#39;}
@@ -1816,7 +2081,7 @@ dtype([(&#39;dblock_ticks&#39;, &#39;&lt;u4&#39;), (&#39;crw_ticks&#39;, &#39;&l
 dict_keys([&#39;runsheet&#39;, &#39;apparatus&#39;, &#39;yhdr_file&#39;, &#39;yhdr_file_md5&#39;, &#39;streams&#39;, &#39;name&#39;, &#39;magic&#39;, &#39;subdesc&#39;, &#39;expdesc&#39;, &#39;odelay&#39;, &#39;samplerate&#39;, &#39;recordduration&#39;, &#39;recordsize&#39;, &#39;nrawrecs&#39;, &#39;nchans&#39;, &#39;mkh5_version&#39;, &#39;raw_dig_header&#39;, &#39;eeg_file&#39;, &#39;eeg_file_stat&#39;, &#39;log_file&#39;, &#39;uuid&#39;, &#39;eeg_file_md5&#39;, &#39;log_file_md5&#39;, &#39;h5_dataset&#39;])
 </pre></div></div>
 </div>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -1832,7 +2097,6 @@ dict_keys([&#39;runsheet&#39;, &#39;apparatus&#39;, &#39;yhdr_file&#39;, &#39;yh
 <li class="toctree-l1"><a class="reference internal" href="p3.html">P3 Auditory oddball</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wr.html">Word repetition memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pm.html">Picture memory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pm.html#Appendix">Appendix</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Resting EEG</a></li>
 </ul>
 
@@ -1858,7 +2122,7 @@ dict_keys([&#39;runsheet&#39;, &#39;apparatus&#39;, &#39;yhdr_file&#39;, &#39;yh
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Thomas P. Urbach.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>
