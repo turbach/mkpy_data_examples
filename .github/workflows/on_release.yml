@@ -1,0 +1,53 @@
+# Minimal action on manual stable release to refresh gh-pages
+
+name: on_release
+
+on:
+  # Triggers the workflow on release or push on the main branch
+  release:
+    branches: [ main ]
+
+  push:
+    branches: [ main ]
+
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy-docs:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: deploy sphinx docs to gh-pages
+        env:
+          # machine user account PAT
+          GH_USER_NAME: robo-kutaslab
+          GH_USER_EMAIL: robo.kutaslab@gmail.com
+          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+
+          # docs are pushed here
+          GH_PAGES_BRANCH: gh-pages
+
+        run: |
+          # set docs version repo/branch
+          DOCS_REPO=$GITHUB_REPOSITORY
+          DOCS_BRANCH=$GH_PAGES_BRANCH
+
+          echo "sphinx docs on $DOCS_REPO/$DOCS_BRANCH"
+          git config --global user.name $GH_USER_NAME
+          git config --global user.email $GH_USER_EMAIL
+          git config --global init.defaultBranch main
+
+          # wherever sphinx wrote the html, repo specific
+          cd $GITHUB_WORKSPACE/docs/build/html
+          git init
+          git remote add origin "https://$GH_PAGES_TOKEN@github.com/${DOCS_REPO}"
+          git checkout --orphan $DOCS_BRANCH
+          git add -A
+          git commit -a -m "deploy type $DEPLOY_TYPE python $DEPLOY_PY_VER"
+          git push -u origin $DOCS_BRANCH --force
+

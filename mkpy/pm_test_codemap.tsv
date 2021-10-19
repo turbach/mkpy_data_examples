@@ -1,706 +1,707 @@
-	regexp	test_bin_id	animacy	stimulus	test_response	accuracy	ccode	phase	condition_id	item_id	jpg	scn
-0	(#[1234])	10	_any	_any	_any	_any	1	test	_any	-1	_any	_any
-1	(#[1])	11	_any	animate	s_new	_any	1	test	1	-1	_any	_any
-2	(#[2])	12	_any	inanimate	s_new	_any	1	test	2	-1	_any	_any
-3	(#[3])	13	_any	animate	s_old	_any	1	test	3	-1	_any	_any
-4	(#[4])	14	_any	inanimate	s_old	_any	1	test	4	-1	_any	_any
-5	(#1) 8 (127) 2064	1100	animate	s_new	r_new	cr	1	test	1	127	dragon	testp1
-6	(#1) 8 2064 (127)	1101	animate	s_new	r_new	cr	1	test	1	127	dragon	testp1
-7	(#1) 2064 8 (127)	1102	animate	s_new	r_new	cr	1	test	1	127	dragon	testp1
-8	(#1) 8 (127) 1040	1110	animate	s_new	r_old	fa	1	test	1	127	dragon	testp1
-9	(#1) 8 1040 (127)	1111	animate	s_new	r_old	fa	1	test	1	127	dragon	testp1
-10	(#1) 1040 8 (127)	1112	animate	s_new	r_old	fa	1	test	1	127	dragon	testp1
-11	(#1) 8 (127) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	127	dragon	testp1
-12	(#4) 8 (129) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	129	dresser	testp1
-13	(#4) 8 1040 (129)	1401	inanimate	s_old	r_old	hit	1	test	4	129	dresser	testp1
-14	(#4) 1040 8 (129)	1402	inanimate	s_old	r_old	hit	1	test	4	129	dresser	testp1
-15	(#4) 8 (129) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	129	dresser	testp1
-16	(#4) 8 2064 (129)	1411	inanimate	s_old	r_new	miss	1	test	4	129	dresser	testp1
-17	(#4) 2064 8 (129)	1412	inanimate	s_old	r_new	miss	1	test	4	129	dresser	testp1
-18	(#4) 8 (129) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	129	dresser	testp1
-19	(#2) 8 (185) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	185	sun	testp1
-20	(#2) 8 2064 (185)	1201	inanimate	s_new	r_new	cr	1	test	2	185	sun	testp1
-21	(#2) 2064 8 (185)	1202	inanimate	s_new	r_new	cr	1	test	2	185	sun	testp1
-22	(#2) 8 (185) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	185	sun	testp1
-23	(#2) 8 1040 (185)	1211	inanimate	s_new	r_old	fa	1	test	2	185	sun	testp1
-24	(#2) 1040 8 (185)	1212	inanimate	s_new	r_old	fa	1	test	2	185	sun	testp1
-25	(#2) 8 (185) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	185	sun	testp1
-26	(#3) 8 (106) 1040	1300	animate	s_old	r_old	hit	1	test	3	106	bear	testp1
-27	(#3) 8 1040 (106)	1301	animate	s_old	r_old	hit	1	test	3	106	bear	testp1
-28	(#3) 1040 8 (106)	1302	animate	s_old	r_old	hit	1	test	3	106	bear	testp1
-29	(#3) 8 (106) 2064	1310	animate	s_old	r_new	miss	1	test	3	106	bear	testp1
-30	(#3) 8 2064 (106)	1311	animate	s_old	r_new	miss	1	test	3	106	bear	testp1
-31	(#3) 2064 8 (106)	1312	animate	s_old	r_new	miss	1	test	3	106	bear	testp1
-32	(#3) 8 (106) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	106	bear	testp1
-33	(#4) 8 (141) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	141	htarblon	testp1
-34	(#4) 8 1040 (141)	1401	inanimate	s_old	r_old	hit	1	test	4	141	htarblon	testp1
-35	(#4) 1040 8 (141)	1402	inanimate	s_old	r_old	hit	1	test	4	141	htarblon	testp1
-36	(#4) 8 (141) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	141	htarblon	testp1
-37	(#4) 8 2064 (141)	1411	inanimate	s_old	r_new	miss	1	test	4	141	htarblon	testp1
-38	(#4) 2064 8 (141)	1412	inanimate	s_old	r_new	miss	1	test	4	141	htarblon	testp1
-39	(#4) 8 (141) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	141	htarblon	testp1
-40	(#3) 8 (166) 1040	1300	animate	s_old	r_old	hit	1	test	3	166	pumpkin	testp1
-41	(#3) 8 1040 (166)	1301	animate	s_old	r_old	hit	1	test	3	166	pumpkin	testp1
-42	(#3) 1040 8 (166)	1302	animate	s_old	r_old	hit	1	test	3	166	pumpkin	testp1
-43	(#3) 8 (166) 2064	1310	animate	s_old	r_new	miss	1	test	3	166	pumpkin	testp1
-44	(#3) 8 2064 (166)	1311	animate	s_old	r_new	miss	1	test	3	166	pumpkin	testp1
-45	(#3) 2064 8 (166)	1312	animate	s_old	r_new	miss	1	test	3	166	pumpkin	testp1
-46	(#3) 8 (166) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	166	pumpkin	testp1
-47	(#2) 8 (197) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	197	whistle	testp1
-48	(#2) 8 2064 (197)	1201	inanimate	s_new	r_new	cr	1	test	2	197	whistle	testp1
-49	(#2) 2064 8 (197)	1202	inanimate	s_new	r_new	cr	1	test	2	197	whistle	testp1
-50	(#2) 8 (197) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	197	whistle	testp1
-51	(#2) 8 1040 (197)	1211	inanimate	s_new	r_old	fa	1	test	2	197	whistle	testp1
-52	(#2) 1040 8 (197)	1212	inanimate	s_new	r_old	fa	1	test	2	197	whistle	testp1
-53	(#2) 8 (197) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	197	whistle	testp1
-54	(#2) 8 (170) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	170	salt	testp1
-55	(#2) 8 2064 (170)	1201	inanimate	s_new	r_new	cr	1	test	2	170	salt	testp1
-56	(#2) 2064 8 (170)	1202	inanimate	s_new	r_new	cr	1	test	2	170	salt	testp1
-57	(#2) 8 (170) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	170	salt	testp1
-58	(#2) 8 1040 (170)	1211	inanimate	s_new	r_old	fa	1	test	2	170	salt	testp1
-59	(#2) 1040 8 (170)	1212	inanimate	s_new	r_old	fa	1	test	2	170	salt	testp1
-60	(#2) 8 (170) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	170	salt	testp1
-61	(#3) 8 (157) 1040	1300	animate	s_old	r_old	hit	1	test	3	157	peas	testp1
-62	(#3) 8 1040 (157)	1301	animate	s_old	r_old	hit	1	test	3	157	peas	testp1
-63	(#3) 1040 8 (157)	1302	animate	s_old	r_old	hit	1	test	3	157	peas	testp1
-64	(#3) 8 (157) 2064	1310	animate	s_old	r_new	miss	1	test	3	157	peas	testp1
-65	(#3) 8 2064 (157)	1311	animate	s_old	r_new	miss	1	test	3	157	peas	testp1
-66	(#3) 2064 8 (157)	1312	animate	s_old	r_new	miss	1	test	3	157	peas	testp1
-67	(#3) 8 (157) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	157	peas	testp1
-68	(#3) 8 (144) 1040	1300	animate	s_old	r_old	hit	1	test	3	144	kilerwal	testp1
-69	(#3) 8 1040 (144)	1301	animate	s_old	r_old	hit	1	test	3	144	kilerwal	testp1
-70	(#3) 1040 8 (144)	1302	animate	s_old	r_old	hit	1	test	3	144	kilerwal	testp1
-71	(#3) 8 (144) 2064	1310	animate	s_old	r_new	miss	1	test	3	144	kilerwal	testp1
-72	(#3) 8 2064 (144)	1311	animate	s_old	r_new	miss	1	test	3	144	kilerwal	testp1
-73	(#3) 2064 8 (144)	1312	animate	s_old	r_new	miss	1	test	3	144	kilerwal	testp1
-74	(#3) 8 (144) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	144	kilerwal	testp1
-75	(#4) 8 (154) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	154	necklace	testp1
-76	(#4) 8 1040 (154)	1401	inanimate	s_old	r_old	hit	1	test	4	154	necklace	testp1
-77	(#4) 1040 8 (154)	1402	inanimate	s_old	r_old	hit	1	test	4	154	necklace	testp1
-78	(#4) 8 (154) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	154	necklace	testp1
-79	(#4) 8 2064 (154)	1411	inanimate	s_old	r_new	miss	1	test	4	154	necklace	testp1
-80	(#4) 2064 8 (154)	1412	inanimate	s_old	r_new	miss	1	test	4	154	necklace	testp1
-81	(#4) 8 (154) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	154	necklace	testp1
-82	(#3) 8 (186) 1040	1300	animate	s_old	r_old	hit	1	test	3	186	swan	testp1
-83	(#3) 8 1040 (186)	1301	animate	s_old	r_old	hit	1	test	3	186	swan	testp1
-84	(#3) 1040 8 (186)	1302	animate	s_old	r_old	hit	1	test	3	186	swan	testp1
-85	(#3) 8 (186) 2064	1310	animate	s_old	r_new	miss	1	test	3	186	swan	testp1
-86	(#3) 8 2064 (186)	1311	animate	s_old	r_new	miss	1	test	3	186	swan	testp1
-87	(#3) 2064 8 (186)	1312	animate	s_old	r_new	miss	1	test	3	186	swan	testp1
-88	(#3) 8 (186) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	186	swan	testp1
-89	(#1) 8 (192) 2064	1100	animate	s_new	r_new	cr	1	test	1	192	turtle	testp1
-90	(#1) 8 2064 (192)	1101	animate	s_new	r_new	cr	1	test	1	192	turtle	testp1
-91	(#1) 2064 8 (192)	1102	animate	s_new	r_new	cr	1	test	1	192	turtle	testp1
-92	(#1) 8 (192) 1040	1110	animate	s_new	r_old	fa	1	test	1	192	turtle	testp1
-93	(#1) 8 1040 (192)	1111	animate	s_new	r_old	fa	1	test	1	192	turtle	testp1
-94	(#1) 1040 8 (192)	1112	animate	s_new	r_old	fa	1	test	1	192	turtle	testp1
-95	(#1) 8 (192) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	192	turtle	testp1
-96	(#2) 8 (114) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	114	bus	testp1
-97	(#2) 8 2064 (114)	1201	inanimate	s_new	r_new	cr	1	test	2	114	bus	testp1
-98	(#2) 2064 8 (114)	1202	inanimate	s_new	r_new	cr	1	test	2	114	bus	testp1
-99	(#2) 8 (114) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	114	bus	testp1
-100	(#2) 8 1040 (114)	1211	inanimate	s_new	r_old	fa	1	test	2	114	bus	testp1
-101	(#2) 1040 8 (114)	1212	inanimate	s_new	r_old	fa	1	test	2	114	bus	testp1
-102	(#2) 8 (114) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	114	bus	testp1
-103	(#2) 8 (169) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	169	safe	testp1
-104	(#2) 8 2064 (169)	1201	inanimate	s_new	r_new	cr	1	test	2	169	safe	testp1
-105	(#2) 2064 8 (169)	1202	inanimate	s_new	r_new	cr	1	test	2	169	safe	testp1
-106	(#2) 8 (169) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	169	safe	testp1
-107	(#2) 8 1040 (169)	1211	inanimate	s_new	r_old	fa	1	test	2	169	safe	testp1
-108	(#2) 1040 8 (169)	1212	inanimate	s_new	r_old	fa	1	test	2	169	safe	testp1
-109	(#2) 8 (169) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	169	safe	testp1
-110	(#2) 8 (171) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	171	sandal	testp1
-111	(#2) 8 2064 (171)	1201	inanimate	s_new	r_new	cr	1	test	2	171	sandal	testp1
-112	(#2) 2064 8 (171)	1202	inanimate	s_new	r_new	cr	1	test	2	171	sandal	testp1
-113	(#2) 8 (171) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	171	sandal	testp1
-114	(#2) 8 1040 (171)	1211	inanimate	s_new	r_old	fa	1	test	2	171	sandal	testp1
-115	(#2) 1040 8 (171)	1212	inanimate	s_new	r_old	fa	1	test	2	171	sandal	testp1
-116	(#2) 8 (171) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	171	sandal	testp1
-117	(#1) 8 (102) 2064	1100	animate	s_new	r_new	cr	1	test	1	102	apple	testp1
-118	(#1) 8 2064 (102)	1101	animate	s_new	r_new	cr	1	test	1	102	apple	testp1
-119	(#1) 2064 8 (102)	1102	animate	s_new	r_new	cr	1	test	1	102	apple	testp1
-120	(#1) 8 (102) 1040	1110	animate	s_new	r_old	fa	1	test	1	102	apple	testp1
-121	(#1) 8 1040 (102)	1111	animate	s_new	r_old	fa	1	test	1	102	apple	testp1
-122	(#1) 1040 8 (102)	1112	animate	s_new	r_old	fa	1	test	1	102	apple	testp1
-123	(#1) 8 (102) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	102	apple	testp1
-124	(#4) 8 (176) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	176	sled	testp1
-125	(#4) 8 1040 (176)	1401	inanimate	s_old	r_old	hit	1	test	4	176	sled	testp1
-126	(#4) 1040 8 (176)	1402	inanimate	s_old	r_old	hit	1	test	4	176	sled	testp1
-127	(#4) 8 (176) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	176	sled	testp1
-128	(#4) 8 2064 (176)	1411	inanimate	s_old	r_new	miss	1	test	4	176	sled	testp1
-129	(#4) 2064 8 (176)	1412	inanimate	s_old	r_new	miss	1	test	4	176	sled	testp1
-130	(#4) 8 (176) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	176	sled	testp1
-131	(#2) 8 (182) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	182	stapler	testp1
-132	(#2) 8 2064 (182)	1201	inanimate	s_new	r_new	cr	1	test	2	182	stapler	testp1
-133	(#2) 2064 8 (182)	1202	inanimate	s_new	r_new	cr	1	test	2	182	stapler	testp1
-134	(#2) 8 (182) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	182	stapler	testp1
-135	(#2) 8 1040 (182)	1211	inanimate	s_new	r_old	fa	1	test	2	182	stapler	testp1
-136	(#2) 1040 8 (182)	1212	inanimate	s_new	r_old	fa	1	test	2	182	stapler	testp1
-137	(#2) 8 (182) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	182	stapler	testp1
-138	(#4) 8 (199) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	199	witchhat	testp1
-139	(#4) 8 1040 (199)	1401	inanimate	s_old	r_old	hit	1	test	4	199	witchhat	testp1
-140	(#4) 1040 8 (199)	1402	inanimate	s_old	r_old	hit	1	test	4	199	witchhat	testp1
-141	(#4) 8 (199) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	199	witchhat	testp1
-142	(#4) 8 2064 (199)	1411	inanimate	s_old	r_new	miss	1	test	4	199	witchhat	testp1
-143	(#4) 2064 8 (199)	1412	inanimate	s_old	r_new	miss	1	test	4	199	witchhat	testp1
-144	(#4) 8 (199) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	199	witchhat	testp1
-145	(#4) 8 (178) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	178	spatula	testp1
-146	(#4) 8 1040 (178)	1401	inanimate	s_old	r_old	hit	1	test	4	178	spatula	testp1
-147	(#4) 1040 8 (178)	1402	inanimate	s_old	r_old	hit	1	test	4	178	spatula	testp1
-148	(#4) 8 (178) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	178	spatula	testp1
-149	(#4) 8 2064 (178)	1411	inanimate	s_old	r_new	miss	1	test	4	178	spatula	testp1
-150	(#4) 2064 8 (178)	1412	inanimate	s_old	r_new	miss	1	test	4	178	spatula	testp1
-151	(#4) 8 (178) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	178	spatula	testp1
-152	(#4) 8 (117) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	117	car	testp1
-153	(#4) 8 1040 (117)	1401	inanimate	s_old	r_old	hit	1	test	4	117	car	testp1
-154	(#4) 1040 8 (117)	1402	inanimate	s_old	r_old	hit	1	test	4	117	car	testp1
-155	(#4) 8 (117) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	117	car	testp1
-156	(#4) 8 2064 (117)	1411	inanimate	s_old	r_new	miss	1	test	4	117	car	testp1
-157	(#4) 2064 8 (117)	1412	inanimate	s_old	r_new	miss	1	test	4	117	car	testp1
-158	(#4) 8 (117) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	117	car	testp1
-159	(#2) 8 (142) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	142	iron	testp1
-160	(#2) 8 2064 (142)	1201	inanimate	s_new	r_new	cr	1	test	2	142	iron	testp1
-161	(#2) 2064 8 (142)	1202	inanimate	s_new	r_new	cr	1	test	2	142	iron	testp1
-162	(#2) 8 (142) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	142	iron	testp1
-163	(#2) 8 1040 (142)	1211	inanimate	s_new	r_old	fa	1	test	2	142	iron	testp1
-164	(#2) 1040 8 (142)	1212	inanimate	s_new	r_old	fa	1	test	2	142	iron	testp1
-165	(#2) 8 (142) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	142	iron	testp1
-166	(#4) 8 (134) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	134	flute	testp1
-167	(#4) 8 1040 (134)	1401	inanimate	s_old	r_old	hit	1	test	4	134	flute	testp1
-168	(#4) 1040 8 (134)	1402	inanimate	s_old	r_old	hit	1	test	4	134	flute	testp1
-169	(#4) 8 (134) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	134	flute	testp1
-170	(#4) 8 2064 (134)	1411	inanimate	s_old	r_new	miss	1	test	4	134	flute	testp1
-171	(#4) 2064 8 (134)	1412	inanimate	s_old	r_new	miss	1	test	4	134	flute	testp1
-172	(#4) 8 (134) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	134	flute	testp1
-173	(#2) 8 (155) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	155	net	testp1
-174	(#2) 8 2064 (155)	1201	inanimate	s_new	r_new	cr	1	test	2	155	net	testp1
-175	(#2) 2064 8 (155)	1202	inanimate	s_new	r_new	cr	1	test	2	155	net	testp1
-176	(#2) 8 (155) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	155	net	testp1
-177	(#2) 8 1040 (155)	1211	inanimate	s_new	r_old	fa	1	test	2	155	net	testp1
-178	(#2) 1040 8 (155)	1212	inanimate	s_new	r_old	fa	1	test	2	155	net	testp1
-179	(#2) 8 (155) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	155	net	testp1
-180	(#4) 8 (103) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	103	ballhoop	testp1
-181	(#4) 8 1040 (103)	1401	inanimate	s_old	r_old	hit	1	test	4	103	ballhoop	testp1
-182	(#4) 1040 8 (103)	1402	inanimate	s_old	r_old	hit	1	test	4	103	ballhoop	testp1
-183	(#4) 8 (103) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	103	ballhoop	testp1
-184	(#4) 8 2064 (103)	1411	inanimate	s_old	r_new	miss	1	test	4	103	ballhoop	testp1
-185	(#4) 2064 8 (103)	1412	inanimate	s_old	r_new	miss	1	test	4	103	ballhoop	testp1
-186	(#4) 8 (103) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	103	ballhoop	testp1
-187	(#4) 8 (159) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	159	pen	testp1
-188	(#4) 8 1040 (159)	1401	inanimate	s_old	r_old	hit	1	test	4	159	pen	testp1
-189	(#4) 1040 8 (159)	1402	inanimate	s_old	r_old	hit	1	test	4	159	pen	testp1
-190	(#4) 8 (159) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	159	pen	testp1
-191	(#4) 8 2064 (159)	1411	inanimate	s_old	r_new	miss	1	test	4	159	pen	testp1
-192	(#4) 2064 8 (159)	1412	inanimate	s_old	r_new	miss	1	test	4	159	pen	testp1
-193	(#4) 8 (159) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	159	pen	testp1
-194	(#4) 8 (118) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	118	cd	testp1
-195	(#4) 8 1040 (118)	1401	inanimate	s_old	r_old	hit	1	test	4	118	cd	testp1
-196	(#4) 1040 8 (118)	1402	inanimate	s_old	r_old	hit	1	test	4	118	cd	testp1
-197	(#4) 8 (118) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	118	cd	testp1
-198	(#4) 8 2064 (118)	1411	inanimate	s_old	r_new	miss	1	test	4	118	cd	testp1
-199	(#4) 2064 8 (118)	1412	inanimate	s_old	r_new	miss	1	test	4	118	cd	testp1
-200	(#4) 8 (118) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	118	cd	testp1
-201	(#4) 8 (122) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	122	church	testp1
-202	(#4) 8 1040 (122)	1401	inanimate	s_old	r_old	hit	1	test	4	122	church	testp1
-203	(#4) 1040 8 (122)	1402	inanimate	s_old	r_old	hit	1	test	4	122	church	testp1
-204	(#4) 8 (122) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	122	church	testp1
-205	(#4) 8 2064 (122)	1411	inanimate	s_old	r_new	miss	1	test	4	122	church	testp1
-206	(#4) 2064 8 (122)	1412	inanimate	s_old	r_new	miss	1	test	4	122	church	testp1
-207	(#4) 8 (122) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	122	church	testp1
-208	(#3) 8 (126) 1040	1300	animate	s_old	r_old	hit	1	test	3	126	deer	testp1
-209	(#3) 8 1040 (126)	1301	animate	s_old	r_old	hit	1	test	3	126	deer	testp1
-210	(#3) 1040 8 (126)	1302	animate	s_old	r_old	hit	1	test	3	126	deer	testp1
-211	(#3) 8 (126) 2064	1310	animate	s_old	r_new	miss	1	test	3	126	deer	testp1
-212	(#3) 8 2064 (126)	1311	animate	s_old	r_new	miss	1	test	3	126	deer	testp1
-213	(#3) 2064 8 (126)	1312	animate	s_old	r_new	miss	1	test	3	126	deer	testp1
-214	(#3) 8 (126) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	126	deer	testp1
-215	(#4) 8 (183) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	183	stool	testp1
-216	(#4) 8 1040 (183)	1401	inanimate	s_old	r_old	hit	1	test	4	183	stool	testp1
-217	(#4) 1040 8 (183)	1402	inanimate	s_old	r_old	hit	1	test	4	183	stool	testp1
-218	(#4) 8 (183) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	183	stool	testp1
-219	(#4) 8 2064 (183)	1411	inanimate	s_old	r_new	miss	1	test	4	183	stool	testp1
-220	(#4) 2064 8 (183)	1412	inanimate	s_old	r_new	miss	1	test	4	183	stool	testp1
-221	(#4) 8 (183) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	183	stool	testp1
-222	(#4) 8 (172) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	172	scissors	testp1
-223	(#4) 8 1040 (172)	1401	inanimate	s_old	r_old	hit	1	test	4	172	scissors	testp1
-224	(#4) 1040 8 (172)	1402	inanimate	s_old	r_old	hit	1	test	4	172	scissors	testp1
-225	(#4) 8 (172) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	172	scissors	testp1
-226	(#4) 8 2064 (172)	1411	inanimate	s_old	r_new	miss	1	test	4	172	scissors	testp1
-227	(#4) 2064 8 (172)	1412	inanimate	s_old	r_new	miss	1	test	4	172	scissors	testp1
-228	(#4) 8 (172) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	172	scissors	testp1
-229	(#1) 8 (108) 2064	1100	animate	s_new	r_new	cr	1	test	1	108	bird	testp1
-230	(#1) 8 2064 (108)	1101	animate	s_new	r_new	cr	1	test	1	108	bird	testp1
-231	(#1) 2064 8 (108)	1102	animate	s_new	r_new	cr	1	test	1	108	bird	testp1
-232	(#1) 8 (108) 1040	1110	animate	s_new	r_old	fa	1	test	1	108	bird	testp1
-233	(#1) 8 1040 (108)	1111	animate	s_new	r_old	fa	1	test	1	108	bird	testp1
-234	(#1) 1040 8 (108)	1112	animate	s_new	r_old	fa	1	test	1	108	bird	testp1
-235	(#1) 8 (108) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	108	bird	testp1
-236	(#3) 8 (174) 1040	1300	animate	s_old	r_old	hit	1	test	3	174	seashell	testp1
-237	(#3) 8 1040 (174)	1301	animate	s_old	r_old	hit	1	test	3	174	seashell	testp1
-238	(#3) 1040 8 (174)	1302	animate	s_old	r_old	hit	1	test	3	174	seashell	testp1
-239	(#3) 8 (174) 2064	1310	animate	s_old	r_new	miss	1	test	3	174	seashell	testp1
-240	(#3) 8 2064 (174)	1311	animate	s_old	r_new	miss	1	test	3	174	seashell	testp1
-241	(#3) 2064 8 (174)	1312	animate	s_old	r_new	miss	1	test	3	174	seashell	testp1
-242	(#3) 8 (174) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	174	seashell	testp1
-243	(#4) 8 (193) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	193	umbrella	testp1
-244	(#4) 8 1040 (193)	1401	inanimate	s_old	r_old	hit	1	test	4	193	umbrella	testp1
-245	(#4) 1040 8 (193)	1402	inanimate	s_old	r_old	hit	1	test	4	193	umbrella	testp1
-246	(#4) 8 (193) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	193	umbrella	testp1
-247	(#4) 8 2064 (193)	1411	inanimate	s_old	r_new	miss	1	test	4	193	umbrella	testp1
-248	(#4) 2064 8 (193)	1412	inanimate	s_old	r_new	miss	1	test	4	193	umbrella	testp1
-249	(#4) 8 (193) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	193	umbrella	testp1
-250	(#2) 8 (139) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	139	harp	testp1
-251	(#2) 8 2064 (139)	1201	inanimate	s_new	r_new	cr	1	test	2	139	harp	testp1
-252	(#2) 2064 8 (139)	1202	inanimate	s_new	r_new	cr	1	test	2	139	harp	testp1
-253	(#2) 8 (139) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	139	harp	testp1
-254	(#2) 8 1040 (139)	1211	inanimate	s_new	r_old	fa	1	test	2	139	harp	testp1
-255	(#2) 1040 8 (139)	1212	inanimate	s_new	r_old	fa	1	test	2	139	harp	testp1
-256	(#2) 8 (139) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	139	harp	testp1
-257	(#1) 8 (145) 2064	1100	animate	s_new	r_new	cr	1	test	1	145	koala	testp1
-258	(#1) 8 2064 (145)	1101	animate	s_new	r_new	cr	1	test	1	145	koala	testp1
-259	(#1) 2064 8 (145)	1102	animate	s_new	r_new	cr	1	test	1	145	koala	testp1
-260	(#1) 8 (145) 1040	1110	animate	s_new	r_old	fa	1	test	1	145	koala	testp1
-261	(#1) 8 1040 (145)	1111	animate	s_new	r_old	fa	1	test	1	145	koala	testp1
-262	(#1) 1040 8 (145)	1112	animate	s_new	r_old	fa	1	test	1	145	koala	testp1
-263	(#1) 8 (145) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	145	koala	testp1
-264	(#2) 8 (109) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	109	bracelet	testp1
-265	(#2) 8 2064 (109)	1201	inanimate	s_new	r_new	cr	1	test	2	109	bracelet	testp1
-266	(#2) 2064 8 (109)	1202	inanimate	s_new	r_new	cr	1	test	2	109	bracelet	testp1
-267	(#2) 8 (109) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	109	bracelet	testp1
-268	(#2) 8 1040 (109)	1211	inanimate	s_new	r_old	fa	1	test	2	109	bracelet	testp1
-269	(#2) 1040 8 (109)	1212	inanimate	s_new	r_old	fa	1	test	2	109	bracelet	testp1
-270	(#2) 8 (109) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	109	bracelet	testp1
-271	(#3) 8 (133) 1040	1300	animate	s_old	r_old	hit	1	test	3	133	flamingo	testp1
-272	(#3) 8 1040 (133)	1301	animate	s_old	r_old	hit	1	test	3	133	flamingo	testp1
-273	(#3) 1040 8 (133)	1302	animate	s_old	r_old	hit	1	test	3	133	flamingo	testp1
-274	(#3) 8 (133) 2064	1310	animate	s_old	r_new	miss	1	test	3	133	flamingo	testp1
-275	(#3) 8 2064 (133)	1311	animate	s_old	r_new	miss	1	test	3	133	flamingo	testp1
-276	(#3) 2064 8 (133)	1312	animate	s_old	r_new	miss	1	test	3	133	flamingo	testp1
-277	(#3) 8 (133) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	133	flamingo	testp1
-278	(#3) 8 (179) 1040	1300	animate	s_old	r_old	hit	1	test	3	179	spider	testp1
-279	(#3) 8 1040 (179)	1301	animate	s_old	r_old	hit	1	test	3	179	spider	testp1
-280	(#3) 1040 8 (179)	1302	animate	s_old	r_old	hit	1	test	3	179	spider	testp1
-281	(#3) 8 (179) 2064	1310	animate	s_old	r_new	miss	1	test	3	179	spider	testp1
-282	(#3) 8 2064 (179)	1311	animate	s_old	r_new	miss	1	test	3	179	spider	testp1
-283	(#3) 2064 8 (179)	1312	animate	s_old	r_new	miss	1	test	3	179	spider	testp1
-284	(#3) 8 (179) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	179	spider	testp1
-285	(#4) 8 (116) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	116	candle	testp1
-286	(#4) 8 1040 (116)	1401	inanimate	s_old	r_old	hit	1	test	4	116	candle	testp1
-287	(#4) 1040 8 (116)	1402	inanimate	s_old	r_old	hit	1	test	4	116	candle	testp1
-288	(#4) 8 (116) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	116	candle	testp1
-289	(#4) 8 2064 (116)	1411	inanimate	s_old	r_new	miss	1	test	4	116	candle	testp1
-290	(#4) 2064 8 (116)	1412	inanimate	s_old	r_new	miss	1	test	4	116	candle	testp1
-291	(#4) 8 (116) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	116	candle	testp1
-292	(#2) 8 (132) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	132	fireplac	testp1
-293	(#2) 8 2064 (132)	1201	inanimate	s_new	r_new	cr	1	test	2	132	fireplac	testp1
-294	(#2) 2064 8 (132)	1202	inanimate	s_new	r_new	cr	1	test	2	132	fireplac	testp1
-295	(#2) 8 (132) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	132	fireplac	testp1
-296	(#2) 8 1040 (132)	1211	inanimate	s_new	r_old	fa	1	test	2	132	fireplac	testp1
-297	(#2) 1040 8 (132)	1212	inanimate	s_new	r_old	fa	1	test	2	132	fireplac	testp1
-298	(#2) 8 (132) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	132	fireplac	testp1
-299	(#2) 8 (167) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	167	refridge	testp1
-300	(#2) 8 2064 (167)	1201	inanimate	s_new	r_new	cr	1	test	2	167	refridge	testp1
-301	(#2) 2064 8 (167)	1202	inanimate	s_new	r_new	cr	1	test	2	167	refridge	testp1
-302	(#2) 8 (167) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	167	refridge	testp1
-303	(#2) 8 1040 (167)	1211	inanimate	s_new	r_old	fa	1	test	2	167	refridge	testp1
-304	(#2) 1040 8 (167)	1212	inanimate	s_new	r_old	fa	1	test	2	167	refridge	testp1
-305	(#2) 8 (167) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	167	refridge	testp1
-306	(#1) 8 (189) 2064	1100	animate	s_new	r_new	cr	1	test	1	189	tiger	testp1
-307	(#1) 8 2064 (189)	1101	animate	s_new	r_new	cr	1	test	1	189	tiger	testp1
-308	(#1) 2064 8 (189)	1102	animate	s_new	r_new	cr	1	test	1	189	tiger	testp1
-309	(#1) 8 (189) 1040	1110	animate	s_new	r_old	fa	1	test	1	189	tiger	testp1
-310	(#1) 8 1040 (189)	1111	animate	s_new	r_old	fa	1	test	1	189	tiger	testp1
-311	(#1) 1040 8 (189)	1112	animate	s_new	r_old	fa	1	test	1	189	tiger	testp1
-312	(#1) 8 (189) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	189	tiger	testp1
-313	(#4) 8 (173) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	173	scrwdriv	testp1
-314	(#4) 8 1040 (173)	1401	inanimate	s_old	r_old	hit	1	test	4	173	scrwdriv	testp1
-315	(#4) 1040 8 (173)	1402	inanimate	s_old	r_old	hit	1	test	4	173	scrwdriv	testp1
-316	(#4) 8 (173) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	173	scrwdriv	testp1
-317	(#4) 8 2064 (173)	1411	inanimate	s_old	r_new	miss	1	test	4	173	scrwdriv	testp1
-318	(#4) 2064 8 (173)	1412	inanimate	s_old	r_new	miss	1	test	4	173	scrwdriv	testp1
-319	(#4) 8 (173) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	173	scrwdriv	testp1
-320	(#1) 8 (130) 2064	1100	animate	s_new	r_new	cr	1	test	1	130	eye	testp1
-321	(#1) 8 2064 (130)	1101	animate	s_new	r_new	cr	1	test	1	130	eye	testp1
-322	(#1) 2064 8 (130)	1102	animate	s_new	r_new	cr	1	test	1	130	eye	testp1
-323	(#1) 8 (130) 1040	1110	animate	s_new	r_old	fa	1	test	1	130	eye	testp1
-324	(#1) 8 1040 (130)	1111	animate	s_new	r_old	fa	1	test	1	130	eye	testp1
-325	(#1) 1040 8 (130)	1112	animate	s_new	r_old	fa	1	test	1	130	eye	testp1
-326	(#1) 8 (130) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	130	eye	testp1
-327	(#4) 8 (190) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	190	tissue	testp1
-328	(#4) 8 1040 (190)	1401	inanimate	s_old	r_old	hit	1	test	4	190	tissue	testp1
-329	(#4) 1040 8 (190)	1402	inanimate	s_old	r_old	hit	1	test	4	190	tissue	testp1
-330	(#4) 8 (190) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	190	tissue	testp1
-331	(#4) 8 2064 (190)	1411	inanimate	s_old	r_new	miss	1	test	4	190	tissue	testp1
-332	(#4) 2064 8 (190)	1412	inanimate	s_old	r_new	miss	1	test	4	190	tissue	testp1
-333	(#4) 8 (190) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	190	tissue	testp1
-334	(#4) 8 (124) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	124	comb	testp1
-335	(#4) 8 1040 (124)	1401	inanimate	s_old	r_old	hit	1	test	4	124	comb	testp1
-336	(#4) 1040 8 (124)	1402	inanimate	s_old	r_old	hit	1	test	4	124	comb	testp1
-337	(#4) 8 (124) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	124	comb	testp1
-338	(#4) 8 2064 (124)	1411	inanimate	s_old	r_new	miss	1	test	4	124	comb	testp1
-339	(#4) 2064 8 (124)	1412	inanimate	s_old	r_new	miss	1	test	4	124	comb	testp1
-340	(#4) 8 (124) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	124	comb	testp1
-341	(#4) 8 (107) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	107	bell	testp1
-342	(#4) 8 1040 (107)	1401	inanimate	s_old	r_old	hit	1	test	4	107	bell	testp1
-343	(#4) 1040 8 (107)	1402	inanimate	s_old	r_old	hit	1	test	4	107	bell	testp1
-344	(#4) 8 (107) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	107	bell	testp1
-345	(#4) 8 2064 (107)	1411	inanimate	s_old	r_new	miss	1	test	4	107	bell	testp1
-346	(#4) 2064 8 (107)	1412	inanimate	s_old	r_new	miss	1	test	4	107	bell	testp1
-347	(#4) 8 (107) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	107	bell	testp1
-348	(#4) 8 (188) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	188	tapemeas	testp1
-349	(#4) 8 1040 (188)	1401	inanimate	s_old	r_old	hit	1	test	4	188	tapemeas	testp1
-350	(#4) 1040 8 (188)	1402	inanimate	s_old	r_old	hit	1	test	4	188	tapemeas	testp1
-351	(#4) 8 (188) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	188	tapemeas	testp1
-352	(#4) 8 2064 (188)	1411	inanimate	s_old	r_new	miss	1	test	4	188	tapemeas	testp1
-353	(#4) 2064 8 (188)	1412	inanimate	s_old	r_new	miss	1	test	4	188	tapemeas	testp1
-354	(#4) 8 (188) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	188	tapemeas	testp1
-355	(#4) 8 (131) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	131	firengin	testp1
-356	(#4) 8 1040 (131)	1401	inanimate	s_old	r_old	hit	1	test	4	131	firengin	testp1
-357	(#4) 1040 8 (131)	1402	inanimate	s_old	r_old	hit	1	test	4	131	firengin	testp1
-358	(#4) 8 (131) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	131	firengin	testp1
-359	(#4) 8 2064 (131)	1411	inanimate	s_old	r_new	miss	1	test	4	131	firengin	testp1
-360	(#4) 2064 8 (131)	1412	inanimate	s_old	r_new	miss	1	test	4	131	firengin	testp1
-361	(#4) 8 (131) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	131	firengin	testp1
-362	(#3) 8 (101) 1040	1300	animate	s_old	r_old	hit	1	test	3	101	allgator	testp1
-363	(#3) 8 1040 (101)	1301	animate	s_old	r_old	hit	1	test	3	101	allgator	testp1
-364	(#3) 1040 8 (101)	1302	animate	s_old	r_old	hit	1	test	3	101	allgator	testp1
-365	(#3) 8 (101) 2064	1310	animate	s_old	r_new	miss	1	test	3	101	allgator	testp1
-366	(#3) 8 2064 (101)	1311	animate	s_old	r_new	miss	1	test	3	101	allgator	testp1
-367	(#3) 2064 8 (101)	1312	animate	s_old	r_new	miss	1	test	3	101	allgator	testp1
-368	(#3) 8 (101) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	101	allgator	testp1
-369	(#2) 8 (200) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	200	wrench	testp1
-370	(#2) 8 2064 (200)	1201	inanimate	s_new	r_new	cr	1	test	2	200	wrench	testp1
-371	(#2) 2064 8 (200)	1202	inanimate	s_new	r_new	cr	1	test	2	200	wrench	testp1
-372	(#2) 8 (200) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	200	wrench	testp1
-373	(#2) 8 1040 (200)	1211	inanimate	s_new	r_old	fa	1	test	2	200	wrench	testp1
-374	(#2) 1040 8 (200)	1212	inanimate	s_new	r_old	fa	1	test	2	200	wrench	testp1
-375	(#2) 8 (200) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	200	wrench	testp1
-376	(#4) 8 (143) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	143	jacket	testp1
-377	(#4) 8 1040 (143)	1401	inanimate	s_old	r_old	hit	1	test	4	143	jacket	testp1
-378	(#4) 1040 8 (143)	1402	inanimate	s_old	r_old	hit	1	test	4	143	jacket	testp1
-379	(#4) 8 (143) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	143	jacket	testp1
-380	(#4) 8 2064 (143)	1411	inanimate	s_old	r_new	miss	1	test	4	143	jacket	testp1
-381	(#4) 2064 8 (143)	1412	inanimate	s_old	r_new	miss	1	test	4	143	jacket	testp1
-382	(#4) 8 (143) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	143	jacket	testp1
-383	(#4) 8 (149) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	149	lock	testp1
-384	(#4) 8 1040 (149)	1401	inanimate	s_old	r_old	hit	1	test	4	149	lock	testp1
-385	(#4) 1040 8 (149)	1402	inanimate	s_old	r_old	hit	1	test	4	149	lock	testp1
-386	(#4) 8 (149) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	149	lock	testp1
-387	(#4) 8 2064 (149)	1411	inanimate	s_old	r_new	miss	1	test	4	149	lock	testp1
-388	(#4) 2064 8 (149)	1412	inanimate	s_old	r_new	miss	1	test	4	149	lock	testp1
-389	(#4) 8 (149) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	149	lock	testp1
-390	(#2) 8 (165) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	165	prkngmtr	testp1
-391	(#2) 8 2064 (165)	1201	inanimate	s_new	r_new	cr	1	test	2	165	prkngmtr	testp1
-392	(#2) 2064 8 (165)	1202	inanimate	s_new	r_new	cr	1	test	2	165	prkngmtr	testp1
-393	(#2) 8 (165) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	165	prkngmtr	testp1
-394	(#2) 8 1040 (165)	1211	inanimate	s_new	r_old	fa	1	test	2	165	prkngmtr	testp1
-395	(#2) 1040 8 (165)	1212	inanimate	s_new	r_old	fa	1	test	2	165	prkngmtr	testp1
-396	(#2) 8 (165) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	165	prkngmtr	testp1
-397	(#2) 8 (113) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	113	bsbllglv	testp1
-398	(#2) 8 2064 (113)	1201	inanimate	s_new	r_new	cr	1	test	2	113	bsbllglv	testp1
-399	(#2) 2064 8 (113)	1202	inanimate	s_new	r_new	cr	1	test	2	113	bsbllglv	testp1
-400	(#2) 8 (113) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	113	bsbllglv	testp1
-401	(#2) 8 1040 (113)	1211	inanimate	s_new	r_old	fa	1	test	2	113	bsbllglv	testp1
-402	(#2) 1040 8 (113)	1212	inanimate	s_new	r_old	fa	1	test	2	113	bsbllglv	testp1
-403	(#2) 8 (113) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	113	bsbllglv	testp1
-404	(#4) 8 (147) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	147	lighter	testp1
-405	(#4) 8 1040 (147)	1401	inanimate	s_old	r_old	hit	1	test	4	147	lighter	testp1
-406	(#4) 1040 8 (147)	1402	inanimate	s_old	r_old	hit	1	test	4	147	lighter	testp1
-407	(#4) 8 (147) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	147	lighter	testp1
-408	(#4) 8 2064 (147)	1411	inanimate	s_old	r_new	miss	1	test	4	147	lighter	testp1
-409	(#4) 2064 8 (147)	1412	inanimate	s_old	r_new	miss	1	test	4	147	lighter	testp1
-410	(#4) 8 (147) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	147	lighter	testp1
-411	(#2) 8 (150) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	150	mailbox	testp1
-412	(#2) 8 2064 (150)	1201	inanimate	s_new	r_new	cr	1	test	2	150	mailbox	testp1
-413	(#2) 2064 8 (150)	1202	inanimate	s_new	r_new	cr	1	test	2	150	mailbox	testp1
-414	(#2) 8 (150) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	150	mailbox	testp1
-415	(#2) 8 1040 (150)	1211	inanimate	s_new	r_old	fa	1	test	2	150	mailbox	testp1
-416	(#2) 1040 8 (150)	1212	inanimate	s_new	r_old	fa	1	test	2	150	mailbox	testp1
-417	(#2) 8 (150) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	150	mailbox	testp1
-418	(#2) 8 (162) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	162	pitcher	testp1
-419	(#2) 8 2064 (162)	1201	inanimate	s_new	r_new	cr	1	test	2	162	pitcher	testp1
-420	(#2) 2064 8 (162)	1202	inanimate	s_new	r_new	cr	1	test	2	162	pitcher	testp1
-421	(#2) 8 (162) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	162	pitcher	testp1
-422	(#2) 8 1040 (162)	1211	inanimate	s_new	r_old	fa	1	test	2	162	pitcher	testp1
-423	(#2) 1040 8 (162)	1212	inanimate	s_new	r_old	fa	1	test	2	162	pitcher	testp1
-424	(#2) 8 (162) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	162	pitcher	testp1
-425	(#4) 8 (195) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	195	vest	testp1
-426	(#4) 8 1040 (195)	1401	inanimate	s_old	r_old	hit	1	test	4	195	vest	testp1
-427	(#4) 1040 8 (195)	1402	inanimate	s_old	r_old	hit	1	test	4	195	vest	testp1
-428	(#4) 8 (195) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	195	vest	testp1
-429	(#4) 8 2064 (195)	1411	inanimate	s_old	r_new	miss	1	test	4	195	vest	testp1
-430	(#4) 2064 8 (195)	1412	inanimate	s_old	r_new	miss	1	test	4	195	vest	testp1
-431	(#4) 8 (195) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	195	vest	testp1
-432	(#2) 8 (181) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	181	sprybtle	testp1
-433	(#2) 8 2064 (181)	1201	inanimate	s_new	r_new	cr	1	test	2	181	sprybtle	testp1
-434	(#2) 2064 8 (181)	1202	inanimate	s_new	r_new	cr	1	test	2	181	sprybtle	testp1
-435	(#2) 8 (181) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	181	sprybtle	testp1
-436	(#2) 8 1040 (181)	1211	inanimate	s_new	r_old	fa	1	test	2	181	sprybtle	testp1
-437	(#2) 1040 8 (181)	1212	inanimate	s_new	r_old	fa	1	test	2	181	sprybtle	testp1
-438	(#2) 8 (181) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	181	sprybtle	testp1
-439	(#3) 8 (160) 1040	1300	animate	s_old	r_old	hit	1	test	3	160	penguin	testp1
-440	(#3) 8 1040 (160)	1301	animate	s_old	r_old	hit	1	test	3	160	penguin	testp1
-441	(#3) 1040 8 (160)	1302	animate	s_old	r_old	hit	1	test	3	160	penguin	testp1
-442	(#3) 8 (160) 2064	1310	animate	s_old	r_new	miss	1	test	3	160	penguin	testp1
-443	(#3) 8 2064 (160)	1311	animate	s_old	r_new	miss	1	test	3	160	penguin	testp1
-444	(#3) 2064 8 (160)	1312	animate	s_old	r_new	miss	1	test	3	160	penguin	testp1
-445	(#3) 8 (160) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	160	penguin	testp1
-446	(#3) 8 (153) 1040	1300	animate	s_old	r_old	hit	1	test	3	153	mushroom	testp1
-447	(#3) 8 1040 (153)	1301	animate	s_old	r_old	hit	1	test	3	153	mushroom	testp1
-448	(#3) 1040 8 (153)	1302	animate	s_old	r_old	hit	1	test	3	153	mushroom	testp1
-449	(#3) 8 (153) 2064	1310	animate	s_old	r_new	miss	1	test	3	153	mushroom	testp1
-450	(#3) 8 2064 (153)	1311	animate	s_old	r_new	miss	1	test	3	153	mushroom	testp1
-451	(#3) 2064 8 (153)	1312	animate	s_old	r_new	miss	1	test	3	153	mushroom	testp1
-452	(#3) 8 (153) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	153	mushroom	testp1
-453	(#4) 8 (191) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	191	trophy	testp1
-454	(#4) 8 1040 (191)	1401	inanimate	s_old	r_old	hit	1	test	4	191	trophy	testp1
-455	(#4) 1040 8 (191)	1402	inanimate	s_old	r_old	hit	1	test	4	191	trophy	testp1
-456	(#4) 8 (191) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	191	trophy	testp1
-457	(#4) 8 2064 (191)	1411	inanimate	s_old	r_new	miss	1	test	4	191	trophy	testp1
-458	(#4) 2064 8 (191)	1412	inanimate	s_old	r_new	miss	1	test	4	191	trophy	testp1
-459	(#4) 8 (191) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	191	trophy	testp1
-460	(#2) 8 (187) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	187	table	testp1
-461	(#2) 8 2064 (187)	1201	inanimate	s_new	r_new	cr	1	test	2	187	table	testp1
-462	(#2) 2064 8 (187)	1202	inanimate	s_new	r_new	cr	1	test	2	187	table	testp1
-463	(#2) 8 (187) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	187	table	testp1
-464	(#2) 8 1040 (187)	1211	inanimate	s_new	r_old	fa	1	test	2	187	table	testp1
-465	(#2) 1040 8 (187)	1212	inanimate	s_new	r_old	fa	1	test	2	187	table	testp1
-466	(#2) 8 (187) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	187	table	testp1
-467	(#2) 8 (177) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	177	socerbal	testp1
-468	(#2) 8 2064 (177)	1201	inanimate	s_new	r_new	cr	1	test	2	177	socerbal	testp1
-469	(#2) 2064 8 (177)	1202	inanimate	s_new	r_new	cr	1	test	2	177	socerbal	testp1
-470	(#2) 8 (177) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	177	socerbal	testp1
-471	(#2) 8 1040 (177)	1211	inanimate	s_new	r_old	fa	1	test	2	177	socerbal	testp1
-472	(#2) 1040 8 (177)	1212	inanimate	s_new	r_old	fa	1	test	2	177	socerbal	testp1
-473	(#2) 8 (177) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	177	socerbal	testp1
-474	(#1) 8 (156) 2064	1100	animate	s_new	r_new	cr	1	test	1	156	palmtree	testp1
-475	(#1) 8 2064 (156)	1101	animate	s_new	r_new	cr	1	test	1	156	palmtree	testp1
-476	(#1) 2064 8 (156)	1102	animate	s_new	r_new	cr	1	test	1	156	palmtree	testp1
-477	(#1) 8 (156) 1040	1110	animate	s_new	r_old	fa	1	test	1	156	palmtree	testp1
-478	(#1) 8 1040 (156)	1111	animate	s_new	r_old	fa	1	test	1	156	palmtree	testp1
-479	(#1) 1040 8 (156)	1112	animate	s_new	r_old	fa	1	test	1	156	palmtree	testp1
-480	(#1) 8 (156) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	156	palmtree	testp1
-481	(#3) 8 (146) 1040	1300	animate	s_old	r_old	hit	1	test	3	146	leopard	testp1
-482	(#3) 8 1040 (146)	1301	animate	s_old	r_old	hit	1	test	3	146	leopard	testp1
-483	(#3) 1040 8 (146)	1302	animate	s_old	r_old	hit	1	test	3	146	leopard	testp1
-484	(#3) 8 (146) 2064	1310	animate	s_old	r_new	miss	1	test	3	146	leopard	testp1
-485	(#3) 8 2064 (146)	1311	animate	s_old	r_new	miss	1	test	3	146	leopard	testp1
-486	(#3) 2064 8 (146)	1312	animate	s_old	r_new	miss	1	test	3	146	leopard	testp1
-487	(#3) 8 (146) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	146	leopard	testp1
-488	(#2) 8 (152) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	152	motrcyle	testp1
-489	(#2) 8 2064 (152)	1201	inanimate	s_new	r_new	cr	1	test	2	152	motrcyle	testp1
-490	(#2) 2064 8 (152)	1202	inanimate	s_new	r_new	cr	1	test	2	152	motrcyle	testp1
-491	(#2) 8 (152) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	152	motrcyle	testp1
-492	(#2) 8 1040 (152)	1211	inanimate	s_new	r_old	fa	1	test	2	152	motrcyle	testp1
-493	(#2) 1040 8 (152)	1212	inanimate	s_new	r_old	fa	1	test	2	152	motrcyle	testp1
-494	(#2) 8 (152) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	152	motrcyle	testp1
-495	(#2) 8 (164) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	164	pliers	testp1
-496	(#2) 8 2064 (164)	1201	inanimate	s_new	r_new	cr	1	test	2	164	pliers	testp1
-497	(#2) 2064 8 (164)	1202	inanimate	s_new	r_new	cr	1	test	2	164	pliers	testp1
-498	(#2) 8 (164) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	164	pliers	testp1
-499	(#2) 8 1040 (164)	1211	inanimate	s_new	r_old	fa	1	test	2	164	pliers	testp1
-500	(#2) 1040 8 (164)	1212	inanimate	s_new	r_old	fa	1	test	2	164	pliers	testp1
-501	(#2) 8 (164) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	164	pliers	testp1
-502	(#4) 8 (151) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	151	moon	testp1
-503	(#4) 8 1040 (151)	1401	inanimate	s_old	r_old	hit	1	test	4	151	moon	testp1
-504	(#4) 1040 8 (151)	1402	inanimate	s_old	r_old	hit	1	test	4	151	moon	testp1
-505	(#4) 8 (151) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	151	moon	testp1
-506	(#4) 8 2064 (151)	1411	inanimate	s_old	r_new	miss	1	test	4	151	moon	testp1
-507	(#4) 2064 8 (151)	1412	inanimate	s_old	r_new	miss	1	test	4	151	moon	testp1
-508	(#4) 8 (151) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	151	moon	testp1
-509	(#3) 8 (140) 1040	1300	animate	s_old	r_old	hit	1	test	3	140	horse	testp1
-510	(#3) 8 1040 (140)	1301	animate	s_old	r_old	hit	1	test	3	140	horse	testp1
-511	(#3) 1040 8 (140)	1302	animate	s_old	r_old	hit	1	test	3	140	horse	testp1
-512	(#3) 8 (140) 2064	1310	animate	s_old	r_new	miss	1	test	3	140	horse	testp1
-513	(#3) 8 2064 (140)	1311	animate	s_old	r_new	miss	1	test	3	140	horse	testp1
-514	(#3) 2064 8 (140)	1312	animate	s_old	r_new	miss	1	test	3	140	horse	testp1
-515	(#3) 8 (140) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	140	horse	testp1
-516	(#1) 8 (158) 2064	1100	animate	s_new	r_new	cr	1	test	1	158	pelican	testp1
-517	(#1) 8 2064 (158)	1101	animate	s_new	r_new	cr	1	test	1	158	pelican	testp1
-518	(#1) 2064 8 (158)	1102	animate	s_new	r_new	cr	1	test	1	158	pelican	testp1
-519	(#1) 8 (158) 1040	1110	animate	s_new	r_old	fa	1	test	1	158	pelican	testp1
-520	(#1) 8 1040 (158)	1111	animate	s_new	r_old	fa	1	test	1	158	pelican	testp1
-521	(#1) 1040 8 (158)	1112	animate	s_new	r_old	fa	1	test	1	158	pelican	testp1
-522	(#1) 8 (158) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	158	pelican	testp1
-523	(#4) 8 (163) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	163	pitchfrk	testp1
-524	(#4) 8 1040 (163)	1401	inanimate	s_old	r_old	hit	1	test	4	163	pitchfrk	testp1
-525	(#4) 1040 8 (163)	1402	inanimate	s_old	r_old	hit	1	test	4	163	pitchfrk	testp1
-526	(#4) 8 (163) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	163	pitchfrk	testp1
-527	(#4) 8 2064 (163)	1411	inanimate	s_old	r_new	miss	1	test	4	163	pitchfrk	testp1
-528	(#4) 2064 8 (163)	1412	inanimate	s_old	r_new	miss	1	test	4	163	pitchfrk	testp1
-529	(#4) 8 (163) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	163	pitchfrk	testp1
-530	(#1) 8 (148) 2064	1100	animate	s_new	r_new	cr	1	test	1	148	lion	testp1
-531	(#1) 8 2064 (148)	1101	animate	s_new	r_new	cr	1	test	1	148	lion	testp1
-532	(#1) 2064 8 (148)	1102	animate	s_new	r_new	cr	1	test	1	148	lion	testp1
-533	(#1) 8 (148) 1040	1110	animate	s_new	r_old	fa	1	test	1	148	lion	testp1
-534	(#1) 8 1040 (148)	1111	animate	s_new	r_old	fa	1	test	1	148	lion	testp1
-535	(#1) 1040 8 (148)	1112	animate	s_new	r_old	fa	1	test	1	148	lion	testp1
-536	(#1) 8 (148) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	148	lion	testp1
-537	(#1) 8 (161) 2064	1100	animate	s_new	r_new	cr	1	test	1	161	pineaple	testp1
-538	(#1) 8 2064 (161)	1101	animate	s_new	r_new	cr	1	test	1	161	pineaple	testp1
-539	(#1) 2064 8 (161)	1102	animate	s_new	r_new	cr	1	test	1	161	pineaple	testp1
-540	(#1) 8 (161) 1040	1110	animate	s_new	r_old	fa	1	test	1	161	pineaple	testp1
-541	(#1) 8 1040 (161)	1111	animate	s_new	r_old	fa	1	test	1	161	pineaple	testp1
-542	(#1) 1040 8 (161)	1112	animate	s_new	r_old	fa	1	test	1	161	pineaple	testp1
-543	(#1) 8 (161) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	161	pineaple	testp1
-544	(#1) 8 (135) 2064	1100	animate	s_new	r_new	cr	1	test	1	135	foot	testp1
-545	(#1) 8 2064 (135)	1101	animate	s_new	r_new	cr	1	test	1	135	foot	testp1
-546	(#1) 2064 8 (135)	1102	animate	s_new	r_new	cr	1	test	1	135	foot	testp1
-547	(#1) 8 (135) 1040	1110	animate	s_new	r_old	fa	1	test	1	135	foot	testp1
-548	(#1) 8 1040 (135)	1111	animate	s_new	r_old	fa	1	test	1	135	foot	testp1
-549	(#1) 1040 8 (135)	1112	animate	s_new	r_old	fa	1	test	1	135	foot	testp1
-550	(#1) 8 (135) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	135	foot	testp1
-551	(#2) 8 (168) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	168	remote	testp1
-552	(#2) 8 2064 (168)	1201	inanimate	s_new	r_new	cr	1	test	2	168	remote	testp1
-553	(#2) 2064 8 (168)	1202	inanimate	s_new	r_new	cr	1	test	2	168	remote	testp1
-554	(#2) 8 (168) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	168	remote	testp1
-555	(#2) 8 1040 (168)	1211	inanimate	s_new	r_old	fa	1	test	2	168	remote	testp1
-556	(#2) 1040 8 (168)	1212	inanimate	s_new	r_old	fa	1	test	2	168	remote	testp1
-557	(#2) 8 (168) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	168	remote	testp1
-558	(#4) 8 (138) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	138	hanger	testp1
-559	(#4) 8 1040 (138)	1401	inanimate	s_old	r_old	hit	1	test	4	138	hanger	testp1
-560	(#4) 1040 8 (138)	1402	inanimate	s_old	r_old	hit	1	test	4	138	hanger	testp1
-561	(#4) 8 (138) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	138	hanger	testp1
-562	(#4) 8 2064 (138)	1411	inanimate	s_old	r_new	miss	1	test	4	138	hanger	testp1
-563	(#4) 2064 8 (138)	1412	inanimate	s_old	r_new	miss	1	test	4	138	hanger	testp1
-564	(#4) 8 (138) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	138	hanger	testp1
-565	(#2) 8 (180) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	180	spoon	testp1
-566	(#2) 8 2064 (180)	1201	inanimate	s_new	r_new	cr	1	test	2	180	spoon	testp1
-567	(#2) 2064 8 (180)	1202	inanimate	s_new	r_new	cr	1	test	2	180	spoon	testp1
-568	(#2) 8 (180) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	180	spoon	testp1
-569	(#2) 8 1040 (180)	1211	inanimate	s_new	r_old	fa	1	test	2	180	spoon	testp1
-570	(#2) 1040 8 (180)	1212	inanimate	s_new	r_old	fa	1	test	2	180	spoon	testp1
-571	(#2) 8 (180) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	180	spoon	testp1
-572	(#1) 8 (110) 2064	1100	animate	s_new	r_new	cr	1	test	1	110	brain	testp1
-573	(#1) 8 2064 (110)	1101	animate	s_new	r_new	cr	1	test	1	110	brain	testp1
-574	(#1) 2064 8 (110)	1102	animate	s_new	r_new	cr	1	test	1	110	brain	testp1
-575	(#1) 8 (110) 1040	1110	animate	s_new	r_old	fa	1	test	1	110	brain	testp1
-576	(#1) 8 1040 (110)	1111	animate	s_new	r_old	fa	1	test	1	110	brain	testp1
-577	(#1) 1040 8 (110)	1112	animate	s_new	r_old	fa	1	test	1	110	brain	testp1
-578	(#1) 8 (110) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	110	brain	testp1
-579	(#1) 8 (115) 2064	1100	animate	s_new	r_new	cr	1	test	1	115	camel	testp1
-580	(#1) 8 2064 (115)	1101	animate	s_new	r_new	cr	1	test	1	115	camel	testp1
-581	(#1) 2064 8 (115)	1102	animate	s_new	r_new	cr	1	test	1	115	camel	testp1
-582	(#1) 8 (115) 1040	1110	animate	s_new	r_old	fa	1	test	1	115	camel	testp1
-583	(#1) 8 1040 (115)	1111	animate	s_new	r_old	fa	1	test	1	115	camel	testp1
-584	(#1) 1040 8 (115)	1112	animate	s_new	r_old	fa	1	test	1	115	camel	testp1
-585	(#1) 8 (115) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	115	camel	testp1
-586	(#4) 8 (112) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	112	broom	testp1
-587	(#4) 8 1040 (112)	1401	inanimate	s_old	r_old	hit	1	test	4	112	broom	testp1
-588	(#4) 1040 8 (112)	1402	inanimate	s_old	r_old	hit	1	test	4	112	broom	testp1
-589	(#4) 8 (112) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	112	broom	testp1
-590	(#4) 8 2064 (112)	1411	inanimate	s_old	r_new	miss	1	test	4	112	broom	testp1
-591	(#4) 2064 8 (112)	1412	inanimate	s_old	r_new	miss	1	test	4	112	broom	testp1
-592	(#4) 8 (112) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	112	broom	testp1
-593	(#2) 8 (104) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	104	balloon	testp1
-594	(#2) 8 2064 (104)	1201	inanimate	s_new	r_new	cr	1	test	2	104	balloon	testp1
-595	(#2) 2064 8 (104)	1202	inanimate	s_new	r_new	cr	1	test	2	104	balloon	testp1
-596	(#2) 8 (104) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	104	balloon	testp1
-597	(#2) 8 1040 (104)	1211	inanimate	s_new	r_old	fa	1	test	2	104	balloon	testp1
-598	(#2) 1040 8 (104)	1212	inanimate	s_new	r_old	fa	1	test	2	104	balloon	testp1
-599	(#2) 8 (104) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	104	balloon	testp1
-600	(#2) 8 (111) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	111	briefcas	testp1
-601	(#2) 8 2064 (111)	1201	inanimate	s_new	r_new	cr	1	test	2	111	briefcas	testp1
-602	(#2) 2064 8 (111)	1202	inanimate	s_new	r_new	cr	1	test	2	111	briefcas	testp1
-603	(#2) 8 (111) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	111	briefcas	testp1
-604	(#2) 8 1040 (111)	1211	inanimate	s_new	r_old	fa	1	test	2	111	briefcas	testp1
-605	(#2) 1040 8 (111)	1212	inanimate	s_new	r_old	fa	1	test	2	111	briefcas	testp1
-606	(#2) 8 (111) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	111	briefcas	testp1
-607	(#2) 8 (120) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	120	chair	testp1
-608	(#2) 8 2064 (120)	1201	inanimate	s_new	r_new	cr	1	test	2	120	chair	testp1
-609	(#2) 2064 8 (120)	1202	inanimate	s_new	r_new	cr	1	test	2	120	chair	testp1
-610	(#2) 8 (120) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	120	chair	testp1
-611	(#2) 8 1040 (120)	1211	inanimate	s_new	r_old	fa	1	test	2	120	chair	testp1
-612	(#2) 1040 8 (120)	1212	inanimate	s_new	r_old	fa	1	test	2	120	chair	testp1
-613	(#2) 8 (120) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	120	chair	testp1
-614	(#1) 8 (136) 2064	1100	animate	s_new	r_new	cr	1	test	1	136	frog	testp1
-615	(#1) 8 2064 (136)	1101	animate	s_new	r_new	cr	1	test	1	136	frog	testp1
-616	(#1) 2064 8 (136)	1102	animate	s_new	r_new	cr	1	test	1	136	frog	testp1
-617	(#1) 8 (136) 1040	1110	animate	s_new	r_old	fa	1	test	1	136	frog	testp1
-618	(#1) 8 1040 (136)	1111	animate	s_new	r_old	fa	1	test	1	136	frog	testp1
-619	(#1) 1040 8 (136)	1112	animate	s_new	r_old	fa	1	test	1	136	frog	testp1
-620	(#1) 8 (136) (?!(2064|1040))	1103	animate	s_new	r_none	nr	1	test	1	136	frog	testp1
-621	(#2) 8 (194) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	194	vacuum	testp1
-622	(#2) 8 2064 (194)	1201	inanimate	s_new	r_new	cr	1	test	2	194	vacuum	testp1
-623	(#2) 2064 8 (194)	1202	inanimate	s_new	r_new	cr	1	test	2	194	vacuum	testp1
-624	(#2) 8 (194) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	194	vacuum	testp1
-625	(#2) 8 1040 (194)	1211	inanimate	s_new	r_old	fa	1	test	2	194	vacuum	testp1
-626	(#2) 1040 8 (194)	1212	inanimate	s_new	r_old	fa	1	test	2	194	vacuum	testp1
-627	(#2) 8 (194) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	194	vacuum	testp1
-628	(#2) 8 (137) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	137	guitar	testp1
-629	(#2) 8 2064 (137)	1201	inanimate	s_new	r_new	cr	1	test	2	137	guitar	testp1
-630	(#2) 2064 8 (137)	1202	inanimate	s_new	r_new	cr	1	test	2	137	guitar	testp1
-631	(#2) 8 (137) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	137	guitar	testp1
-632	(#2) 8 1040 (137)	1211	inanimate	s_new	r_old	fa	1	test	2	137	guitar	testp1
-633	(#2) 1040 8 (137)	1212	inanimate	s_new	r_old	fa	1	test	2	137	guitar	testp1
-634	(#2) 8 (137) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	137	guitar	testp1
-635	(#2) 8 (128) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	128	dress	testp1
-636	(#2) 8 2064 (128)	1201	inanimate	s_new	r_new	cr	1	test	2	128	dress	testp1
-637	(#2) 2064 8 (128)	1202	inanimate	s_new	r_new	cr	1	test	2	128	dress	testp1
-638	(#2) 8 (128) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	128	dress	testp1
-639	(#2) 8 1040 (128)	1211	inanimate	s_new	r_old	fa	1	test	2	128	dress	testp1
-640	(#2) 1040 8 (128)	1212	inanimate	s_new	r_old	fa	1	test	2	128	dress	testp1
-641	(#2) 8 (128) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	128	dress	testp1
-642	(#4) 8 (119) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	119	chainsaw	testp1
-643	(#4) 8 1040 (119)	1401	inanimate	s_old	r_old	hit	1	test	4	119	chainsaw	testp1
-644	(#4) 1040 8 (119)	1402	inanimate	s_old	r_old	hit	1	test	4	119	chainsaw	testp1
-645	(#4) 8 (119) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	119	chainsaw	testp1
-646	(#4) 8 2064 (119)	1411	inanimate	s_old	r_new	miss	1	test	4	119	chainsaw	testp1
-647	(#4) 2064 8 (119)	1412	inanimate	s_old	r_new	miss	1	test	4	119	chainsaw	testp1
-648	(#4) 8 (119) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	119	chainsaw	testp1
-649	(#2) 8 (123) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	123	clothspn	testp1
-650	(#2) 8 2064 (123)	1201	inanimate	s_new	r_new	cr	1	test	2	123	clothspn	testp1
-651	(#2) 2064 8 (123)	1202	inanimate	s_new	r_new	cr	1	test	2	123	clothspn	testp1
-652	(#2) 8 (123) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	123	clothspn	testp1
-653	(#2) 8 1040 (123)	1211	inanimate	s_new	r_old	fa	1	test	2	123	clothspn	testp1
-654	(#2) 1040 8 (123)	1212	inanimate	s_new	r_old	fa	1	test	2	123	clothspn	testp1
-655	(#2) 8 (123) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	123	clothspn	testp1
-656	(#2) 8 (196) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	196	watercan	testp1
-657	(#2) 8 2064 (196)	1201	inanimate	s_new	r_new	cr	1	test	2	196	watercan	testp1
-658	(#2) 2064 8 (196)	1202	inanimate	s_new	r_new	cr	1	test	2	196	watercan	testp1
-659	(#2) 8 (196) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	196	watercan	testp1
-660	(#2) 8 1040 (196)	1211	inanimate	s_new	r_old	fa	1	test	2	196	watercan	testp1
-661	(#2) 1040 8 (196)	1212	inanimate	s_new	r_old	fa	1	test	2	196	watercan	testp1
-662	(#2) 8 (196) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	196	watercan	testp1
-663	(#2) 8 (121) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	121	chisel	testp1
-664	(#2) 8 2064 (121)	1201	inanimate	s_new	r_new	cr	1	test	2	121	chisel	testp1
-665	(#2) 2064 8 (121)	1202	inanimate	s_new	r_new	cr	1	test	2	121	chisel	testp1
-666	(#2) 8 (121) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	121	chisel	testp1
-667	(#2) 8 1040 (121)	1211	inanimate	s_new	r_old	fa	1	test	2	121	chisel	testp1
-668	(#2) 1040 8 (121)	1212	inanimate	s_new	r_old	fa	1	test	2	121	chisel	testp1
-669	(#2) 8 (121) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	121	chisel	testp1
-670	(#4) 8 (198) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	198	wineglas	testp1
-671	(#4) 8 1040 (198)	1401	inanimate	s_old	r_old	hit	1	test	4	198	wineglas	testp1
-672	(#4) 1040 8 (198)	1402	inanimate	s_old	r_old	hit	1	test	4	198	wineglas	testp1
-673	(#4) 8 (198) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	198	wineglas	testp1
-674	(#4) 8 2064 (198)	1411	inanimate	s_old	r_new	miss	1	test	4	198	wineglas	testp1
-675	(#4) 2064 8 (198)	1412	inanimate	s_old	r_new	miss	1	test	4	198	wineglas	testp1
-676	(#4) 8 (198) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	198	wineglas	testp1
-677	(#4) 8 (125) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	125	crayon	testp1
-678	(#4) 8 1040 (125)	1401	inanimate	s_old	r_old	hit	1	test	4	125	crayon	testp1
-679	(#4) 1040 8 (125)	1402	inanimate	s_old	r_old	hit	1	test	4	125	crayon	testp1
-680	(#4) 8 (125) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	125	crayon	testp1
-681	(#4) 8 2064 (125)	1411	inanimate	s_old	r_new	miss	1	test	4	125	crayon	testp1
-682	(#4) 2064 8 (125)	1412	inanimate	s_old	r_new	miss	1	test	4	125	crayon	testp1
-683	(#4) 8 (125) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	125	crayon	testp1
-684	(#3) 8 (175) 1040	1300	animate	s_old	r_old	hit	1	test	3	175	sheep	testp1
-685	(#3) 8 1040 (175)	1301	animate	s_old	r_old	hit	1	test	3	175	sheep	testp1
-686	(#3) 1040 8 (175)	1302	animate	s_old	r_old	hit	1	test	3	175	sheep	testp1
-687	(#3) 8 (175) 2064	1310	animate	s_old	r_new	miss	1	test	3	175	sheep	testp1
-688	(#3) 8 2064 (175)	1311	animate	s_old	r_new	miss	1	test	3	175	sheep	testp1
-689	(#3) 2064 8 (175)	1312	animate	s_old	r_new	miss	1	test	3	175	sheep	testp1
-690	(#3) 8 (175) (?!(2064|1040))	1303	animate	s_old	r_none	nr	1	test	3	175	sheep	testp1
-691	(#4) 8 (184) 1040	1400	inanimate	s_old	r_old	hit	1	test	4	184	stove	testp1
-692	(#4) 8 1040 (184)	1401	inanimate	s_old	r_old	hit	1	test	4	184	stove	testp1
-693	(#4) 1040 8 (184)	1402	inanimate	s_old	r_old	hit	1	test	4	184	stove	testp1
-694	(#4) 8 (184) 2064	1410	inanimate	s_old	r_new	miss	1	test	4	184	stove	testp1
-695	(#4) 8 2064 (184)	1411	inanimate	s_old	r_new	miss	1	test	4	184	stove	testp1
-696	(#4) 2064 8 (184)	1412	inanimate	s_old	r_new	miss	1	test	4	184	stove	testp1
-697	(#4) 8 (184) (?!(2064|1040))	1403	inanimate	s_old	r_none	nr	1	test	4	184	stove	testp1
-698	(#2) 8 (105) 2064	1200	inanimate	s_new	r_new	cr	1	test	2	105	barn	testp1
-699	(#2) 8 2064 (105)	1201	inanimate	s_new	r_new	cr	1	test	2	105	barn	testp1
-700	(#2) 2064 8 (105)	1202	inanimate	s_new	r_new	cr	1	test	2	105	barn	testp1
-701	(#2) 8 (105) 1040	1210	inanimate	s_new	r_old	fa	1	test	2	105	barn	testp1
-702	(#2) 8 1040 (105)	1211	inanimate	s_new	r_old	fa	1	test	2	105	barn	testp1
-703	(#2) 1040 8 (105)	1212	inanimate	s_new	r_old	fa	1	test	2	105	barn	testp1
-704	(#2) 8 (105) (?!(2064|1040))	1203	inanimate	s_new	r_none	nr	1	test	2	105	barn	testp1
+regexp	test_bin_id	animacy	stimulus	test_response	accuracy	ccode	phase	condition_id	item_id	jpg	scn
+(#[1234])	0	cal	cal	cal	cal	0	test	cal	-1	cal	cal
+(#[1234])	10	_any	_any	_any	_any	1	test	_any	-1	_any	_any
+(#[1])	11	animate	distractor	_any	_any	1	test	1	-1	_any	_any
+(#[2])	12	inanimate	distractor	_any	_any	1	test	2	-1	_any	_any
+(#[3])	13	animate	studied	_any	_any	1	test	3	-1	_any	_any
+(#[4])	14	inanimate	studied	_any	_any	1	test	4	-1	_any	_any
+(#1) 8 (127) 2064	1100	animate	distractor	new	cr	1	test	1	127	dragon	testp1
+(#1) 8 2064 (127)	1101	animate	distractor	new	cr	1	test	1	127	dragon	testp1
+(#1) 2064 8 (127)	1102	animate	distractor	new	cr	1	test	1	127	dragon	testp1
+(#1) 8 (127) 1040	1110	animate	distractor	old	fa	1	test	1	127	dragon	testp1
+(#1) 8 1040 (127)	1111	animate	distractor	old	fa	1	test	1	127	dragon	testp1
+(#1) 1040 8 (127)	1112	animate	distractor	old	fa	1	test	1	127	dragon	testp1
+(#1) 8 (127) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	127	dragon	testp1
+(#4) 8 (129) 1040	1400	inanimate	studied	old	hit	1	test	4	129	dresser	testp1
+(#4) 8 1040 (129)	1401	inanimate	studied	old	hit	1	test	4	129	dresser	testp1
+(#4) 1040 8 (129)	1402	inanimate	studied	old	hit	1	test	4	129	dresser	testp1
+(#4) 8 (129) 2064	1410	inanimate	studied	new	miss	1	test	4	129	dresser	testp1
+(#4) 8 2064 (129)	1411	inanimate	studied	new	miss	1	test	4	129	dresser	testp1
+(#4) 2064 8 (129)	1412	inanimate	studied	new	miss	1	test	4	129	dresser	testp1
+(#4) 8 (129) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	129	dresser	testp1
+(#2) 8 (185) 2064	1200	inanimate	distractor	new	cr	1	test	2	185	sun	testp1
+(#2) 8 2064 (185)	1201	inanimate	distractor	new	cr	1	test	2	185	sun	testp1
+(#2) 2064 8 (185)	1202	inanimate	distractor	new	cr	1	test	2	185	sun	testp1
+(#2) 8 (185) 1040	1210	inanimate	distractor	old	fa	1	test	2	185	sun	testp1
+(#2) 8 1040 (185)	1211	inanimate	distractor	old	fa	1	test	2	185	sun	testp1
+(#2) 1040 8 (185)	1212	inanimate	distractor	old	fa	1	test	2	185	sun	testp1
+(#2) 8 (185) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	185	sun	testp1
+(#3) 8 (106) 1040	1300	animate	studied	old	hit	1	test	3	106	bear	testp1
+(#3) 8 1040 (106)	1301	animate	studied	old	hit	1	test	3	106	bear	testp1
+(#3) 1040 8 (106)	1302	animate	studied	old	hit	1	test	3	106	bear	testp1
+(#3) 8 (106) 2064	1310	animate	studied	new	miss	1	test	3	106	bear	testp1
+(#3) 8 2064 (106)	1311	animate	studied	new	miss	1	test	3	106	bear	testp1
+(#3) 2064 8 (106)	1312	animate	studied	new	miss	1	test	3	106	bear	testp1
+(#3) 8 (106) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	106	bear	testp1
+(#4) 8 (141) 1040	1400	inanimate	studied	old	hit	1	test	4	141	htarblon	testp1
+(#4) 8 1040 (141)	1401	inanimate	studied	old	hit	1	test	4	141	htarblon	testp1
+(#4) 1040 8 (141)	1402	inanimate	studied	old	hit	1	test	4	141	htarblon	testp1
+(#4) 8 (141) 2064	1410	inanimate	studied	new	miss	1	test	4	141	htarblon	testp1
+(#4) 8 2064 (141)	1411	inanimate	studied	new	miss	1	test	4	141	htarblon	testp1
+(#4) 2064 8 (141)	1412	inanimate	studied	new	miss	1	test	4	141	htarblon	testp1
+(#4) 8 (141) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	141	htarblon	testp1
+(#3) 8 (166) 1040	1300	animate	studied	old	hit	1	test	3	166	pumpkin	testp1
+(#3) 8 1040 (166)	1301	animate	studied	old	hit	1	test	3	166	pumpkin	testp1
+(#3) 1040 8 (166)	1302	animate	studied	old	hit	1	test	3	166	pumpkin	testp1
+(#3) 8 (166) 2064	1310	animate	studied	new	miss	1	test	3	166	pumpkin	testp1
+(#3) 8 2064 (166)	1311	animate	studied	new	miss	1	test	3	166	pumpkin	testp1
+(#3) 2064 8 (166)	1312	animate	studied	new	miss	1	test	3	166	pumpkin	testp1
+(#3) 8 (166) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	166	pumpkin	testp1
+(#2) 8 (197) 2064	1200	inanimate	distractor	new	cr	1	test	2	197	whistle	testp1
+(#2) 8 2064 (197)	1201	inanimate	distractor	new	cr	1	test	2	197	whistle	testp1
+(#2) 2064 8 (197)	1202	inanimate	distractor	new	cr	1	test	2	197	whistle	testp1
+(#2) 8 (197) 1040	1210	inanimate	distractor	old	fa	1	test	2	197	whistle	testp1
+(#2) 8 1040 (197)	1211	inanimate	distractor	old	fa	1	test	2	197	whistle	testp1
+(#2) 1040 8 (197)	1212	inanimate	distractor	old	fa	1	test	2	197	whistle	testp1
+(#2) 8 (197) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	197	whistle	testp1
+(#2) 8 (170) 2064	1200	inanimate	distractor	new	cr	1	test	2	170	salt	testp1
+(#2) 8 2064 (170)	1201	inanimate	distractor	new	cr	1	test	2	170	salt	testp1
+(#2) 2064 8 (170)	1202	inanimate	distractor	new	cr	1	test	2	170	salt	testp1
+(#2) 8 (170) 1040	1210	inanimate	distractor	old	fa	1	test	2	170	salt	testp1
+(#2) 8 1040 (170)	1211	inanimate	distractor	old	fa	1	test	2	170	salt	testp1
+(#2) 1040 8 (170)	1212	inanimate	distractor	old	fa	1	test	2	170	salt	testp1
+(#2) 8 (170) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	170	salt	testp1
+(#3) 8 (157) 1040	1300	animate	studied	old	hit	1	test	3	157	peas	testp1
+(#3) 8 1040 (157)	1301	animate	studied	old	hit	1	test	3	157	peas	testp1
+(#3) 1040 8 (157)	1302	animate	studied	old	hit	1	test	3	157	peas	testp1
+(#3) 8 (157) 2064	1310	animate	studied	new	miss	1	test	3	157	peas	testp1
+(#3) 8 2064 (157)	1311	animate	studied	new	miss	1	test	3	157	peas	testp1
+(#3) 2064 8 (157)	1312	animate	studied	new	miss	1	test	3	157	peas	testp1
+(#3) 8 (157) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	157	peas	testp1
+(#3) 8 (144) 1040	1300	animate	studied	old	hit	1	test	3	144	kilerwal	testp1
+(#3) 8 1040 (144)	1301	animate	studied	old	hit	1	test	3	144	kilerwal	testp1
+(#3) 1040 8 (144)	1302	animate	studied	old	hit	1	test	3	144	kilerwal	testp1
+(#3) 8 (144) 2064	1310	animate	studied	new	miss	1	test	3	144	kilerwal	testp1
+(#3) 8 2064 (144)	1311	animate	studied	new	miss	1	test	3	144	kilerwal	testp1
+(#3) 2064 8 (144)	1312	animate	studied	new	miss	1	test	3	144	kilerwal	testp1
+(#3) 8 (144) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	144	kilerwal	testp1
+(#4) 8 (154) 1040	1400	inanimate	studied	old	hit	1	test	4	154	necklace	testp1
+(#4) 8 1040 (154)	1401	inanimate	studied	old	hit	1	test	4	154	necklace	testp1
+(#4) 1040 8 (154)	1402	inanimate	studied	old	hit	1	test	4	154	necklace	testp1
+(#4) 8 (154) 2064	1410	inanimate	studied	new	miss	1	test	4	154	necklace	testp1
+(#4) 8 2064 (154)	1411	inanimate	studied	new	miss	1	test	4	154	necklace	testp1
+(#4) 2064 8 (154)	1412	inanimate	studied	new	miss	1	test	4	154	necklace	testp1
+(#4) 8 (154) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	154	necklace	testp1
+(#3) 8 (186) 1040	1300	animate	studied	old	hit	1	test	3	186	swan	testp1
+(#3) 8 1040 (186)	1301	animate	studied	old	hit	1	test	3	186	swan	testp1
+(#3) 1040 8 (186)	1302	animate	studied	old	hit	1	test	3	186	swan	testp1
+(#3) 8 (186) 2064	1310	animate	studied	new	miss	1	test	3	186	swan	testp1
+(#3) 8 2064 (186)	1311	animate	studied	new	miss	1	test	3	186	swan	testp1
+(#3) 2064 8 (186)	1312	animate	studied	new	miss	1	test	3	186	swan	testp1
+(#3) 8 (186) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	186	swan	testp1
+(#1) 8 (192) 2064	1100	animate	distractor	new	cr	1	test	1	192	turtle	testp1
+(#1) 8 2064 (192)	1101	animate	distractor	new	cr	1	test	1	192	turtle	testp1
+(#1) 2064 8 (192)	1102	animate	distractor	new	cr	1	test	1	192	turtle	testp1
+(#1) 8 (192) 1040	1110	animate	distractor	old	fa	1	test	1	192	turtle	testp1
+(#1) 8 1040 (192)	1111	animate	distractor	old	fa	1	test	1	192	turtle	testp1
+(#1) 1040 8 (192)	1112	animate	distractor	old	fa	1	test	1	192	turtle	testp1
+(#1) 8 (192) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	192	turtle	testp1
+(#2) 8 (114) 2064	1200	inanimate	distractor	new	cr	1	test	2	114	bus	testp1
+(#2) 8 2064 (114)	1201	inanimate	distractor	new	cr	1	test	2	114	bus	testp1
+(#2) 2064 8 (114)	1202	inanimate	distractor	new	cr	1	test	2	114	bus	testp1
+(#2) 8 (114) 1040	1210	inanimate	distractor	old	fa	1	test	2	114	bus	testp1
+(#2) 8 1040 (114)	1211	inanimate	distractor	old	fa	1	test	2	114	bus	testp1
+(#2) 1040 8 (114)	1212	inanimate	distractor	old	fa	1	test	2	114	bus	testp1
+(#2) 8 (114) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	114	bus	testp1
+(#2) 8 (169) 2064	1200	inanimate	distractor	new	cr	1	test	2	169	safe	testp1
+(#2) 8 2064 (169)	1201	inanimate	distractor	new	cr	1	test	2	169	safe	testp1
+(#2) 2064 8 (169)	1202	inanimate	distractor	new	cr	1	test	2	169	safe	testp1
+(#2) 8 (169) 1040	1210	inanimate	distractor	old	fa	1	test	2	169	safe	testp1
+(#2) 8 1040 (169)	1211	inanimate	distractor	old	fa	1	test	2	169	safe	testp1
+(#2) 1040 8 (169)	1212	inanimate	distractor	old	fa	1	test	2	169	safe	testp1
+(#2) 8 (169) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	169	safe	testp1
+(#2) 8 (171) 2064	1200	inanimate	distractor	new	cr	1	test	2	171	sandal	testp1
+(#2) 8 2064 (171)	1201	inanimate	distractor	new	cr	1	test	2	171	sandal	testp1
+(#2) 2064 8 (171)	1202	inanimate	distractor	new	cr	1	test	2	171	sandal	testp1
+(#2) 8 (171) 1040	1210	inanimate	distractor	old	fa	1	test	2	171	sandal	testp1
+(#2) 8 1040 (171)	1211	inanimate	distractor	old	fa	1	test	2	171	sandal	testp1
+(#2) 1040 8 (171)	1212	inanimate	distractor	old	fa	1	test	2	171	sandal	testp1
+(#2) 8 (171) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	171	sandal	testp1
+(#1) 8 (102) 2064	1100	animate	distractor	new	cr	1	test	1	102	apple	testp1
+(#1) 8 2064 (102)	1101	animate	distractor	new	cr	1	test	1	102	apple	testp1
+(#1) 2064 8 (102)	1102	animate	distractor	new	cr	1	test	1	102	apple	testp1
+(#1) 8 (102) 1040	1110	animate	distractor	old	fa	1	test	1	102	apple	testp1
+(#1) 8 1040 (102)	1111	animate	distractor	old	fa	1	test	1	102	apple	testp1
+(#1) 1040 8 (102)	1112	animate	distractor	old	fa	1	test	1	102	apple	testp1
+(#1) 8 (102) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	102	apple	testp1
+(#4) 8 (176) 1040	1400	inanimate	studied	old	hit	1	test	4	176	sled	testp1
+(#4) 8 1040 (176)	1401	inanimate	studied	old	hit	1	test	4	176	sled	testp1
+(#4) 1040 8 (176)	1402	inanimate	studied	old	hit	1	test	4	176	sled	testp1
+(#4) 8 (176) 2064	1410	inanimate	studied	new	miss	1	test	4	176	sled	testp1
+(#4) 8 2064 (176)	1411	inanimate	studied	new	miss	1	test	4	176	sled	testp1
+(#4) 2064 8 (176)	1412	inanimate	studied	new	miss	1	test	4	176	sled	testp1
+(#4) 8 (176) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	176	sled	testp1
+(#2) 8 (182) 2064	1200	inanimate	distractor	new	cr	1	test	2	182	stapler	testp1
+(#2) 8 2064 (182)	1201	inanimate	distractor	new	cr	1	test	2	182	stapler	testp1
+(#2) 2064 8 (182)	1202	inanimate	distractor	new	cr	1	test	2	182	stapler	testp1
+(#2) 8 (182) 1040	1210	inanimate	distractor	old	fa	1	test	2	182	stapler	testp1
+(#2) 8 1040 (182)	1211	inanimate	distractor	old	fa	1	test	2	182	stapler	testp1
+(#2) 1040 8 (182)	1212	inanimate	distractor	old	fa	1	test	2	182	stapler	testp1
+(#2) 8 (182) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	182	stapler	testp1
+(#4) 8 (199) 1040	1400	inanimate	studied	old	hit	1	test	4	199	witchhat	testp1
+(#4) 8 1040 (199)	1401	inanimate	studied	old	hit	1	test	4	199	witchhat	testp1
+(#4) 1040 8 (199)	1402	inanimate	studied	old	hit	1	test	4	199	witchhat	testp1
+(#4) 8 (199) 2064	1410	inanimate	studied	new	miss	1	test	4	199	witchhat	testp1
+(#4) 8 2064 (199)	1411	inanimate	studied	new	miss	1	test	4	199	witchhat	testp1
+(#4) 2064 8 (199)	1412	inanimate	studied	new	miss	1	test	4	199	witchhat	testp1
+(#4) 8 (199) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	199	witchhat	testp1
+(#4) 8 (178) 1040	1400	inanimate	studied	old	hit	1	test	4	178	spatula	testp1
+(#4) 8 1040 (178)	1401	inanimate	studied	old	hit	1	test	4	178	spatula	testp1
+(#4) 1040 8 (178)	1402	inanimate	studied	old	hit	1	test	4	178	spatula	testp1
+(#4) 8 (178) 2064	1410	inanimate	studied	new	miss	1	test	4	178	spatula	testp1
+(#4) 8 2064 (178)	1411	inanimate	studied	new	miss	1	test	4	178	spatula	testp1
+(#4) 2064 8 (178)	1412	inanimate	studied	new	miss	1	test	4	178	spatula	testp1
+(#4) 8 (178) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	178	spatula	testp1
+(#4) 8 (117) 1040	1400	inanimate	studied	old	hit	1	test	4	117	car	testp1
+(#4) 8 1040 (117)	1401	inanimate	studied	old	hit	1	test	4	117	car	testp1
+(#4) 1040 8 (117)	1402	inanimate	studied	old	hit	1	test	4	117	car	testp1
+(#4) 8 (117) 2064	1410	inanimate	studied	new	miss	1	test	4	117	car	testp1
+(#4) 8 2064 (117)	1411	inanimate	studied	new	miss	1	test	4	117	car	testp1
+(#4) 2064 8 (117)	1412	inanimate	studied	new	miss	1	test	4	117	car	testp1
+(#4) 8 (117) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	117	car	testp1
+(#2) 8 (142) 2064	1200	inanimate	distractor	new	cr	1	test	2	142	iron	testp1
+(#2) 8 2064 (142)	1201	inanimate	distractor	new	cr	1	test	2	142	iron	testp1
+(#2) 2064 8 (142)	1202	inanimate	distractor	new	cr	1	test	2	142	iron	testp1
+(#2) 8 (142) 1040	1210	inanimate	distractor	old	fa	1	test	2	142	iron	testp1
+(#2) 8 1040 (142)	1211	inanimate	distractor	old	fa	1	test	2	142	iron	testp1
+(#2) 1040 8 (142)	1212	inanimate	distractor	old	fa	1	test	2	142	iron	testp1
+(#2) 8 (142) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	142	iron	testp1
+(#4) 8 (134) 1040	1400	inanimate	studied	old	hit	1	test	4	134	flute	testp1
+(#4) 8 1040 (134)	1401	inanimate	studied	old	hit	1	test	4	134	flute	testp1
+(#4) 1040 8 (134)	1402	inanimate	studied	old	hit	1	test	4	134	flute	testp1
+(#4) 8 (134) 2064	1410	inanimate	studied	new	miss	1	test	4	134	flute	testp1
+(#4) 8 2064 (134)	1411	inanimate	studied	new	miss	1	test	4	134	flute	testp1
+(#4) 2064 8 (134)	1412	inanimate	studied	new	miss	1	test	4	134	flute	testp1
+(#4) 8 (134) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	134	flute	testp1
+(#2) 8 (155) 2064	1200	inanimate	distractor	new	cr	1	test	2	155	net	testp1
+(#2) 8 2064 (155)	1201	inanimate	distractor	new	cr	1	test	2	155	net	testp1
+(#2) 2064 8 (155)	1202	inanimate	distractor	new	cr	1	test	2	155	net	testp1
+(#2) 8 (155) 1040	1210	inanimate	distractor	old	fa	1	test	2	155	net	testp1
+(#2) 8 1040 (155)	1211	inanimate	distractor	old	fa	1	test	2	155	net	testp1
+(#2) 1040 8 (155)	1212	inanimate	distractor	old	fa	1	test	2	155	net	testp1
+(#2) 8 (155) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	155	net	testp1
+(#4) 8 (103) 1040	1400	inanimate	studied	old	hit	1	test	4	103	ballhoop	testp1
+(#4) 8 1040 (103)	1401	inanimate	studied	old	hit	1	test	4	103	ballhoop	testp1
+(#4) 1040 8 (103)	1402	inanimate	studied	old	hit	1	test	4	103	ballhoop	testp1
+(#4) 8 (103) 2064	1410	inanimate	studied	new	miss	1	test	4	103	ballhoop	testp1
+(#4) 8 2064 (103)	1411	inanimate	studied	new	miss	1	test	4	103	ballhoop	testp1
+(#4) 2064 8 (103)	1412	inanimate	studied	new	miss	1	test	4	103	ballhoop	testp1
+(#4) 8 (103) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	103	ballhoop	testp1
+(#4) 8 (159) 1040	1400	inanimate	studied	old	hit	1	test	4	159	pen	testp1
+(#4) 8 1040 (159)	1401	inanimate	studied	old	hit	1	test	4	159	pen	testp1
+(#4) 1040 8 (159)	1402	inanimate	studied	old	hit	1	test	4	159	pen	testp1
+(#4) 8 (159) 2064	1410	inanimate	studied	new	miss	1	test	4	159	pen	testp1
+(#4) 8 2064 (159)	1411	inanimate	studied	new	miss	1	test	4	159	pen	testp1
+(#4) 2064 8 (159)	1412	inanimate	studied	new	miss	1	test	4	159	pen	testp1
+(#4) 8 (159) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	159	pen	testp1
+(#4) 8 (118) 1040	1400	inanimate	studied	old	hit	1	test	4	118	cd	testp1
+(#4) 8 1040 (118)	1401	inanimate	studied	old	hit	1	test	4	118	cd	testp1
+(#4) 1040 8 (118)	1402	inanimate	studied	old	hit	1	test	4	118	cd	testp1
+(#4) 8 (118) 2064	1410	inanimate	studied	new	miss	1	test	4	118	cd	testp1
+(#4) 8 2064 (118)	1411	inanimate	studied	new	miss	1	test	4	118	cd	testp1
+(#4) 2064 8 (118)	1412	inanimate	studied	new	miss	1	test	4	118	cd	testp1
+(#4) 8 (118) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	118	cd	testp1
+(#4) 8 (122) 1040	1400	inanimate	studied	old	hit	1	test	4	122	church	testp1
+(#4) 8 1040 (122)	1401	inanimate	studied	old	hit	1	test	4	122	church	testp1
+(#4) 1040 8 (122)	1402	inanimate	studied	old	hit	1	test	4	122	church	testp1
+(#4) 8 (122) 2064	1410	inanimate	studied	new	miss	1	test	4	122	church	testp1
+(#4) 8 2064 (122)	1411	inanimate	studied	new	miss	1	test	4	122	church	testp1
+(#4) 2064 8 (122)	1412	inanimate	studied	new	miss	1	test	4	122	church	testp1
+(#4) 8 (122) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	122	church	testp1
+(#3) 8 (126) 1040	1300	animate	studied	old	hit	1	test	3	126	deer	testp1
+(#3) 8 1040 (126)	1301	animate	studied	old	hit	1	test	3	126	deer	testp1
+(#3) 1040 8 (126)	1302	animate	studied	old	hit	1	test	3	126	deer	testp1
+(#3) 8 (126) 2064	1310	animate	studied	new	miss	1	test	3	126	deer	testp1
+(#3) 8 2064 (126)	1311	animate	studied	new	miss	1	test	3	126	deer	testp1
+(#3) 2064 8 (126)	1312	animate	studied	new	miss	1	test	3	126	deer	testp1
+(#3) 8 (126) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	126	deer	testp1
+(#4) 8 (183) 1040	1400	inanimate	studied	old	hit	1	test	4	183	stool	testp1
+(#4) 8 1040 (183)	1401	inanimate	studied	old	hit	1	test	4	183	stool	testp1
+(#4) 1040 8 (183)	1402	inanimate	studied	old	hit	1	test	4	183	stool	testp1
+(#4) 8 (183) 2064	1410	inanimate	studied	new	miss	1	test	4	183	stool	testp1
+(#4) 8 2064 (183)	1411	inanimate	studied	new	miss	1	test	4	183	stool	testp1
+(#4) 2064 8 (183)	1412	inanimate	studied	new	miss	1	test	4	183	stool	testp1
+(#4) 8 (183) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	183	stool	testp1
+(#4) 8 (172) 1040	1400	inanimate	studied	old	hit	1	test	4	172	scissors	testp1
+(#4) 8 1040 (172)	1401	inanimate	studied	old	hit	1	test	4	172	scissors	testp1
+(#4) 1040 8 (172)	1402	inanimate	studied	old	hit	1	test	4	172	scissors	testp1
+(#4) 8 (172) 2064	1410	inanimate	studied	new	miss	1	test	4	172	scissors	testp1
+(#4) 8 2064 (172)	1411	inanimate	studied	new	miss	1	test	4	172	scissors	testp1
+(#4) 2064 8 (172)	1412	inanimate	studied	new	miss	1	test	4	172	scissors	testp1
+(#4) 8 (172) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	172	scissors	testp1
+(#1) 8 (108) 2064	1100	animate	distractor	new	cr	1	test	1	108	bird	testp1
+(#1) 8 2064 (108)	1101	animate	distractor	new	cr	1	test	1	108	bird	testp1
+(#1) 2064 8 (108)	1102	animate	distractor	new	cr	1	test	1	108	bird	testp1
+(#1) 8 (108) 1040	1110	animate	distractor	old	fa	1	test	1	108	bird	testp1
+(#1) 8 1040 (108)	1111	animate	distractor	old	fa	1	test	1	108	bird	testp1
+(#1) 1040 8 (108)	1112	animate	distractor	old	fa	1	test	1	108	bird	testp1
+(#1) 8 (108) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	108	bird	testp1
+(#3) 8 (174) 1040	1300	animate	studied	old	hit	1	test	3	174	seashell	testp1
+(#3) 8 1040 (174)	1301	animate	studied	old	hit	1	test	3	174	seashell	testp1
+(#3) 1040 8 (174)	1302	animate	studied	old	hit	1	test	3	174	seashell	testp1
+(#3) 8 (174) 2064	1310	animate	studied	new	miss	1	test	3	174	seashell	testp1
+(#3) 8 2064 (174)	1311	animate	studied	new	miss	1	test	3	174	seashell	testp1
+(#3) 2064 8 (174)	1312	animate	studied	new	miss	1	test	3	174	seashell	testp1
+(#3) 8 (174) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	174	seashell	testp1
+(#4) 8 (193) 1040	1400	inanimate	studied	old	hit	1	test	4	193	umbrella	testp1
+(#4) 8 1040 (193)	1401	inanimate	studied	old	hit	1	test	4	193	umbrella	testp1
+(#4) 1040 8 (193)	1402	inanimate	studied	old	hit	1	test	4	193	umbrella	testp1
+(#4) 8 (193) 2064	1410	inanimate	studied	new	miss	1	test	4	193	umbrella	testp1
+(#4) 8 2064 (193)	1411	inanimate	studied	new	miss	1	test	4	193	umbrella	testp1
+(#4) 2064 8 (193)	1412	inanimate	studied	new	miss	1	test	4	193	umbrella	testp1
+(#4) 8 (193) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	193	umbrella	testp1
+(#2) 8 (139) 2064	1200	inanimate	distractor	new	cr	1	test	2	139	harp	testp1
+(#2) 8 2064 (139)	1201	inanimate	distractor	new	cr	1	test	2	139	harp	testp1
+(#2) 2064 8 (139)	1202	inanimate	distractor	new	cr	1	test	2	139	harp	testp1
+(#2) 8 (139) 1040	1210	inanimate	distractor	old	fa	1	test	2	139	harp	testp1
+(#2) 8 1040 (139)	1211	inanimate	distractor	old	fa	1	test	2	139	harp	testp1
+(#2) 1040 8 (139)	1212	inanimate	distractor	old	fa	1	test	2	139	harp	testp1
+(#2) 8 (139) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	139	harp	testp1
+(#1) 8 (145) 2064	1100	animate	distractor	new	cr	1	test	1	145	koala	testp1
+(#1) 8 2064 (145)	1101	animate	distractor	new	cr	1	test	1	145	koala	testp1
+(#1) 2064 8 (145)	1102	animate	distractor	new	cr	1	test	1	145	koala	testp1
+(#1) 8 (145) 1040	1110	animate	distractor	old	fa	1	test	1	145	koala	testp1
+(#1) 8 1040 (145)	1111	animate	distractor	old	fa	1	test	1	145	koala	testp1
+(#1) 1040 8 (145)	1112	animate	distractor	old	fa	1	test	1	145	koala	testp1
+(#1) 8 (145) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	145	koala	testp1
+(#2) 8 (109) 2064	1200	inanimate	distractor	new	cr	1	test	2	109	bracelet	testp1
+(#2) 8 2064 (109)	1201	inanimate	distractor	new	cr	1	test	2	109	bracelet	testp1
+(#2) 2064 8 (109)	1202	inanimate	distractor	new	cr	1	test	2	109	bracelet	testp1
+(#2) 8 (109) 1040	1210	inanimate	distractor	old	fa	1	test	2	109	bracelet	testp1
+(#2) 8 1040 (109)	1211	inanimate	distractor	old	fa	1	test	2	109	bracelet	testp1
+(#2) 1040 8 (109)	1212	inanimate	distractor	old	fa	1	test	2	109	bracelet	testp1
+(#2) 8 (109) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	109	bracelet	testp1
+(#3) 8 (133) 1040	1300	animate	studied	old	hit	1	test	3	133	flamingo	testp1
+(#3) 8 1040 (133)	1301	animate	studied	old	hit	1	test	3	133	flamingo	testp1
+(#3) 1040 8 (133)	1302	animate	studied	old	hit	1	test	3	133	flamingo	testp1
+(#3) 8 (133) 2064	1310	animate	studied	new	miss	1	test	3	133	flamingo	testp1
+(#3) 8 2064 (133)	1311	animate	studied	new	miss	1	test	3	133	flamingo	testp1
+(#3) 2064 8 (133)	1312	animate	studied	new	miss	1	test	3	133	flamingo	testp1
+(#3) 8 (133) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	133	flamingo	testp1
+(#3) 8 (179) 1040	1300	animate	studied	old	hit	1	test	3	179	spider	testp1
+(#3) 8 1040 (179)	1301	animate	studied	old	hit	1	test	3	179	spider	testp1
+(#3) 1040 8 (179)	1302	animate	studied	old	hit	1	test	3	179	spider	testp1
+(#3) 8 (179) 2064	1310	animate	studied	new	miss	1	test	3	179	spider	testp1
+(#3) 8 2064 (179)	1311	animate	studied	new	miss	1	test	3	179	spider	testp1
+(#3) 2064 8 (179)	1312	animate	studied	new	miss	1	test	3	179	spider	testp1
+(#3) 8 (179) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	179	spider	testp1
+(#4) 8 (116) 1040	1400	inanimate	studied	old	hit	1	test	4	116	candle	testp1
+(#4) 8 1040 (116)	1401	inanimate	studied	old	hit	1	test	4	116	candle	testp1
+(#4) 1040 8 (116)	1402	inanimate	studied	old	hit	1	test	4	116	candle	testp1
+(#4) 8 (116) 2064	1410	inanimate	studied	new	miss	1	test	4	116	candle	testp1
+(#4) 8 2064 (116)	1411	inanimate	studied	new	miss	1	test	4	116	candle	testp1
+(#4) 2064 8 (116)	1412	inanimate	studied	new	miss	1	test	4	116	candle	testp1
+(#4) 8 (116) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	116	candle	testp1
+(#2) 8 (132) 2064	1200	inanimate	distractor	new	cr	1	test	2	132	fireplac	testp1
+(#2) 8 2064 (132)	1201	inanimate	distractor	new	cr	1	test	2	132	fireplac	testp1
+(#2) 2064 8 (132)	1202	inanimate	distractor	new	cr	1	test	2	132	fireplac	testp1
+(#2) 8 (132) 1040	1210	inanimate	distractor	old	fa	1	test	2	132	fireplac	testp1
+(#2) 8 1040 (132)	1211	inanimate	distractor	old	fa	1	test	2	132	fireplac	testp1
+(#2) 1040 8 (132)	1212	inanimate	distractor	old	fa	1	test	2	132	fireplac	testp1
+(#2) 8 (132) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	132	fireplac	testp1
+(#2) 8 (167) 2064	1200	inanimate	distractor	new	cr	1	test	2	167	refridge	testp1
+(#2) 8 2064 (167)	1201	inanimate	distractor	new	cr	1	test	2	167	refridge	testp1
+(#2) 2064 8 (167)	1202	inanimate	distractor	new	cr	1	test	2	167	refridge	testp1
+(#2) 8 (167) 1040	1210	inanimate	distractor	old	fa	1	test	2	167	refridge	testp1
+(#2) 8 1040 (167)	1211	inanimate	distractor	old	fa	1	test	2	167	refridge	testp1
+(#2) 1040 8 (167)	1212	inanimate	distractor	old	fa	1	test	2	167	refridge	testp1
+(#2) 8 (167) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	167	refridge	testp1
+(#1) 8 (189) 2064	1100	animate	distractor	new	cr	1	test	1	189	tiger	testp1
+(#1) 8 2064 (189)	1101	animate	distractor	new	cr	1	test	1	189	tiger	testp1
+(#1) 2064 8 (189)	1102	animate	distractor	new	cr	1	test	1	189	tiger	testp1
+(#1) 8 (189) 1040	1110	animate	distractor	old	fa	1	test	1	189	tiger	testp1
+(#1) 8 1040 (189)	1111	animate	distractor	old	fa	1	test	1	189	tiger	testp1
+(#1) 1040 8 (189)	1112	animate	distractor	old	fa	1	test	1	189	tiger	testp1
+(#1) 8 (189) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	189	tiger	testp1
+(#4) 8 (173) 1040	1400	inanimate	studied	old	hit	1	test	4	173	scrwdriv	testp1
+(#4) 8 1040 (173)	1401	inanimate	studied	old	hit	1	test	4	173	scrwdriv	testp1
+(#4) 1040 8 (173)	1402	inanimate	studied	old	hit	1	test	4	173	scrwdriv	testp1
+(#4) 8 (173) 2064	1410	inanimate	studied	new	miss	1	test	4	173	scrwdriv	testp1
+(#4) 8 2064 (173)	1411	inanimate	studied	new	miss	1	test	4	173	scrwdriv	testp1
+(#4) 2064 8 (173)	1412	inanimate	studied	new	miss	1	test	4	173	scrwdriv	testp1
+(#4) 8 (173) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	173	scrwdriv	testp1
+(#1) 8 (130) 2064	1100	animate	distractor	new	cr	1	test	1	130	eye	testp1
+(#1) 8 2064 (130)	1101	animate	distractor	new	cr	1	test	1	130	eye	testp1
+(#1) 2064 8 (130)	1102	animate	distractor	new	cr	1	test	1	130	eye	testp1
+(#1) 8 (130) 1040	1110	animate	distractor	old	fa	1	test	1	130	eye	testp1
+(#1) 8 1040 (130)	1111	animate	distractor	old	fa	1	test	1	130	eye	testp1
+(#1) 1040 8 (130)	1112	animate	distractor	old	fa	1	test	1	130	eye	testp1
+(#1) 8 (130) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	130	eye	testp1
+(#4) 8 (190) 1040	1400	inanimate	studied	old	hit	1	test	4	190	tissue	testp1
+(#4) 8 1040 (190)	1401	inanimate	studied	old	hit	1	test	4	190	tissue	testp1
+(#4) 1040 8 (190)	1402	inanimate	studied	old	hit	1	test	4	190	tissue	testp1
+(#4) 8 (190) 2064	1410	inanimate	studied	new	miss	1	test	4	190	tissue	testp1
+(#4) 8 2064 (190)	1411	inanimate	studied	new	miss	1	test	4	190	tissue	testp1
+(#4) 2064 8 (190)	1412	inanimate	studied	new	miss	1	test	4	190	tissue	testp1
+(#4) 8 (190) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	190	tissue	testp1
+(#4) 8 (124) 1040	1400	inanimate	studied	old	hit	1	test	4	124	comb	testp1
+(#4) 8 1040 (124)	1401	inanimate	studied	old	hit	1	test	4	124	comb	testp1
+(#4) 1040 8 (124)	1402	inanimate	studied	old	hit	1	test	4	124	comb	testp1
+(#4) 8 (124) 2064	1410	inanimate	studied	new	miss	1	test	4	124	comb	testp1
+(#4) 8 2064 (124)	1411	inanimate	studied	new	miss	1	test	4	124	comb	testp1
+(#4) 2064 8 (124)	1412	inanimate	studied	new	miss	1	test	4	124	comb	testp1
+(#4) 8 (124) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	124	comb	testp1
+(#4) 8 (107) 1040	1400	inanimate	studied	old	hit	1	test	4	107	bell	testp1
+(#4) 8 1040 (107)	1401	inanimate	studied	old	hit	1	test	4	107	bell	testp1
+(#4) 1040 8 (107)	1402	inanimate	studied	old	hit	1	test	4	107	bell	testp1
+(#4) 8 (107) 2064	1410	inanimate	studied	new	miss	1	test	4	107	bell	testp1
+(#4) 8 2064 (107)	1411	inanimate	studied	new	miss	1	test	4	107	bell	testp1
+(#4) 2064 8 (107)	1412	inanimate	studied	new	miss	1	test	4	107	bell	testp1
+(#4) 8 (107) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	107	bell	testp1
+(#4) 8 (188) 1040	1400	inanimate	studied	old	hit	1	test	4	188	tapemeas	testp1
+(#4) 8 1040 (188)	1401	inanimate	studied	old	hit	1	test	4	188	tapemeas	testp1
+(#4) 1040 8 (188)	1402	inanimate	studied	old	hit	1	test	4	188	tapemeas	testp1
+(#4) 8 (188) 2064	1410	inanimate	studied	new	miss	1	test	4	188	tapemeas	testp1
+(#4) 8 2064 (188)	1411	inanimate	studied	new	miss	1	test	4	188	tapemeas	testp1
+(#4) 2064 8 (188)	1412	inanimate	studied	new	miss	1	test	4	188	tapemeas	testp1
+(#4) 8 (188) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	188	tapemeas	testp1
+(#4) 8 (131) 1040	1400	inanimate	studied	old	hit	1	test	4	131	firengin	testp1
+(#4) 8 1040 (131)	1401	inanimate	studied	old	hit	1	test	4	131	firengin	testp1
+(#4) 1040 8 (131)	1402	inanimate	studied	old	hit	1	test	4	131	firengin	testp1
+(#4) 8 (131) 2064	1410	inanimate	studied	new	miss	1	test	4	131	firengin	testp1
+(#4) 8 2064 (131)	1411	inanimate	studied	new	miss	1	test	4	131	firengin	testp1
+(#4) 2064 8 (131)	1412	inanimate	studied	new	miss	1	test	4	131	firengin	testp1
+(#4) 8 (131) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	131	firengin	testp1
+(#3) 8 (101) 1040	1300	animate	studied	old	hit	1	test	3	101	allgator	testp1
+(#3) 8 1040 (101)	1301	animate	studied	old	hit	1	test	3	101	allgator	testp1
+(#3) 1040 8 (101)	1302	animate	studied	old	hit	1	test	3	101	allgator	testp1
+(#3) 8 (101) 2064	1310	animate	studied	new	miss	1	test	3	101	allgator	testp1
+(#3) 8 2064 (101)	1311	animate	studied	new	miss	1	test	3	101	allgator	testp1
+(#3) 2064 8 (101)	1312	animate	studied	new	miss	1	test	3	101	allgator	testp1
+(#3) 8 (101) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	101	allgator	testp1
+(#2) 8 (200) 2064	1200	inanimate	distractor	new	cr	1	test	2	200	wrench	testp1
+(#2) 8 2064 (200)	1201	inanimate	distractor	new	cr	1	test	2	200	wrench	testp1
+(#2) 2064 8 (200)	1202	inanimate	distractor	new	cr	1	test	2	200	wrench	testp1
+(#2) 8 (200) 1040	1210	inanimate	distractor	old	fa	1	test	2	200	wrench	testp1
+(#2) 8 1040 (200)	1211	inanimate	distractor	old	fa	1	test	2	200	wrench	testp1
+(#2) 1040 8 (200)	1212	inanimate	distractor	old	fa	1	test	2	200	wrench	testp1
+(#2) 8 (200) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	200	wrench	testp1
+(#4) 8 (143) 1040	1400	inanimate	studied	old	hit	1	test	4	143	jacket	testp1
+(#4) 8 1040 (143)	1401	inanimate	studied	old	hit	1	test	4	143	jacket	testp1
+(#4) 1040 8 (143)	1402	inanimate	studied	old	hit	1	test	4	143	jacket	testp1
+(#4) 8 (143) 2064	1410	inanimate	studied	new	miss	1	test	4	143	jacket	testp1
+(#4) 8 2064 (143)	1411	inanimate	studied	new	miss	1	test	4	143	jacket	testp1
+(#4) 2064 8 (143)	1412	inanimate	studied	new	miss	1	test	4	143	jacket	testp1
+(#4) 8 (143) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	143	jacket	testp1
+(#4) 8 (149) 1040	1400	inanimate	studied	old	hit	1	test	4	149	lock	testp1
+(#4) 8 1040 (149)	1401	inanimate	studied	old	hit	1	test	4	149	lock	testp1
+(#4) 1040 8 (149)	1402	inanimate	studied	old	hit	1	test	4	149	lock	testp1
+(#4) 8 (149) 2064	1410	inanimate	studied	new	miss	1	test	4	149	lock	testp1
+(#4) 8 2064 (149)	1411	inanimate	studied	new	miss	1	test	4	149	lock	testp1
+(#4) 2064 8 (149)	1412	inanimate	studied	new	miss	1	test	4	149	lock	testp1
+(#4) 8 (149) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	149	lock	testp1
+(#2) 8 (165) 2064	1200	inanimate	distractor	new	cr	1	test	2	165	prkngmtr	testp1
+(#2) 8 2064 (165)	1201	inanimate	distractor	new	cr	1	test	2	165	prkngmtr	testp1
+(#2) 2064 8 (165)	1202	inanimate	distractor	new	cr	1	test	2	165	prkngmtr	testp1
+(#2) 8 (165) 1040	1210	inanimate	distractor	old	fa	1	test	2	165	prkngmtr	testp1
+(#2) 8 1040 (165)	1211	inanimate	distractor	old	fa	1	test	2	165	prkngmtr	testp1
+(#2) 1040 8 (165)	1212	inanimate	distractor	old	fa	1	test	2	165	prkngmtr	testp1
+(#2) 8 (165) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	165	prkngmtr	testp1
+(#2) 8 (113) 2064	1200	inanimate	distractor	new	cr	1	test	2	113	bsbllglv	testp1
+(#2) 8 2064 (113)	1201	inanimate	distractor	new	cr	1	test	2	113	bsbllglv	testp1
+(#2) 2064 8 (113)	1202	inanimate	distractor	new	cr	1	test	2	113	bsbllglv	testp1
+(#2) 8 (113) 1040	1210	inanimate	distractor	old	fa	1	test	2	113	bsbllglv	testp1
+(#2) 8 1040 (113)	1211	inanimate	distractor	old	fa	1	test	2	113	bsbllglv	testp1
+(#2) 1040 8 (113)	1212	inanimate	distractor	old	fa	1	test	2	113	bsbllglv	testp1
+(#2) 8 (113) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	113	bsbllglv	testp1
+(#4) 8 (147) 1040	1400	inanimate	studied	old	hit	1	test	4	147	lighter	testp1
+(#4) 8 1040 (147)	1401	inanimate	studied	old	hit	1	test	4	147	lighter	testp1
+(#4) 1040 8 (147)	1402	inanimate	studied	old	hit	1	test	4	147	lighter	testp1
+(#4) 8 (147) 2064	1410	inanimate	studied	new	miss	1	test	4	147	lighter	testp1
+(#4) 8 2064 (147)	1411	inanimate	studied	new	miss	1	test	4	147	lighter	testp1
+(#4) 2064 8 (147)	1412	inanimate	studied	new	miss	1	test	4	147	lighter	testp1
+(#4) 8 (147) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	147	lighter	testp1
+(#2) 8 (150) 2064	1200	inanimate	distractor	new	cr	1	test	2	150	mailbox	testp1
+(#2) 8 2064 (150)	1201	inanimate	distractor	new	cr	1	test	2	150	mailbox	testp1
+(#2) 2064 8 (150)	1202	inanimate	distractor	new	cr	1	test	2	150	mailbox	testp1
+(#2) 8 (150) 1040	1210	inanimate	distractor	old	fa	1	test	2	150	mailbox	testp1
+(#2) 8 1040 (150)	1211	inanimate	distractor	old	fa	1	test	2	150	mailbox	testp1
+(#2) 1040 8 (150)	1212	inanimate	distractor	old	fa	1	test	2	150	mailbox	testp1
+(#2) 8 (150) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	150	mailbox	testp1
+(#2) 8 (162) 2064	1200	inanimate	distractor	new	cr	1	test	2	162	pitcher	testp1
+(#2) 8 2064 (162)	1201	inanimate	distractor	new	cr	1	test	2	162	pitcher	testp1
+(#2) 2064 8 (162)	1202	inanimate	distractor	new	cr	1	test	2	162	pitcher	testp1
+(#2) 8 (162) 1040	1210	inanimate	distractor	old	fa	1	test	2	162	pitcher	testp1
+(#2) 8 1040 (162)	1211	inanimate	distractor	old	fa	1	test	2	162	pitcher	testp1
+(#2) 1040 8 (162)	1212	inanimate	distractor	old	fa	1	test	2	162	pitcher	testp1
+(#2) 8 (162) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	162	pitcher	testp1
+(#4) 8 (195) 1040	1400	inanimate	studied	old	hit	1	test	4	195	vest	testp1
+(#4) 8 1040 (195)	1401	inanimate	studied	old	hit	1	test	4	195	vest	testp1
+(#4) 1040 8 (195)	1402	inanimate	studied	old	hit	1	test	4	195	vest	testp1
+(#4) 8 (195) 2064	1410	inanimate	studied	new	miss	1	test	4	195	vest	testp1
+(#4) 8 2064 (195)	1411	inanimate	studied	new	miss	1	test	4	195	vest	testp1
+(#4) 2064 8 (195)	1412	inanimate	studied	new	miss	1	test	4	195	vest	testp1
+(#4) 8 (195) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	195	vest	testp1
+(#2) 8 (181) 2064	1200	inanimate	distractor	new	cr	1	test	2	181	sprybtle	testp1
+(#2) 8 2064 (181)	1201	inanimate	distractor	new	cr	1	test	2	181	sprybtle	testp1
+(#2) 2064 8 (181)	1202	inanimate	distractor	new	cr	1	test	2	181	sprybtle	testp1
+(#2) 8 (181) 1040	1210	inanimate	distractor	old	fa	1	test	2	181	sprybtle	testp1
+(#2) 8 1040 (181)	1211	inanimate	distractor	old	fa	1	test	2	181	sprybtle	testp1
+(#2) 1040 8 (181)	1212	inanimate	distractor	old	fa	1	test	2	181	sprybtle	testp1
+(#2) 8 (181) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	181	sprybtle	testp1
+(#3) 8 (160) 1040	1300	animate	studied	old	hit	1	test	3	160	penguin	testp1
+(#3) 8 1040 (160)	1301	animate	studied	old	hit	1	test	3	160	penguin	testp1
+(#3) 1040 8 (160)	1302	animate	studied	old	hit	1	test	3	160	penguin	testp1
+(#3) 8 (160) 2064	1310	animate	studied	new	miss	1	test	3	160	penguin	testp1
+(#3) 8 2064 (160)	1311	animate	studied	new	miss	1	test	3	160	penguin	testp1
+(#3) 2064 8 (160)	1312	animate	studied	new	miss	1	test	3	160	penguin	testp1
+(#3) 8 (160) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	160	penguin	testp1
+(#3) 8 (153) 1040	1300	animate	studied	old	hit	1	test	3	153	mushroom	testp1
+(#3) 8 1040 (153)	1301	animate	studied	old	hit	1	test	3	153	mushroom	testp1
+(#3) 1040 8 (153)	1302	animate	studied	old	hit	1	test	3	153	mushroom	testp1
+(#3) 8 (153) 2064	1310	animate	studied	new	miss	1	test	3	153	mushroom	testp1
+(#3) 8 2064 (153)	1311	animate	studied	new	miss	1	test	3	153	mushroom	testp1
+(#3) 2064 8 (153)	1312	animate	studied	new	miss	1	test	3	153	mushroom	testp1
+(#3) 8 (153) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	153	mushroom	testp1
+(#4) 8 (191) 1040	1400	inanimate	studied	old	hit	1	test	4	191	trophy	testp1
+(#4) 8 1040 (191)	1401	inanimate	studied	old	hit	1	test	4	191	trophy	testp1
+(#4) 1040 8 (191)	1402	inanimate	studied	old	hit	1	test	4	191	trophy	testp1
+(#4) 8 (191) 2064	1410	inanimate	studied	new	miss	1	test	4	191	trophy	testp1
+(#4) 8 2064 (191)	1411	inanimate	studied	new	miss	1	test	4	191	trophy	testp1
+(#4) 2064 8 (191)	1412	inanimate	studied	new	miss	1	test	4	191	trophy	testp1
+(#4) 8 (191) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	191	trophy	testp1
+(#2) 8 (187) 2064	1200	inanimate	distractor	new	cr	1	test	2	187	table	testp1
+(#2) 8 2064 (187)	1201	inanimate	distractor	new	cr	1	test	2	187	table	testp1
+(#2) 2064 8 (187)	1202	inanimate	distractor	new	cr	1	test	2	187	table	testp1
+(#2) 8 (187) 1040	1210	inanimate	distractor	old	fa	1	test	2	187	table	testp1
+(#2) 8 1040 (187)	1211	inanimate	distractor	old	fa	1	test	2	187	table	testp1
+(#2) 1040 8 (187)	1212	inanimate	distractor	old	fa	1	test	2	187	table	testp1
+(#2) 8 (187) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	187	table	testp1
+(#2) 8 (177) 2064	1200	inanimate	distractor	new	cr	1	test	2	177	socerbal	testp1
+(#2) 8 2064 (177)	1201	inanimate	distractor	new	cr	1	test	2	177	socerbal	testp1
+(#2) 2064 8 (177)	1202	inanimate	distractor	new	cr	1	test	2	177	socerbal	testp1
+(#2) 8 (177) 1040	1210	inanimate	distractor	old	fa	1	test	2	177	socerbal	testp1
+(#2) 8 1040 (177)	1211	inanimate	distractor	old	fa	1	test	2	177	socerbal	testp1
+(#2) 1040 8 (177)	1212	inanimate	distractor	old	fa	1	test	2	177	socerbal	testp1
+(#2) 8 (177) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	177	socerbal	testp1
+(#1) 8 (156) 2064	1100	animate	distractor	new	cr	1	test	1	156	palmtree	testp1
+(#1) 8 2064 (156)	1101	animate	distractor	new	cr	1	test	1	156	palmtree	testp1
+(#1) 2064 8 (156)	1102	animate	distractor	new	cr	1	test	1	156	palmtree	testp1
+(#1) 8 (156) 1040	1110	animate	distractor	old	fa	1	test	1	156	palmtree	testp1
+(#1) 8 1040 (156)	1111	animate	distractor	old	fa	1	test	1	156	palmtree	testp1
+(#1) 1040 8 (156)	1112	animate	distractor	old	fa	1	test	1	156	palmtree	testp1
+(#1) 8 (156) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	156	palmtree	testp1
+(#3) 8 (146) 1040	1300	animate	studied	old	hit	1	test	3	146	leopard	testp1
+(#3) 8 1040 (146)	1301	animate	studied	old	hit	1	test	3	146	leopard	testp1
+(#3) 1040 8 (146)	1302	animate	studied	old	hit	1	test	3	146	leopard	testp1
+(#3) 8 (146) 2064	1310	animate	studied	new	miss	1	test	3	146	leopard	testp1
+(#3) 8 2064 (146)	1311	animate	studied	new	miss	1	test	3	146	leopard	testp1
+(#3) 2064 8 (146)	1312	animate	studied	new	miss	1	test	3	146	leopard	testp1
+(#3) 8 (146) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	146	leopard	testp1
+(#2) 8 (152) 2064	1200	inanimate	distractor	new	cr	1	test	2	152	motrcyle	testp1
+(#2) 8 2064 (152)	1201	inanimate	distractor	new	cr	1	test	2	152	motrcyle	testp1
+(#2) 2064 8 (152)	1202	inanimate	distractor	new	cr	1	test	2	152	motrcyle	testp1
+(#2) 8 (152) 1040	1210	inanimate	distractor	old	fa	1	test	2	152	motrcyle	testp1
+(#2) 8 1040 (152)	1211	inanimate	distractor	old	fa	1	test	2	152	motrcyle	testp1
+(#2) 1040 8 (152)	1212	inanimate	distractor	old	fa	1	test	2	152	motrcyle	testp1
+(#2) 8 (152) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	152	motrcyle	testp1
+(#2) 8 (164) 2064	1200	inanimate	distractor	new	cr	1	test	2	164	pliers	testp1
+(#2) 8 2064 (164)	1201	inanimate	distractor	new	cr	1	test	2	164	pliers	testp1
+(#2) 2064 8 (164)	1202	inanimate	distractor	new	cr	1	test	2	164	pliers	testp1
+(#2) 8 (164) 1040	1210	inanimate	distractor	old	fa	1	test	2	164	pliers	testp1
+(#2) 8 1040 (164)	1211	inanimate	distractor	old	fa	1	test	2	164	pliers	testp1
+(#2) 1040 8 (164)	1212	inanimate	distractor	old	fa	1	test	2	164	pliers	testp1
+(#2) 8 (164) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	164	pliers	testp1
+(#4) 8 (151) 1040	1400	inanimate	studied	old	hit	1	test	4	151	moon	testp1
+(#4) 8 1040 (151)	1401	inanimate	studied	old	hit	1	test	4	151	moon	testp1
+(#4) 1040 8 (151)	1402	inanimate	studied	old	hit	1	test	4	151	moon	testp1
+(#4) 8 (151) 2064	1410	inanimate	studied	new	miss	1	test	4	151	moon	testp1
+(#4) 8 2064 (151)	1411	inanimate	studied	new	miss	1	test	4	151	moon	testp1
+(#4) 2064 8 (151)	1412	inanimate	studied	new	miss	1	test	4	151	moon	testp1
+(#4) 8 (151) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	151	moon	testp1
+(#3) 8 (140) 1040	1300	animate	studied	old	hit	1	test	3	140	horse	testp1
+(#3) 8 1040 (140)	1301	animate	studied	old	hit	1	test	3	140	horse	testp1
+(#3) 1040 8 (140)	1302	animate	studied	old	hit	1	test	3	140	horse	testp1
+(#3) 8 (140) 2064	1310	animate	studied	new	miss	1	test	3	140	horse	testp1
+(#3) 8 2064 (140)	1311	animate	studied	new	miss	1	test	3	140	horse	testp1
+(#3) 2064 8 (140)	1312	animate	studied	new	miss	1	test	3	140	horse	testp1
+(#3) 8 (140) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	140	horse	testp1
+(#1) 8 (158) 2064	1100	animate	distractor	new	cr	1	test	1	158	pelican	testp1
+(#1) 8 2064 (158)	1101	animate	distractor	new	cr	1	test	1	158	pelican	testp1
+(#1) 2064 8 (158)	1102	animate	distractor	new	cr	1	test	1	158	pelican	testp1
+(#1) 8 (158) 1040	1110	animate	distractor	old	fa	1	test	1	158	pelican	testp1
+(#1) 8 1040 (158)	1111	animate	distractor	old	fa	1	test	1	158	pelican	testp1
+(#1) 1040 8 (158)	1112	animate	distractor	old	fa	1	test	1	158	pelican	testp1
+(#1) 8 (158) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	158	pelican	testp1
+(#4) 8 (163) 1040	1400	inanimate	studied	old	hit	1	test	4	163	pitchfrk	testp1
+(#4) 8 1040 (163)	1401	inanimate	studied	old	hit	1	test	4	163	pitchfrk	testp1
+(#4) 1040 8 (163)	1402	inanimate	studied	old	hit	1	test	4	163	pitchfrk	testp1
+(#4) 8 (163) 2064	1410	inanimate	studied	new	miss	1	test	4	163	pitchfrk	testp1
+(#4) 8 2064 (163)	1411	inanimate	studied	new	miss	1	test	4	163	pitchfrk	testp1
+(#4) 2064 8 (163)	1412	inanimate	studied	new	miss	1	test	4	163	pitchfrk	testp1
+(#4) 8 (163) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	163	pitchfrk	testp1
+(#1) 8 (148) 2064	1100	animate	distractor	new	cr	1	test	1	148	lion	testp1
+(#1) 8 2064 (148)	1101	animate	distractor	new	cr	1	test	1	148	lion	testp1
+(#1) 2064 8 (148)	1102	animate	distractor	new	cr	1	test	1	148	lion	testp1
+(#1) 8 (148) 1040	1110	animate	distractor	old	fa	1	test	1	148	lion	testp1
+(#1) 8 1040 (148)	1111	animate	distractor	old	fa	1	test	1	148	lion	testp1
+(#1) 1040 8 (148)	1112	animate	distractor	old	fa	1	test	1	148	lion	testp1
+(#1) 8 (148) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	148	lion	testp1
+(#1) 8 (161) 2064	1100	animate	distractor	new	cr	1	test	1	161	pineaple	testp1
+(#1) 8 2064 (161)	1101	animate	distractor	new	cr	1	test	1	161	pineaple	testp1
+(#1) 2064 8 (161)	1102	animate	distractor	new	cr	1	test	1	161	pineaple	testp1
+(#1) 8 (161) 1040	1110	animate	distractor	old	fa	1	test	1	161	pineaple	testp1
+(#1) 8 1040 (161)	1111	animate	distractor	old	fa	1	test	1	161	pineaple	testp1
+(#1) 1040 8 (161)	1112	animate	distractor	old	fa	1	test	1	161	pineaple	testp1
+(#1) 8 (161) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	161	pineaple	testp1
+(#1) 8 (135) 2064	1100	animate	distractor	new	cr	1	test	1	135	foot	testp1
+(#1) 8 2064 (135)	1101	animate	distractor	new	cr	1	test	1	135	foot	testp1
+(#1) 2064 8 (135)	1102	animate	distractor	new	cr	1	test	1	135	foot	testp1
+(#1) 8 (135) 1040	1110	animate	distractor	old	fa	1	test	1	135	foot	testp1
+(#1) 8 1040 (135)	1111	animate	distractor	old	fa	1	test	1	135	foot	testp1
+(#1) 1040 8 (135)	1112	animate	distractor	old	fa	1	test	1	135	foot	testp1
+(#1) 8 (135) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	135	foot	testp1
+(#2) 8 (168) 2064	1200	inanimate	distractor	new	cr	1	test	2	168	remote	testp1
+(#2) 8 2064 (168)	1201	inanimate	distractor	new	cr	1	test	2	168	remote	testp1
+(#2) 2064 8 (168)	1202	inanimate	distractor	new	cr	1	test	2	168	remote	testp1
+(#2) 8 (168) 1040	1210	inanimate	distractor	old	fa	1	test	2	168	remote	testp1
+(#2) 8 1040 (168)	1211	inanimate	distractor	old	fa	1	test	2	168	remote	testp1
+(#2) 1040 8 (168)	1212	inanimate	distractor	old	fa	1	test	2	168	remote	testp1
+(#2) 8 (168) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	168	remote	testp1
+(#4) 8 (138) 1040	1400	inanimate	studied	old	hit	1	test	4	138	hanger	testp1
+(#4) 8 1040 (138)	1401	inanimate	studied	old	hit	1	test	4	138	hanger	testp1
+(#4) 1040 8 (138)	1402	inanimate	studied	old	hit	1	test	4	138	hanger	testp1
+(#4) 8 (138) 2064	1410	inanimate	studied	new	miss	1	test	4	138	hanger	testp1
+(#4) 8 2064 (138)	1411	inanimate	studied	new	miss	1	test	4	138	hanger	testp1
+(#4) 2064 8 (138)	1412	inanimate	studied	new	miss	1	test	4	138	hanger	testp1
+(#4) 8 (138) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	138	hanger	testp1
+(#2) 8 (180) 2064	1200	inanimate	distractor	new	cr	1	test	2	180	spoon	testp1
+(#2) 8 2064 (180)	1201	inanimate	distractor	new	cr	1	test	2	180	spoon	testp1
+(#2) 2064 8 (180)	1202	inanimate	distractor	new	cr	1	test	2	180	spoon	testp1
+(#2) 8 (180) 1040	1210	inanimate	distractor	old	fa	1	test	2	180	spoon	testp1
+(#2) 8 1040 (180)	1211	inanimate	distractor	old	fa	1	test	2	180	spoon	testp1
+(#2) 1040 8 (180)	1212	inanimate	distractor	old	fa	1	test	2	180	spoon	testp1
+(#2) 8 (180) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	180	spoon	testp1
+(#1) 8 (110) 2064	1100	animate	distractor	new	cr	1	test	1	110	brain	testp1
+(#1) 8 2064 (110)	1101	animate	distractor	new	cr	1	test	1	110	brain	testp1
+(#1) 2064 8 (110)	1102	animate	distractor	new	cr	1	test	1	110	brain	testp1
+(#1) 8 (110) 1040	1110	animate	distractor	old	fa	1	test	1	110	brain	testp1
+(#1) 8 1040 (110)	1111	animate	distractor	old	fa	1	test	1	110	brain	testp1
+(#1) 1040 8 (110)	1112	animate	distractor	old	fa	1	test	1	110	brain	testp1
+(#1) 8 (110) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	110	brain	testp1
+(#1) 8 (115) 2064	1100	animate	distractor	new	cr	1	test	1	115	camel	testp1
+(#1) 8 2064 (115)	1101	animate	distractor	new	cr	1	test	1	115	camel	testp1
+(#1) 2064 8 (115)	1102	animate	distractor	new	cr	1	test	1	115	camel	testp1
+(#1) 8 (115) 1040	1110	animate	distractor	old	fa	1	test	1	115	camel	testp1
+(#1) 8 1040 (115)	1111	animate	distractor	old	fa	1	test	1	115	camel	testp1
+(#1) 1040 8 (115)	1112	animate	distractor	old	fa	1	test	1	115	camel	testp1
+(#1) 8 (115) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	115	camel	testp1
+(#4) 8 (112) 1040	1400	inanimate	studied	old	hit	1	test	4	112	broom	testp1
+(#4) 8 1040 (112)	1401	inanimate	studied	old	hit	1	test	4	112	broom	testp1
+(#4) 1040 8 (112)	1402	inanimate	studied	old	hit	1	test	4	112	broom	testp1
+(#4) 8 (112) 2064	1410	inanimate	studied	new	miss	1	test	4	112	broom	testp1
+(#4) 8 2064 (112)	1411	inanimate	studied	new	miss	1	test	4	112	broom	testp1
+(#4) 2064 8 (112)	1412	inanimate	studied	new	miss	1	test	4	112	broom	testp1
+(#4) 8 (112) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	112	broom	testp1
+(#2) 8 (104) 2064	1200	inanimate	distractor	new	cr	1	test	2	104	balloon	testp1
+(#2) 8 2064 (104)	1201	inanimate	distractor	new	cr	1	test	2	104	balloon	testp1
+(#2) 2064 8 (104)	1202	inanimate	distractor	new	cr	1	test	2	104	balloon	testp1
+(#2) 8 (104) 1040	1210	inanimate	distractor	old	fa	1	test	2	104	balloon	testp1
+(#2) 8 1040 (104)	1211	inanimate	distractor	old	fa	1	test	2	104	balloon	testp1
+(#2) 1040 8 (104)	1212	inanimate	distractor	old	fa	1	test	2	104	balloon	testp1
+(#2) 8 (104) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	104	balloon	testp1
+(#2) 8 (111) 2064	1200	inanimate	distractor	new	cr	1	test	2	111	briefcas	testp1
+(#2) 8 2064 (111)	1201	inanimate	distractor	new	cr	1	test	2	111	briefcas	testp1
+(#2) 2064 8 (111)	1202	inanimate	distractor	new	cr	1	test	2	111	briefcas	testp1
+(#2) 8 (111) 1040	1210	inanimate	distractor	old	fa	1	test	2	111	briefcas	testp1
+(#2) 8 1040 (111)	1211	inanimate	distractor	old	fa	1	test	2	111	briefcas	testp1
+(#2) 1040 8 (111)	1212	inanimate	distractor	old	fa	1	test	2	111	briefcas	testp1
+(#2) 8 (111) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	111	briefcas	testp1
+(#2) 8 (120) 2064	1200	inanimate	distractor	new	cr	1	test	2	120	chair	testp1
+(#2) 8 2064 (120)	1201	inanimate	distractor	new	cr	1	test	2	120	chair	testp1
+(#2) 2064 8 (120)	1202	inanimate	distractor	new	cr	1	test	2	120	chair	testp1
+(#2) 8 (120) 1040	1210	inanimate	distractor	old	fa	1	test	2	120	chair	testp1
+(#2) 8 1040 (120)	1211	inanimate	distractor	old	fa	1	test	2	120	chair	testp1
+(#2) 1040 8 (120)	1212	inanimate	distractor	old	fa	1	test	2	120	chair	testp1
+(#2) 8 (120) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	120	chair	testp1
+(#1) 8 (136) 2064	1100	animate	distractor	new	cr	1	test	1	136	frog	testp1
+(#1) 8 2064 (136)	1101	animate	distractor	new	cr	1	test	1	136	frog	testp1
+(#1) 2064 8 (136)	1102	animate	distractor	new	cr	1	test	1	136	frog	testp1
+(#1) 8 (136) 1040	1110	animate	distractor	old	fa	1	test	1	136	frog	testp1
+(#1) 8 1040 (136)	1111	animate	distractor	old	fa	1	test	1	136	frog	testp1
+(#1) 1040 8 (136)	1112	animate	distractor	old	fa	1	test	1	136	frog	testp1
+(#1) 8 (136) (?!(2064|1040))	1103	animate	distractor	none	nr	1	test	1	136	frog	testp1
+(#2) 8 (194) 2064	1200	inanimate	distractor	new	cr	1	test	2	194	vacuum	testp1
+(#2) 8 2064 (194)	1201	inanimate	distractor	new	cr	1	test	2	194	vacuum	testp1
+(#2) 2064 8 (194)	1202	inanimate	distractor	new	cr	1	test	2	194	vacuum	testp1
+(#2) 8 (194) 1040	1210	inanimate	distractor	old	fa	1	test	2	194	vacuum	testp1
+(#2) 8 1040 (194)	1211	inanimate	distractor	old	fa	1	test	2	194	vacuum	testp1
+(#2) 1040 8 (194)	1212	inanimate	distractor	old	fa	1	test	2	194	vacuum	testp1
+(#2) 8 (194) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	194	vacuum	testp1
+(#2) 8 (137) 2064	1200	inanimate	distractor	new	cr	1	test	2	137	guitar	testp1
+(#2) 8 2064 (137)	1201	inanimate	distractor	new	cr	1	test	2	137	guitar	testp1
+(#2) 2064 8 (137)	1202	inanimate	distractor	new	cr	1	test	2	137	guitar	testp1
+(#2) 8 (137) 1040	1210	inanimate	distractor	old	fa	1	test	2	137	guitar	testp1
+(#2) 8 1040 (137)	1211	inanimate	distractor	old	fa	1	test	2	137	guitar	testp1
+(#2) 1040 8 (137)	1212	inanimate	distractor	old	fa	1	test	2	137	guitar	testp1
+(#2) 8 (137) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	137	guitar	testp1
+(#2) 8 (128) 2064	1200	inanimate	distractor	new	cr	1	test	2	128	dress	testp1
+(#2) 8 2064 (128)	1201	inanimate	distractor	new	cr	1	test	2	128	dress	testp1
+(#2) 2064 8 (128)	1202	inanimate	distractor	new	cr	1	test	2	128	dress	testp1
+(#2) 8 (128) 1040	1210	inanimate	distractor	old	fa	1	test	2	128	dress	testp1
+(#2) 8 1040 (128)	1211	inanimate	distractor	old	fa	1	test	2	128	dress	testp1
+(#2) 1040 8 (128)	1212	inanimate	distractor	old	fa	1	test	2	128	dress	testp1
+(#2) 8 (128) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	128	dress	testp1
+(#4) 8 (119) 1040	1400	inanimate	studied	old	hit	1	test	4	119	chainsaw	testp1
+(#4) 8 1040 (119)	1401	inanimate	studied	old	hit	1	test	4	119	chainsaw	testp1
+(#4) 1040 8 (119)	1402	inanimate	studied	old	hit	1	test	4	119	chainsaw	testp1
+(#4) 8 (119) 2064	1410	inanimate	studied	new	miss	1	test	4	119	chainsaw	testp1
+(#4) 8 2064 (119)	1411	inanimate	studied	new	miss	1	test	4	119	chainsaw	testp1
+(#4) 2064 8 (119)	1412	inanimate	studied	new	miss	1	test	4	119	chainsaw	testp1
+(#4) 8 (119) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	119	chainsaw	testp1
+(#2) 8 (123) 2064	1200	inanimate	distractor	new	cr	1	test	2	123	clothspn	testp1
+(#2) 8 2064 (123)	1201	inanimate	distractor	new	cr	1	test	2	123	clothspn	testp1
+(#2) 2064 8 (123)	1202	inanimate	distractor	new	cr	1	test	2	123	clothspn	testp1
+(#2) 8 (123) 1040	1210	inanimate	distractor	old	fa	1	test	2	123	clothspn	testp1
+(#2) 8 1040 (123)	1211	inanimate	distractor	old	fa	1	test	2	123	clothspn	testp1
+(#2) 1040 8 (123)	1212	inanimate	distractor	old	fa	1	test	2	123	clothspn	testp1
+(#2) 8 (123) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	123	clothspn	testp1
+(#2) 8 (196) 2064	1200	inanimate	distractor	new	cr	1	test	2	196	watercan	testp1
+(#2) 8 2064 (196)	1201	inanimate	distractor	new	cr	1	test	2	196	watercan	testp1
+(#2) 2064 8 (196)	1202	inanimate	distractor	new	cr	1	test	2	196	watercan	testp1
+(#2) 8 (196) 1040	1210	inanimate	distractor	old	fa	1	test	2	196	watercan	testp1
+(#2) 8 1040 (196)	1211	inanimate	distractor	old	fa	1	test	2	196	watercan	testp1
+(#2) 1040 8 (196)	1212	inanimate	distractor	old	fa	1	test	2	196	watercan	testp1
+(#2) 8 (196) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	196	watercan	testp1
+(#2) 8 (121) 2064	1200	inanimate	distractor	new	cr	1	test	2	121	chisel	testp1
+(#2) 8 2064 (121)	1201	inanimate	distractor	new	cr	1	test	2	121	chisel	testp1
+(#2) 2064 8 (121)	1202	inanimate	distractor	new	cr	1	test	2	121	chisel	testp1
+(#2) 8 (121) 1040	1210	inanimate	distractor	old	fa	1	test	2	121	chisel	testp1
+(#2) 8 1040 (121)	1211	inanimate	distractor	old	fa	1	test	2	121	chisel	testp1
+(#2) 1040 8 (121)	1212	inanimate	distractor	old	fa	1	test	2	121	chisel	testp1
+(#2) 8 (121) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	121	chisel	testp1
+(#4) 8 (198) 1040	1400	inanimate	studied	old	hit	1	test	4	198	wineglas	testp1
+(#4) 8 1040 (198)	1401	inanimate	studied	old	hit	1	test	4	198	wineglas	testp1
+(#4) 1040 8 (198)	1402	inanimate	studied	old	hit	1	test	4	198	wineglas	testp1
+(#4) 8 (198) 2064	1410	inanimate	studied	new	miss	1	test	4	198	wineglas	testp1
+(#4) 8 2064 (198)	1411	inanimate	studied	new	miss	1	test	4	198	wineglas	testp1
+(#4) 2064 8 (198)	1412	inanimate	studied	new	miss	1	test	4	198	wineglas	testp1
+(#4) 8 (198) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	198	wineglas	testp1
+(#4) 8 (125) 1040	1400	inanimate	studied	old	hit	1	test	4	125	crayon	testp1
+(#4) 8 1040 (125)	1401	inanimate	studied	old	hit	1	test	4	125	crayon	testp1
+(#4) 1040 8 (125)	1402	inanimate	studied	old	hit	1	test	4	125	crayon	testp1
+(#4) 8 (125) 2064	1410	inanimate	studied	new	miss	1	test	4	125	crayon	testp1
+(#4) 8 2064 (125)	1411	inanimate	studied	new	miss	1	test	4	125	crayon	testp1
+(#4) 2064 8 (125)	1412	inanimate	studied	new	miss	1	test	4	125	crayon	testp1
+(#4) 8 (125) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	125	crayon	testp1
+(#3) 8 (175) 1040	1300	animate	studied	old	hit	1	test	3	175	sheep	testp1
+(#3) 8 1040 (175)	1301	animate	studied	old	hit	1	test	3	175	sheep	testp1
+(#3) 1040 8 (175)	1302	animate	studied	old	hit	1	test	3	175	sheep	testp1
+(#3) 8 (175) 2064	1310	animate	studied	new	miss	1	test	3	175	sheep	testp1
+(#3) 8 2064 (175)	1311	animate	studied	new	miss	1	test	3	175	sheep	testp1
+(#3) 2064 8 (175)	1312	animate	studied	new	miss	1	test	3	175	sheep	testp1
+(#3) 8 (175) (?!(2064|1040))	1303	animate	studied	none	nr	1	test	3	175	sheep	testp1
+(#4) 8 (184) 1040	1400	inanimate	studied	old	hit	1	test	4	184	stove	testp1
+(#4) 8 1040 (184)	1401	inanimate	studied	old	hit	1	test	4	184	stove	testp1
+(#4) 1040 8 (184)	1402	inanimate	studied	old	hit	1	test	4	184	stove	testp1
+(#4) 8 (184) 2064	1410	inanimate	studied	new	miss	1	test	4	184	stove	testp1
+(#4) 8 2064 (184)	1411	inanimate	studied	new	miss	1	test	4	184	stove	testp1
+(#4) 2064 8 (184)	1412	inanimate	studied	new	miss	1	test	4	184	stove	testp1
+(#4) 8 (184) (?!(2064|1040))	1403	inanimate	studied	none	nr	1	test	4	184	stove	testp1
+(#2) 8 (105) 2064	1200	inanimate	distractor	new	cr	1	test	2	105	barn	testp1
+(#2) 8 2064 (105)	1201	inanimate	distractor	new	cr	1	test	2	105	barn	testp1
+(#2) 2064 8 (105)	1202	inanimate	distractor	new	cr	1	test	2	105	barn	testp1
+(#2) 8 (105) 1040	1210	inanimate	distractor	old	fa	1	test	2	105	barn	testp1
+(#2) 8 1040 (105)	1211	inanimate	distractor	old	fa	1	test	2	105	barn	testp1
+(#2) 1040 8 (105)	1212	inanimate	distractor	old	fa	1	test	2	105	barn	testp1
+(#2) 8 (105) (?!(2064|1040))	1203	inanimate	distractor	none	nr	1	test	2	105	barn	testp1

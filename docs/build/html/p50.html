@@ -4,18 +4,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>P50 Paired-click &#8212; mkpy_data_examples 0.0.4 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P50 Paired-click &#8212; mkpy_data_examples 0.0.5 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="P3 Auditory oddball" href="p3.html" />
@@ -33,7 +33,7 @@
         <li class="right" >
           <a href="background.html" title="Background: EEG, events, and epochs"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">P50 Paired-click</a></li> 
       </ul>
     </div>  
@@ -48,21 +48,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -163,7 +177,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -229,6 +243,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -276,7 +291,7 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="P50-Paired-click">
+<section id="P50-Paired-click">
 <h1>P50 Paired-click<a class="headerlink" href="#P50-Paired-click" title="Permalink to this headline">¶</a></h1>
 <p>Design:</p>
 <ul class="simple">
@@ -306,6 +321,7 @@ div.rendered_html tbody tr:hover {
     <span class="n">MDE_HOME</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MDE_HOME&quot;</span><span class="p">])</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">conf</span> <span class="kn">import</span> <span class="n">MDE_HOME</span>
+<span class="n">DOCS_DATA</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;docs/_data&quot;</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CONDA_DEFAULT_ENV&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
@@ -319,13 +335,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-spudtrE
-3.8.2 (default, Mar 26 2020, 15:53:00)
-[GCC 7.3.0]
-numpy 1.19.1 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/numpy/__init__.py
-pandas 1.1.3 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/pandas/__init__.py
-mkpy 0.2.4 /home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/__init__.py
-spudtr 0.0.11.dev0 /mnt/cube/home/turbach/TPU_Projects/spudtr/spudtr/__init__.py
+mkpy_data_examples_101821
+3.8.12 | packaged by conda-forge | (default, Oct 12 2021, 21:59:51)
+[GCC 9.4.0]
+numpy 1.21.2 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/numpy/__init__.py
+pandas 1.3.4 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/pandas/__init__.py
+mkpy 0.2.6 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/__init__.py
+spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/spudtr/__init__.py
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -344,7 +360,7 @@ spudtr 0.0.11.dev0 /mnt/cube/home/turbach/TPU_Projects/spudtr/spudtr/__init__.py
 <span class="n">cals_yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/sub000c5.yhdr&quot;</span>
 
 <span class="c1"># HDF5 file with EEG recording, events, and header</span>
-<span class="n">p50_h5_f</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000p50.h5&quot;</span>
+<span class="n">p50_h5_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000p50.h5&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -380,7 +396,7 @@ spudtr 0.0.11.dev0 /mnt/cube/home/turbach/TPU_Projects/spudtr/spudtr/__init__.py
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
+/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:3669: UserWarning: negative event code(s) found for cal condition code 0 -16384
   warnings.warn(msg)
 </pre></div></div>
 </div>
@@ -449,27 +465,20 @@ rows:
 <div class="highlight"><pre>
 searching codes in: sub000/dblock_0
 searching codes in: sub000/dblock_1
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1046: UserWarning:
-As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
-ccode column in p50_codemap.ytbl must also match the log_ccode
-in the datablock. If this behavior is not desired, delete or rename
-the ccode column in the codemap.
-  warnings.warn(msg)
+searching codes in: sub000/dblock_2
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
+<div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-searching codes in: sub000/dblock_2
+/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1060: UserWarning:
+As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
+ccode column in p50_codemap.ytbl must also match the log_ccode
+in the datablock. If this behavior is not desired, delete or rename
+the ccode column in the codemap.
+  warnings.warn(msg)
 </pre></div></div>
 </div>
 <p><strong>inspect the event table</strong></p>
@@ -854,7 +863,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -375, 750, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -375, 750)
+/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1516: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -375, 750, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -375, 750)
   warnings.warn(
 </pre></div></div>
 </div>
@@ -866,7 +875,8 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># this exports the epochs DATA ... indexed, timstamped, EEG, events, and tags.</span>
-<span class="n">p50_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;ms1500&quot;</span><span class="p">,</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000p50.ms1500.epochs.feather&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
+<span class="n">p50_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000p50.ms1500.epochs.feather&quot;</span>
+<span class="n">p50_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;ms1500&quot;</span><span class="p">,</span> <span class="n">p50_epochs_f</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -876,7 +886,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p50_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;data/sub000p50.ms1500.epochs.feather&quot;</span><span class="p">)</span>
+<span></span><span class="n">p50_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">p50_epochs_f</span><span class="p">)</span>
 
 <span class="c1"># sanitize epoch_id for pandas index</span>
 <span class="n">p50_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p50_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
@@ -1281,226 +1291,7 @@ Name: match_time, dtype: float64
 <img alt="_images/p50_21_0.png" src="_images/p50_21_0.png" />
 </div>
 </div>
-<p><strong>Single subject pipeline with epoch export in different formats</strong></p>
-<p>build and calibrate the mkpy HDF5 format data file</p>
-<ol class="arabic simple">
-<li><p>get_event_table(<em>codemap</em>)</p></li>
-<li><p>set_epoch_table(<em>name</em>, <em>event_table</em>, <em>pre</em>, <em>post</em>)</p></li>
-<li><p>export_epochs(<em>name</em>, <em>file_format=…</em>)</p></li>
-</ol>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;always&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">)</span>
-
-<span class="c1"># build mkpy.mkh5 format data file and calibrate</span>
-<span class="n">p50_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">p50_h5_f</span><span class="p">)</span>
-<span class="n">p50_h5</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>
-<span class="n">p50_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">crw</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">yhdr</span><span class="p">)</span>
-
-<span class="n">p50_h5</span><span class="o">.</span><span class="n">append_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">cals_crw</span><span class="p">,</span> <span class="n">cals_log</span><span class="p">,</span> <span class="n">cals_yhdr</span><span class="p">)</span>
-
-<span class="n">pts</span><span class="p">,</span> <span class="n">pulse</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">ccode</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span>
-<span class="n">p50_h5</span><span class="o">.</span><span class="n">calibrate_mkdata</span><span class="p">(</span>
-    <span class="s2">&quot;sub000&quot;</span><span class="p">,</span>
-    <span class="n">n_points</span><span class="o">=</span><span class="n">pts</span><span class="p">,</span>
-    <span class="n">cal_size</span><span class="o">=</span><span class="n">pulse</span><span class="p">,</span>
-    <span class="n">lo_cursor</span><span class="o">=</span><span class="n">lo</span><span class="p">,</span>
-    <span class="n">hi_cursor</span><span class="o">=</span><span class="n">hi</span><span class="p">,</span>
-    <span class="n">cal_ccode</span><span class="o">=</span><span class="n">ccode</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c1"># 1. scan event code pattern tags into the event table</span>
-<span class="n">p50_event_table</span> <span class="o">=</span> <span class="n">p50_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/p50_codemap.ytbl&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># use these to set the epoch table name, and pre, post stimulus boundaries</span>
-<span class="n">epoch_specs</span>  <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;ms100&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-    <span class="s2">&quot;ms1500&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span>
-    <span class="s2">&quot;ms3000&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">1500</span><span class="p">),</span>
-    <span class="s2">&quot;ms10000&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">),</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="n">epoch_name</span><span class="p">,</span> <span class="p">(</span><span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">)</span> <span class="ow">in</span> <span class="n">epoch_specs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">epoch_name</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">)</span>
-
-    <span class="c1"># 2. set the epoch_table names and interval boundaries</span>
-    <span class="n">p50_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="n">epoch_name</span><span class="p">,</span> <span class="n">p50_event_table</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">)</span>
-
-    <span class="c1"># multiple export formats for demonstration, in practice pick one format</span>
-    <span class="n">fformats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;h5&quot;</span><span class="p">,</span> <span class="s2">&quot;pdh5&quot;</span><span class="p">,</span> <span class="s2">&quot;feather&quot;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">ffmt</span> <span class="ow">in</span> <span class="n">fformats</span><span class="p">:</span>
-        <span class="n">_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">MDE_HOME</span><span class="si">}</span><span class="s2">/data/sub000p50.</span><span class="si">{</span><span class="n">epoch_name</span><span class="si">}</span><span class="s2">.epochs.</span><span class="si">{</span><span class="n">ffmt</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;exporting p50 </span><span class="si">{</span><span class="n">epoch_name</span><span class="si">}</span><span class="s2"> as </span><span class="si">{</span><span class="n">ffmt</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">_fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-        <span class="c1"># 3.  export the epochs DATA ... EEG and events.</span>
-        <span class="n">p50_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="n">epoch_name</span><span class="p">,</span> <span class="n">_fname</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="n">ffmt</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:3654: UserWarning: negative event code(s) found for cal condition code 0 -16384
-  warnings.warn(msg)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Found cals in /sub000/dblock_2
-Calibrating block /sub000/dblock_0 of 3: (219904,)
-Calibrating block /sub000/dblock_1 of 3: (225280,)
-Calibrating block /sub000/dblock_2 of 3: (56064,)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1046: UserWarning:
-As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
-ccode column in p50_codemap.ytbl must also match the log_ccode
-in the datablock. If this behavior is not desired, delete or rename
-the ccode column in the codemap.
-  warnings.warn(msg)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-searching codes in: sub000/dblock_0
-searching codes in: sub000/dblock_1
-searching codes in: sub000/dblock_2
-ms100 -50 50
-Sanitizing event table data types for mkh5 epochs table ...
-exporting p50 ms100 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms100.epochs.h5
-exporting p50 ms100 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms100.epochs.pdh5
-exporting p50 ms100 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms100.epochs.feather
-ms1500 -750 750
-Sanitizing event table data types for mkh5 epochs table ...
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -375, 750, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -375, 750)
-  warnings.warn(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-exporting p50 ms1500 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms1500.epochs.h5
-exporting p50 ms1500 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms1500.epochs.pdh5
-exporting p50 ms1500 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms1500.epochs.feather
-ms3000 -1500 1500
-Sanitizing event table data types for mkh5 epochs table ...
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (0, b&#39;sub000&#39;, b&#39;sub000/dblock_0&#39;, 0, 606, 606, 1, 1, 1, 0, -750, 1500, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 606, 606, 0, True, b&#39;(#1)&#39;, 1, b&#39;eeg&#39;, 1, b&#39;click_1&#39;, b&#39;conditioning&#39;, 0, 0, 0, 606, -750, 1500)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (120, b&#39;sub000&#39;, b&#39;sub000/dblock_1&#39;, 0, 517, 220421, 1, 1, 1, 32, -750, 1500, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 517, 517, 0, True, b&#39;(#1)&#39;, 1, b&#39;eeg&#39;, 1, b&#39;click_1&#39;, b&#39;conditioning&#39;, 0, 0, 0, 517, -750, 1500)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -750, 1500, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -750, 1500)
-  warnings.warn(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-exporting p50 ms3000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms3000.epochs.h5
-exporting p50 ms3000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms3000.epochs.pdh5
-exporting p50 ms3000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms3000.epochs.feather
-ms10000 -5000 5000
-Sanitizing event table data types for mkh5 epochs table ...
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (0, b&#39;sub000&#39;, b&#39;sub000/dblock_0&#39;, 0, 606, 606, 1, 1, 1, 0, -2500, 5000, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 606, 606, 0, True, b&#39;(#1)&#39;, 1, b&#39;eeg&#39;, 1, b&#39;click_1&#39;, b&#39;conditioning&#39;, 0, 0, 0, 606, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (59, b&#39;sub000&#39;, b&#39;sub000/dblock_0&#39;, 118, 218149, 218149, 1, 1, 1, 0, -2500, 5000, 500., 1, 118, 237, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 218149, 218149, 0, True, b&#39;(#1)&#39;, 1, b&#39;eeg&#39;, 1, b&#39;click_1&#39;, b&#39;conditioning&#39;, 0, 0, 0, 218149, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (60, b&#39;sub000&#39;, b&#39;sub000/dblock_0&#39;, 1, 857, 857, 2, 2, 1, 0, -2500, 5000, 500., 1, 1, 3, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 857, 857, 0, True, b&#39;(#2)&#39;, 1, b&#39;eeg&#39;, 2, b&#39;click_2&#39;, b&#39;test&#39;, 0, 0, 0, 857, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (119, b&#39;sub000&#39;, b&#39;sub000/dblock_0&#39;, 119, 218400, 218400, 2, 2, 1, 0, -2500, 5000, 500., 1, 119, 239, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 218400, 218400, 0, True, b&#39;(#2)&#39;, 1, b&#39;eeg&#39;, 2, b&#39;click_2&#39;, b&#39;test&#39;, 0, 0, 0, 218400, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (120, b&#39;sub000&#39;, b&#39;sub000/dblock_1&#39;, 0, 517, 220421, 1, 1, 1, 32, -2500, 5000, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 517, 517, 0, True, b&#39;(#1)&#39;, 1, b&#39;eeg&#39;, 1, b&#39;click_1&#39;, b&#39;conditioning&#39;, 0, 0, 0, 517, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (179, b&#39;sub000&#39;, b&#39;sub000/dblock_1&#39;, 118, 223728, 443632, 1, 1, 1, 0, -2500, 5000, 500., 1, 118, 237, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 223728, 223728, 0, True, b&#39;(#1)&#39;, 1, b&#39;eeg&#39;, 1, b&#39;click_1&#39;, b&#39;conditioning&#39;, 0, 0, 0, 223728, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (180, b&#39;sub000&#39;, b&#39;sub000/dblock_1&#39;, 1, 769, 220673, 2, 2, 1, 32, -2500, 5000, 500., 1, 1, 3, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 769, 769, 0, True, b&#39;(#2)&#39;, 1, b&#39;eeg&#39;, 2, b&#39;click_2&#39;, b&#39;test&#39;, 0, 0, 0, 769, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (239, b&#39;sub000&#39;, b&#39;sub000/dblock_1&#39;, 119, 223979, 443883, 2, 2, 1, 0, -2500, 5000, 500., 1, 119, 239, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 223979, 223979, 0, True, b&#39;(#2)&#39;, 1, b&#39;eeg&#39;, 2, b&#39;click_2&#39;, b&#39;test&#39;, 0, 0, 0, 223979, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -2500, 5000, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (241, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 1, 1077, 1077, 4, 4, 0, 0, -2500, 5000, 500., 1, 1, 3, b&#39;4&#39;, b&#39;4&#39;, 4, 4, 1077, 1077, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 1077, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1501: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (242, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 2, 1794, 1794, 2, 2, 0, 0, -2500, 5000, 500., 1, 2, 5, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 1794, 1794, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 1794, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (441, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 201, 53662, 53662, 4, 4, 0, 0, -2500, 5000, 500., 1, 201, 403, b&#39;4&#39;, b&#39;4&#39;, 4, 4, 53662, 53662, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 53662, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (442, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 202, 53920, 53920, 1, 1, 0, 0, -2500, 5000, 500., 1, 202, 405, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 53920, 53920, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 53920, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (443, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 203, 54179, 54179, 4, 4, 0, 0, -2500, 5000, 500., 1, 203, 407, b&#39;4&#39;, b&#39;4&#39;, 4, 4, 54179, 54179, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 54179, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (444, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 204, 54437, 54437, 2, 2, 0, 0, -2500, 5000, 500., 1, 204, 409, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 54437, 54437, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 54437, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (445, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 205, 54695, 54695, 3, 3, 0, 0, -2500, 5000, 500., 1, 205, 411, b&#39;3&#39;, b&#39;3&#39;, 3, 3, 54695, 54695, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 54695, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (446, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 206, 54954, 54954, 4, 4, 0, 0, -2500, 5000, 500., 1, 206, 413, b&#39;4&#39;, b&#39;4&#39;, 4, 4, 54954, 54954, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 54954, -2500, 5000)
-  warnings.warn(
-/home/turbach/miniconda3/envs/spudtrE/lib/python3.8/site-packages/mkpy/mkh5.py:1507: UserWarning: data error: post-stimulus interval is out of bounds right ... skipping epoch (447, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 207, 55212, 55212, 2, 2, 0, 0, -2500, 5000, 500., 1, 207, 415, b&#39;2&#39;, b&#39;2&#39;, 2, 2, 55212, 55212, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 55212, -2500, 5000)
-  warnings.warn(
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-exporting p50 ms10000 as h5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms10000.epochs.h5
-exporting p50 ms10000 as pdh5: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms10000.epochs.pdh5
-exporting p50 ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/data/sub000p50.ms10000.epochs.feather
-</pre></div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -1541,13 +1332,13 @@ exporting p50 ms10000 as feather: /mnt/cube/home/turbach/TPU_Projects/mkpy_data_
         <li class="right" >
           <a href="background.html" title="Background: EEG, events, and epochs"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">P50 Paired-click</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Thomas P. Urbach.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

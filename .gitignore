@@ -1,6 +1,8 @@
 # TODOs files
 *.todo
 
+**.__pycache__
+
 # emacs temp files
 *~
 \#*\#
@@ -13,11 +15,13 @@
 .pytest_cache
 .cache
 
+
 data
 mkdig
 scripts
 mkstim
 mkpy
+docs/_data
 
 
 

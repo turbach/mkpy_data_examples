@@ -1,0 +1,1030 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; mkpy_data_examples 0.0.5 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">&lt;no title&gt;</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">MDE_HOME</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">MDE_HOME</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+PosixPath(&#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples&#39;)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">make_pm_item_by_scn</span><span class="p">():</span>
+    <span class="n">stim_split_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;(?P&lt;soa&gt;\d+)\s+(?P&lt;dur&gt;\d+)\s+(?P&lt;evcode&gt;\d+)\s+&quot;</span>
+        <span class="sa">r</span><span class="s2">&quot;(?P&lt;type&gt;....)=(?P&lt;stim&gt;.+)[\.]&quot;</span>
+    <span class="p">)</span>
+    <span class="n">scn_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">MDE_HOME</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;mkstim/pictmem/*.scn&quot;</span><span class="p">))</span>
+
+    <span class="n">header_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">:</span><span class="s2">15</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ccode&quot;</span><span class="p">,</span> <span class="s2">&quot;phase&quot;</span><span class="p">,</span> <span class="s2">&quot;condition_id&quot;</span><span class="p">,</span> <span class="s2">&quot;item_id&quot;</span><span class="p">,</span> <span class="s2">&quot;jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;scn&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">header_str</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">scn_path</span> <span class="ow">in</span> <span class="n">scn_paths</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">scn_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_fh</span><span class="p">:</span>
+            <span class="n">scn</span> <span class="o">=</span> <span class="n">scn_path</span><span class="o">.</span><span class="n">stem</span>
+            <span class="n">phase</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">ccode</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">for</span> <span class="n">phase</span><span class="p">,</span> <span class="n">ccode</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">&quot;study&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]:</span>
+                <span class="k">if</span> <span class="n">phase</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">scn_path</span><span class="p">):</span>
+                    <span class="k">break</span>
+            <span class="k">assert</span> <span class="n">phase</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ccode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">_fh</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+                <span class="n">fields</span> <span class="o">=</span> <span class="n">stim_split_re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">fields</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">evcode</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;evcode&quot;</span><span class="p">])</span>
+                <span class="c1">#if evcode &gt; 100</span>
+                <span class="k">if</span> <span class="n">evcode</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">evcode</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
+                    <span class="k">assert</span> <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;jpeg&quot;</span>
+                    <span class="n">stim</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;stim&quot;</span><span class="p">]</span>
+                    <span class="n">cond</span> <span class="o">=</span> <span class="n">evcode</span>
+                <span class="k">if</span> <span class="n">evcode</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+                    <span class="n">item</span> <span class="o">=</span> <span class="n">evcode</span>
+                    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2">&quot;</span>
+                            <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span>
+                                <span class="n">ccode</span><span class="p">,</span>
+                                <span class="n">phase</span><span class="p">,</span>
+                                <span class="n">cond</span><span class="p">,</span>
+                                <span class="n">item</span><span class="p">,</span>
+                                <span class="n">stim</span><span class="p">,</span>
+                                <span class="n">scn</span>
+                            <span class="p">]</span>
+                        <span class="p">]</span>
+                    <span class="p">)</span>
+                                <span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+<span class="n">item_ids</span> <span class="o">=</span> <span class="n">make_pm_item_by_scn</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">item_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ccode          phase          condition_id   item_id        jpg            scn
+2              study          2              154            necklace       studyp1
+2              study          2              107            bell           studyp1
+2              study          1              146            leopard        studyp1
+2              study          1              157            peas           studyp1
+2              study          2              151            moon           studyp1
+2              study          2              143            jacket         studyp1
+2              study          2              147            lighter        studyp1
+2              study          2              141            htarblon       studyp1
+2              study          2              149            lock           studyp1
+2              study          1              140            horse          studyp1
+2              study          1              166            pumpkin        studyp1
+2              study          1              153            mushroom       studyp1
+2              study          2              134            flute          studyp1
+2              study          2              163            pitchfrk       studyp1
+2              study          1              133            flamingo       studyp1
+2              study          2              129            dresser        studyp1
+2              study          1              175            sheep          studyp1
+2              study          2              117            car            studyp1
+2              study          2              173            scrwdriv       studyp1
+2              study          1              160            penguin        studyp1
+2              study          2              198            wineglas       studyp1
+2              study          2              172            scissors       studyp1
+2              study          2              138            hanger         studyp1
+2              study          1              179            spider         studyp1
+2              study          2              125            crayon         studyp1
+2              study          1              174            seashell       studyp1
+2              study          2              124            comb           studyp1
+2              study          1              126            deer           studyp1
+2              study          2              122            church         studyp1
+2              study          1              186            swan           studyp1
+2              study          2              188            tapemeas       studyp1
+2              study          2              116            candle         studyp1
+2              study          2              112            broom          studyp1
+2              study          2              184            stove          studyp1
+2              study          2              119            chainsaw       studyp1
+2              study          2              195            vest           studyp1
+2              study          2              191            trophy         studyp1
+2              study          2              199            witchhat       studyp1
+2              study          2              178            spatula        studyp1
+2              study          2              190            tissue         studyp1
+2              study          2              131            firengin       studyp1
+2              study          2              183            stool          studyp1
+2              study          1              101            allgator       studyp1
+2              study          1              144            kilerwal       studyp1
+2              study          2              176            sled           studyp1
+2              study          1              106            bear           studyp1
+2              study          2              193            umbrella       studyp1
+2              study          2              118            cd             studyp1
+2              study          2              103            ballhoop       studyp1
+2              study          2              159            pen            studyp1
+2              study          2              120            chair          studyp2
+2              study          2              155            net            studyp2
+2              study          1              156            palmtree       studyp2
+2              study          2              152            motrcyle       studyp2
+2              study          2              113            bsbllglv       studyp2
+2              study          2              142            iron           studyp2
+2              study          1              145            koala          studyp2
+2              study          2              150            mailbox        studyp2
+2              study          1              148            lion           studyp2
+2              study          2              164            pliers         studyp2
+2              study          2              167            refridge       studyp2
+2              study          2              171            sandal         studyp2
+2              study          1              108            bird           studyp2
+2              study          2              139            harp           studyp2
+2              study          2              104            balloon        studyp2
+2              study          2              162            pitcher        studyp2
+2              study          2              168            remote         studyp2
+2              study          1              161            pineaple       studyp2
+2              study          2              169            safe           studyp2
+2              study          1              110            brain          studyp2
+2              study          1              135            foot           studyp2
+2              study          2              165            prkngmtr       studyp2
+2              study          2              137            guitar         studyp2
+2              study          2              132            fireplac       studyp2
+2              study          1              102            apple          studyp2
+2              study          2              111            briefcas       studyp2
+2              study          1              130            eye            studyp2
+2              study          2              170            salt           studyp2
+2              study          2              123            clothspn       studyp2
+2              study          1              127            dragon         studyp2
+2              study          2              185            sun            studyp2
+2              study          2              187            table          studyp2
+2              study          2              121            chisel         studyp2
+2              study          2              182            stapler        studyp2
+2              study          1              189            tiger          studyp2
+2              study          1              115            camel          studyp2
+2              study          2              181            sprybtle       studyp2
+2              study          2              194            vacuum         studyp2
+2              study          2              196            watercan       studyp2
+2              study          2              114            bus            studyp2
+2              study          2              109            bracelet       studyp2
+2              study          2              197            whistle        studyp2
+2              study          1              158            pelican        studyp2
+2              study          1              192            turtle         studyp2
+2              study          2              200            wrench         studyp2
+2              study          2              105            barn           studyp2
+2              study          1              136            frog           studyp2
+2              study          2              177            socerbal       studyp2
+2              study          2              128            dress          studyp2
+2              study          2              180            spoon          studyp2
+2              study          1              175            sheep          studyp3
+2              study          1              144            kilerwal       studyp3
+2              study          2              181            sprybtle       studyp3
+2              study          2              125            crayon         studyp3
+2              study          1              156            palmtree       studyp3
+2              study          2              116            candle         studyp3
+2              study          2              178            spatula        studyp3
+2              study          1              148            lion           studyp3
+2              study          2              139            harp           studyp3
+2              study          2              180            spoon          studyp3
+2              study          1              130            eye            studyp3
+2              study          2              187            table          studyp3
+2              study          2              123            clothspn       studyp3
+2              study          1              161            pineaple       studyp3
+2              study          1              192            turtle         studyp3
+2              study          2              120            chair          studyp3
+2              study          2              169            safe           studyp3
+2              study          2              114            bus            studyp3
+2              study          1              110            brain          studyp3
+2              study          2              137            guitar         studyp3
+2              study          2              185            sun            studyp3
+2              study          1              133            flamingo       studyp3
+2              study          1              153            mushroom       studyp3
+2              study          1              174            seashell       studyp3
+2              study          2              147            lighter        studyp3
+2              study          1              189            tiger          studyp3
+2              study          2              198            wineglas       studyp3
+2              study          1              106            bear           studyp3
+2              study          2              109            bracelet       studyp3
+2              study          2              164            pliers         studyp3
+2              study          2              155            net            studyp3
+2              study          2              131            firengin       studyp3
+2              study          2              128            dress          studyp3
+2              study          2              117            car            studyp3
+2              study          2              193            umbrella       studyp3
+2              study          1              160            penguin        studyp3
+2              study          1              166            pumpkin        studyp3
+2              study          2              118            cd             studyp3
+2              study          1              135            foot           studyp3
+2              study          2              149            lock           studyp3
+2              study          2              170            salt           studyp3
+2              study          1              136            frog           studyp3
+2              study          2              172            scissors       studyp3
+2              study          2              138            hanger         studyp3
+2              study          2              188            tapemeas       studyp3
+2              study          2              121            chisel         studyp3
+2              study          2              194            vacuum         studyp3
+2              study          1              126            deer           studyp3
+2              study          2              143            jacket         studyp3
+2              study          2              141            htarblon       studyp3
+2              study          2              113            bsbllglv       studyp4
+2              study          2              196            watercan       studyp4
+2              study          2              103            ballhoop       studyp4
+2              study          1              186            swan           studyp4
+2              study          1              158            pelican        studyp4
+2              study          1              102            apple          studyp4
+2              study          2              122            church         studyp4
+2              study          1              157            peas           studyp4
+2              study          2              119            chainsaw       studyp4
+2              study          2              176            sled           studyp4
+2              study          2              171            sandal         studyp4
+2              study          2              190            tissue         studyp4
+2              study          2              167            refridge       studyp4
+2              study          1              115            camel          studyp4
+2              study          2              132            fireplac       studyp4
+2              study          2              168            remote         studyp4
+2              study          2              173            scrwdriv       studyp4
+2              study          2              142            iron           studyp4
+2              study          2              177            socerbal       studyp4
+2              study          2              104            balloon        studyp4
+2              study          1              140            horse          studyp4
+2              study          2              200            wrench         studyp4
+2              study          2              152            motrcyle       studyp4
+2              study          1              145            koala          studyp4
+2              study          1              146            leopard        studyp4
+2              study          2              150            mailbox        studyp4
+2              study          2              199            witchhat       studyp4
+2              study          2              191            trophy         studyp4
+2              study          2              154            necklace       studyp4
+2              study          2              159            pen            studyp4
+2              study          2              165            prkngmtr       studyp4
+2              study          1              108            bird           studyp4
+2              study          2              182            stapler        studyp4
+2              study          2              197            whistle        studyp4
+2              study          2              184            stove          studyp4
+2              study          2              163            pitchfrk       studyp4
+2              study          2              107            bell           studyp4
+2              study          1              179            spider         studyp4
+2              study          2              112            broom          studyp4
+2              study          2              105            barn           studyp4
+2              study          2              151            moon           studyp4
+2              study          1              127            dragon         studyp4
+2              study          2              162            pitcher        studyp4
+2              study          2              183            stool          studyp4
+2              study          2              195            vest           studyp4
+2              study          1              101            allgator       studyp4
+2              study          2              111            briefcas       studyp4
+2              study          2              134            flute          studyp4
+2              study          2              124            comb           studyp4
+2              study          2              129            dresser        studyp4
+1              test           1              127            dragon         testp1
+1              test           4              129            dresser        testp1
+1              test           2              185            sun            testp1
+1              test           3              106            bear           testp1
+1              test           4              141            htarblon       testp1
+1              test           3              166            pumpkin        testp1
+1              test           2              197            whistle        testp1
+1              test           2              170            salt           testp1
+1              test           3              157            peas           testp1
+1              test           3              144            kilerwal       testp1
+1              test           4              154            necklace       testp1
+1              test           3              186            swan           testp1
+1              test           1              192            turtle         testp1
+1              test           2              114            bus            testp1
+1              test           2              169            safe           testp1
+1              test           2              171            sandal         testp1
+1              test           1              102            apple          testp1
+1              test           4              176            sled           testp1
+1              test           2              182            stapler        testp1
+1              test           4              199            witchhat       testp1
+1              test           4              178            spatula        testp1
+1              test           4              117            car            testp1
+1              test           2              142            iron           testp1
+1              test           4              134            flute          testp1
+1              test           2              155            net            testp1
+1              test           4              103            ballhoop       testp1
+1              test           4              159            pen            testp1
+1              test           4              118            cd             testp1
+1              test           4              122            church         testp1
+1              test           3              126            deer           testp1
+1              test           4              183            stool          testp1
+1              test           4              172            scissors       testp1
+1              test           1              108            bird           testp1
+1              test           3              174            seashell       testp1
+1              test           4              193            umbrella       testp1
+1              test           2              139            harp           testp1
+1              test           1              145            koala          testp1
+1              test           2              109            bracelet       testp1
+1              test           3              133            flamingo       testp1
+1              test           3              179            spider         testp1
+1              test           4              116            candle         testp1
+1              test           2              132            fireplac       testp1
+1              test           2              167            refridge       testp1
+1              test           1              189            tiger          testp1
+1              test           4              173            scrwdriv       testp1
+1              test           1              130            eye            testp1
+1              test           4              190            tissue         testp1
+1              test           4              124            comb           testp1
+1              test           4              107            bell           testp1
+1              test           4              188            tapemeas       testp1
+1              test           4              131            firengin       testp1
+1              test           3              101            allgator       testp1
+1              test           2              200            wrench         testp1
+1              test           4              143            jacket         testp1
+1              test           4              149            lock           testp1
+1              test           2              165            prkngmtr       testp1
+1              test           2              113            bsbllglv       testp1
+1              test           4              147            lighter        testp1
+1              test           2              150            mailbox        testp1
+1              test           2              162            pitcher        testp1
+1              test           4              195            vest           testp1
+1              test           2              181            sprybtle       testp1
+1              test           3              160            penguin        testp1
+1              test           3              153            mushroom       testp1
+1              test           4              191            trophy         testp1
+1              test           2              187            table          testp1
+1              test           2              177            socerbal       testp1
+1              test           1              156            palmtree       testp1
+1              test           3              146            leopard        testp1
+1              test           2              152            motrcyle       testp1
+1              test           2              164            pliers         testp1
+1              test           4              151            moon           testp1
+1              test           3              140            horse          testp1
+1              test           1              158            pelican        testp1
+1              test           4              163            pitchfrk       testp1
+1              test           1              148            lion           testp1
+1              test           1              161            pineaple       testp1
+1              test           1              135            foot           testp1
+1              test           2              168            remote         testp1
+1              test           4              138            hanger         testp1
+1              test           2              180            spoon          testp1
+1              test           1              110            brain          testp1
+1              test           1              115            camel          testp1
+1              test           4              112            broom          testp1
+1              test           2              104            balloon        testp1
+1              test           2              111            briefcas       testp1
+1              test           2              120            chair          testp1
+1              test           1              136            frog           testp1
+1              test           2              194            vacuum         testp1
+1              test           2              137            guitar         testp1
+1              test           2              128            dress          testp1
+1              test           4              119            chainsaw       testp1
+1              test           2              123            clothspn       testp1
+1              test           2              196            watercan       testp1
+1              test           2              121            chisel         testp1
+1              test           4              198            wineglas       testp1
+1              test           4              125            crayon         testp1
+1              test           3              175            sheep          testp1
+1              test           4              184            stove          testp1
+1              test           2              105            barn           testp1
+1              test           2              176            sled           testp2
+1              test           2              119            chainsaw       testp2
+1              test           1              157            peas           testp2
+1              test           4              152            motrcyle       testp2
+1              test           4              187            table          testp2
+1              test           4              167            refridge       testp2
+1              test           4              181            sprybtle       testp2
+1              test           3              108            bird           testp2
+1              test           3              189            tiger          testp2
+1              test           2              141            htarblon       testp2
+1              test           2              188            tapemeas       testp2
+1              test           2              147            lighter        testp2
+1              test           1              153            mushroom       testp2
+1              test           4              196            watercan       testp2
+1              test           2              178            spatula        testp2
+1              test           3              148            lion           testp2
+1              test           4              182            stapler        testp2
+1              test           2              138            hanger         testp2
+1              test           4              200            wrench         testp2
+1              test           4              177            socerbal       testp2
+1              test           2              191            trophy         testp2
+1              test           1              101            allgator       testp2
+1              test           4              169            safe           testp2
+1              test           2              183            stool          testp2
+1              test           2              129            dresser        testp2
+1              test           2              159            pen            testp2
+1              test           4              197            whistle        testp2
+1              test           4              162            pitcher        testp2
+1              test           4              165            prkngmtr       testp2
+1              test           3              158            pelican        testp2
+1              test           1              144            kilerwal       testp2
+1              test           4              109            bracelet       testp2
+1              test           2              116            candle         testp2
+1              test           2              195            vest           testp2
+1              test           2              151            moon           testp2
+1              test           2              118            cd             testp2
+1              test           4              168            remote         testp2
+1              test           4              150            mailbox        testp2
+1              test           4              185            sun            testp2
+1              test           1              126            deer           testp2
+1              test           3              145            koala          testp2
+1              test           3              102            apple          testp2
+1              test           2              143            jacket         testp2
+1              test           1              175            sheep          testp2
+1              test           3              192            turtle         testp2
+1              test           2              172            scissors       testp2
+1              test           4              142            iron           testp2
+1              test           4              139            harp           testp2
+1              test           1              160            penguin        testp2
+1              test           4              113            bsbllglv       testp2
+1              test           1              179            spider         testp2
+1              test           3              110            brain          testp2
+1              test           4              120            chair          testp2
+1              test           2              124            comb           testp2
+1              test           4              180            spoon          testp2
+1              test           4              132            fireplac       testp2
+1              test           3              127            dragon         testp2
+1              test           2              198            wineglas       testp2
+1              test           3              136            frog           testp2
+1              test           2              122            church         testp2
+1              test           1              166            pumpkin        testp2
+1              test           2              163            pitchfrk       testp2
+1              test           2              112            broom          testp2
+1              test           2              173            scrwdriv       testp2
+1              test           2              184            stove          testp2
+1              test           4              111            briefcas       testp2
+1              test           2              103            ballhoop       testp2
+1              test           4              194            vacuum         testp2
+1              test           4              121            chisel         testp2
+1              test           4              104            balloon        testp2
+1              test           1              146            leopard        testp2
+1              test           4              114            bus            testp2
+1              test           4              105            barn           testp2
+1              test           2              125            crayon         testp2
+1              test           2              134            flute          testp2
+1              test           4              155            net            testp2
+1              test           4              171            sandal         testp2
+1              test           1              106            bear           testp2
+1              test           4              128            dress          testp2
+1              test           3              135            foot           testp2
+1              test           3              156            palmtree       testp2
+1              test           1              174            seashell       testp2
+1              test           2              107            bell           testp2
+1              test           3              130            eye            testp2
+1              test           4              137            guitar         testp2
+1              test           3              161            pineaple       testp2
+1              test           1              186            swan           testp2
+1              test           2              199            witchhat       testp2
+1              test           3              115            camel          testp2
+1              test           2              131            firengin       testp2
+1              test           1              140            horse          testp2
+1              test           4              164            pliers         testp2
+1              test           2              190            tissue         testp2
+1              test           2              117            car            testp2
+1              test           1              133            flamingo       testp2
+1              test           2              154            necklace       testp2
+1              test           4              170            salt           testp2
+1              test           2              193            umbrella       testp2
+1              test           2              149            lock           testp2
+1              test           4              123            clothspn       testp2
+1              test           4              131            firengin       testp3
+1              test           1              102            apple          testp3
+1              test           3              148            lion           testp3
+1              test           4              188            tapemeas       testp3
+1              test           3              144            kilerwal       testp3
+1              test           2              142            iron           testp3
+1              test           2              132            fireplac       testp3
+1              test           2              107            bell           testp3
+1              test           3              136            frog           testp3
+1              test           4              138            hanger         testp3
+1              test           3              174            seashell       testp3
+1              test           3              192            turtle         testp3
+1              test           2              129            dresser        testp3
+1              test           4              198            wineglas       testp3
+1              test           4              193            umbrella       testp3
+1              test           3              161            pineaple       testp3
+1              test           2              196            watercan       testp3
+1              test           4              123            clothspn       testp3
+1              test           4              185            sun            testp3
+1              test           1              101            allgator       testp3
+1              test           3              175            sheep          testp3
+1              test           2              182            stapler        testp3
+1              test           1              179            spider         testp3
+1              test           1              108            bird           testp3
+1              test           4              121            chisel         testp3
+1              test           2              122            church         testp3
+1              test           2              134            flute          testp3
+1              test           4              118            cd             testp3
+1              test           2              124            comb           testp3
+1              test           4              172            scissors       testp3
+1              test           4              116            candle         testp3
+1              test           2              105            barn           testp3
+1              test           3              166            pumpkin        testp3
+1              test           4              120            chair          testp3
+1              test           2              168            remote         testp3
+1              test           4              117            car            testp3
+1              test           4              149            lock           testp3
+1              test           2              151            moon           testp3
+1              test           2              191            trophy         testp3
+1              test           4              137            guitar         testp3
+1              test           2              171            sandal         testp3
+1              test           2              154            necklace       testp3
+1              test           1              157            peas           testp3
+1              test           4              194            vacuum         testp3
+1              test           4              178            spatula        testp3
+1              test           1              140            horse          testp3
+1              test           2              197            whistle        testp3
+1              test           4              125            crayon         testp3
+1              test           4              143            jacket         testp3
+1              test           2              167            refridge       testp3
+1              test           2              119            chainsaw       testp3
+1              test           3              126            deer           testp3
+1              test           2              163            pitchfrk       testp3
+1              test           2              159            pen            testp3
+1              test           3              133            flamingo       testp3
+1              test           3              160            penguin        testp3
+1              test           1              127            dragon         testp3
+1              test           1              158            pelican        testp3
+1              test           2              165            prkngmtr       testp3
+1              test           2              190            tissue         testp3
+1              test           2              200            wrench         testp3
+1              test           1              145            koala          testp3
+1              test           3              153            mushroom       testp3
+1              test           3              189            tiger          testp3
+1              test           2              173            scrwdriv       testp3
+1              test           4              169            safe           testp3
+1              test           3              130            eye            testp3
+1              test           2              113            bsbllglv       testp3
+1              test           2              183            stool          testp3
+1              test           4              147            lighter        testp3
+1              test           4              187            table          testp3
+1              test           4              109            bracelet       testp3
+1              test           3              106            bear           testp3
+1              test           2              162            pitcher        testp3
+1              test           4              180            spoon          testp3
+1              test           4              164            pliers         testp3
+1              test           2              184            stove          testp3
+1              test           2              103            ballhoop       testp3
+1              test           4              141            htarblon       testp3
+1              test           2              112            broom          testp3
+1              test           2              152            motrcyle       testp3
+1              test           1              186            swan           testp3
+1              test           2              199            witchhat       testp3
+1              test           2              104            balloon        testp3
+1              test           2              195            vest           testp3
+1              test           3              110            brain          testp3
+1              test           4              128            dress          testp3
+1              test           3              135            foot           testp3
+1              test           4              139            harp           testp3
+1              test           1              115            camel          testp3
+1              test           4              170            salt           testp3
+1              test           4              181            sprybtle       testp3
+1              test           2              150            mailbox        testp3
+1              test           3              156            palmtree       testp3
+1              test           4              155            net            testp3
+1              test           1              146            leopard        testp3
+1              test           2              111            briefcas       testp3
+1              test           2              177            socerbal       testp3
+1              test           2              176            sled           testp3
+1              test           4              114            bus            testp3
+1              test           2              164            pliers         testp4
+1              test           2              125            crayon         testp4
+1              test           2              147            lighter        testp4
+1              test           4              107            bell           testp4
+1              test           4              119            chainsaw       testp4
+1              test           1              133            flamingo       testp4
+1              test           1              161            pineaple       testp4
+1              test           4              151            moon           testp4
+1              test           4              105            barn           testp4
+1              test           4              182            stapler        testp4
+1              test           1              110            brain          testp4
+1              test           2              178            spatula        testp4
+1              test           3              157            peas           testp4
+1              test           4              183            stool          testp4
+1              test           4              163            pitchfrk       testp4
+1              test           3              115            camel          testp4
+1              test           2              170            salt           testp4
+1              test           3              146            leopard        testp4
+1              test           4              159            pen            testp4
+1              test           4              176            sled           testp4
+1              test           2              149            lock           testp4
+1              test           1              135            foot           testp4
+1              test           2              131            firengin       testp4
+1              test           4              154            necklace       testp4
+1              test           2              137            guitar         testp4
+1              test           2              121            chisel         testp4
+1              test           2              181            sprybtle       testp4
+1              test           3              145            koala          testp4
+1              test           2              143            jacket         testp4
+1              test           4              184            stove          testp4
+1              test           2              109            bracelet       testp4
+1              test           2              180            spoon          testp4
+1              test           4              171            sandal         testp4
+1              test           2              128            dress          testp4
+1              test           2              123            clothspn       testp4
+1              test           4              132            fireplac       testp4
+1              test           1              126            deer           testp4
+1              test           1              192            turtle         testp4
+1              test           2              193            umbrella       testp4
+1              test           1              175            sheep          testp4
+1              test           1              148            lion           testp4
+1              test           2              139            harp           testp4
+1              test           1              174            seashell       testp4
+1              test           2              172            scissors       testp4
+1              test           1              156            palmtree       testp4
+1              test           4              196            watercan       testp4
+1              test           2              141            htarblon       testp4
+1              test           3              140            horse          testp4
+1              test           4              177            socerbal       testp4
+1              test           2              169            safe           testp4
+1              test           1              153            mushroom       testp4
+1              test           3              179            spider         testp4
+1              test           2              117            car            testp4
+1              test           1              106            bear           testp4
+1              test           3              101            allgator       testp4
+1              test           4              150            mailbox        testp4
+1              test           3              102            apple          testp4
+1              test           2              155            net            testp4
+1              test           4              191            trophy         testp4
+1              test           2              188            tapemeas       testp4
+1              test           4              195            vest           testp4
+1              test           2              116            candle         testp4
+1              test           4              168            remote         testp4
+1              test           4              122            church         testp4
+1              test           4              162            pitcher        testp4
+1              test           4              104            balloon        testp4
+1              test           4              165            prkngmtr       testp4
+1              test           4              124            comb           testp4
+1              test           3              108            bird           testp4
+1              test           4              199            witchhat       testp4
+1              test           1              189            tiger          testp4
+1              test           2              198            wineglas       testp4
+1              test           4              173            scrwdriv       testp4
+1              test           1              136            frog           testp4
+1              test           4              142            iron           testp4
+1              test           2              118            cd             testp4
+1              test           4              129            dresser        testp4
+1              test           2              138            hanger         testp4
+1              test           3              127            dragon         testp4
+1              test           2              114            bus            testp4
+1              test           1              130            eye            testp4
+1              test           4              190            tissue         testp4
+1              test           4              112            broom          testp4
+1              test           4              113            bsbllglv       testp4
+1              test           1              160            penguin        testp4
+1              test           1              166            pumpkin        testp4
+1              test           4              134            flute          testp4
+1              test           4              103            ballhoop       testp4
+1              test           2              185            sun            testp4
+1              test           3              158            pelican        testp4
+1              test           1              144            kilerwal       testp4
+1              test           2              187            table          testp4
+1              test           4              111            briefcas       testp4
+1              test           4              197            whistle        testp4
+1              test           4              200            wrench         testp4
+1              test           4              152            motrcyle       testp4
+1              test           2              120            chair          testp4
+1              test           3              186            swan           testp4
+1              test           4              167            refridge       testp4
+1              test           2              194            vacuum         testp4
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background: EEG, events, and epochs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p50.html">P50 Paired-click</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p3.html">P3 Auditory oddball</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wr.html">Word repetition memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pm.html">Picture memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resting_eeg.html">Resting EEG</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">&lt;no title&gt;</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Thomas P. Urbach.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>

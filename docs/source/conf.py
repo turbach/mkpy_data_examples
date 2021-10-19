@@ -36,43 +36,43 @@ os.environ["MDE_HOME"] = str(MDE_HOME)
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
-    'nbsphinx',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.todo",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.githubpages",
+    "nbsphinx",
 ]
 
 # don't time out ...
 nbsphinx_timeout = -1
 nbsphinx_execute = "always"
-#nbsphinx_execute = "auto"
-#nbsphinx_execute = "never"
+# nbsphinx_execute = "auto"
+# nbsphinx_execute = "never"
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ".rst"
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
 # General information about the project.
-project = 'mkpy_data_examples'
-copyright = '2020, Thomas P. Urbach'
-author = 'Thomas P. Urbach'
+project = "mkpy_data_examples"
+copyright = "2020, Thomas P. Urbach"
+author = "Thomas P. Urbach"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-with open(MDE_HOME / "_version.txt", 'r') as fh:
+with open(MDE_HOME / "_version.txt", "r") as fh:
     version = fh.read().strip()
 # The full version, including alpha/beta/rc tags.
 release = version
@@ -88,10 +88,10 @@ language = None
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
 # exclude_patterns = []
-exclude_patterns = ['**.ipynb_checkpoints']
+exclude_patterns = ["**.ipynb_checkpoints"]
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
@@ -104,31 +104,30 @@ todo_include_todos = True
 #
 # html_theme = 'traditional'
 # html_theme = 'alabaster'
-html_theme = 'nature'
+html_theme = "nature"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {
-    "body_max_width": "1024px"
-}
+html_theme_options = {"body_max_width": "1024px"}
 html_sidebars = {
-    '**': [
-        'globaltoc.html', 'relations.html', # 'searchbox.html' search is a javascript security issue
-    ],
+    "**": [
+        "globaltoc.html",
+        "relations.html",  # 'searchbox.html' search is a javascript security issue
+    ]
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', ]
+html_static_path = ["_static"]
 
 
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'mkpy_data_examplesdoc'
+htmlhelp_basename = "mkpy_data_examplesdoc"
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -137,15 +136,12 @@ latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
     # 'papersize': 'letterpaper',
-
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
-
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
@@ -155,8 +151,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'mkpy_data_examples.tex', 'mkpy\\_data\\_examples Documentation',
-     'Thomas P. Urbach', 'manual'),
+    (
+        master_doc,
+        "mkpy_data_examples.tex",
+        "mkpy\\_data\\_examples Documentation",
+        "Thomas P. Urbach",
+        "manual",
+    )
 ]
 
 
@@ -165,8 +166,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'mkpy_data_examples', 'mkpy_data_examples Documentation',
-     [author], 1)
+    (master_doc, "mkpy_data_examples", "mkpy_data_examples Documentation", [author], 1)
 ]
 
 
@@ -176,8 +176,13 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'mkpy_data_examples', 'mkpy_data_examples Documentation',
-     author, 'mkpy_data_examples', 'One line description of project.',
-     'Miscellaneous'),
+    (
+        master_doc,
+        "mkpy_data_examples",
+        "mkpy_data_examples Documentation",
+        author,
+        "mkpy_data_examples",
+        "One line description of project.",
+        "Miscellaneous",
+    )
 ]
-
