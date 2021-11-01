@@ -8,6 +8,11 @@ all: zenodo_files
 zenodo_files: xlogs pm_codemaps
 	python ./make_zenodo_files.py
 
+# variety of mkh5 HDF5 data group trees written to multisub_data
+# for local testing, not uploaded to Zenodo.
+multisub:
+	python ./make_multisub_mkh5.py
+
 # set log_flags for garv artifacts in .x.log files
 xlogs:
 	./make_xlog_sub000_p50_p3_wr_pm.sh
